@@ -81,17 +81,41 @@ export default function TypographyPage() {
 
       <Section
         kicker="Instagram Sans"
-        title="Seven cuts, one family"
-        description="Regular is the about-page workhorse. Headline is reserved for the largest display moments. Condensed and Script exist almost entirely for the interactive type-tester (see Dropdowns & Selectors)."
+        title="Seven cuts, one family — plus a standalone squeeze"
+        description="Regular is the about-page workhorse. Headline is reserved for the largest display moments. Condensed and Script appear in the interactive type-tester (see Dropdowns & Selectors) with both weight variants. Instagram Squeeze ships as a separate family, not a sub-cut — it falls back to the system font stack rather than to Instagram Sans."
       >
         <TokenGrid min="260px">
           <TypeSpecimen label="Regular · 400" text="Instagram" fontSize={28} fontWeight={400} />
           <TypeSpecimen label="Light · 300" text="Instagram" fontSize={28} fontWeight={300} />
           <TypeSpecimen label="Medium · 500" text="Instagram" fontSize={28} fontWeight={500} />
           <TypeSpecimen label="Bold · 700" text="Instagram" fontSize={28} fontWeight={700} />
-          <TypeSpecimen label="Headline" meta="Display-only optical cut" text="Instagram" fontSize={28} fontWeight={700} letterSpacing={-1} />
-          <TypeSpecimen label="Condensed" meta="Tight-width display" text="Instagram" fontSize={28} fontWeight={600} letterSpacing={-1.5} />
-          <TypeSpecimen label="Script" meta="Editorial flourish" text="Instagram" fontSize={28} fontWeight={400} fontStyle="italic" />
+          <TypeSpecimen label="Headline" meta="Display-only optical cut · shipped as .otf" text="Instagram" fontSize={28} fontWeight={700} letterSpacing={-1} />
+          <TypeSpecimen label="Condensed · 400" meta="Tight-width display" text="Instagram" fontSize={28} fontWeight={400} letterSpacing={-1.5} />
+          <TypeSpecimen label="Condensed · 700" meta="Tight-width display, bold" text="Instagram" fontSize={28} fontWeight={700} letterSpacing={-2} />
+          <TypeSpecimen label="Script · 400" meta="Editorial flourish" text="Instagram" fontSize={28} fontWeight={400} fontStyle="italic" />
+          <TypeSpecimen label="Script · 700" meta="Editorial flourish, bold" text="Instagram" fontSize={28} fontWeight={700} fontStyle="italic" />
+        </TokenGrid>
+      </Section>
+
+      <Section
+        kicker="Typeface DNA"
+        title="From glyph to letterform"
+        description="Instagram Sans was designed from the inside out — the same squircle geometry that gives the app icon its shape flows directly into the letterforms."
+      >
+        <TokenGrid min="240px">
+          {[
+            { label: "The squircle origin", note: "Every curved stroke in Instagram Sans derives from the space between a perfect circle and a square — the same mathematical form behind the app icon's corner radius." },
+            { label: "Sheared terminals", note: "Stroke endings are cut at an angle rather than perfectly horizontal, suggesting the natural flick of a human hand and breaking from pure geometric rigour." },
+            { label: "The 'a' teardrop", note: "The interior counter of the lowercase 'a' is an explicit teardrop — a deliberate quirk that distinguishes the typeface from generic grotesques at every display size." },
+            { label: "The 'Q' tail", note: "The Q carries a distinctive tail treatment that extends the circular motif rather than cutting through it, another recognisable departure from standard grotesque conventions." },
+            { label: "Circular punctuation", note: "Circular motifs appear in the typeface's punctuation marks — periods, colons, bullet points — reinforcing the glyph-derived geometric vocabulary at the smallest typographic elements." },
+            { label: "Heritage", note: "The typeface is a contemporary evolution of Instagram's 2010 wordmark, updated in 2013 and then formalised as a custom type system — not a commissioned typeface built from scratch." },
+          ].map((item) => (
+            <div key={item.label} className={styles.scriptCard}>
+              <p className={styles.scriptName}>{item.label}</p>
+              <p className={styles.scriptNote}>{item.note}</p>
+            </div>
+          ))}
         </TokenGrid>
       </Section>
 
@@ -177,11 +201,20 @@ font-size: 110px;           /* 64px <=768px / 56px <=475px / 112px >=1920px */`}
         />
       </Section>
 
-      <ImplementationNote title="Open question" tone="gap">
+      <ImplementationNote title="Instagram Squeeze — partially resolved">
+        The production bundle confirms <code>font-family: &quot;Instagram Squeeze&quot;, var(--font-family-system)</code> — note
+        the fallback: <strong>the system font stack, not Instagram Sans</strong>. This makes Squeeze a standalone family,
+        not a sub-cut. The name implies ultra-compressed letterforms for tight headline slots, but the selector context
+        wasn&rsquo;t captured, so the surface that uses it inside the product remains unconfirmed. Do not conflate it
+        with Instagram Sans Condensed, which is a confirmed sub-cut that falls back to Instagram Sans.
+      </ImplementationNote>
+
+      <ImplementationNote title="@font-face not captured" tone="gap">
         No <code>@font-face</code> block for Instagram Sans itself was found in the captured CSS — only Optimistic&rsquo;s
-        was. Instagram Sans is evidenced here by shipped <code>.ttf</code>/<code>.otf</code> binaries and extensive{" "}
-        <code>font-family</code> usage, not a captured <code>src:</code> declaration. The weight↔cut mapping above is
-        derived, not literally read from source.
+        was. Instagram Sans is evidenced by the five shipped binaries
+        (<code>Instagram Sans.ttf</code>, <code>Light.ttf</code>, <code>Medium.ttf</code>, <code>Bold.ttf</code>,{" "}
+        <code>Headline.otf</code>) and extensive <code>font-family</code> usage across /ig files. The weight↔cut
+        mapping is derived, not literally read from a <code>src:</code> declaration.
       </ImplementationNote>
     </PageContainer>
   );

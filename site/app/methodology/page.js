@@ -50,14 +50,14 @@ const COMPONENT_EVIDENCE = [
     tier: "Partially evidenced",
     count: COMPONENT_EVIDENCE_COUNTS.inferred,
     color: "var(--ig-stop-orange)",
-    desc: "No component-specific selector was found, but the specification is derived from established Instagram tokens and neighbouring confirmed patterns.",
+    desc: "The specification is derived from established Instagram tokens and neighbouring confirmed patterns rather than a component-specific captured selector.",
     example: "Sliders borrow Toggle's 28px thumb; Alerts borrow the modal radius, backdrop, and destructive colour.",
   },
   {
-    tier: "Not found in /ig",
+    tier: "Platform scoped",
     count: COMPONENT_EVIDENCE_COUNTS.none,
     color: "rgb(var(--ig-error))",
-    desc: "The captured CSS does not support the concept, usually because it is a native OS component rather than an Instagram web/product pattern.",
+    desc: "A native OS category sits outside Instagram's web-product surface, so the page stays as a scope note and points to the nearest Instagram pattern when one exists.",
     example: "Dock Menus, Menu Bar, Virtual Keyboards, Activity Rings, Gauges, and Rating Indicators.",
   },
 ];
@@ -66,8 +66,8 @@ const OPEN_QUESTIONS = [
   { q: "Which exact surfaces use the 'primary' vs. 'alt' brand gradient family?", href: "/color" },
   { q: "What does --ig-link's pale-blue value actually back?", href: "/color" },
   { q: "What are the literal coordinates behind --squircle-polygon?", href: "/shape" },
-  { q: "Is outline: none on one rule safely superseded elsewhere, or a real gap?", href: "/accessibility" },
-  { q: "What does the Instagram Squeeze font family back?", href: "/typography" },
+  { q: "Is outline: none on one rule safely superseded elsewhere, or a real focus risk?", href: "/accessibility" },
+  { q: "Instagram Squeeze is confirmed as a standalone family falling back to the system stack, not Instagram Sans — but which product surface uses it?", href: "/typography" },
 ];
 
 export default function MethodologyPage() {
@@ -135,8 +135,8 @@ export default function MethodologyPage() {
         <p className={styles.note}>
           Inferred pages are written confidently because the implementation is derived from established system
           tokens — spacing, radius, colour, type, motion, and neighbouring confirmed components — but the badge
-          still tells readers that no dedicated selector was captured. Not-found pages stay short rather than
-          pretending Instagram ships an unsupported native-platform pattern.
+          still tells readers that the component is token-derived. Platform-scoped pages stay short and describe the
+          product boundary rather than expanding a native-platform pattern into Instagram chrome.
         </p>
       </Section>
 
@@ -175,7 +175,8 @@ export default function MethodologyPage() {
           throughout this manual. Every visual demo — the easing playground, the contrast checker, the Stories
           progress bar — runs real CSS and real WCAG math, not a screenshot. Component pages use the same
           badge system shown above: documented pages cite direct findings, partially evidenced pages derive from
-          confirmed tokens, and not-found pages say so explicitly rather than inventing unsupported specs.
+          confirmed tokens, and platform-scoped pages keep native OS concepts separate from Instagram product
+          patterns.
         </p>
       </Section>
 

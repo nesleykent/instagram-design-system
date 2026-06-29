@@ -1,6 +1,7 @@
 import PageContainer from "@/components/docs/PageContainer";
 import PageHeader from "@/components/docs/PageHeader";
 import Section from "@/components/docs/Section";
+import TokenGrid from "@/components/docs/TokenGrid";
 import GridUnitVisualizer from "@/components/docs/GridUnitVisualizer";
 import BreakpointTimeline from "@/components/docs/BreakpointTimeline";
 import SectionRhythmDemo from "@/components/docs/SectionRhythmDemo";
@@ -8,6 +9,7 @@ import SplitScreenDemo from "@/components/docs/SplitScreenDemo";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
+import styles from "./layout-grid.module.css";
 
 export const metadata = { title: "Layout & Grid" };
 
@@ -19,6 +21,46 @@ export default function LayoutGridPage() {
         title="Layout & Grid"
         description="One base unit drives the whole canvas: 7.142vw, exactly 100 ÷ 14. Below 1920px the layout scales fluidly with the viewport; at and above it, spacing locks to fixed pixels computed against a 1600px canvas."
       />
+
+      <Section
+        kicker="Brand philosophy"
+        title="Simple. Flexible. Content-first."
+        description="Instagram's own brand page names three layout principles and anchors them to the product. The CSS evidence maps directly onto each one."
+      >
+        <TokenGrid min="260px">
+          {[
+            {
+              label: "Simple",
+              note: "Confident layouts use one compositional decision per section — one split ratio, one typography scale, one image treatment. Complexity is never decorative.",
+            },
+            {
+              label: "Flexible",
+              note: "The 14-unit fluid grid and the six breakpoint tiers exist so layouts adapt continuously rather than jumping. No fixed-pixel layout was found in the about-page source below 1920px.",
+            },
+            {
+              label: "Content-first",
+              note: "Full-bleed images fill the viewport rather than being framed. Type and imagery combine compositionally — the grid serves the content, not a predefined column template.",
+            },
+            {
+              label: "Mirrors the app",
+              note: "\"Our UI tells the story of our product. It's the functional embodiment of our aspirations for our community.\" — about.instagram.com/brand/layout. The about-page is not a marketing site separate from the product; it is the product's visual language rendered as editorial.",
+            },
+            {
+              label: "Official aspect ratios",
+              note: "The brand page formally documents 9:16, 4:5, 1:1, and 16:9 as the supported ratios. These are identical to the product's feed and Stories crop set — confirming the layout language and the content-authoring constraints are intentionally unified.",
+            },
+            {
+              label: "Experimentation within the core",
+              note: "\"An iconic core foundation enables experimentation while maintaining brand consistency.\" The 14-unit grid and the six breakpoint tiers are the foundation; split ratios, type movement, and compositional asymmetry are the latitude that sits on top.",
+            },
+          ].map((item) => (
+            <div key={item.label} className={styles.principleCard}>
+              <p className={styles.principleLabel}>{item.label}</p>
+              <p className={styles.principleNote}>{item.note}</p>
+            </div>
+          ))}
+        </TokenGrid>
+      </Section>
 
       <Section
         kicker="The 14-unit grid"
