@@ -30,7 +30,7 @@
 
 .bubble[data-side="out"] {
   background: rgb(var(--ig-outgoing-bubble));
-  color: #fff;
+  color: rgb(var(--ig-always-white));
   border-bottom-right-radius: 4px;
 }
 

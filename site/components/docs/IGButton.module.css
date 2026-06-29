@@ -14,7 +14,7 @@
 
 .button[data-variant="primary"] {
   background: rgb(var(--ig-primary-button));
-  color: #fff;
+  color: rgb(var(--ig-always-white));
 }
 .button[data-variant="primary"]:hover:not(:disabled) {
   background: rgb(var(--ig-primary-button-hover));

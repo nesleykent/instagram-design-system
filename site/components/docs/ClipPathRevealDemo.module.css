@@ -32,7 +32,7 @@
 .stageLabel {
   position: relative;
   z-index: 1;
-  color: #fff;
+  color: rgb(var(--ig-always-white));
   font-weight: var(--fw-semibold);
   font-size: 14px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);

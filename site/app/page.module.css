@@ -83,7 +83,7 @@
 
 .primaryButton {
   background-image: var(--ig-gradient-hero);
-  color: #fff;
+  color: rgb(var(--ig-always-white));
 }
 
 .primaryButton:hover {

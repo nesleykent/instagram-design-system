@@ -183,7 +183,14 @@ export function getBreadcrumbs(href) {
     const groupHasOverview = group.items[0].title === "Overview";
     const isGroupOverviewPage = groupHasOverview && item.href === group.items[0].href;
 
-    if (group.group !== "Get started" && !isGroupOverviewPage) {
+    if (group.group !== "Get started") {
+      if (isGroupOverviewPage) {
+        // On a group's own index page, show the group's real name as the
+        // current-page crumb ("Components") rather than the generic item
+        // title ("Overview"), which is meaningless out of sidebar context.
+        crumbs.push({ title: group.group, href: item.href });
+        return crumbs;
+      }
       // Only link the group label when it has a real index page to land on;
       // otherwise show it as a plain, non-clickable label.
       crumbs.push({ title: group.group, href: groupHasOverview ? group.items[0].href : null });

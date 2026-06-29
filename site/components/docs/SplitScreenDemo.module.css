@@ -19,11 +19,14 @@
   font-size: 13px;
   font-weight: var(--fw-semibold);
   transition: width 220ms var(--ease-glide);
-  color: #fff;
+  color: rgb(var(--ig-always-white));
 }
 
 .col[data-side="a"] {
-  background: rgb(var(--ig-primary-text));
+  /* Fixed black, not the theme-flipping --ig-primary-text — this block
+     pairs with the fixed white label below and must stay dark in both
+     light and dark mode, not invert to near-white in dark mode. */
+  background: rgb(var(--ig-always-black));
 }
 
 .col[data-side="b"] {

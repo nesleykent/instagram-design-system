@@ -24,14 +24,14 @@
 
 .swatch:hover {
   background-image: var(--ig-gradient-hero);
-  color: #fff;
+  color: rgb(var(--ig-always-white));
   transform: translateY(-2px);
   border-color: transparent;
 }
 
 .swatch[data-active="true"] {
   background-image: var(--ig-gradient-hero);
-  color: #fff;
+  color: rgb(var(--ig-always-white));
   border-color: transparent;
 }
 

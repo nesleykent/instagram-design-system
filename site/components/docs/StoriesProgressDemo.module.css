@@ -16,7 +16,7 @@
 .stage {
   padding: 18px;
   border-radius: var(--radius-lg);
-  background: #000;
+  background: rgb(var(--ig-always-black));
 }
 
 .bar {
@@ -36,7 +36,7 @@
   height: 100%;
   width: 100%;
   border-radius: var(--radius-pill);
-  background: #fff;
+  background: rgb(var(--ig-always-white));
   transform-origin: left;
   transform: scaleX(0);
 }

@@ -35,7 +35,7 @@
   padding: 12px 22px;
   border-radius: var(--input-radius);
   background-image: var(--ig-gradient-hero);
-  color: #fff;
+  color: rgb(var(--ig-always-white));
   font-weight: var(--fw-semibold);
   font-size: 14px;
 }
