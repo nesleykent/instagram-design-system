@@ -2,14 +2,31 @@ import "./globals.css";
 import { ThemeScript } from "@/components/ThemeScript";
 import SiteShell from "@/components/SiteShell";
 
+const SITE_URL = "https://nesleykent.github.io/instagram-design-system";
+const SITE_DESCRIPTION =
+  "A reverse-engineered, production documentation site for Instagram's own brand identity system — typography, colour, layout, shape, components, motion, imagery, and accessibility, sourced directly from Instagram's CSS.";
+
 export const metadata = {
-  metadataBase: undefined,
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Instagram Brand Identity Manual",
     template: "%s · Instagram Brand Identity Manual",
   },
-  description:
-    "A reverse-engineered, production documentation site for Instagram's own brand identity system — typography, colour, layout, shape, components, motion, imagery, and accessibility, sourced directly from Instagram's CSS.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: "Instagram Brand Identity Manual",
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Instagram Brand Identity Manual",
+    images: [{ url: "/brand-glyph.png", width: 256, height: 256 }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Instagram Brand Identity Manual",
+    description: SITE_DESCRIPTION,
+    images: ["/brand-glyph.png"],
+  },
 };
 
 export const viewport = {
