@@ -18,7 +18,13 @@ export default function Header({ onMenuClick, onSearchClick }) {
       </button>
 
       <Link href="/" className={styles.wordmark}>
-        <span className={styles.glyph} aria-hidden="true" />
+        <img
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/brand-glyph.png`}
+          alt=""
+          width={26}
+          height={26}
+          className={styles.glyph}
+        />
         <span>
           Instagram <span className="gradient-text">Brand Manual</span>
         </span>

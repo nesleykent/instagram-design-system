@@ -4,3 +4,9 @@
 # they are licensed for use on Meta platforms, not public redistribution.
 # See README for how typography is documented instead.
 /Instagram Sans/
+
+# Official Instagram brand asset pack (source-of-truth original files,
+# multiple sizes/formats, .ai originals). Only the two files actually
+# used by the site (resized PNGs in site/app/icon.png and
+# site/public/brand-glyph.png) are committed — not the full 36MB pack.
+/IG_brand_asset_pack_2023/

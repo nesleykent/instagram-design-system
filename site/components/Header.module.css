@@ -46,8 +46,6 @@
 .glyph {
   width: 26px;
   height: 26px;
-  border-radius: var(--radius-md);
-  background-image: var(--ig-gradient-hero);
   flex-shrink: 0;
 }
 
