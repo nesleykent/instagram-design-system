@@ -1,0 +1,51 @@
+.block {
+  position: relative;
+  background: rgb(var(--ig-secondary-bg));
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  padding: 16px 18px;
+}
+
+.label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(var(--ig-tertiary-text));
+  margin-bottom: 10px;
+}
+
+.copyBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-elevated-bg));
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12px;
+  font-weight: var(--fw-medium);
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.copyBtn:hover {
+  border-color: rgb(var(--ig-stroke));
+}
+
+.pre {
+  margin: 0;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgb(var(--ig-primary-text));
+}
+
+.pre code {
+  font-family: var(--font-mono);
+  white-space: pre;
+}

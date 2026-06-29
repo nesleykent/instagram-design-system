@@ -1,0 +1,77 @@
+.textGradientRow {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 8px 4px;
+}
+
+.textGradientSample {
+  font-size: 22px;
+  font-weight: var(--fw-bold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.underlineDemo {
+  -webkit-text-fill-color: initial;
+  color: rgb(var(--ig-primary-text));
+  background-image: none;
+  position: relative;
+  font-weight: var(--fw-medium);
+  font-size: 16px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(#f7d440, #ed1f1f) 1;
+}
+
+.layers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+
+.layer {
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.layer[data-emphasis="true"] {
+  border-color: var(--ig-stop-magenta);
+  background: rgba(211, 0, 197, 0.05);
+}
+
+.layerName {
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.layer code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: rgb(var(--ig-secondary-bg));
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  margin-right: 4px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.layerDesc {
+  font-size: 13px;
+  color: rgb(var(--ig-secondary-text));
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .layers {
+    grid-template-columns: 1fr;
+  }
+}

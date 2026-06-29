@@ -1,0 +1,46 @@
+.note {
+  display: flex;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-secondary-bg));
+}
+
+.note[data-tone="gap"] {
+  background: rgba(255, 122, 0, 0.08);
+  border-color: rgba(255, 122, 0, 0.25);
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: rgb(var(--ig-tertiary-text));
+}
+
+.note[data-tone="gap"] .icon {
+  color: var(--ig-stop-orange);
+}
+
+.title {
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.note[data-tone="gap"] .title {
+  color: var(--ig-stop-orange);
+}
+
+.body {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgb(var(--ig-primary-text));
+}
+
+.body :global(p) + :global(p) {
+  margin-top: 10px;
+}

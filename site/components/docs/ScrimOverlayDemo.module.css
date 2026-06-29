@@ -1,0 +1,58 @@
+.wrap {
+  max-width: 360px;
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgb(var(--ig-separator));
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  background-image: var(--ig-gradient-spectrum);
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  transition: background-image var(--duration-micro) var(--ease-glide);
+}
+
+.text {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  right: 16px;
+  color: #fff;
+  font-weight: var(--fw-semibold);
+  font-size: 15px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.preset {
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12.5px;
+  font-weight: var(--fw-medium);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.preset[data-active="true"] {
+  background: rgb(var(--ig-primary-text));
+  color: rgb(var(--ig-primary-bg));
+  border-color: transparent;
+}

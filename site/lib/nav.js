@@ -165,16 +165,19 @@ export function getPrevNext(href) {
 export function getBreadcrumbs(href) {
   for (const group of NAV) {
     const item = group.items.find((i) => i.href === href);
-    if (item) {
-      const crumbs = [{ title: "Manual", href: "/" }];
-      if (group.group !== "Get started") {
-        crumbs.push({ title: group.group, href: group.items[0].href });
-      }
-      if (!(group.group !== "Get started" && item.title === "Overview")) {
-        crumbs.push({ title: item.title, href: item.href });
-      }
-      return crumbs;
+    if (!item) continue;
+
+    const crumbs = [{ title: "Manual", href: "/" }];
+    const groupHasOverview = group.items[0].title === "Overview";
+    const isGroupOverviewPage = groupHasOverview && item.href === group.items[0].href;
+
+    if (group.group !== "Get started" && !isGroupOverviewPage) {
+      // Only link the group label when it has a real index page to land on;
+      // otherwise show it as a plain, non-clickable label.
+      crumbs.push({ title: group.group, href: groupHasOverview ? group.items[0].href : null });
     }
+    crumbs.push({ title: item.title, href: item.href });
+    return crumbs;
   }
   return [{ title: "Manual", href: "/" }];
 }

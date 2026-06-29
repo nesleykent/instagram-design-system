@@ -1,0 +1,33 @@
+.row {
+  display: grid;
+  grid-template-columns: 1fr 70px 70px 60px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+}
+
+.sample {
+  color: rgb(var(--ig-primary-text));
+  font-weight: var(--fw-medium);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dims {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.unit {
+  font-size: 10px;
+  color: rgb(var(--ig-tertiary-text));
+}
+
+.ratio {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: rgb(var(--ig-tertiary-text));
+}

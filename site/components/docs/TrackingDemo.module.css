@@ -1,0 +1,64 @@
+.demo {
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.sample {
+  font-size: 34px;
+  font-weight: var(--fw-bold);
+  text-align: center;
+  padding: 24px 0;
+  color: rgb(var(--ig-primary-text));
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.slider {
+  flex: 1;
+  accent-color: var(--ig-stop-magenta);
+}
+
+.value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  width: 56px;
+  text-align: right;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.presets {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.preset {
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12.5px;
+  font-weight: var(--fw-medium);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.preset:hover {
+  border-color: rgb(var(--ig-stroke));
+}
+
+.preset span {
+  font-family: var(--font-mono);
+  color: rgb(var(--ig-tertiary-text));
+  margin-left: 4px;
+}

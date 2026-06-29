@@ -1,0 +1,42 @@
+.specimen {
+  padding: 24px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.sample {
+  color: rgb(var(--ig-primary-text));
+  overflow-wrap: anywhere;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: rgb(var(--ig-primary-text));
+  outline: none;
+  padding: 0;
+}
+
+.footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgb(var(--ig-separator));
+}
+
+.label {
+  font-size: 13.5px;
+  font-weight: var(--fw-semibold);
+}
+
+.meta {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: rgb(var(--ig-tertiary-text));
+  text-align: right;
+}
