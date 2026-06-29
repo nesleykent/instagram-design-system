@@ -8,7 +8,7 @@ import { IconArrowRight } from "@/components/Icons";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Overview",
+  title: "Overview · Instagram Brand Identity Manual",
 };
 
 const PILLARS = [
