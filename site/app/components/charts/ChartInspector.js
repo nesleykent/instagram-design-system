@@ -75,8 +75,8 @@ export default function ChartInspector() {
 
       <div
         className={styles.inspectPlot}
-        role="img"
-        aria-label="Story interactions over seven days. Highest engagement is Saturday with 1.4K engagements."
+        role="group"
+        aria-label="Interactive story interactions chart. Highest engagement is Saturday with 1.4K engagements."
       >
         <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
           <defs>

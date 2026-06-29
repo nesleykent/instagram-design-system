@@ -1,6 +1,9 @@
-import Breadcrumbs from "@/components/Breadcrumbs";
 import PageContainer from "@/components/docs/PageContainer";
+import PageHeader from "@/components/docs/PageHeader";
+import Section from "@/components/docs/Section";
+import ComponentShowcase from "@/components/docs/ComponentShowcase";
 import CodeBlock from "@/components/docs/CodeBlock";
+import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 import ChartInspector from "./ChartInspector";
 import styles from "./charts.module.css";
@@ -83,57 +86,26 @@ const platformGuidance = [
   ["Embedded cards", "Use glanceable summaries and a compact spark chart. Never hide the only important number in a tooltip."],
 ];
 
-function ChartPage({ children }) {
-  return <PageContainer wide>{children}</PageContainer>;
-}
-
-function ChartHero() {
+function ChartPreview() {
   return (
-    <header className={styles.hero}>
-      <div className={styles.heroCopy}>
-        <Breadcrumbs />
-        <p className="eyebrow">Components</p>
-        <h1>Charts</h1>
-        <p>
-          Charts organise data to communicate information with clarity, insight, and visual appeal. In the
-          Instagram system, chart chrome stays quiet while colour, motion, and labels help people understand what
-          changed and why it matters.
-        </p>
+    <div className={styles.previewCard} aria-label="Instagram-style creator analytics chart preview">
+      <div className={styles.cardTopline}>
+        <span>Creator analytics</span>
+        <strong>+18.4%</strong>
       </div>
-      <div className={styles.heroVisual} aria-label="Luminous Instagram-style chart preview">
-        <div className={styles.glassCard}>
-          <div className={styles.cardTopline}>
-            <span>Creator analytics</span>
-            <strong>+18.4%</strong>
-          </div>
-          <div className={styles.heroBars} aria-hidden="true">
-            {[42, 58, 36, 76, 64, 88, 70].map((value, index) => (
-              <span key={index} style={{ "--height": `${value}%` }} />
-            ))}
-          </div>
-          <svg viewBox="0 0 420 180" className={styles.heroLine} aria-hidden="true" focusable="false">
-            <path d="M12 126 C72 86, 92 118, 140 80 S230 42, 270 72 S340 110, 408 38" />
-          </svg>
-          <div className={styles.heroLegend}>
-            <span><i /> Reach</span>
-            <span><i /> Engagement</span>
-          </div>
-        </div>
+      <div className={styles.previewBars} aria-hidden="true">
+        {[42, 58, 36, 76, 64, 88, 70].map((value, index) => (
+          <span key={index} style={{ "--height": `${value}%` }} />
+        ))}
       </div>
-    </header>
-  );
-}
-
-function ChartSection({ kicker, title, description, children, wide = false }) {
-  return (
-    <section className={styles.section} data-wide={wide}>
-      <div className={styles.sectionHeader}>
-        <p className="eyebrow">{kicker}</p>
-        <h2>{title}</h2>
-        {description && <p>{description}</p>}
+      <svg viewBox="0 0 420 180" className={styles.previewLine} aria-hidden="true" focusable="false">
+        <path d="M12 126 C72 86, 92 118, 140 80 S230 42, 270 72 S340 110, 408 38" />
+      </svg>
+      <div className={styles.previewLegend}>
+        <span><i /> Reach</span>
+        <span><i /> Engagement</span>
       </div>
-      {children}
-    </section>
+    </div>
   );
 }
 
@@ -375,44 +347,64 @@ function GuidanceColumns({ items }) {
   );
 }
 
-function ChartAccessibilityNote({ title, children }) {
-  return (
-    <aside className={styles.accessibilityNote}>
-      <h3>{title}</h3>
-      <div>{children}</div>
-    </aside>
-  );
-}
-
-const primitiveExample = `import ChartPage, {
-  ChartHero,
-  ChartAnatomy,
-  ChartExample,
-  ChartMark,
-  ChartTooltip,
-  ChartLegend,
-  ChartAccessibilityNote,
-} from "@/components/docs/charts";
+const primitiveExample = `import ComponentShowcase from "@/components/docs/ComponentShowcase";
+import ImplementationNote from "@/components/docs/ImplementationNote";
 
 export default function CreatorReachChart({ data }) {
+  const maxReach = Math.max(...data.map((datum) => datum.reach));
+
   return (
-    <ChartExample title="Reach by content format">
-      <ChartLegend items={["Reels", "Posts", "Stories"]} />
-      {data.map((datum) => (
-        <ChartMark
-          key={datum.id}
-          type="bar"
-          label={datum.format}
-          value={datum.reach}
-          unit="accounts reached"
-        />
-      ))}
-      <ChartTooltip />
-      <ChartAccessibilityNote>
-        Reels reached 72K accounts, the highest value in the 28 day range.
-      </ChartAccessibilityNote>
-    </ChartExample>
+    <ComponentShowcase align="start">
+      <figure aria-labelledby="reach-title" aria-describedby="reach-summary">
+        <h3 id="reach-title">Reels drove the largest reach lift</h3>
+        <p id="reach-summary">
+          Last 28 days, accounts reached. Reels reached 72K accounts,
+          the highest value in the range.
+        </p>
+        <div className="chart-bars" aria-label="Reach by content format">
+          {data.map((datum) => (
+            <button
+              key={datum.id}
+              type="button"
+              className="chart-mark"
+              style={{ "--height": (datum.reach / maxReach) * 100 + "%" }}
+              aria-label={datum.format + ", " + datum.reach.toLocaleString() + " accounts reached"}
+            >
+              <span>{datum.label}</span>
+            </button>
+          ))}
+        </div>
+      </figure>
+      <ImplementationNote title="Chart summary">
+        Keep the takeaway available as text; interaction only adds precision.
+      </ImplementationNote>
+    </ComponentShowcase>
   );
+}`;
+
+const primitiveCssExample = `.chart-bars {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: flex-end;
+  gap: 12px;
+  min-height: 180px;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+}
+
+.chart-mark {
+  height: var(--height);
+  min-height: 28px;
+  border: 0;
+  border-radius: 8px 8px 0 0;
+  background: rgb(var(--ig-highlight-bg));
+  transition: transform 150ms cubic-bezier(0, 0, .1, 1);
+}
+
+.chart-mark[aria-current="true"],
+.chart-mark:hover,
+.chart-mark:focus-visible {
+  background-image: var(--ig-gradient-spectrum);
+  transform: translateY(-3px);
 }`;
 
 const accessibleExample = `<figure aria-labelledby="reach-title" aria-describedby="reach-summary">
@@ -431,41 +423,63 @@ const accessibleExample = `<figure aria-labelledby="reach-title" aria-describedb
 
 export default function ChartsPage() {
   return (
-    <ChartPage>
-      <ChartHero />
+    <PageContainer>
+      <PageHeader
+        eyebrow="Components"
+        title="Charts"
+        description="Charts organise data to communicate information with clarity, insight, and visual appeal. In the Instagram system, chart chrome stays quiet while colour, motion, and labels help people understand what changed and why it matters."
+      >
+        <div className={styles.meta}>
+          <span>Content</span>
+          <span>4 CSS evidence groups</span>
+          <span>Static documentation page</span>
+        </div>
+      </PageHeader>
 
-      <ChartSection
+      <Section
         kicker="Overview"
         title="Charts turn raw metrics into decisions"
         description="Charts highlight key information in a dataset. They help people understand patterns, compare values, track change, monitor progress, and decide what to do next."
       >
-        <OverviewGrid />
-      </ChartSection>
+        <ComponentShowcase align="start" codeLabel="Gradient chart surface" code={`.chart-card {
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: 12px;
+  background: rgb(var(--ig-secondary-bg));
+}
 
-      <ChartSection
+.active-mark {
+  background-image: var(--ig-gradient-spectrum);
+  transition: transform 150ms cubic-bezier(0, 0, .1, 1);
+}`}>
+          <ChartPreview />
+        </ComponentShowcase>
+        <OverviewGrid />
+      </Section>
+
+      <Section
         kicker="Anatomy"
         title="Every chart has a job, a structure, and a reading path"
         description="A chart is more than marks inside a box. It needs a plot, scale, labels, legends, annotations, and accessibility labels that all support the same message."
-        wide
       >
-        <ChartAnatomy />
+        <ComponentShowcase align="start">
+          <ChartAnatomy />
+        </ComponentShowcase>
         <AnatomyList />
-      </ChartSection>
+      </Section>
 
-      <ChartSection
+      <Section
         kicker="Marks"
         title="Choose marks by the question people need answered"
         description="Instagram charts should use the simplest mark that communicates the insight. Brand colour and motion can add energy, but the mark must carry the meaning first."
-        wide
       >
         <div className={styles.markGrid}>
           {markGuides.map((guide) => (
             <ChartExample key={guide.type} guide={guide} />
           ))}
         </div>
-      </ChartSection>
+      </Section>
 
-      <ChartSection
+      <Section
         kicker="Axes"
         title="Axis ranges should make comparison honest"
         description="Axes define what difference means. Keep them stable when people compare charts, and only make them dynamic when the page explains the narrower focus."
@@ -483,9 +497,9 @@ export default function ChartsPage() {
           </p>
         </div>
         <AxisExamples />
-      </ChartSection>
+      </Section>
 
-      <ChartSection
+      <Section
         kicker="Descriptive content"
         title="Write the message before drawing the chart"
         description="Every chart should have a clear main message before people inspect the details. Titles, subtitles, annotations, summaries, labels, and legends should reduce interpretation work."
@@ -500,15 +514,16 @@ export default function ChartsPage() {
             ["Tone", "Use Instagram language that is specific, optimistic, and concrete: Saves rose fastest among carousel posts."],
           ]}
         />
-      </ChartSection>
+      </Section>
 
-      <ChartSection
+      <Section
         kicker="Interaction"
         title="Inspection should clarify, not hide the truth"
         description="Hover, tap, focus, and scrubbing can reveal exact values, but critical information must remain visible without interaction."
-        wide
       >
-        <ChartInspector />
+        <ComponentShowcase align="start">
+          <ChartInspector />
+        </ComponentShowcase>
         <GuidanceColumns
           items={[
             ["Hover and tap", "Highlight the nearest mark and show a value tooltip. Tap should pin the selection until another mark is chosen."],
@@ -519,9 +534,9 @@ export default function ChartsPage() {
             ["Tooltips", "Keep values short, include units, and ensure the same information is available in text."],
           ]}
         />
-      </ChartSection>
+      </Section>
 
-      <ChartSection
+      <Section
         kicker="Colour"
         title="Colour adds hierarchy and brand energy"
         description="Use Instagram's gradient language to focus attention, not to decorate every series. Colour must always have a secondary cue."
@@ -543,22 +558,18 @@ export default function ChartsPage() {
             <p>Pair colour with labels, shape, separators, texture, direct annotations, or selected outlines.</p>
           </article>
         </div>
-      </ChartSection>
+      </Section>
 
-      <ChartSection
+      <Section
         kicker="Accessibility"
         title="Charts need more than one image alt label"
         description="Accessible charts expose purpose, structure, values, and interaction state. Treat the text summary as part of the chart, not an afterthought."
       >
-        <ChartAccessibilityNote title="Label the chart at every useful level">
-          <ul>
-            <li>Chart purpose: what decision or question the chart supports.</li>
-            <li>Axes and units: dates, categories, percentages, currency, counts, or rates.</li>
-            <li>Marks: individual values and selected values, especially in interactive charts.</li>
-            <li>Groups and legends: the meaning of colour, shape, texture, and stack order.</li>
-            <li>Summary: the main takeaway and any important caveat.</li>
-          </ul>
-        </ChartAccessibilityNote>
+        <ImplementationNote title="Label the chart at every useful level">
+          <p>Chart purpose: what decision or question the chart supports.</p>
+          <p>Axes and units: dates, categories, percentages, currency, counts, or rates.</p>
+          <p>Marks, groups, legends, selected values, and the main summary need programmatic labels.</p>
+        </ImplementationNote>
         <GuidanceColumns
           items={[
             ["Screen readers", "Use labelled figures, summaries, and interactive mark labels. Do not expose only an unlabeled SVG."],
@@ -570,33 +581,34 @@ export default function ChartsPage() {
           ]}
         />
         <CodeBlock label="Accessible chart markup" code={accessibleExample} />
-      </ChartSection>
+      </Section>
 
-      <ChartSection kicker="Best practices" title="Best Practices">
-        <ul className={styles.practiceList}>
-          <li>Make the data more prominent than supporting chrome.</li>
-          <li>Keep grid lines subtle.</li>
-          <li>Use familiar tick sequences.</li>
-          <li>Maximise plot width in compact layouts.</li>
-          <li>Make important changes noticeable.</li>
-          <li>Never require interaction to reveal critical information.</li>
-          <li>Align charts with surrounding content.</li>
-          <li>Keep labels clear and concise.</li>
-          <li>Use actual values rather than subjective descriptions.</li>
-          <li>Avoid ambiguous date and unit formats.</li>
-          <li>Use summaries for complex charts.</li>
-        </ul>
-      </ChartSection>
+      <Section kicker="Best practices" title="Best Practices">
+        <DoDontGrid
+          dos={[
+            "Make the data more prominent than supporting chrome.",
+            "Keep grid lines subtle and use familiar tick sequences.",
+            "Maximise plot width in compact layouts and align charts with surrounding content.",
+            "Use actual values, clear units, concise labels, and summaries for complex charts.",
+          ]}
+          donts={[
+            "Never require interaction to reveal critical information.",
+            "Do not use ambiguous date or unit formats.",
+            "Do not make colour the only way to understand a group, state, or trend.",
+            "Do not add dashboard chrome that competes with the marks.",
+          ]}
+        />
+      </Section>
 
-      <ChartSection
+      <Section
         kicker="Platform"
         title="Platform Considerations"
         description="The same chart should adapt its density and inspection model to the surface it lives in."
       >
         <GuidanceColumns items={platformGuidance} />
-      </ChartSection>
+      </Section>
 
-      <ChartSection
+      <Section
         kicker="Implementation"
         title="Implementation Notes"
         description="Build charts from reusable primitives so anatomy, accessibility, interaction, and token usage stay consistent across analytics surfaces."
@@ -609,7 +621,8 @@ export default function ChartsPage() {
           </p>
         </ImplementationNote>
         <CodeBlock label="Reusable chart primitive example" code={primitiveExample} />
-      </ChartSection>
-    </ChartPage>
+        <CodeBlock label="Chart primitive CSS" code={primitiveCssExample} />
+      </Section>
+    </PageContainer>
   );
 }
