@@ -4,7 +4,7 @@ import SiteShell from "@/components/SiteShell";
 
 const SITE_URL = "https://nesleykent.github.io/instagram-design-system";
 const SITE_DESCRIPTION =
-  "A reverse-engineered, production documentation site for Instagram's own brand identity system — typography, colour, layout, shape, components, motion, imagery, and accessibility, sourced directly from Instagram's CSS.";
+  "A reverse-engineered documentation site for Instagram's brand identity system, tracing confirmed rules to production CSS and marking token-derived or unsupported component guidance by evidence tier.";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
