@@ -1,138 +1,186 @@
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
+/* ─────────────────────────────────────────────────────
+   Hero — full-width editorial chart composition
+   ──────────────────────────────────────────────────── */
 
-.meta span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  padding: 5px 10px;
-  border: 1px solid rgb(var(--ig-separator));
-  border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
-  color: rgb(var(--ig-secondary-text));
-  font-size: 12px;
-  font-weight: var(--fw-semibold);
-}
-
-.previewCard {
+.hero {
   position: relative;
-  width: min(100%, 520px);
-  aspect-ratio: 16 / 10;
+  width: 100%;
+  height: 360px;
+  margin-top: 28px;
   overflow: hidden;
-  padding: 20px;
   border: 1px solid rgb(var(--ig-separator));
-  border-radius: var(--radius-lg);
-  background:
-    linear-gradient(180deg, rgba(var(--ig-primary-bg), 0.88), rgba(var(--ig-primary-bg), 0.96)),
-    rgb(var(--ig-secondary-bg));
+  border-radius: var(--radius-xl);
+  background: rgb(var(--ig-elevated-bg));
   color: rgb(var(--ig-primary-text));
 }
 
-.previewCard::before {
+/* Luminous gradient glow — sits behind the chart marks */
+.hero::before {
   content: "";
   position: absolute;
-  inset: auto 20px 18px;
-  height: 46%;
-  border-radius: var(--radius-lg);
+  right: 0;
+  left: 15%;
+  bottom: 0;
+  height: 54%;
+  border-radius: var(--radius-xl);
   background-image: var(--ig-gradient-spectrum);
-  opacity: 0.16;
-  filter: blur(18px);
+  opacity: 0.13;
+  filter: blur(52px);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.cardTopline,
-.previewLegend {
+.heroTopline {
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  padding: 24px 28px 0;
   gap: 16px;
 }
 
-.cardTopline span,
-.previewLegend span {
-  color: rgb(var(--ig-secondary-text));
-  font-size: 13px;
+.heroName {
+  display: block;
+  font-size: 15px;
   font-weight: var(--fw-semibold);
 }
 
-.cardTopline strong {
-  color: rgb(var(--ig-success));
-  font-size: 16px;
+.heroScope {
+  display: block;
+  margin-top: 3px;
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12px;
 }
 
-.previewBars {
+.heroMetric {
+  text-align: right;
+}
+
+.heroMetric strong {
+  display: block;
+  font-size: 32px;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.heroMetric span {
+  display: block;
+  margin-top: 5px;
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  color: rgb(var(--ig-success));
+}
+
+/* Bars fill the middle of the hero */
+.heroBars {
   position: absolute;
-  inset: 74px 26px 58px;
+  inset: 88px 28px 54px;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   align-items: flex-end;
   gap: 10px;
 }
 
-.previewBars::before {
+/* Subtle reference grid lines */
+.heroBars::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(var(--ig-secondary-text), 0.14) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--ig-secondary-text), 0.08) 1px, transparent 1px);
-  background-size: 100% 25%, 14.285% 100%;
+  background-image: linear-gradient(rgba(var(--ig-secondary-text), 0.13) 1px, transparent 1px);
+  background-size: 100% 25%;
+  pointer-events: none;
 }
 
-.previewBars span {
+.heroBars span {
   position: relative;
   height: var(--height);
-  min-height: 16px;
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  min-height: 12px;
+  border-radius: 7px 7px 0 0;
   background: rgb(var(--ig-highlight-bg));
 }
 
-.previewBars span:nth-child(5) {
+/* Saturday peak bar uses the full Instagram gradient */
+.heroBars span[data-peak="true"] {
   background-image: var(--ig-gradient-spectrum);
 }
 
-.previewLine {
+/* Gradient line chart overlay */
+.heroLineSvg {
   position: absolute;
-  inset: 82px 34px 76px;
+  inset: 94px 34px 60px;
   z-index: 3;
   width: auto;
   height: auto;
   overflow: visible;
 }
 
-.previewLine path {
+.heroLineSvg path {
   fill: none;
-  stroke: rgb(var(--ig-primary-text));
+  stroke: url("#hero-line-g");
   stroke-linecap: round;
-  stroke-width: 6;
+  stroke-width: 2.5;
 }
 
-.previewLegend {
+/* Footer row: date axis on left, legend on right */
+.heroFooter {
   position: absolute;
-  right: 20px;
-  bottom: 18px;
-  left: 20px;
+  left: 28px;
+  right: 28px;
+  bottom: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-.previewLegend i,
-.legend i {
+.heroAxisRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex: 1;
+  color: rgb(var(--ig-secondary-text));
+  font-size: 10px;
+  font-weight: var(--fw-semibold);
+  text-align: center;
+}
+
+.heroLegend {
+  display: flex;
+  gap: 12px;
+  color: rgb(var(--ig-secondary-text));
+  font-size: 11px;
+  font-weight: var(--fw-semibold);
+  white-space: nowrap;
+}
+
+.heroLegend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.heroLegend i {
   display: inline-block;
-  width: 9px;
-  height: 9px;
-  margin-right: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.heroLegend i[data-series="primary"] {
   background-image: var(--ig-gradient-spectrum);
 }
 
-.previewLegend span + span i,
-.legend [data-tone="secondary"] i {
-  background: rgba(var(--ig-secondary-text), 0.45);
+.heroLegend i[data-series="secondary"] {
+  background: rgba(var(--ig-primary-text), 0.45);
 }
+
+/* ─────────────────────────────────────────────────────
+   Content grids (overview, anatomy, guidance, etc.)
+   ──────────────────────────────────────────────────── */
 
 .copyBlock p {
   color: rgb(var(--ig-secondary-text));
@@ -188,6 +236,10 @@
   font-size: 14px;
   line-height: 1.58;
 }
+
+/* ─────────────────────────────────────────────────────
+   Anatomy diagram with callouts
+   ──────────────────────────────────────────────────── */
 
 .anatomyWrap {
   position: relative;
@@ -316,6 +368,20 @@
   font-weight: var(--fw-semibold);
 }
 
+.legend i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background-image: var(--ig-gradient-spectrum);
+}
+
+.legend [data-tone="secondary"] i {
+  background: rgba(var(--ig-secondary-text), 0.45);
+  background-image: none;
+}
+
 .calloutLayer {
   display: grid;
   align-content: center;
@@ -332,6 +398,10 @@
   font-size: 12px;
   font-weight: var(--fw-semibold);
 }
+
+/* ─────────────────────────────────────────────────────
+   Mark cards (bar, line, point, area, stacked, combined)
+   ──────────────────────────────────────────────────── */
 
 .markGrid {
   display: grid;
@@ -497,6 +567,10 @@
   background: rgba(var(--ig-secondary-text), 0.28);
 }
 
+/* ─────────────────────────────────────────────────────
+   Axes section
+   ──────────────────────────────────────────────────── */
+
 .copyBlock {
   display: grid;
   gap: 12px;
@@ -526,6 +600,10 @@
   font-size: 12px;
   font-weight: var(--fw-semibold);
 }
+
+/* ─────────────────────────────────────────────────────
+   Interactive chart inspector
+   ──────────────────────────────────────────────────── */
 
 .inspector {
   display: grid;
@@ -663,6 +741,10 @@
   accent-color: rgb(var(--ig-primary-button));
 }
 
+/* ─────────────────────────────────────────────────────
+   Colour swatches
+   ──────────────────────────────────────────────────── */
+
 .colourExamples {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -692,6 +774,10 @@
     rgb(var(--ig-elevated-bg));
 }
 
+/* ─────────────────────────────────────────────────────
+   Reduced motion
+   ──────────────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   .anatomyBar,
   .inspectPoint::before {
@@ -699,6 +785,10 @@
     transition: none;
   }
 }
+
+/* ─────────────────────────────────────────────────────
+   Responsive — wide to narrow
+   ──────────────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
   .markCard,
@@ -717,6 +807,38 @@
 }
 
 @media (max-width: 820px) {
+  .hero {
+    height: 300px;
+  }
+
+  .heroTopline {
+    padding: 18px 22px 0;
+  }
+
+  .heroMetric strong {
+    font-size: 26px;
+  }
+
+  .heroBars {
+    inset: 74px 22px 50px;
+    gap: 7px;
+  }
+
+  .heroLineSvg {
+    inset: 80px 26px 56px;
+  }
+
+  .heroFooter {
+    left: 22px;
+    right: 22px;
+    bottom: 12px;
+  }
+
+  .heroLegend {
+    gap: 8px;
+    font-size: 10px;
+  }
+
   .overviewGrid,
   .definitionGrid,
   .guidanceColumns,
@@ -745,18 +867,39 @@
 }
 
 @media (max-width: 560px) {
-  .previewCard {
-    aspect-ratio: 3 / 4;
-    padding: 18px;
+  .hero {
+    height: 260px;
   }
 
-  .previewBars {
-    inset: 80px 22px 72px;
-    gap: 7px;
+  .heroTopline {
+    padding: 14px 16px 0;
   }
 
-  .previewLine {
-    inset: 106px 28px 92px;
+  .heroMetric strong {
+    font-size: 22px;
+  }
+
+  .heroBars {
+    inset: 64px 16px 46px;
+    gap: 5px;
+  }
+
+  .heroLineSvg {
+    inset: 70px 20px 52px;
+  }
+
+  .heroFooter {
+    left: 16px;
+    right: 16px;
+    bottom: 10px;
+  }
+
+  .heroAxisRow span:nth-child(even) {
+    visibility: hidden;
+  }
+
+  .heroLegend {
+    display: none;
   }
 
   .anatomyChart {

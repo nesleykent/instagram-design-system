@@ -11,7 +11,7 @@ import styles from "./charts.module.css";
 export const metadata = {
   title: "Charts",
   description:
-    "Source-backed chart guidance for Instagram-style data visualization, interaction, accessibility, and responsive chart systems.",
+    "Instagram-style data visualisation: anatomy, marks, axes, interaction, colour, accessibility, and responsive guidance derived from /ig CSS evidence.",
 };
 
 const markGuides = [
@@ -86,24 +86,50 @@ const platformGuidance = [
   ["Embedded cards", "Use glanceable summaries and a compact spark chart. Never hide the only important number in a tooltip."],
 ];
 
-function ChartPreview() {
+function ChartHero() {
   return (
-    <div className={styles.previewCard} aria-label="Instagram-style creator analytics chart preview">
-      <div className={styles.cardTopline}>
-        <span>Creator analytics</span>
-        <strong>+18.4%</strong>
+    <div
+      className={styles.hero}
+      aria-label="Creator analytics bar chart with engagement rate line. 7-day view. Saturday is the peak day with 29.2 thousand accounts reached. Total weekly reach 72 thousand, up 18.4 percent week over week."
+    >
+      <div className={styles.heroTopline}>
+        <div>
+          <span className={styles.heroName}>Creator analytics</span>
+          <span className={styles.heroScope}>Last 7 days · Accounts reached</span>
+        </div>
+        <div className={styles.heroMetric}>
+          <strong>72K</strong>
+          <span>+18.4%</span>
+        </div>
       </div>
-      <div className={styles.previewBars} aria-hidden="true">
+
+      <div className={styles.heroBars} aria-hidden="true">
         {[42, 58, 36, 76, 64, 88, 70].map((value, index) => (
-          <span key={index} style={{ "--height": `${value}%` }} />
+          <span key={index} style={{ "--height": `${value}%` }} data-peak={index === 5} />
         ))}
       </div>
-      <svg viewBox="0 0 420 180" className={styles.previewLine} aria-hidden="true" focusable="false">
+
+      <svg viewBox="0 0 420 180" className={styles.heroLineSvg} aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="hero-line-g" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#ffd600" />
+            <stop offset="42%" stopColor="#ff0169" />
+            <stop offset="100%" stopColor="#7638fa" />
+          </linearGradient>
+        </defs>
         <path d="M12 126 C72 86, 92 118, 140 80 S230 42, 270 72 S340 110, 408 38" />
       </svg>
-      <div className={styles.previewLegend}>
-        <span><i /> Reach</span>
-        <span><i /> Engagement</span>
+
+      <div className={styles.heroFooter} aria-hidden="true">
+        <div className={styles.heroAxisRow}>
+          {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
+            <span key={day}>{day}</span>
+          ))}
+        </div>
+        <div className={styles.heroLegend}>
+          <span><i data-series="primary" /> Reach</span>
+          <span><i data-series="secondary" /> Engagement</span>
+        </div>
       </div>
     </div>
   );
@@ -429,11 +455,7 @@ export default function ChartsPage() {
         title="Charts"
         description="Charts organise data to communicate information with clarity, insight, and visual appeal. In the Instagram system, chart chrome stays quiet while colour, motion, and labels help people understand what changed and why it matters."
       >
-        <div className={styles.meta}>
-          <span>Content</span>
-          <span>4 CSS evidence groups</span>
-          <span>Static documentation page</span>
-        </div>
+        <ChartHero />
       </PageHeader>
 
       <Section
@@ -441,18 +463,6 @@ export default function ChartsPage() {
         title="Charts turn raw metrics into decisions"
         description="Charts highlight key information in a dataset. They help people understand patterns, compare values, track change, monitor progress, and decide what to do next."
       >
-        <ComponentShowcase align="start" codeLabel="Gradient chart surface" code={`.chart-card {
-  border: 1px solid rgb(var(--ig-separator));
-  border-radius: 12px;
-  background: rgb(var(--ig-secondary-bg));
-}
-
-.active-mark {
-  background-image: var(--ig-gradient-spectrum);
-  transition: transform 150ms cubic-bezier(0, 0, .1, 1);
-}`}>
-          <ChartPreview />
-        </ComponentShowcase>
         <OverviewGrid />
       </Section>
 
