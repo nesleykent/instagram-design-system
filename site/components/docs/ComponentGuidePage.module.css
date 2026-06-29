@@ -145,6 +145,10 @@
   color: rgb(var(--ig-secondary-text));
 }
 
+.usageCol dd {
+  margin: 0;
+}
+
 .specSheet {
   display: grid;
   gap: 1px;
@@ -178,32 +182,98 @@
 }
 
 .statesTable {
-  display: grid;
-  gap: 1px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: rgb(var(--ig-separator));
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.statesTable th,
+.statesTable td {
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+}
+
+.statesTable thead th {
+  padding: 10px 16px;
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-tertiary-text));
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .stateRow {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 16px;
-  padding: 12px 16px;
   background: rgb(var(--ig-elevated-bg));
 }
 
 .stateName {
+  width: 110px;
+  padding: 12px 16px;
   font-size: 13px;
   font-weight: var(--fw-bold);
   color: rgb(var(--ig-stop-magenta));
 }
 
 .stateDesc {
+  padding: 12px 16px;
   font-size: 14px;
   line-height: 1.55;
   color: rgb(var(--ig-primary-text));
+}
+
+.statesTable tbody tr:last-child th,
+.statesTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.exampleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.exampleCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.exampleCard h3 {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.exampleCard p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgb(var(--ig-primary-text));
+}
+
+.exampleContext {
+  color: rgb(var(--ig-stop-magenta)) !important;
+  font-size: 12px !important;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.exampleTokens {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  color: rgb(var(--ig-secondary-text)) !important;
+  font-family: var(--font-mono);
+  font-size: 12.5px !important;
 }
 
 @media (max-width: 640px) {
@@ -215,9 +285,33 @@
     grid-template-columns: 1fr;
   }
 
-  .specRow,
-  .stateRow {
+  .statesTable thead {
+    display: none;
+  }
+
+  .statesTable,
+  .statesTable tbody,
+  .statesTable tr,
+  .statesTable th,
+  .statesTable td {
+    display: block;
+    width: 100%;
+  }
+
+  .stateName {
+    padding: 12px 16px 2px;
+  }
+
+  .stateDesc {
+    padding: 0 16px 12px;
+  }
+
+  .specRow {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+
+  .exampleGrid {
+    grid-template-columns: 1fr;
   }
 }

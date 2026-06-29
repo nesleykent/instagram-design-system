@@ -11,8 +11,8 @@
 //                  idea with no equivalent in a web/mobile product. The page
 //                  says so plainly instead of generating confident guidance.
 //
-// See /methodology on the site for the same confidence-tier framework
-// applied to the rest of the manual.
+// See /methodology on the site for how these public badges relate to
+// the source-confidence tiers used elsewhere in the manual.
 
 
 // ---------------------------------------------------------------------------
@@ -854,10 +854,348 @@ const EVIDENCED_GUIDES = [
   },
 ];
 
+const COMPONENT_EXAMPLES = {
+  "image-views": [
+    {
+      title: "Reel cover in a profile grid",
+      context: "Profile media",
+      composition:
+        "A 4:5 creator portrait fills the frame with object-fit: cover; the username, view count, and Reels mark sit on a soft bottom scrim while the shimmer sweep holds the exact crop before the image resolves.",
+      tokens: "4:5 ratio, object-fit: cover, --ig-gradient-to-transparent, --ig-secondary-bg shimmer",
+    },
+  ],
+  "text-views": [
+    {
+      title: "Caption and comment preview",
+      context: "Feed post",
+      composition:
+        "The author name stays on the primary line, the caption starts after it at system-14, and the 'View all 128 comments' label drops to secondary text without introducing a document-style reading scale.",
+      tokens: "system-14 body, system-12 metadata, --ig-secondary-text, ellipsis truncation",
+    },
+  ],
+  boxes: [
+    {
+      title: "Account privacy setting group",
+      context: "Settings",
+      composition:
+        "Private account, Activity status, and Close Friends rows sit inside one bordered tonal container so the group reads as a related set without floating above the page like a modal.",
+      tokens: "16px padding, 1px --ig-separator, --ig-secondary-bg, 8/12px radius",
+    },
+  ],
+  collections: [
+    {
+      title: "Story highlight tray",
+      context: "Profile header",
+      composition:
+        "Circular highlight covers scroll horizontally beneath the bio; touch viewports hide the scrollbar while desktop keeps native horizontal motion rather than pagination dots.",
+      tokens: "overflow-x: scroll, hidden scrollbar, 8px item gap, avatar circle primitive",
+    },
+  ],
+  "column-views": [
+    {
+      title: "Creator education split",
+      context: "Brand page",
+      composition:
+        "A full-bleed chapter pairs a typography statement with a portrait mosaic; at mobile widths the image stack follows the copy in one column instead of squeezing both panes.",
+      tokens: "50/50 or 5:9 columns, 14-unit grid, 100vh rhythm, 650–768px collapse",
+    },
+  ],
+  "disclosure-controls": [
+    {
+      title: "Expandable caption detail",
+      context: "Feed post",
+      composition:
+        "A 'More from @mikaelastudio' row reveals tagged collaborators and location details in place; the chevron flips 180 degrees while the full row remains the tap target.",
+      tokens: "16px chevron, rotate(180deg), Ease Glide 250ms, row-level aria-expanded",
+    },
+  ],
+  labels: [
+    {
+      title: "Professional dashboard metric label",
+      context: "Creator insights",
+      composition:
+        "The number '24.8K' stays primary while 'Accounts reached · Last 7 days' sits below at system-12 in secondary text, keeping the statistic scannable without competing with the value.",
+      tokens: "system-10/12 labels, --ig-secondary-text, --ig-tertiary-text",
+    },
+  ],
+  "lists-and-tables": [
+    {
+      title: "Search result list",
+      context: "Search",
+      composition:
+        "Rows for @julesframes, @noahshotit, and #streetportraits hold a fixed avatar well, two truncating text lines, and a trailing follow action inside the 375px result column.",
+      tokens: "50px rows, 375px list width, --post-separator, ellipsis text",
+    },
+  ],
+  lockups: [
+    {
+      title: "DM participant row",
+      context: "Messaging",
+      composition:
+        "A round avatar, bold display name, muted last-message preview, and timestamp stay bound as one scannable row, with the subtitle truncating before the time is displaced.",
+      tokens: "fixed leading well, system-14 title, --ig-secondary-text subtitle, 50px row logic",
+    },
+  ],
+  "tab-views": [
+    {
+      title: "Typography tester tabs",
+      context: "Brand tooling",
+      composition:
+        "Sans, Serif, and Mono swatches sit as equal peers; the active swatch fills with the Instagram gradient and swaps the specimen panel without adding an underline-tab variant.",
+      tokens: "equal controls, brand gradient active fill, direct panel swap",
+    },
+  ],
+  "context-menus": [
+    {
+      title: "Post overflow menu",
+      context: "Feed actions",
+      composition:
+        "The three-dot trigger anchors a compact menu with Save, Share to, Copy link, and a dimmed 'Report' row when reporting is unavailable for the current account state.",
+      tokens: ".uiContextualLayer anchoring, 3px radius, 1px rgba border, disabled opacity .55",
+    },
+  ],
+  menus: [
+    {
+      title: "Comment action flyout",
+      context: "Comments",
+      composition:
+        "A long-press or overflow trigger reveals Reply, Pin, Restrict, and Delete; the flyout appears from the toggled ancestor state rather than running a bespoke reveal animation.",
+      tokens: ".openToggler display switch, .uiToggleFlyout, shared menu surface",
+    },
+  ],
+  "activity-views": [
+    {
+      title: "Share reel destination sheet",
+      context: "Share flow",
+      composition:
+        "Recent DM recipients, Add to story, Copy link, and Share to external apps appear as lockup rows inside the same slide-up sheet used by action choices.",
+      tokens: "Action Sheet surface, 50px lockup rows, recent-first ordering, Ease Settle",
+    },
+  ],
+  "pop-up-buttons": [
+    {
+      title: "Comment sort selector",
+      context: "Comments",
+      composition:
+        "The tertiary button reads 'Newest first' after selection, opens a compact flyout, and writes the chosen sort order back into the trigger so current state remains visible.",
+      tokens: "36px tertiary button, 6px radius, trailing chevron, Menus flyout",
+    },
+  ],
+  "pull-down-buttons": [
+    {
+      title: "Profile more-actions trigger",
+      context: "Profile",
+      composition:
+        "The fixed 'More' button opens Block, Restrict, Share profile, and About this account actions; its label never changes because each choice performs a command.",
+      tokens: "Tertiary/icon button trigger, Menus anatomy, unchanged label",
+    },
+  ],
+  "search-fields": [
+    {
+      title: "Explore search overlay",
+      context: "Search",
+      composition:
+        "The 40px query field expands the overlay height on focus, while account, tag, and audio results remain capped to the 375px result column with fixed 50px rows.",
+      tokens: "--search-box-height, --search-modal-height-expanded, --search-result-list-width",
+    },
+  ],
+  sidebars: [
+    {
+      title: "Professional dashboard rail",
+      context: "Desktop navigation",
+      composition:
+        "Insights, Content, Messages, and Settings appear as dense lockup rows; the active destination uses a persistent hover tint plus a leading brand accent and collapses behind a menu trigger on narrow screens.",
+      tokens: "40–44px rows, --ig-hover-overlay-rgb, 2px accent, 1024px collapse",
+    },
+  ],
+  "tab-bars": [
+    {
+      title: "Mobile primary navigation",
+      context: "App shell",
+      composition:
+        "Home, Search, Reels, Activity, and Profile reserve bottom safe-area space with the same toolbar-height token used by scroll math throughout the production bundle.",
+      tokens: "--revamp-nav-bottom-toolbar-height, safe-area calc(), current-page indicator",
+    },
+  ],
+  "token-fields": [
+    {
+      title: "Tag people field",
+      context: "Post composer",
+      composition:
+        "Accepted usernames become removable pills inline with the cursor, while suggestions below reuse lockup rows for avatar, display name, and username.",
+      tokens: "36px minimum field, 999px chips, --ig-secondary-bg chip fill, Text Field border",
+    },
+  ],
+  "action-sheets": [
+    {
+      title: "Story action choices",
+      context: "Stories",
+      composition:
+        "Mute, Report, Hide story, and Copy link slide up as stacked touch targets over a full-height fixed surface, then dismiss along the same translateY path.",
+      tokens: "position fixed, z-index 400, translateY(100%) to 0, Ease Settle ~500ms",
+    },
+  ],
+  alerts: [
+    {
+      title: "Delete post confirmation",
+      context: "Destructive decision",
+      composition:
+        "A centered surface asks 'Delete this post?' with one supporting sentence and Cancel/Delete actions; Delete uses the system error colour while focus stays trapped until a choice is made.",
+      tokens: "--modal-backdrop-default, 12px modal radius, --ig-error action, alertdialog semantics",
+    },
+  ],
+  "page-controls": [
+    {
+      title: "Carousel position dots",
+      context: "Multi-image post",
+      composition:
+        "Five small dots below the media show which image in the post is active; the marker stays static because the user, not time, advances the sequence.",
+      tokens: "circle primitive, 6px active dot, 4px inactive dots, --ig-secondary-text",
+    },
+  ],
+  popovers: [
+    {
+      title: "Account preview popover",
+      context: "Hover preview",
+      composition:
+        "Hovering @camila.city anchors a profile card with avatar, bio, mutual followers, and Follow action to the username instead of sending the user into a full profile page.",
+      tokens: ".uiContextualLayer anchoring, bordered surface, 3px radius, shadow",
+    },
+  ],
+  "scroll-views": [
+    {
+      title: "Horizontal filter chip scroller",
+      context: "Explore filters",
+      composition:
+        "Photography, Food, Travel, and Reels chips move in a native horizontal scroll view; touch hides the scrollbar, while desktop can expose the legacy custom gripper.",
+      tokens: "overflow-x auto, mobile hidden scrollbar, width transition gripper on desktop",
+    },
+  ],
+  sheets: [
+    {
+      title: "Create menu sheet",
+      context: "Composer",
+      composition:
+        "Post, Story, Reel, and Live choices slide up from the bottom using the same full-height mechanism as the brand menu, with rows composed from existing lockup anatomy.",
+      tokens: "full-height fixed surface, translateY entrance, Ease Settle, lockup rows",
+    },
+  ],
+  windows: [
+    {
+      title: "DM thread panel",
+      context: "Desktop messaging",
+      composition:
+        "A centered messaging panel sits over the page using modal tokens; it reads as a constrained Instagram surface, not as an operating-system window with titlebar chrome.",
+      tokens: "modal radius, backdrop tokens, no native window chrome, focused overlay surface",
+    },
+  ],
+  "color-wells": [
+    {
+      title: "Close Friends colour preview",
+      context: "Audience settings",
+      composition:
+        "A circular green well previews the Close Friends token beside the audience label, confirming a semantic colour choice rather than opening a freeform HSB picker.",
+      tokens: "--ig-close-friends, 24–32px circle, avatar/icon-button primitive",
+    },
+  ],
+  "combo-boxes": [
+    {
+      title: "Location search field",
+      context: "Post composer",
+      composition:
+        "Typing 'Lisbon' in the 36px field filters a bounded list of place rows; highlighted matches use the same hover tint as other selectable rows.",
+      tokens: "36px Text Field, 50px result rows, 375px cap precedent, hover overlay tint",
+    },
+  ],
+  "digit-entry-views": [
+    {
+      title: "Two-factor login code",
+      context: "Account security",
+      composition:
+        "Six equal cells accept a pasted SMS code as one logical field, auto-advance visually, and show one shared error message if the code expires.",
+      tokens: "40x36px cells, 8px gaps, 6px radius, --ig-error error border",
+    },
+  ],
+  "image-wells": [
+    {
+      title: "Profile photo picker",
+      context: "Edit profile",
+      composition:
+        "An empty circular frame shows a neutral camera affordance; once a photo is chosen, the same Image View crop rules take over with replace and clear actions nearby.",
+      tokens: "Image View ratio rules, --ig-secondary-bg empty fill, dashed --ig-separator border",
+    },
+  ],
+  pickers: [
+    {
+      title: "Audience picker",
+      context: "Composer privacy",
+      composition:
+        "Followers, Close Friends, and Subscribers appear in a sheet on touch and a flyout on pointer screens, with a check mark on the current audience.",
+      tokens: "Action Sheet on touch, Menus flyout on pointer, selected check indicator",
+    },
+  ],
+  "segmented-controls": [
+    {
+      title: "Inbox filter switcher",
+      context: "Messaging",
+      composition:
+        "Primary, General, and Requests share one pill track; the selected segment slides between positions while unread counts stay inside each segment label.",
+      tokens: "36px pill track, equal segments, selected fill, Ease Glide 200ms",
+    },
+  ],
+  sliders: [
+    {
+      title: "Reel audio mix",
+      context: "Reel editor",
+      composition:
+        "Original audio and music volume controls use a thin active track and the same 28px circular handle proven by Toggles, with a value label while dragging.",
+      tokens: "4px track, --ig-primary-button active fill, 28px thumb, toggle shadow",
+    },
+  ],
+  steppers: [
+    {
+      title: "Story countdown duration",
+      context: "Story sticker",
+      composition:
+        "Minus and plus square buttons flank a centered numeric value for days remaining, disabling the minus button at the minimum rather than letting the value wrap.",
+      tokens: "36px controls, tertiary buttons, center-aligned value field, disabled opacity .5",
+    },
+  ],
+  "text-fields": [
+    {
+      title: "Edit profile name field",
+      context: "Profile settings",
+      composition:
+        "Name, username, bio link, and pronouns fields keep the same 36px height and prism border token, with helper labels sitting outside the input rather than inside as placeholders.",
+      tokens: "36px height, --ig-text-input-border-prism, --input-border-radius 6px",
+    },
+  ],
+  toggles: [
+    {
+      title: "Hide like count setting",
+      context: "Post settings",
+      composition:
+        "The setting row pairs a text lockup with the exact 51x31 switch; checking it moves the 28px thumb exactly 23px and disabling drops the whole control to .3 opacity.",
+      tokens: "51x31 track, 28px thumb, translate(23px), disabled opacity .3",
+    },
+  ],
+  "progress-indicators": [
+    {
+      title: "Story segment timer",
+      context: "Stories",
+      composition:
+        "Each story in a sequence owns one pill segment; the active segment fills left-to-right over the story's real display duration while completed segments remain full.",
+      tokens: "transform scaleX fill, linear timing, per-story animation-duration, pill segments",
+    },
+  ],
+};
+
 export const COMPONENT_GUIDES = EVIDENCED_GUIDES.map((raw) => {
   const keywords = [raw.title.toLowerCase(), raw.slug.replaceAll("-", " "), raw.category.toLowerCase(), "component", "instagram"];
+  const examples = raw.evidence === "none" ? undefined : COMPONENT_EXAMPLES[raw.slug];
   return {
     ...raw,
+    ...(examples ? { examples } : {}),
     href: `/components/${raw.slug}`,
     keywords,
   };

@@ -18,16 +18,16 @@ function GuidanceList({ items }) {
   );
 }
 
-function AnatomyGrid({ items }) {
+function AnatomyList({ items }) {
   return (
-    <div className={styles.anatomyGrid}>
+    <ol className={styles.anatomyGrid}>
       {items.map((item, index) => (
-        <div className={styles.anatomyItem} key={item}>
+        <li className={styles.anatomyItem} key={item}>
           <span>{String(index + 1).padStart(2, "0")}</span>
           <p>{item}</p>
-        </div>
+        </li>
       ))}
-    </div>
+    </ol>
   );
 }
 
@@ -44,30 +44,54 @@ function SpecSheet({ items }) {
   );
 }
 
-function StatesTable({ items }) {
+function StatesTable({ items, title }) {
   return (
-    <div className={styles.statesTable}>
-      {items.map((item) => (
-        <div className={styles.stateRow} key={item.name}>
-          <span className={styles.stateName}>{item.name}</span>
-          <span className={styles.stateDesc}>{item.description}</span>
-        </div>
-      ))}
-    </div>
+    <table className={styles.statesTable}>
+      <caption className="visually-hidden">Interaction states for {title}</caption>
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">Behaviour</th>
+        </tr>
+      </thead>
+      <tbody>
+        {items.map((item) => (
+          <tr className={styles.stateRow} key={item.name}>
+            <th scope="row" className={styles.stateName}>{item.name}</th>
+            <td className={styles.stateDesc}>{item.description}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
 function UsageSplit({ usage }) {
   return (
-    <div className={styles.usageSplit}>
+    <dl className={styles.usageSplit}>
       <div className={styles.usageCol} data-kind="use">
-        <p className={styles.usageLabel}>Use when</p>
-        <p>{usage.useWhen}</p>
+        <dt className={styles.usageLabel}>Use when</dt>
+        <dd>{usage.useWhen}</dd>
       </div>
       <div className={styles.usageCol} data-kind="avoid">
-        <p className={styles.usageLabel}>Avoid when</p>
-        <p>{usage.avoidWhen}</p>
+        <dt className={styles.usageLabel}>Avoid when</dt>
+        <dd>{usage.avoidWhen}</dd>
       </div>
+    </dl>
+  );
+}
+
+function ExampleCards({ items }) {
+  return (
+    <div className={styles.exampleGrid}>
+      {items.map((item) => (
+        <article className={styles.exampleCard} key={item.title}>
+          <p className={styles.exampleContext}>{item.context}</p>
+          <h3>{item.title}</h3>
+          <p>{item.composition}</p>
+          <p className={styles.exampleTokens}>{item.tokens}</p>
+        </article>
+      ))}
     </div>
   );
 }
@@ -133,7 +157,7 @@ export default function ComponentGuidePage({ guide }) {
 
           {guide.anatomy && (
             <Section kicker="Anatomy" title="Anatomy">
-              <AnatomyGrid items={guide.anatomy} />
+              <AnatomyList items={guide.anatomy} />
             </Section>
           )}
 
@@ -145,7 +169,13 @@ export default function ComponentGuidePage({ guide }) {
 
           {guide.states && (
             <Section kicker="States" title="States">
-              <StatesTable items={guide.states} />
+              <StatesTable items={guide.states} title={guide.title} />
+            </Section>
+          )}
+
+          {guide.examples && (
+            <Section kicker="Examples" title="Real interface compositions">
+              <ExampleCards items={guide.examples} />
             </Section>
           )}
 

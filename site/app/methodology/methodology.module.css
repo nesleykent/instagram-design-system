@@ -56,6 +56,13 @@
   margin-bottom: 8px;
 }
 
+.count {
+  font-size: 22px;
+  font-weight: var(--fw-bold);
+  margin-bottom: 8px;
+  color: rgb(var(--ig-primary-text));
+}
+
 .confDesc {
   font-size: 13.5px;
   line-height: 1.55;

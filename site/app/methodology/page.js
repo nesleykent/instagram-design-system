@@ -4,11 +4,12 @@ import PageHeader from "@/components/docs/PageHeader";
 import Section from "@/components/docs/Section";
 import TokenGrid from "@/components/docs/TokenGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
+import { COMPONENT_GUIDES } from "@/lib/component-guides";
 import styles from "./methodology.module.css";
 
 export const metadata = { title: "Methodology" };
 
-const CONFIDENCE = [
+const SOURCE_CONFIDENCE = [
   {
     tier: "High",
     color: "rgb(88, 195, 34)",
@@ -26,6 +27,38 @@ const CONFIDENCE = [
     color: "rgb(var(--ig-error))",
     desc: "Found only via pattern search in a ~950 KB production bundle, without surrounding selector context.",
     example: "The 'alt' gradient family, some light/dark token pairings, the literal --squircle-polygon coordinates.",
+  },
+];
+
+const COMPONENT_EVIDENCE_COUNTS = COMPONENT_GUIDES.reduce(
+  (counts, guide) => {
+    counts[guide.evidence] += 1;
+    return counts;
+  },
+  { documented: 0, inferred: 0, none: 0 }
+);
+
+const COMPONENT_EVIDENCE = [
+  {
+    tier: "Documented",
+    count: COMPONENT_EVIDENCE_COUNTS.documented,
+    color: "rgb(88, 195, 34)",
+    desc: "A selector, class, or custom property in /ig backs the component directly, with the finding cited on the page.",
+    example: "Buttons, Search Fields, Toggles, Tab Bars, Action Sheets, and Stories Progress.",
+  },
+  {
+    tier: "Partially evidenced",
+    count: COMPONENT_EVIDENCE_COUNTS.inferred,
+    color: "var(--ig-stop-orange)",
+    desc: "No component-specific selector was found, but the specification is derived from established Instagram tokens and neighbouring confirmed patterns.",
+    example: "Sliders borrow Toggle's 28px thumb; Alerts borrow the modal radius, backdrop, and destructive colour.",
+  },
+  {
+    tier: "Not found in /ig",
+    count: COMPONENT_EVIDENCE_COUNTS.none,
+    color: "rgb(var(--ig-error))",
+    desc: "The captured CSS does not support the concept, usually because it is a native OS component rather than an Instagram web/product pattern.",
+    example: "Dock Menus, Menu Bar, Virtual Keyboards, Activity Rings, Gauges, and Rating Indicators.",
   },
 ];
 
@@ -72,9 +105,9 @@ export default function MethodologyPage() {
         </div>
       </Section>
 
-      <Section kicker="Evidence" title="Three confidence tiers, used consistently">
+      <Section kicker="Evidence" title="Source confidence tiers">
         <TokenGrid min="260px">
-          {CONFIDENCE.map((c) => (
+          {SOURCE_CONFIDENCE.map((c) => (
             <div key={c.tier} className={styles.confCard} style={{ borderTopColor: c.color }}>
               <p className={styles.confTier} style={{ color: c.color }}>
                 {c.tier}
@@ -84,6 +117,27 @@ export default function MethodologyPage() {
             </div>
           ))}
         </TokenGrid>
+      </Section>
+
+      <Section kicker="Components" title="Component evidence badges stay visible">
+        <TokenGrid min="260px">
+          {COMPONENT_EVIDENCE.map((c) => (
+            <div key={c.tier} className={styles.confCard} style={{ borderTopColor: c.color }}>
+              <p className={styles.confTier} style={{ color: c.color }}>
+                {c.tier}
+              </p>
+              <p className={styles.count}>{c.count} pages</p>
+              <p className={styles.confDesc}>{c.desc}</p>
+              <p className={styles.confExample}>{c.example}</p>
+            </div>
+          ))}
+        </TokenGrid>
+        <p className={styles.note}>
+          Inferred pages are written confidently because the implementation is derived from established system
+          tokens — spacing, radius, colour, type, motion, and neighbouring confirmed components — but the badge
+          still tells readers that no dedicated selector was captured. Not-found pages stay short rather than
+          pretending Instagram ships an unsupported native-platform pattern.
+        </p>
       </Section>
 
       <Section kicker="Scope" title="What was scoped out, and why">
@@ -119,9 +173,9 @@ export default function MethodologyPage() {
         <p className={styles.note}>
           The site at <code>site/</code> is a Next.js app composed from the reusable component library documented
           throughout this manual. Every visual demo — the easing playground, the contrast checker, the Stories
-          progress bar — runs real CSS and real WCAG math, not a screenshot. Where the source CSS didn&rsquo;t
-          provide enough evidence to build something faithfully (Instagram&rsquo;s exact icon set, the literal
-          squircle coordinates, a full forms system), this manual says so explicitly rather than inventing it.
+          progress bar — runs real CSS and real WCAG math, not a screenshot. Component pages use the same
+          badge system shown above: documented pages cite direct findings, partially evidenced pages derive from
+          confirmed tokens, and not-found pages say so explicitly rather than inventing unsupported specs.
         </p>
       </Section>
 
