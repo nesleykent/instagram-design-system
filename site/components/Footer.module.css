@@ -1,0 +1,40 @@
+.footer {
+  border-top: 1px solid rgb(var(--ig-separator));
+  padding: 28px 24px 40px;
+  margin-left: var(--sidebar-width);
+}
+
+.inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.disclaimer {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: rgb(var(--ig-tertiary-text));
+  max-width: 640px;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  color: rgb(var(--ig-secondary-text));
+}
+
+.links a:hover {
+  color: rgb(var(--ig-primary-text));
+  text-decoration: underline;
+}
+
+@media (max-width: 1023px) {
+  .footer {
+    margin-left: 0;
+  }
+}

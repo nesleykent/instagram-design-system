@@ -1,0 +1,320 @@
+/* ==========================================================================
+   Design tokens — translated from /tokens and /manual in the repo root.
+   See /methodology on the site for evidence and confidence levels.
+   ========================================================================== */
+
+:root {
+  /* Brand gradient family */
+  --ig-stop-yellow: #ffd600;
+  --ig-stop-orange: #ff7a00;
+  --ig-stop-rose: #ff0169;
+  --ig-stop-magenta: #d300c5;
+  --ig-stop-purple: #7638fa;
+
+  --ig-gradient-hero: linear-gradient(72.44deg, var(--ig-stop-rose) 4.69%, var(--ig-stop-magenta) 48.96%, var(--ig-stop-purple) 92.19%);
+  --ig-gradient-spectrum: linear-gradient(125deg, var(--ig-stop-yellow) 15%, var(--ig-stop-orange) 30%, var(--ig-stop-rose), var(--ig-stop-magenta) 70%, var(--ig-stop-purple) 85%);
+  --ig-gradient-text: linear-gradient(to right, var(--ig-stop-magenta), var(--ig-stop-orange), var(--ig-stop-yellow));
+  --ig-gradient-underline: linear-gradient(#f7d440, #ed1f1f);
+
+  /* Semantic colour — light mode (default) */
+  --ig-primary-bg: 255, 255, 255;
+  --ig-secondary-bg: 243, 245, 247;
+  --ig-elevated-bg: 255, 255, 255;
+  --ig-secondary-elevated-bg: 243, 245, 247;
+  --ig-primary-text: 0, 0, 0;
+  --ig-secondary-text: 115, 115, 115;
+  --ig-tertiary-text: 115, 115, 115;
+  --ig-primary-icon: 38, 38, 38;
+  --ig-secondary-icon: 142, 142, 142;
+  --ig-highlight-bg: 239, 239, 239;
+  --ig-separator: 219, 219, 219;
+  --ig-stroke: 219, 219, 219;
+  --ig-hover-overlay-rgb: 0, 0, 0;
+  --ig-hover-overlay-alpha: 0.05;
+  --ig-shadow-rgb: 0, 0, 0;
+
+  --ig-secondary-button: 250, 250, 250;
+  --ig-secondary-button-hover: 219, 219, 219;
+  --ig-tertiary-button-bg: 255, 255, 255;
+  --ig-tertiary-button-border: 219, 219, 219;
+  --ig-tertiary-button-hover: 245, 245, 245;
+  --ig-tertiary-button-text: 38, 38, 38;
+  --ig-incoming-bubble: 243, 245, 247;
+
+  /* Fixed, theme-independent semantic colour */
+  --ig-primary-button: 0, 149, 246;
+  --ig-primary-button-hover: 24, 119, 242;
+  --ig-error: 237, 73, 86;
+  --ig-success: 88, 195, 34;
+  --ig-live-badge: 255, 1, 105;
+  --ig-close-friends: 28, 209, 79;
+  --ig-subscribers-only: 118, 56, 250;
+  --ig-outgoing-bubble: 74, 93, 249;
+  --ig-always-white: 255, 255, 255;
+  --ig-always-black: 0, 0, 0;
+
+  /* Typography — system fallback stack (see /typography for why) */
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --fw-extralight: 200;
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* 14-unit fluid grid */
+  --ig-grid-unit: 7.142vw;
+  --ig-grid-unit-2: 14.285vw;
+  --ig-grid-unit-3: 21.428vw;
+
+  /* Radius scale */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+  --input-radius: 6px;
+  --modal-radius: 12px;
+
+  /* Named easing curves */
+  --ease-standard: cubic-bezier(0.33, 0, 0.67, 1);
+  --ease-confident: cubic-bezier(0.7, 0, 0.3, 1);
+  --ease-glide: cubic-bezier(0, 0, 0.1, 1);
+  --ease-settle: cubic-bezier(0, 0.61, 0.28, 0.92);
+  --ease-anticipate: cubic-bezier(0.4, 0, 0.1, 1);
+
+  --duration-micro: 150ms;
+  --duration-reveal: 666ms;
+  --duration-narrative: 2000ms;
+
+  /* Site layout */
+  --header-height: 64px;
+  --sidebar-width: 272px;
+  --content-max-width: 760px;
+  --page-max-width: 1240px;
+  --z-header: 100;
+  --z-sidebar: 90;
+  --z-overlay: 500;
+  --z-palette: 600;
+}
+
+[data-theme="dark"] {
+  --ig-primary-bg: 12, 16, 20;
+  --ig-secondary-bg: 37, 41, 46;
+  --ig-elevated-bg: 33, 35, 40;
+  --ig-secondary-elevated-bg: 43, 48, 54;
+  --ig-primary-text: 245, 245, 245;
+  --ig-secondary-text: 168, 168, 168;
+  --ig-tertiary-text: 199, 199, 199;
+  --ig-primary-icon: 245, 245, 245;
+  --ig-highlight-bg: 38, 38, 38;
+  --ig-separator: 38, 38, 38;
+  --ig-stroke: 85, 85, 85;
+  --ig-hover-overlay-rgb: 255, 255, 255;
+  --ig-hover-overlay-alpha: 0.1;
+  --ig-shadow-rgb: 0, 0, 0;
+
+  --ig-secondary-button: 38, 38, 38;
+  --ig-secondary-button-hover: 54, 54, 54;
+  --ig-tertiary-button-bg: 33, 35, 40;
+  --ig-tertiary-button-border: 54, 54, 54;
+  --ig-tertiary-button-hover: 38, 38, 38;
+  --ig-tertiary-button-text: 245, 245, 245;
+  --ig-incoming-bubble: 37, 41, 46;
+}
+
+/* ==========================================================================
+   Reset & base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(var(--ig-primary-bg));
+  color: rgb(var(--ig-primary-text));
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--duration-reveal) var(--ease-standard), color var(--duration-reveal) var(--ease-standard);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: var(--fw-semibold);
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--ig-stop-magenta);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ig-stop-magenta);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  z-index: var(--z-palette);
+  background: rgb(var(--ig-primary-text));
+  color: rgb(var(--ig-primary-bg));
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-weight: var(--fw-semibold);
+  transition: top var(--duration-micro) var(--ease-glide);
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+}
+
+/* ==========================================================================
+   Shared utility primitives used across page components
+   ========================================================================== */
+
+.gradient-text {
+  background-image: var(--ig-gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.container {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   Keyframes used by interactive doc components
+   ========================================================================== */
+
+@keyframes ig-rolling {
+  0% { transform: translateX(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(125%); opacity: 0; }
+}
+
+@keyframes ig-fill-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes ig-clip-reveal {
+  from { clip-path: inset(100% 0 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes ig-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ig-spin-gradient {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ==========================================================================
+   Reduced motion — the about-page gap our own manual flags. This site does
+   not repeat it: every animation above is neutralized below.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbar — restrained, matches the neutral foundation */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--ig-secondary-text), 0.3);
+  border-radius: var(--radius-pill);
+  border: 3px solid rgb(var(--ig-primary-bg));
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(var(--ig-secondary-text), 0.5);
+}

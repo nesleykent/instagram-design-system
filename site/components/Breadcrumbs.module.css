@@ -1,0 +1,38 @@
+.breadcrumbs {
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  list-style: none;
+  font-size: 13.5px;
+  color: rgb(var(--ig-tertiary-text));
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.item a {
+  color: rgb(var(--ig-secondary-text));
+  transition: color var(--duration-micro) var(--ease-glide);
+}
+
+.item a:hover {
+  color: rgb(var(--ig-primary-text));
+  text-decoration: underline;
+}
+
+.item span[aria-current="page"] {
+  color: rgb(var(--ig-primary-text));
+  font-weight: var(--fw-medium);
+}
+
+.sep {
+  color: rgb(var(--ig-stroke));
+}

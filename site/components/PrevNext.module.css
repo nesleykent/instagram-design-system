@@ -1,0 +1,96 @@
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid rgb(var(--ig-separator));
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  transition: border-color var(--duration-micro) var(--ease-glide), background-color var(--duration-micro) var(--ease-glide);
+}
+
+.card:hover {
+  border-color: rgb(var(--ig-stroke));
+  background-color: rgba(var(--ig-hover-overlay-rgb), var(--ig-hover-overlay-alpha));
+}
+
+.card[data-side="next"] {
+  justify-content: space-between;
+  text-align: right;
+  grid-column: 2;
+}
+
+.rollWrap {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--ig-tertiary-text));
+}
+
+.icon {
+  transition: opacity var(--duration-micro) var(--ease-glide);
+}
+
+.roll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.card:hover .icon {
+  opacity: 0;
+}
+
+.card:hover .roll {
+  opacity: 1;
+  animation: ig-rolling 1.6s infinite var(--ease-glide);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(var(--ig-tertiary-text));
+}
+
+.title {
+  font-size: 15px;
+  font-weight: var(--fw-semibold);
+  color: rgb(var(--ig-primary-text));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    grid-template-columns: 1fr;
+  }
+  .card[data-side="next"] {
+    grid-column: 1;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "instagram-design-system-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Instagram Brand Identity Manual, published as a production documentation website.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^15.5.19",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

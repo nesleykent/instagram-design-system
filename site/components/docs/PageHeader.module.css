@@ -1,0 +1,18 @@
+.header {
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.08;
+  margin-top: 10px;
+  letter-spacing: -0.025em;
+}
+
+.description {
+  margin-top: 14px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgb(var(--ig-secondary-text));
+  max-width: 640px;
+}

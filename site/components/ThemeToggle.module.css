@@ -1,0 +1,17 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: rgb(var(--ig-primary-icon));
+  cursor: pointer;
+  transition: background-color var(--duration-micro) var(--ease-glide);
+}
+
+.toggle:hover {
+  background-color: rgba(var(--ig-hover-overlay-rgb), var(--ig-hover-overlay-alpha));
+}

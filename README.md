@@ -1,44 +1,51 @@
 # Instagram Brand Identity Manual (Reverse-Engineered)
 
-An internal-style design system document that reverse-engineers Instagram's **own** brand identity system — typography, colour, layout, shape, components, motion, imagery, and accessibility — directly from Instagram's production CSS and the public [about.instagram.com/brand](https://about.instagram.com/brand/) page.
+A production documentation website — in the spirit of Apple's Human Interface Guidelines — that reverse-engineers Instagram's **own** brand identity system: typography, colour, layout, shape, components, motion, imagery, and accessibility, all derived directly from Instagram's production CSS and the public [about.instagram.com/brand](https://about.instagram.com/brand/) page.
 
-This is **not** a new brand inspired by Instagram. Every claim in `manual/` is traced back to a real selector, custom property, gradient, easing curve, or breakpoint found in the source files in [`ig/`](ig/), or to stated copy on the official brand page. Where evidence was partial or ambiguous, the manual says so explicitly rather than guessing.
+**The website is the manual.** Every guideline, token, and component lives on its own page at [`site/`](site/), with real navigation, search, breakpoints, and interactive examples — not a folder of long-form text documents.
 
-> **Disclaimer:** This is an independent, unofficial reverse-engineering and documentation project, not published or endorsed by Instagram or Meta Platforms, Inc. "Instagram," the Instagram wordmark, "Instagram Sans," and "Optimistic" are trademarks/property of Meta. No proprietary font binaries are redistributed in this repository (see [`.gitignore`](.gitignore)) — typefaces are documented by name, metrics, and usage only.
+This is **not** a new brand inspired by Instagram. Every claim traces back to a real selector, custom property, gradient, easing curve, or breakpoint found in [`ig/`](ig/), or to stated copy on the official brand page. Where evidence was partial or ambiguous, the manual says so explicitly rather than guessing.
+
+> **Disclaimer:** This is an independent, unofficial reverse-engineering and documentation project, not published or endorsed by Instagram or Meta Platforms, Inc. "Instagram," the Instagram wordmark, "Instagram Sans," and "Optimistic" are trademarks/property of Meta. No proprietary font binaries are redistributed in this repository — typefaces are documented by name, metrics, and usage only, and the site itself renders in each visitor's system font stack.
+
+## Run the site locally
+
+```bash
+cd site
+npm install
+npm run dev      # http://localhost:3000
+```
+
+```bash
+npm run build    # static export to site/out — see site/README.md for deploy notes
+```
 
 ## Repository structure
 
 ```
 .
 ├── ig/                       Source CSS — the primary evidence base (about-page + production app bundles)
-├── manual/                   The Brand Identity Manual, one file per dimension
-│   ├── 00-introduction.md
-│   ├── 01-typography.md
-│   ├── 02-color.md
-│   ├── 03-layout-and-grid.md
-│   ├── 04-shape.md
-│   ├── 05-components.md
-│   ├── 06-motion.md
-│   ├── 07-imagery.md
-│   ├── 08-accessibility.md
-│   └── 09-implementation-notes.md
-└── tokens/                   Extracted design tokens as usable CSS, informed directly by ig/
-    ├── colors.css
-    ├── typography.css
-    ├── spacing.css
-    └── motion.css
+├── manual/                   The written Brand Identity Manual, one markdown file per dimension
+│   ├── 00-introduction.md … 09-implementation-notes.md
+├── tokens/                   Extracted design tokens as plain, usable CSS
+│   ├── colors.css, typography.css, spacing.css, motion.css
+└── site/                     The documentation website — a Next.js app built from manual/ + tokens/
+    ├── app/                  One route per manual section + every component page
+    ├── components/           Reusable doc UI: swatches, specimens, playgrounds, showcases
+    ├── lib/                  Navigation config, search index — the site's single source of truth
+    └── public/
 ```
 
 ## Methodology
 
-1. **Static analysis of `ig/`** — ten CSS files captured from Instagram's about-page (`about.instagram.com`) and production web app, ranging from a 3 KB about-page stylesheet to two ~950 KB production app bundles. Every selector, custom property, gradient, easing curve, breakpoint, and shape primitive cited in the manual was extracted from these files with `grep`/direct reads — not invented.
-2. **Visual/narrative reference** — [about.instagram.com/brand](https://about.instagram.com/brand/), Instagram's own public brand-refresh page, which independently confirms the three pillars the CSS evidence already pointed to: a custom typeface (Instagram Sans), an updated gradient/colour system, and a layout system built to showcase community imagery.
-3. **Cross-validation** — where a token appears in both the about-page CSS and the production app bundles (e.g. the gradient yellow `#FFD600` matching the `--gradient-yellow` custom property), the manual treats it as high-confidence. Single-source or ambiguous findings are flagged inline as such.
+1. **Static analysis of `ig/`** — ten CSS files captured from Instagram's about-page and production web app, ranging from a 4 KB about-page stylesheet to two ~950 KB production app bundles. Every selector, custom property, gradient, easing curve, breakpoint, and shape primitive cited anywhere on the site was extracted from these files — not invented.
+2. **Visual/narrative reference** — [about.instagram.com/brand](https://about.instagram.com/brand/), which independently confirms the three pillars the CSS evidence already pointed to: a custom typeface, an updated gradient/colour system, and a layout system built to showcase community imagery.
+3. **Cross-validation** — tokens confirmed in both the about-page CSS and the production bundles are treated as high-confidence; single-source or ambiguous findings are flagged inline as such, on the site and in `manual/09-implementation-notes.md`.
 
 ## Reading order
 
-Start at [`manual/00-introduction.md`](manual/00-introduction.md), then read in numeric order — later sections (Components, Motion) assume the tokens established in Typography, Colour, and Shape.
+Start at the site's [Overview](site/app/page.js), then **Foundations** (Typography → Colour → Layout & Grid → Shape → Motion → Imagery → Accessibility) before **Components** — later sections assume the tokens established earlier. The written `manual/*.md` files follow the same order for offline reading.
 
 ## Source assets
 
-[`ig/`](ig/) is kept as-is and committed alongside the manual so every claim remains independently verifiable against the original CSS.
+[`ig/`](ig/) is kept as-is and committed alongside the manual and the site so every claim remains independently verifiable against the original CSS.

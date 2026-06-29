@@ -1,0 +1,18 @@
+.wrap {
+  padding: 40px 24px 80px;
+}
+
+.article {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.wrap[data-wide="true"] .article {
+  max-width: var(--page-max-width);
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    padding: 48px 48px 96px;
+  }
+}

@@ -1,0 +1,89 @@
+.swatch {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.chips {
+  display: flex;
+  height: 72px;
+}
+
+.chip {
+  position: relative;
+  flex: 1;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 8px;
+}
+
+.chipOverlay {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  opacity: 0;
+  color: #fff;
+  transition: opacity var(--duration-micro) var(--ease-glide);
+}
+
+.chipOverlay[data-light="true"] {
+  color: #000;
+}
+
+.chip:hover .chipOverlay {
+  opacity: 0.85;
+}
+
+.chipLabel {
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.chipLabel[data-light="true"] {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.meta {
+  padding: 12px 14px 14px;
+  border-top: 1px solid rgb(var(--ig-separator));
+}
+
+.name {
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+}
+
+.token {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgb(var(--ig-stop-magenta));
+  margin-top: 3px;
+  word-break: break-all;
+}
+
+.usage {
+  font-size: 12.5px;
+  color: rgb(var(--ig-secondary-text));
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.values {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgb(var(--ig-tertiary-text));
+}
