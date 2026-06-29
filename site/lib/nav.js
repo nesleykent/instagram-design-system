@@ -149,12 +149,23 @@ export const NAV = [
 
 export const FLAT_PAGES = NAV.flatMap((g) => g.items.map((item) => ({ ...item, group: g.group })));
 
+// next.config.js sets trailingSlash: true (required for clean static-export
+// hosting on GitHub Pages), so usePathname() returns "/foo/" while every
+// href in this file is "/foo" — normalize before comparing anywhere below.
+export function normalizePath(path) {
+  if (!path) return "/";
+  if (path === "/") return path;
+  return path.endsWith("/") ? path.slice(0, -1) : path;
+}
+
 export function getPageMeta(href) {
-  return FLAT_PAGES.find((p) => p.href === href);
+  const path = normalizePath(href);
+  return FLAT_PAGES.find((p) => p.href === path);
 }
 
 export function getPrevNext(href) {
-  const index = FLAT_PAGES.findIndex((p) => p.href === href);
+  const path = normalizePath(href);
+  const index = FLAT_PAGES.findIndex((p) => p.href === path);
   if (index === -1) return { prev: null, next: null };
   return {
     prev: index > 0 ? FLAT_PAGES[index - 1] : null,
@@ -163,8 +174,9 @@ export function getPrevNext(href) {
 }
 
 export function getBreadcrumbs(href) {
+  const path = normalizePath(href);
   for (const group of NAV) {
-    const item = group.items.find((i) => i.href === href);
+    const item = group.items.find((i) => i.href === path);
     if (!item) continue;
 
     const crumbs = [{ title: "Manual", href: "/" }];

@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { NAV } from "@/lib/nav";
+import { NAV, normalizePath } from "@/lib/nav";
 import { IconClose } from "./Icons";
 import styles from "./Sidebar.module.css";
 
 export default function Sidebar({ pathname, mobileOpen, onClose }) {
+  const currentPath = normalizePath(pathname);
   return (
     <>
       <div
@@ -31,7 +32,7 @@ export default function Sidebar({ pathname, mobileOpen, onClose }) {
             <p className={styles.groupTitle}>{group.group}</p>
             <ul className={styles.list}>
               {group.items.map((item) => {
-                const active = pathname === item.href;
+                const active = currentPath === item.href;
                 return (
                   <li key={item.href}>
                     <Link
