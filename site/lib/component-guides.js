@@ -553,7 +553,7 @@ function buildGuide([title, slug, category, demoType, refs, purpose, summary]) {
 
 export const COMPONENT_GUIDES = RAW_GUIDES.map(buildGuide);
 
-export const STATIC_COMPONENT_GUIDE_SLUGS = new Set(["buttons"]);
+export const STATIC_COMPONENT_GUIDE_SLUGS = new Set(["buttons", "charts"]);
 
 export const DYNAMIC_COMPONENT_GUIDES = COMPONENT_GUIDES.filter(
   (guide) => !STATIC_COMPONENT_GUIDE_SLUGS.has(guide.slug)

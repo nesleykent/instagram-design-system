@@ -87,6 +87,12 @@ export const NAV = [
         keywords: ["button", "cta", "primary", "secondary", "tertiary"],
       },
       {
+        title: "Charts",
+        href: "/components/charts",
+        description: "Instagram-style data visualisation anatomy, marks, axes, interaction, and accessibility.",
+        keywords: ["chart", "data", "analytics", "visualization", "axis", "tooltip"],
+      },
+      {
         title: "Links & Navigation",
         href: "/components/links-navigation",
         description: "The underline-grow hover treatment and the structurally-inert disabled state.",

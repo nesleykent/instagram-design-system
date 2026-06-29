@@ -39,6 +39,7 @@ app/
     page.js                   Components index
     [slug]/page.js             Static-exported generated component catalogue pages
     buttons/page.js
+    charts/page.js             Bespoke chart documentation with anatomy and interactive examples
     links-navigation/page.js
     cards/page.js
     modals/page.js
