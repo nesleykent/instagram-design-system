@@ -18,13 +18,17 @@ export default function ComponentsIndexPage() {
       <PageHeader
         eyebrow="Components"
         title="Every documented component"
-        description="Each page below is a live, interactive recreation of a real pattern found in Instagram's production CSS — not a static mockup."
+        description="Organized like Apple's own HIG component catalogue — but graded honestly. Each page is either backed by a real selector or token in /ig, or says plainly that no such evidence exists, rather than inventing guidance either way."
       />
 
       <section className={styles.group}>
         <div className={styles.groupHeader}>
           <h2>Complete component catalogue</h2>
-          <p>Dedicated pages generated from the extracted /ig CSS evidence, grouped by component family.</p>
+          <p>
+            Every entry is graded: <strong>Documented</strong> (a real /ig selector backs it), <strong>Partially evidenced</strong> (the
+            general token system applies but no dedicated selector exists), or <strong>Not found in /ig</strong> (usually a native
+            macOS/iOS/watchOS concept with no web equivalent — the page says so instead of guessing).
+          </p>
         </div>
         {Object.entries(guideGroups).map(([group, guides]) => (
           <div className={styles.subgroup} key={group}>
@@ -32,6 +36,11 @@ export default function ComponentsIndexPage() {
             <div className={styles.grid}>
               {guides.map((guide) => (
                 <Link key={guide.href} href={guide.href} className={styles.card}>
+                  <span className={styles.evidenceTag} data-tier={guide.evidence}>
+                    {guide.evidence === "documented" && "Documented"}
+                    {guide.evidence === "inferred" && "Partially evidenced"}
+                    {guide.evidence === "none" && "Not found in /ig"}
+                  </span>
                   <h4>{guide.title}</h4>
                   <p>{guide.description}</p>
                   <span className={styles.cta}>

@@ -1,579 +1,582 @@
-const IG_APP_CSS =
-  "/ig/QhPToV7QelD3mQgfUHD55wHgg0BzlELrIyN70lAdsPet3O926IpA3OuHTDb5AtLODcfgQe914iiBfONMKn3YhINqtPbgX2VI-6IU49pVNahkCkQvuWABIjhhRs97xFZK--hBruhBENOpKm_.css";
+// Component guide registry for the dynamic /components/[slug] catch-all route.
+//
+// Every entry is hand-written and graded by evidence tier:
+//   "documented" — a specific selector, custom property, or class name in /ig
+//                  backs this component directly (cited in `findings`).
+//   "inferred"   — no component-specific selector exists, but the general
+//                  token system would clearly apply if Instagram built one;
+//                  said honestly rather than invented as fact.
+//   "none"       — nothing in ~2.3 MB of captured CSS references this
+//                  concept, usually because it's a native macOS/iOS/watchOS
+//                  idea with no equivalent in a web/mobile product. The page
+//                  says so plainly instead of generating confident guidance.
+//
+// See /methodology on the site for the same confidence-tier framework
+// applied to the rest of the manual.
 
-const IG_APP_CSS_ALT =
-  "/ig/QhPToV7QelD3mQgfUHD55wyN70lAdsPetfgQe914iiBfONMKn3YhINqtPbgX2VI-6IU49pVNahkCkGzNiZ9AWV5Gs97xFZK--hBruhBENOpKm_.css";
 
-export const CSS_REFERENCES = {
-  appTokens: {
-    title: "Application semantic tokens",
-    file: IG_APP_CSS,
-    fragments: [
-      "--ig-primary-background:255, 255, 255",
-      "--ig-secondary-background:243, 245, 247",
-      "--ig-elevated-background:255, 255, 255",
-      "--ig-primary-text:0, 0, 0",
-      "--ig-secondary-text:115, 115, 115",
-      "--ig-separator:219, 219, 219",
-      "--ig-stroke:219, 219, 219",
-      "--base-unit:4px",
-    ],
-    note:
-      "Most app components are constructed from RGB semantic tokens rather than hard-coded page-local colours.",
-  },
-  typography: {
-    title: "System type and control text",
-    file: IG_APP_CSS,
-    fragments: [
-      "--font-family-system:-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
-      "--system-12-font-size:12px; --system-12-line-height:16px",
-      "--system-14-font-size:14px; --system-14-line-height:18px",
-      "--system-16-font-size:16px; --system-16-line-height:24px",
-      "--font-weight-system-semibold:600",
-      "body button, body input, body textarea inherit the system family and 14px rhythm",
-    ],
-    note:
-      "The captured app CSS keeps UI chrome compact: 12px, 14px, and 16px text sizes carry most controls.",
-  },
-  brandGrid: {
-    title: "Brand grid and responsive spacing",
-    file: "/ig/cyug0JeffsB.css",
-    fragments: [
-      "7.142vw spacing units recur across brand sections",
-      "max-width:1600px containers",
-      "split sections use 50% columns until mobile breakpoints",
-      "@media (max-width: 768px) switches dense grids to 1 or 2 columns",
-    ],
-    note:
-      "Brand pages use a 14-column rhythm, wide viewport sections, and early mobile simplification instead of arbitrary card gutters.",
-  },
-  brandMotion: {
-    title: "Brand motion grammar",
-    file: "/ig/rrhy0Jd1eT4.css",
-    fragments: [
-      "cubic-bezier(0,0,.1,1)",
-      "cubic-bezier(.7,0,.3,1)",
-      "clip-path reveal blocks",
-      "rolling arrow and text animations",
-      "linear progress fill for story-like sequencing",
-    ],
-    note:
-      "Motion is mostly transform, opacity, clip-path, and scaleX, with reduced decorative choreography on small screens.",
-  },
-  imagery: {
-    title: "Image and media layouts",
-    file: "/ig/rrhy0Jd1eT4.css",
-    fragments: [
-      "aspect-ratio:16 / 9",
-      "aspect-ratio:3 / 4",
-      "object-fit:cover; object-position:center",
-      "overflow-x:scroll with hidden scrollbars on mobile galleries",
-    ],
-    note:
-      "Image views are ratio-led and object-fit driven, then become horizontal or single-column flows on narrow screens.",
-  },
-  buttons: {
-    title: "Button primitives",
-    file: IG_APP_CSS,
-    fragments: [
-      "--ig-primary-button:0, 149, 246",
-      "--ig-primary-button-hover:24, 119, 242",
-      "._aa8a uses appearance:none, border:0, system-16 text, semibold weight",
-      "legacy ._4jy0 and ._al65/._al66 confirm compact heights and 6px radii",
-    ],
-    note:
-      "Buttons are flat, text-precise controls. Hover changes colour or opacity, not layout.",
-  },
-  menus: {
-    title: "Menu and contextual layers",
-    file: "/ig/cyug0JeffsB.css",
-    fragments: [
-      ".uiContextualLayer positions the flyout",
-      "._54ng background:#fff; border:1px solid rgba(0,0,0,.15); border-radius:3px",
-      "box-shadow:0 3px 8px #0000004d",
-      ".openToggler controls visibility",
-    ],
-    note:
-      "Menus are contextual layers with a compact radius, clear border, and explicit open/closed toggler state.",
-  },
-  modal: {
-    title: "Modal, panel, and sheet surfaces",
-    file: IG_APP_CSS,
-    fragments: [
-      "--modal-backdrop-default:rgba(0, 0, 0, .65)",
-      "--modal-backdrop-dark:rgba(0, 0, 0, .85)",
-      "--modal-border-radius:12px",
-      "--modal-padding:16px",
-      "IGCoreModalShow .1s ease-out",
-    ],
-    note:
-      "Presentation surfaces use a fixed z-index layer, restrained padding, and short entrance motion.",
-  },
-  sheet: {
-    title: "Full-height translated panel",
-    file: "/ig/cyug0JeffsB.css",
-    fragments: [
-      "._a96f position:fixed; height:100%; width:100%; z-index:400",
-      "transform:translateY(100%)",
-      "transition:transform .5s cubic-bezier(0,.61,.28,.92)",
-      "._a96f._a94- transform:translateY(0)",
-    ],
-    note:
-      "Instagram's brand menu behaves like a full-height sheet, not a floating desktop popover.",
-  },
-  scroll: {
-    title: "Scrollable regions",
-    file: "/ig/cyug0JeffsB.css",
-    fragments: [
-      ".uiScrollableArea height:100%; overflow:hidden; position:relative",
-      ".uiScrollableAreaWrap overflow-y:scroll",
-      ".uiScrollableAreaTrack width:7px",
-      ".uiScrollableAreaGripper border-radius:7px; transition:width .25s",
-    ],
-    note:
-      "Scroll views own their viewport, shadow affordances, and custom gripper instead of relying on accidental body scroll.",
-  },
-  search: {
-    title: "Search rows and result sizing",
-    file: IG_APP_CSS,
-    fragments: [
-      "--search-box-height:40px",
-      "--search-result-height:50px",
-      "--search-result-list-width:375px",
-      "._acmx row uses border-bottom, 10px 16px padding, and nowrap truncation",
-      "._acmy upgrades rows to 60px with a 44px avatar well",
-    ],
-    note:
-      "Search fields pair a fixed-height input with compact, truncating result rows and visible selected/hover states.",
-  },
-  inputs: {
-    title: "Input fields and floating labels",
-    file: IG_APP_CSS,
-    fragments: [
-      "._aa48 height:36px; display:flex; min-width:0",
-      "._aa4a label uses system-12, line-height:36px, transform-origin:left",
-      "._aa49 ._aa4a transforms to scale(10 / 12) translateY(-10px)",
-      "._add6 background:rgb(var(--ig-secondary-background)); padding:9px 0 7px 8px",
-      "._ac4d:disabled uses highlight background and not-allowed cursor",
-    ],
-    note:
-      "Text input anatomy is compact: a 36px field, a floating 12px label, and a secondary-background fill.",
-  },
-  toggles: {
-    title: "Toggle switch anatomy",
-    file: "/ig/31d5t_UoCWK.css",
-    fragments: [
-      "._9nq9 width:51px; height:31px",
-      "._9nqb border-radius:20px",
-      "thumb is 28px with layered shadow",
-      "checked state translates the thumb 23px",
-      "disabled state drops opacity to .3",
-    ],
-    note:
-      "The switch is a mobile-native control with a 51 x 31 track, a nearly full-height thumb, and one translate state change.",
-  },
-  status: {
-    title: "Status and progress motion",
-    file: IG_APP_CSS,
-    fragments: [
-      "story progress uses width transition with linear timing",
-      "pulse-ring and pulse keyframes support live state emphasis",
-      "IGCoreToastShow and IGCoreToastHide define transient feedback",
-      "xuiButtonLoadingSpinner rotates a 12px ring once per second",
-    ],
-    note:
-      "Status indicators communicate progress or activity with looped transform animation, then settle back to semantic colours.",
-  },
-  accessibility: {
-    title: "Reduced motion and focus",
-    file: IG_APP_CSS_ALT,
-    fragments: [
-      "@media (prefers-reduced-motion: reduce)",
-      "animation-duration:0!important",
-      "transition-duration:0!important",
-      "--ig-focus-stroke:168, 168, 168",
-      "forced-colors: active rules are present in utility CSS",
-    ],
-    note:
-      "Every interactive component in this manual should preserve focus visibility and provide a reduced-motion path.",
-  },
-};
+// ---------------------------------------------------------------------------
+// Documented / inferred guides — real, component-specific findings.
+// ---------------------------------------------------------------------------
 
-const CATEGORY_DEFAULTS = {
-  Content: {
-    principle: "Keep the content object honest: the frame should clarify media, data, or text without adding decorative chrome.",
-    interaction: "Interaction should reveal detail, selection, or playback state. Avoid hidden controls that only appear after precision hover.",
-    layout: "Use ratio, truncation, and semantic spacing so content remains scannable in feed, modal, and narrow-column contexts.",
-    responsive: "Collapse dense content into a single column or horizontal scroller before shrinking text below the documented system sizes.",
-    accessibility: "Expose text alternatives, labels, and structured names for the content. Preserve contrast over media scrims.",
+const EVIDENCED_GUIDES = [
+  {
+    title: "Image Views",
+    slug: "image-views",
+    category: "Content",
+    description: "A ratio-locked frame for a single piece of media — object-fit: cover, a fixed crop, and a shimmer skeleton while it loads.",
+    evidence: "documented",
+    findings: [
+      "Every media frame in /ig pairs aspect-ratio with object-fit: cover; object-position: center — the crop never reflows with content.",
+      "The core ratio set is 1:1, 4:5, 9:16, 16:9, and a 3:4 editorial crop (see Shape's Aspect Ratio Gallery for the full table).",
+      "A skeleton background (documented as a shimmer.gif reference in source, recreated here as a CSS gradient sweep) fills the frame before the asset loads — see Imagery.",
+    ],
+    anatomy: ["Ratio frame", "Media object (object-fit: cover)", "Loading skeleton", "Optional scrim for overlaid text"],
+    guidance: [
+      "Pick the ratio from the documented set (1:1, 4:5, 9:16, 16:9, 3:4) rather than an arbitrary crop — every image-bearing surface in /ig uses one of these.",
+      "Never stretch or letterbox — object-fit: cover with object-position: center is universal.",
+      "Pair text over an image view with a scrim gradient (see Colour), never a flat box.",
+    ],
+    doDont: {
+      dos: ["Use the shimmer skeleton as the loading state, not a flat grey box.", "Keep the frame's aspect-ratio fixed so layout doesn't jump when the asset arrives."],
+      donts: ["Introduce a sixth aspect ratio outside the documented set without new evidence.", "Crop with object-fit: contain — every instance found uses cover."],
+    },
+    code: `.image-view {\n  aspect-ratio: 4 / 5; /* or 1/1, 9/16, 16/9, 3/4 — see Shape */\n  object-fit: cover;\n  object-position: center;\n}`,
+    crossRef: { label: "Aspect Ratio Gallery", href: "/shape" },
   },
-  "Layout And Organization": {
-    principle: "Use containers to establish hierarchy, not decoration. The /ig CSS favours grids, split panes, borders, and rhythm over nested cards.",
-    interaction: "Layout controls should disclose, select, or resize with one clear state change.",
-    layout: "Anchor spacing to the 4px app base unit and the brand 7.142vw rhythm where pages become editorial.",
-    responsive: "Move from multi-column to stacked or horizontally scrollable layouts at the same 768px and 650px breakpoints seen in /ig.",
-    accessibility: "Keep DOM order aligned with the visual order after responsive changes, especially for split and outline layouts.",
+  {
+    title: "Text Views",
+    slug: "text-views",
+    category: "Content",
+    description: "Longer, selectable copy — captions, bios, comments — built from the same system type scale as every control, not a document-style stack.",
+    evidence: "documented",
+    findings: [
+      "No dedicated \"article\" or document typography scale exists — long-form text reuses the 12/14/16/24px system sizes documented on Typography.",
+      "text-overflow: ellipsis; white-space: nowrap truncation recurs constantly for single-line text views (names, captions, list rows).",
+      "Multi-line copy has no special CSS beyond standard line-height — there is no line-clamp utility class found in /ig.",
+    ],
+    anatomy: ["Text frame", "Primary line(s)", "Secondary/metadata line", "Truncation edge"],
+    guidance: [
+      "Reach for the existing 12/14/16/24px system sizes — don't introduce a document-specific type scale for long captions or bios.",
+      "Use text-overflow: ellipsis for single-line truncation; no multi-line clamp pattern was found, so multi-line overflow should scroll or expand, not clamp with a fade.",
+    ],
+    doDont: {
+      dos: ["Set secondary/metadata text to --ig-secondary-text or --ig-tertiary-text, matching the documented hierarchy."],
+      donts: ["Invent a larger 'reading' type scale — no evidence of one exists outside the about-page's display sizes (which are marketing-only, not body copy)."],
+    },
+    code: `.text-view__meta {\n  font-size: var(--system-12-font-size);\n  line-height: var(--system-12-line-height);\n  color: rgb(var(--ig-secondary-text));\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}`,
+    crossRef: { label: "Typography", href: "/typography" },
   },
-  "Menus And Actions": {
-    principle: "Actions should feel immediate, compact, and reversible. Menus are contextual layers, not new pages.",
-    interaction: "Open with a direct button or gesture, keep focus inside the active layer, and close on Escape, outside press, or completed action.",
-    layout: "Use compact row heights, semibold labels, and separators only when they improve grouping.",
-    responsive: "Prefer sheets or action rows on touch viewports and flyouts on wider pointer-driven viewports.",
-    accessibility: "Use menu, menuitem, toolbar, and button semantics only when the interaction model matches those roles.",
+  {
+    title: "Boxes",
+    slug: "boxes",
+    category: "Layout And Organization",
+    description: "A generic bordered/filled container — there's no dedicated \"box\" class, just the same separator and background tokens reused everywhere.",
+    evidence: "inferred",
+    findings: [
+      "No selector named .box or equivalent exists — every container in /ig is a one-off rule reaching for --ig-separator, --ig-secondary-background, or --ig-stroke directly.",
+      "The pattern is consistent even without a shared class: 1px border in --ig-separator, background in --ig-secondary-background or --ig-elevated-background, radius from the documented scale.",
+    ],
+    anatomy: ["Container", "Border (--ig-separator)", "Fill (--ig-secondary-bg or --ig-elevated-bg)"],
+    guidance: [
+      "Don't expect a single shared 'Box' primitive in Instagram's own CSS — containers are composed per-component from the same handful of tokens, not a shared base class.",
+      "If you do build a shared Box primitive, source its border/fill from --ig-separator and --ig-secondary-background so it matches every existing container without a new token.",
+    ],
+    doDont: {
+      dos: ["Compose new containers from --ig-separator + --ig-secondary-background/--ig-elevated-background + the documented radius scale."],
+      donts: ["Add a drop shadow by default — most /ig containers use a 1px border, not elevation, for separation."],
+    },
   },
-  "Navigation And Search": {
-    principle: "Navigation components should preserve orientation. Selection, hierarchy, and search results need stable positions.",
-    interaction: "Typing, selection, and route changes should update visible state immediately without layout jumps.",
-    layout: "Use fixed-height rows, truncation, and clear dividers so navigation remains usable in narrow sidebars.",
-    responsive: "Collapse wide navigation into bottom bars, compact sidebars, or search-first flows before hiding destinations entirely.",
-    accessibility: "Expose the current page, selected tab, query label, and result count to assistive technology.",
+  {
+    title: "Collections",
+    slug: "collections",
+    category: "Layout And Organization",
+    description: "A horizontally-scrolling row of repeating items — the about-page's mosaic and card rows, and the production app's hidden-scrollbar carousels.",
+    evidence: "documented",
+    findings: [
+      "overflow-x: scroll with scrollbar-width: none / a hidden ::-webkit-scrollbar recurs for mobile galleries and card rows in /ig.",
+      "The about-page mosaic grid is the asymmetric, non-uniform version of a collection — see Imagery.",
+      ".uiScrollableAreaWrapHorizontal{overflow-x:auto} is the legacy desktop equivalent for horizontally-scrolling containers.",
+    ],
+    anatomy: ["Scroll track", "Item", "Hidden scrollbar (mobile) / custom gripper (legacy desktop)"],
+    guidance: [
+      "Default to horizontal scroll with native momentum and a hidden scrollbar on touch — that's the consistent mobile pattern across every gallery-like surface in /ig.",
+      "Don't add visible pagination dots — no evidence of that pattern exists; the legacy desktop fallback is a custom-styled scrollbar gripper, not dots.",
+    ],
+    doDont: {
+      dos: ["Hide the scrollbar on touch viewports, matching every mobile gallery in /ig."],
+      donts: ["Add dot pagination under a collection — see Page Controls, which has no evidence in this codebase."],
+    },
+    crossRef: { label: "Mosaic Grid Demo", href: "/imagery" },
   },
-  Presentation: {
-    principle: "Presentation surfaces interrupt with purpose. The scrim, radius, padding, and entrance motion should describe modality.",
-    interaction: "Keep dismissal predictable and never strand focus behind a scrim.",
-    layout: "Use 12px modal radii, 16px padding, centered content, and fixed z-index layers where the source CSS does.",
-    responsive: "Promote popovers and panels to sheets or full-width surfaces when viewport height or width becomes constrained.",
-    accessibility: "Use dialog semantics, labelled titles, focus trapping, and visible close actions.",
+  {
+    title: "Column Views",
+    slug: "column-views",
+    category: "Layout And Organization",
+    description: "Two adjacent panes that collapse to one on mobile — Instagram's own split-screen template, not a generic multi-pane browser.",
+    evidence: "documented",
+    findings: ["The about-page's split-screen sections use near-50/50 or an asymmetric 5:9 column split, collapsing to a single stacked column below ~650–768px — fully documented on Layout & Grid."],
+    anatomy: ["Column A", "Column B", "Collapse breakpoint"],
+    guidance: ["Use the documented 50/50 or 5:9 ratio rather than inventing a third split — both are clean multiples of the 14-unit grid."],
+    doDont: {
+      dos: ["Collapse to a single stacked column at the same ~650–768px range used everywhere else in /ig."],
+      donts: ["Keep both columns side-by-side below the documented breakpoint — no instance in /ig does this."],
+    },
+    crossRef: { label: "Split-Screen Demo", href: "/layout-grid" },
   },
-  "Selection And Input": {
-    principle: "Input controls should look quiet until active, then show one strong state: focus, selected, invalid, or disabled.",
-    interaction: "Direct manipulation should update value text, selected affordance, and accessibility state together.",
-    layout: "Keep controls aligned to the 36px/40px/44px control heights seen in /ig and pair labels with the field, not the surrounding card.",
-    responsive: "Use native platform affordances when small touch targets would otherwise become ambiguous.",
-    accessibility: "Every input needs a programmatic label, visible focus state, keyboard path, and error message when validation fails.",
+  {
+    title: "Disclosure Controls",
+    slug: "disclosure-controls",
+    category: "Layout And Organization",
+    description: "An expand/collapse chevron — only weakly evidenced: a rotation transform exists in /ig, but for a carousel arrow, not a dedicated disclosure pattern.",
+    evidence: "inferred",
+    findings: [
+      "transform: rotate(180deg) is used in the about-page mosaic gallery to flip a carousel arrow on a layout change, not to express expanded/collapsed state.",
+      "No chevron + height-transition pattern tied to an aria-expanded-style toggle was found anywhere in /ig.",
+    ],
+    guidance: [
+      "There's no dedicated disclosure component to copy faithfully — the only real rotation evidence is a carousel-arrow flip, a different interaction entirely.",
+      "If you build one, the honest move is to borrow the rotation timing already documented on Motion (Ease Glide) rather than implying it's a verified Instagram pattern.",
+    ],
+    doDont: {
+      dos: ["Be explicit in code comments that the chevron-rotate pattern is borrowed from Motion's general easing tokens, not a dedicated disclosure component in /ig."],
+      donts: ["Cite the carousel-arrow flip as if it were evidence for an expand/collapse control — it's a different interaction."],
+    },
   },
-  Status: {
-    principle: "Status components should report work, not decorate it. Motion must be informative and interruptible.",
-    interaction: "Let users distinguish indeterminate activity from measurable progress and complete states.",
-    layout: "Status indicators should align with nearby labels and avoid reflow when values change.",
-    responsive: "Keep indicators readable at compact sizes and pair icon-only status with text in critical flows.",
-    accessibility: "Use live regions sparingly and expose numeric values for gauges, ratings, and progress bars.",
+  {
+    title: "Labels",
+    slug: "labels",
+    category: "Layout And Organization",
+    description: "Compact, secondary-weight text that names a value or piece of metadata — the --ig-secondary-text / --ig-tertiary-text pair at system-12.",
+    evidence: "documented",
+    findings: ["--ig-secondary-text and --ig-tertiary-text share light-mode value 115,115,115 but diverge in dark mode (168,168,168 vs 199,199,199) — the hierarchy exists but is subtle, see Colour.", "Labels run at the 10px or 12px system sizes almost universally."],
+    anatomy: ["Label text", "Optional icon", "Colour role (secondary or tertiary)"],
+    guidance: ["Use --ig-secondary-text for the more prominent metadata tier, --ig-tertiary-text for the quieter one — they're deliberately close in light mode and diverge in dark mode."],
+    doDont: {
+      dos: ["Keep labels at 10–12px — no evidence of a larger label size."],
+      donts: ["Use --ig-primary-text for a label — labels are secondary/tertiary by definition in every instance found."],
+    },
   },
-};
-
-const DEMO_COPY = {
-  chart: {
-    anatomy: ["Chart frame", "Data mark", "Axis label", "Value label", "Selected state"],
-    variants: ["Compact spark bars", "Segmented bars", "Single KPI chart"],
-    states: ["Loading shimmer", "Selected value", "Empty data", "Reduced motion"],
+  {
+    title: "Lists And Tables",
+    slug: "lists-and-tables",
+    category: "Layout And Organization",
+    description: "Row-based, separator-divided, truncating content — search results and comment-style rows, not a desktop spreadsheet grid.",
+    evidence: "documented",
+    findings: ["--search-result-height:50px and --search-result-list-width:375px define a fixed-height, fixed-width row pattern.", "._54n*-family rules (._54nh, ._54nc) confirm overflow:hidden;text-overflow:ellipsis;white-space:nowrap as the standard row-truncation rule.", "--post-separator and --ig-separator are the row-divider tokens, not a heavier table-border treatment."],
+    anatomy: ["Row", "Leading icon/avatar well", "Primary + secondary text", "Trailing affordance", "Separator"],
+    guidance: ["Fix row height (Instagram's search rows are 50px) rather than letting content stretch it — every row-list pattern found is fixed-height.", "Truncate with ellipsis; don't wrap row text to multiple lines."],
+    doDont: {
+      dos: ["Use a 1px --post-separator or --ig-separator between rows, not a heavier table-grid border."],
+      donts: ["Build a sortable, multi-column spreadsheet-style table — no evidence of one exists; every row pattern found is single-column content with a leading/trailing affordance."],
+    },
+    crossRef: { label: "Dropdowns & Selectors (legacy menu rows)", href: "/components/dropdowns" },
   },
-  media: {
-    anatomy: ["Ratio frame", "Media object", "Inner stroke", "Caption rail", "Action affordance"],
-    variants: ["Square", "Portrait 3:4", "Landscape 16:9", "Carousel"],
-    states: ["Loading", "Loaded", "Selected", "Unavailable"],
+  {
+    title: "Lockups",
+    slug: "lockups",
+    category: "Layout And Organization",
+    description: "Avatar/icon + title + secondary text bound into one scannable row — the exact anatomy of every search result and identity row in /ig.",
+    evidence: "documented",
+    findings: ["The search result row pattern (--search-result-height:50px) is structurally a lockup: a leading well, a primary text line, and a secondary/metadata line.", "Secondary text in lockups consistently uses --ig-secondary-text or --ig-tertiary-text, never --ig-primary-text."],
+    anatomy: ["Leading icon/avatar well", "Primary text (name/title)", "Secondary text (metadata)", "Optional trailing action"],
+    guidance: ["Keep the leading well a fixed size regardless of content length — search rows don't resize the avatar well for longer names.", "Truncate the primary line before wrapping; truncate the secondary line independently."],
+    doDont: {
+      dos: ["Use --ig-secondary-text for the subtitle line, matching every identity row found."],
+      donts: ["Let a long primary line push the secondary line or trailing action out of the fixed row height."],
+    },
   },
-  text: {
-    anatomy: ["Text frame", "Title", "Body", "Metadata", "Truncation edge"],
-    variants: ["Single line", "Multi-line", "Editorial body", "Code text"],
-    states: ["Default", "Selected", "Expanded", "Overflowing"],
+  {
+    title: "Tab Views",
+    slug: "tab-views",
+    category: "Layout And Organization",
+    description: "Peer panels switched by a row of labelled controls — the about-page's interactive type-tester, already documented in full on Dropdowns & Selectors.",
+    evidence: "documented",
+    findings: ["The about-page type-tester is the clearest tab-like pattern in /ig: equal-sized swatches that fill with the brand gradient on hover/active and swap content directly, with no separate underline-tab variant found."],
+    anatomy: ["Tab row", "Active fill (brand gradient)", "Content panel"],
+    guidance: ["This component is fully covered on Dropdowns & Selectors — read that page rather than treating this as a separate pattern; duplicating it here would just restate the same evidence."],
+    crossRef: { label: "Dropdowns & Selectors", href: "/components/dropdowns" },
   },
-  web: {
-    anatomy: ["Browser frame", "URL label", "Viewport", "Loading bar", "Fallback state"],
-    variants: ["Inline preview", "Authenticated web view", "External handoff"],
-    states: ["Loading", "Loaded", "Blocked", "Error"],
+  {
+    title: "Context Menus",
+    slug: "context-menus",
+    category: "Menus And Actions",
+    description: "An object-specific action list anchored to a trigger — Instagram's legacy .uiContextualLayer system.",
+    evidence: "documented",
+    findings: [".uiContextualLayer{position:absolute} plus .uiContextualLayerPositioner/.uiContextualLayerPositionerFixed form the anchoring system.", "._54ng{background:#fff;border:1px solid rgba(0,0,0,.15);border-radius:3px;box-shadow:0 3px 8px #0000004d} is the resulting flyout surface.", "Disabled rows in this system drop to 55% opacity rather than being removed (._5arm ._54nc{opacity:.55})."],
+    anatomy: ["Trigger", "Contextual layer (positioned, z-index 202)", "Action rows", "Separator"],
+    guidance: ["Anchor the layer with position logic relative to the trigger, not a fixed screen position — that's what the Positioner/PositionerFixed split exists for.", "Dim disabled items to ~55% opacity rather than hiding them."],
+    doDont: {
+      dos: ["Use a 3px radius and the documented 1px rgba border + soft shadow for the flyout surface."],
+      donts: ["Remove disabled actions from the list — the evidenced pattern keeps them visible and dimmed."],
+    },
+    code: `.context-menu {\n  position: absolute;\n  background: #fff;\n  border: 1px solid rgba(0,0,0,.15);\n  border-radius: 3px;\n  box-shadow: 0 3px 8px rgba(0,0,0,.3);\n}\n.context-menu__item[disabled] { opacity: .55; }`,
   },
-  layout: {
-    anatomy: ["Container", "Header", "Primary region", "Secondary region", "Divider"],
-    variants: ["Single column", "Two column", "Grid", "Stacked mobile"],
-    states: ["Default", "Selected", "Collapsed", "Overflow"],
+  {
+    title: "Menus",
+    slug: "menus",
+    category: "Menus And Actions",
+    description: "A compact action list where the trigger and choices stay in one context — the canonical flyout, toggled open/closed by a single class.",
+    evidence: "documented",
+    findings: [".uiToggleFlyout,.toggleTargetClosed{display:none} and the paired .openToggler .uiToggleFlyout{display:block} rule define the entire open/closed model — one ancestor class flips visibility, no JS-driven height animation.", "Shares its visual surface with Context Menus (._54ng) and Popovers (.uiContextualLayer)."],
+    anatomy: ["Trigger (.openToggler)", "Flyout (.uiToggleFlyout)", "Action rows"],
+    guidance: ["The open/closed model is a single toggled ancestor class, not a height or opacity transition — menus appear and disappear instantly in the legacy system."],
+    doDont: { dos: ["Toggle visibility via a single ancestor class, matching the evidenced model."], donts: ["Assume an animated open/close transition exists for this specific legacy menu — none was found."] },
   },
-  menu: {
-    anatomy: ["Trigger", "Contextual layer", "Action row", "Shortcut or hint", "Separator"],
-    variants: ["Inline menu", "Context menu", "Toolbar menu", "Sheet menu"],
-    states: ["Closed", "Open", "Hovered", "Disabled", "Destructive"],
+  {
+    title: "Activity Views",
+    slug: "activity-views",
+    category: "Menus And Actions",
+    description: "A share/export chooser — no dedicated CSS evidence found; the closest real surface is the general Action Sheet/Sheet transition.",
+    evidence: "none",
+    reason: "No selector, class, or custom property referencing a share sheet, activity chooser, or export picker was found anywhere in the captured CSS. If Instagram's web client has one, it isn't present in these ten files.",
+    closestAnalog: { label: "Action Sheets", href: "/components/action-sheets" },
   },
-  nav: {
-    anatomy: ["Container", "Current marker", "Destination label", "Icon well", "Badge or count"],
-    variants: ["Sidebar", "Tab bar", "Breadcrumb", "Search result"],
-    states: ["Current", "Hover", "Pressed", "Collapsed", "Overflow"],
+  {
+    title: "Dock Menus",
+    slug: "dock-menus",
+    category: "Menus And Actions",
+    description: "A macOS Dock-style persistent menu — not part of Instagram's web or mobile product.",
+    evidence: "none",
+    reason: "Zero occurrences of \"dock\" as a UI concept anywhere in the ~2.3 MB of captured CSS. Instagram has no desktop Dock integration; this category exists in Apple's HIG for native Mac apps, which Instagram's web client is not.",
   },
-  presentation: {
-    anatomy: ["Scrim", "Surface", "Title", "Content", "Actions", "Dismiss control"],
-    variants: ["Popover", "Panel", "Sheet", "Alert", "Window"],
-    states: ["Entering", "Open", "Scrollable", "Dismissed"],
+  {
+    title: "Edit Menus",
+    slug: "edit-menus",
+    category: "Menus And Actions",
+    description: "Desktop-app text/media editing commands (copy, paste, crop, duplicate) — not evidenced as a distinct pattern from the general Menus flyout.",
+    evidence: "none",
+    reason: "No selectors specific to cut/copy/paste/duplicate command menus were found. The legacy flyout system documented under Menus is generic and content-agnostic — nothing in /ig distinguishes an \"edit\" menu from any other action list.",
+    closestAnalog: { label: "Menus", href: "/components/menus" },
   },
-  input: {
-    anatomy: ["Label", "Control", "Value", "Focus ring", "Help or error text"],
-    variants: ["Compact", "Full width", "Read only", "Disabled"],
-    states: ["Empty", "Focused", "Filled", "Invalid", "Disabled"],
+  {
+    title: "Home Screen Quick Actions",
+    slug: "home-screen-quick-actions",
+    category: "Menus And Actions",
+    description: "iOS home-screen long-press shortcuts — outside the scope of a web property entirely.",
+    evidence: "none",
+    reason: "This is an iOS home-screen integration, configured in a native app's Info.plist, not in CSS. No related evidence could exist in these source files by definition.",
   },
-  status: {
-    anatomy: ["Track", "Indicator", "Value label", "State text", "Completion mark"],
-    variants: ["Indeterminate", "Determinate", "Compact", "Inline with label"],
-    states: ["Idle", "Running", "Complete", "Error", "Paused"],
+  {
+    title: "Ornaments",
+    slug: "ornaments",
+    category: "Menus And Actions",
+    description: "Small attached controls around a window or media surface — an Apple HIG term with no match in /ig.",
+    evidence: "none",
+    reason: "No selector or naming convention resembling \"ornament\" controls was found. This category describes native window-chrome accessories; Instagram's web surfaces don't have window chrome.",
   },
-};
-
-const DEMO_FAMILY = {
-  charts: "chart",
-  "image-views": "media",
-  "text-views": "text",
-  "web-views": "web",
-  boxes: "layout",
-  collections: "layout",
-  "column-views": "layout",
-  "disclosure-controls": "layout",
-  labels: "text",
-  "lists-and-tables": "layout",
-  lockups: "text",
-  "outline-views": "layout",
-  "split-views": "layout",
-  "tab-views": "layout",
-  "activity-views": "menu",
-  buttons: "menu",
-  "context-menus": "menu",
-  "dock-menus": "menu",
-  "edit-menus": "menu",
-  "home-screen-quick-actions": "menu",
-  menus: "menu",
-  ornaments: "presentation",
-  "pop-up-buttons": "input",
-  "pull-down-buttons": "menu",
-  "menu-bar": "menu",
-  toolbars: "menu",
-  "path-controls": "nav",
-  "search-fields": "nav",
-  sidebars: "nav",
-  "tab-bars": "nav",
-  "token-fields": "input",
-  "action-sheets": "presentation",
-  alerts: "presentation",
-  "page-controls": "nav",
-  panels: "presentation",
-  popovers: "presentation",
-  "scroll-views": "presentation",
-  sheets: "presentation",
-  windows: "presentation",
-  "color-wells": "input",
-  "combo-boxes": "input",
-  "digit-entry-views": "input",
-  "image-wells": "input",
-  pickers: "input",
-  "segmented-controls": "input",
-  sliders: "input",
-  steppers: "input",
-  "text-fields": "input",
-  toggles: "input",
-  "virtual-keyboards": "input",
-  "activity-rings": "status",
-  gauges: "status",
-  "progress-indicators": "status",
-  "rating-indicators": "status",
-};
-
-const RAW_GUIDES = [
-  ["Charts", "charts", "Content", "chart", ["appTokens", "typography", "status"], "Use charts for compact, readable metrics without breaking Instagram's neutral interface rhythm.", "Instagram CSS exposes segmented chart colour tokens and story progress timing; chart UI should stay flat, labelled, and semantic."],
-  ["Image Views", "image-views", "Content", "media", ["imagery", "brandGrid", "accessibility"], "Use image views to present inspectable media in a stable crop, ratio, and loading model.", "The extracted media CSS is ratio-led with object-fit cover, inner borders, and mobile horizontal scrollers."],
-  ["Text Views", "text-views", "Content", "text", ["typography", "appTokens"], "Use text views for longer, selectable, or scrollable copy that needs hierarchy beyond a label.", "Text views inherit the system stack and the 12/14/16/24px rhythm rather than introducing document-style typography."],
-  ["Web Views", "web-views", "Content", "web", ["appTokens", "modal", "scroll"], "Use web views when external or embedded content must appear inside an Instagram-owned frame.", "Web views should feel like controlled surfaces with clear fallback, loading, and escape paths."],
-
-  ["Boxes", "boxes", "Layout And Organization", "box", ["appTokens", "brandGrid"], "Use boxes as structural containers for grouping content with borders, background, or spacing.", "The source CSS uses surfaces, separators, and 4px spacing units; boxes should organize hierarchy without decorative nesting."],
-  ["Collections", "collections", "Layout And Organization", "collection", ["brandGrid", "imagery", "scroll"], "Use collections for repeating visual or action items that need scanning, selection, or reordering.", "Collections inherit grid and horizontal-scroll behaviour from the brand and app CSS."],
-  ["Column Views", "column-views", "Layout And Organization", "columns", ["brandGrid", "scroll"], "Use column views when hierarchy is best explored left to right across adjacent panes.", "Split brand sections and sidebar widths show how Instagram preserves column intent until mobile collapse."],
-  ["Disclosure Controls", "disclosure-controls", "Layout And Organization", "disclosure", ["brandMotion", "typography"], "Use disclosure controls to reveal detail without navigating away from the current context.", "The captured CSS uses chevron rotation, height changes, and compact text to disclose extra content."],
-  ["Labels", "labels", "Layout And Organization", "label", ["typography", "appTokens"], "Use labels to name values, controls, status, or metadata with compact, unambiguous text.", "Labels should use the documented system sizes and secondary text tokens, not custom grey ramps."],
-  ["Lists And Tables", "lists-and-tables", "Layout And Organization", "table", ["appTokens", "search", "scroll"], "Use lists and tables for row-based comparison, search results, settings, and dense metadata.", "Instagram rows rely on fixed heights, separators, truncation, and scroll containment."],
-  ["Lockups", "lockups", "Layout And Organization", "lockup", ["typography", "imagery"], "Use lockups to bind an image, avatar, title, subtitle, and action into one scannable unit.", "Search rows and profile surfaces use an icon well plus primary and secondary text with stable spacing."],
-  ["Outline Views", "outline-views", "Layout And Organization", "outline", ["appTokens", "brandMotion"], "Use outline views for nested structure that must expand and collapse in place.", "Outlines should combine row separators, chevrons, indentation, and stateful disclosure."],
-  ["Split Views", "split-views", "Layout And Organization", "split", ["brandGrid", "scroll"], "Use split views when a persistent source list and detail pane are both needed.", "Instagram's split templates use 50% panes on desktop and stacked content on mobile."],
-  ["Tab Views", "tab-views", "Layout And Organization", "tabs", ["brandMotion", "typography"], "Use tab views to switch between peer panels inside a single task.", "Type tester tabs in /ig use underline/border-bottom states and direct content replacement."],
-
-  ["Activity Views", "activity-views", "Menus And Actions", "activity", ["menus", "modal", "buttons"], "Use activity views to expose sharing or export actions as a focused chooser.", "Activity surfaces should prioritize recent destinations, primary actions, and a clear dismiss path."],
-  ["Buttons", "buttons", "Menus And Actions", "button", ["buttons", "appTokens", "typography"], "Use buttons for explicit commands with one primary action per local surface.", "Button CSS confirms flat controls, semibold text, tokenized primary blue, and compact heights."],
-  ["Context Menus", "context-menus", "Menus And Actions", "context", ["menus", "accessibility"], "Use context menus for object-specific commands that should not occupy permanent chrome.", "Context menus should be contextual layers with compact rows, separators, and keyboard closure."],
-  ["Dock Menus", "dock-menus", "Menus And Actions", "dock", ["menus", "brandMotion"], "Use dock menus for persistent command sets that sit against an edge or media frame.", "Docked commands should be compact, pointer-friendly, and responsive to safe-area edges."],
-  ["Edit Menus", "edit-menus", "Menus And Actions", "edit", ["menus", "inputs"], "Use edit menus for text and media operations like copy, paste, crop, duplicate, and delete.", "Edit commands need disabled states and destructive styling that map to semantic tokens."],
-  ["Home Screen Quick Actions", "home-screen-quick-actions", "Menus And Actions", "quick", ["menus", "buttons"], "Use Home Screen quick actions for a very small set of launch-time destinations.", "Quick actions should be short, verb-led, and mirror real in-app destinations."],
-  ["Menus", "menus", "Menus And Actions", "menu", ["menus", "typography"], "Use menus for compact action lists where the trigger and choices stay in one context.", "The legacy contextual layer CSS shows the canonical flyout surface and visibility model."],
-  ["Ornaments", "ornaments", "Menus And Actions", "ornament", ["modal", "appTokens"], "Use ornaments for small attached controls around a window or media surface.", "Ornaments must not compete with content; they should appear only when their command is locally relevant."],
-  ["Pop Up Buttons", "pop-up-buttons", "Menus And Actions", "popup", ["menus", "inputs"], "Use pop up buttons when one selected value must persist after choosing from a menu.", "Pop up buttons combine input value display with menu behaviour and a selected option state."],
-  ["Pull Down Buttons", "pull-down-buttons", "Menus And Actions", "pulldown", ["menus", "buttons"], "Use pull down buttons when a command reveals several related actions but does not store a value.", "Pull down controls should look like buttons until opened, then behave like a contextual menu."],
-  ["The Menu Bar", "menu-bar", "Menus And Actions", "menubar", ["menus", "typography"], "Use the menu bar as a global command surface only when the surrounding platform expects it.", "A menu bar needs predictable grouping, keyboard access, and no hidden app-critical commands."],
-  ["Toolbars", "toolbars", "Menus And Actions", "toolbar", ["buttons", "menus", "appTokens"], "Use toolbars for frequently repeated commands that benefit from spatial memory.", "Toolbar icons and labels should remain stable while selected, disabled, and overflow states change."],
-
-  ["Path Controls", "path-controls", "Navigation And Search", "path", ["appTokens", "typography"], "Use path controls to show where the user is inside a hierarchy and allow direct jumps.", "Path controls should truncate middle segments and preserve the current destination."],
-  ["Search Fields", "search-fields", "Navigation And Search", "search", ["search", "inputs", "accessibility"], "Use search fields for query entry paired with predictable result rows.", "Search CSS exposes 40px boxes, 50px result rows, and compact truncating result anatomy."],
-  ["Sidebars", "sidebars", "Navigation And Search", "sidebar", ["appTokens", "search", "scroll"], "Use sidebars for persistent navigation, filters, or source lists.", "Sidebar rows should remain compact, scrollable, and selected with a single clear state."],
-  ["Tab Bars", "tab-bars", "Navigation And Search", "tabbar", ["brandMotion", "appTokens"], "Use tab bars for top-level peer destinations where the current section must remain visible.", "Tab bars should preserve selection, badge, and touch target clarity in compact viewports."],
-  ["Token Fields", "token-fields", "Navigation And Search", "tokens", ["inputs", "search"], "Use token fields to collect multiple structured values inside one input flow.", "Token fields are input rows plus selected chips; truncation and keyboard deletion must be deliberate."],
-
-  ["Action Sheets", "action-sheets", "Presentation", "actionsheet", ["sheet", "modal", "menus"], "Use action sheets for compact action choices on touch-first surfaces.", "Action sheets adapt contextual menus into a bottom or full-height presentation surface."],
-  ["Alerts", "alerts", "Presentation", "alert", ["modal", "buttons", "accessibility"], "Use alerts only for decisions or failures that interrupt the current flow.", "Alerts need one clear title, concise body copy, and an obvious primary or destructive action."],
-  ["Page Controls", "page-controls", "Presentation", "pages", ["brandMotion", "status"], "Use page controls to show position inside a small ordered sequence.", "Page controls should update with visible selected state and avoid tiny unlabelled targets when critical."],
-  ["Panels", "panels", "Presentation", "panel", ["modal", "sheet", "scroll"], "Use panels for substantial supporting content that should remain related to the current task.", "Panel CSS evidence points to fixed overlays, scrollable interiors, and 12px radius surfaces."],
-  ["Popovers", "popovers", "Presentation", "popover", ["menus", "modal"], "Use popovers for lightweight contextual content anchored to a trigger.", "Popovers should be dismissible contextual layers with compact width and focus return."],
-  ["Scroll Views", "scroll-views", "Presentation", "scroll", ["scroll", "imagery", "accessibility"], "Use scroll views when content needs an owned viewport, custom shadows, or hidden overflow.", "The CSS has explicit scroll tracks, grippers, mobile hidden scrollbars, and scroll shadows."],
-  ["Sheets", "sheets", "Presentation", "sheetdemo", ["sheet", "modal"], "Use sheets for full-height or bottom-up tasks that temporarily take over the viewport.", "The brand menu sheet translates from 100% to 0 with a 500ms settle curve."],
-  ["Windows", "windows", "Presentation", "window", ["modal", "appTokens"], "Use windows for independent document or task surfaces with their own title and controls.", "Windows should preserve title, scroll region, command area, and resizable responsive behaviour."],
-
-  ["Color Wells", "color-wells", "Selection And Input", "color", ["inputs", "appTokens"], "Use color wells when a selected colour needs to be visible before opening a picker.", "Colour wells should show swatch, focus, value label, and disabled state."],
-  ["Combo Boxes", "combo-boxes", "Selection And Input", "combo", ["inputs", "menus", "search"], "Use combo boxes when typing and menu selection are both valid paths.", "Combo boxes combine input field anatomy with contextual results and keyboard selection."],
-  ["Digit Entry Views", "digit-entry-views", "Selection And Input", "digit", ["inputs", "typography"], "Use digit entry views for short numeric codes or fixed-length values.", "Digit entry needs stable cells, clear focus, paste handling, and visible error feedback."],
-  ["Image Wells", "image-wells", "Selection And Input", "imagewell", ["imagery", "inputs"], "Use image wells when users choose, replace, or inspect an image value.", "Image wells should use ratio frames, object-fit, and a clear empty state."],
-  ["Pickers", "pickers", "Selection And Input", "picker", ["inputs", "menus"], "Use pickers for bounded value sets where browsing is faster than typing.", "Pickers should expose selected state, keyboard movement, and a compact mobile alternative."],
-  ["Segmented Controls", "segmented-controls", "Selection And Input", "segmented", ["inputs", "buttons"], "Use segmented controls for small peer choices that update one local view.", "Segments are buttons with a shared track; only one selected state should dominate."],
-  ["Sliders", "sliders", "Selection And Input", "slider", ["inputs", "status"], "Use sliders for continuous or near-continuous values with immediate feedback.", "Sliders need visible track, thumb, value label, and keyboard increments."],
-  ["Steppers", "steppers", "Selection And Input", "stepper", ["inputs", "buttons"], "Use steppers for small numeric changes where each tap has a predictable increment.", "Steppers should expose minus, value, plus, disabled edges, and touch-sized controls."],
-  ["Text Fields", "text-fields", "Selection And Input", "field", ["inputs", "typography", "accessibility"], "Use text fields for freeform values with labels, focus, and validation feedback.", "The captured field CSS confirms a 36px input, floating 12px label, disabled state, and autofill handling."],
-  ["Toggles", "toggles", "Selection And Input", "toggle", ["toggles", "inputs"], "Use toggles for immediate binary settings that can be changed without a confirmation flow.", "The switch CSS confirms a 51 x 31 track, 28px thumb, translate-on state, and disabled opacity."],
-  ["Virtual Keyboards", "virtual-keyboards", "Selection And Input", "keyboard", ["inputs", "typography"], "Use virtual keyboards when a constrained input surface needs custom keys or previews.", "Virtual keyboards should echo native key sizing, focus order, and visible pressed states."],
-
-  ["Activity Rings", "activity-rings", "Status", "ring", ["status", "accessibility"], "Use activity rings for indeterminate work where duration is unknown.", "Activity rings should loop quietly, pause for reduced motion, and avoid implying measurable progress."],
-  ["Gauges", "gauges", "Status", "gauge", ["status", "appTokens"], "Use gauges for bounded values where relative position matters more than exact history.", "Gauges need numeric value semantics, thresholds, and stable labels."],
-  ["Progress Indicators", "progress-indicators", "Status", "progress", ["status", "brandMotion"], "Use progress indicators when completion can be measured or staged.", "Story progress in /ig uses scale or width fill with linear timing and compact tracks."],
-  ["Rating Indicators", "rating-indicators", "Status", "rating", ["status", "buttons"], "Use rating indicators for user sentiment or quality values with a small bounded range.", "Ratings need selected, hover, keyboard, and read-only variants, not just decorative icons."],
+  {
+    title: "Pop Up Buttons",
+    slug: "pop-up-buttons",
+    category: "Menus And Actions",
+    description: "A button that persists a chosen value after opening a menu — no dedicated selector found, distinct from the legacy dropdown menu.",
+    evidence: "none",
+    reason: "The legacy menu/flyout system (see Menus) is a transient action list, not a persistent-value selector. No combo-style \"selected value + menu\" component was found in /ig.",
+    closestAnalog: { label: "Dropdowns & Selectors", href: "/components/dropdowns" },
+  },
+  {
+    title: "Pull Down Buttons",
+    slug: "pull-down-buttons",
+    category: "Menus And Actions",
+    description: "A button that looks static until opened, then behaves like a menu — not distinguished from Menus anywhere in /ig.",
+    evidence: "none",
+    reason: "No CSS distinguishes a \"looks like a button, opens like a menu\" control from the general flyout pattern documented under Menus.",
+    closestAnalog: { label: "Menus", href: "/components/menus" },
+  },
+  {
+    title: "The Menu Bar",
+    slug: "menu-bar",
+    category: "Menus And Actions",
+    description: "A global, OS-level command bar — Instagram is a web/mobile product and has no menu bar.",
+    evidence: "none",
+    reason: "Zero occurrences of a menu-bar concept in the captured CSS. This is a macOS desktop-application category; it has no web equivalent and nothing in /ig attempts one.",
+  },
+  {
+    title: "Toolbars",
+    slug: "toolbars",
+    category: "Menus And Actions",
+    description: "A row of frequently-repeated commands — the only \"toolbar\"-named token found actually describes the bottom tab bar, not a command toolbar.",
+    evidence: "none",
+    reason: "The single real match for \"toolbar\" in /ig is --revamp-nav-bottom-toolbar-height, which sizes the bottom navigation bar (see Tab Bars) — a navigation component, not a command toolbar. No distinct desktop-style toolbar pattern exists.",
+    closestAnalog: { label: "Tab Bars", href: "/components/tab-bars" },
+  },
+  {
+    title: "Search Fields",
+    slug: "search-fields",
+    category: "Navigation And Search",
+    description: "A fixed-height query input paired with fixed-height, truncating result rows — one of the most precisely evidenced patterns in /ig.",
+    evidence: "documented",
+    findings: ["--search-box-height:40px and --search-result-height:50px are literal, confirmed custom properties.", "--search-modal-height / --search-modal-height-expanded / --search-modal-top-offset govern a modal-style search overlay with an expanded state.", "--search-result-list-width:375px caps the result list to a fixed column width even on wide viewports."],
+    anatomy: ["40px input box", "Result list (375px max width)", "50px result row", "Expanded modal state"],
+    guidance: ["Keep the input at exactly 40px and result rows at exactly 50px — these are confirmed tokens, not approximations.", "Cap the result list width at 375px even in a wide layout; search doesn't stretch to fill available space in the evidenced pattern."],
+    doDont: { dos: ["Use the modal-height-expanded token's existence as license to support a taller, expanded search state on focus."], donts: ["Let the result list grow wider than 375px to fill a wide screen."] },
+    code: `.search-box { height: var(--search-box-height); /* 40px */ }\n.search-result-row { height: var(--search-result-height); /* 50px */ }\n.search-result-list { width: var(--search-result-list-width); /* 375px */ }`,
+  },
+  {
+    title: "Sidebars",
+    slug: "sidebars",
+    category: "Navigation And Search",
+    description: "Persistent side navigation — not evidenced in /ig itself; this site's own sidebar is original interface work, not an extracted pattern.",
+    evidence: "inferred",
+    findings: ["No selector resembling a persistent left-rail navigation was found in the captured about-page or production CSS excerpts. Instagram's main web client is understood to use one, but it isn't present in these ten files."],
+    guidance: ["Don't cite this site's own sidebar as evidence of Instagram's pattern — it was designed for this documentation site specifically, using the semantic tokens, not reverse-engineered from a sidebar-specific selector."],
+    doDont: { dos: ["If building one, source colours from --ig-secondary-background/--ig-highlight-bg, which are confirmed real, even though the sidebar layout itself isn't."], donts: ["Present this site's sidebar CSS as if it were extracted from Instagram's own source."] },
+  },
+  {
+    title: "Tab Bars",
+    slug: "tab-bars",
+    category: "Navigation And Search",
+    description: "The bottom row of top-level destinations — sized by the one real \"toolbar\" token found in /ig.",
+    evidence: "documented",
+    findings: ["--revamp-nav-bottom-toolbar-height is referenced repeatedly inside calc() expressions for safe-area and scroll-offset math across the production bundle — strong evidence of a real, currently-shipping bottom tab bar ('revamp' suggesting a relatively recent redesign)."],
+    anatomy: ["Tab bar container (height: var(--revamp-nav-bottom-toolbar-height))", "Destination icon", "Current-page indicator", "Badge/count"],
+    guidance: ["Reserve layout space for the tab bar using the same token other surfaces calc() against it with — that's the evidenced integration pattern, not a fixed pixel guess."],
+    doDont: { dos: ["Use --revamp-nav-bottom-toolbar-height for safe-area math, exactly as the rest of the app does."], donts: ["Hard-code a pixel height for the tab bar when a token already exists for it."] },
+  },
+  {
+    title: "Token Fields",
+    slug: "token-fields",
+    category: "Navigation And Search",
+    description: "An input that collects multiple chip-like values (e.g. tagging people) — no evidence found.",
+    evidence: "none",
+    reason: "No chip/tag-input selectors were found in the captured CSS. The closest real pattern is the plain text input documented under Text Fields, which has no chip/multi-value behaviour evidenced.",
+    closestAnalog: { label: "Text Fields", href: "/components/text-fields" },
+  },
+  {
+    title: "Action Sheets",
+    slug: "action-sheets",
+    category: "Presentation",
+    description: "Compact, touch-first action choices — the same full-height sheet transition used by Instagram's brand menu, reframed as a choice list.",
+    evidence: "documented",
+    findings: ["._a96f{position:fixed;height:100%;width:100%;z-index:400} with transform:translateY(100%) → translateY(0), transitioned over .5s cubic-bezier(0,.61,.28,.92) — the exact mechanism documented as Ease Settle on Motion."],
+    anatomy: ["Full-height fixed surface", "Slide-up transform", "Action rows", "Dismiss"],
+    guidance: ["Reuse the documented slide-up mechanism verbatim (translateY(100%) → 0, Ease Settle, ~500ms) rather than inventing a new entrance for a sheet-style surface."],
+    doDont: { dos: ["Use position: fixed with z-index 400 and the documented Ease Settle transform."], donts: ["Fade a sheet in with opacity alone — every sheet-like surface found uses a translate transform."] },
+    crossRef: { label: "Modals & Panels", href: "/components/modals" },
+  },
+  {
+    title: "Alerts",
+    slug: "alerts",
+    category: "Presentation",
+    description: "A decision or failure that must interrupt the flow — no alert-specific styling found beyond the general modal system.",
+    evidence: "inferred",
+    findings: ["--modal-backdrop-default:rgba(0,0,0,.65) and --modal-border-radius:12px are real, general-purpose modal tokens. No distinct \"alert\" variant (e.g. a destructive-red border or icon treatment) was found."],
+    guidance: ["Build alerts on the same modal tokens as everything else — there's no evidence Instagram styles alerts differently from any other modal."],
+    doDont: { dos: ["Reuse --modal-border-radius and --modal-backdrop-default rather than inventing alert-specific tokens."], donts: ["Add a bespoke alert colour treatment that isn't backed by --ig-error or --ig-success."] },
+    crossRef: { label: "Modals & Panels", href: "/components/modals" },
+  },
+  {
+    title: "Page Controls",
+    slug: "page-controls",
+    category: "Presentation",
+    description: "Dot indicators showing position in a short sequence — not evidenced; Instagram's actual sequence indicator is the linear Stories progress bar.",
+    evidence: "none",
+    reason: "No dot-pagination selector was found. Where Instagram needs to show position/progress through a sequence, the evidenced pattern is the linear segmented bar documented on Stories Progress, not dots.",
+    closestAnalog: { label: "Stories Progress", href: "/components/stories-progress" },
+  },
+  {
+    title: "Popovers",
+    slug: "popovers",
+    category: "Presentation",
+    description: "Lightweight contextual content anchored to a trigger — the same .uiContextualLayer system as Context Menus and Menus, viewed as a presentation surface.",
+    evidence: "documented",
+    findings: [".uiContextualLayer/.uiContextualLayerPositioner provide the anchoring; ._558b ._54ng provides the bordered, shadowed surface — identical mechanism to Context Menus, just hosting richer content than an action list."],
+    guidance: ["Don't design a new anchoring mechanism — reuse the documented contextual-layer positioning shared with Context Menus and Menus."],
+    crossRef: { label: "Context Menus", href: "/components/context-menus" },
+  },
+  {
+    title: "Scroll Views",
+    slug: "scroll-views",
+    category: "Presentation",
+    description: "A surface that owns its own scrollable viewport, with a custom track and gripper instead of the browser default.",
+    evidence: "documented",
+    findings: [".uiScrollableArea{height:100%;overflow:hidden;position:relative} plus .uiScrollableAreaWrap{overflow-y:scroll} is the legacy desktop scroll container.", ".uiScrollableAreaTrack{width:7px} and .uiScrollableAreaGripper{border-radius:7px;transition:width .25s} define a custom-styled scrollbar that widens on hover/drag.", "Mobile galleries instead hide the native scrollbar entirely (scrollbar-width:none / hidden ::-webkit-scrollbar)."],
+    anatomy: ["Scroll container", "Content", "Track (7px)", "Gripper (widens on interaction)"],
+    guidance: ["On desktop/legacy surfaces, use a custom 7px track + gripper that widens on hover, not the unstyled native scrollbar.", "On mobile, hide the scrollbar entirely and rely on touch momentum — don't show a custom gripper on touch."],
+    doDont: { dos: ["Widen the gripper on hover/drag, matching the documented transition:width .25s."], donts: ["Show a visible custom scrollbar on a mobile/touch gallery — every mobile instance hides it."] },
+  },
+  {
+    title: "Sheets",
+    slug: "sheets",
+    category: "Presentation",
+    description: "A full-height or bottom-up surface that temporarily takes over the viewport — the broader form of the Action Sheet transition.",
+    evidence: "documented",
+    findings: ["Same evidence as Action Sheets: ._a96f's translateY(100%) → 0 over .5s cubic-bezier(0,.61,.28,.92). The about-page brand menu is the clearest full, non-action-list example of this mechanism."],
+    guidance: ["Treat this as the same component as Action Sheets at a larger scale — don't invent a second, different transition for a 'sheet' versus an 'action sheet'."],
+    crossRef: { label: "Action Sheets", href: "/components/action-sheets" },
+  },
+  {
+    title: "Windows",
+    slug: "windows",
+    category: "Presentation",
+    description: "An independent document/task surface with its own title and controls — Instagram's web client has no OS-level windows; the nearest real analog is the legacy modal box.",
+    evidence: "inferred",
+    findings: ["No window-chrome (title bar, resize handle, minimize/maximize) selectors exist. The closest real surface is the legacy ._t/._1yv modal box (background:#fff, box-shadow:0 2px 26px rgba(0,0,0,.3))."],
+    guidance: ["Don't model this as a resizable, independent OS window — there's no such concept in the source. If a 'document-like' surface is needed, the legacy modal box is the only real precedent."],
+    closestAnalog: { label: "Modals & Panels", href: "/components/modals" },
+  },
+  {
+    title: "Color Wells",
+    slug: "color-wells",
+    category: "Selection And Input",
+    description: "A swatch that previews a selected colour before opening a picker — no evidence; Instagram's web client has no user-facing colour picker.",
+    evidence: "none",
+    reason: "No colour-well or colour-picker selectors were found in the captured CSS.",
+  },
+  {
+    title: "Combo Boxes",
+    slug: "combo-boxes",
+    category: "Selection And Input",
+    description: "An input where typing and menu selection are both valid — no evidence found distinct from a plain text field or the legacy menu.",
+    evidence: "none",
+    reason: "No selector combines text-input anatomy with menu-result anatomy in the captured CSS. Text Fields and Menus exist independently; nothing merges them.",
+  },
+  {
+    title: "Digit Entry Views",
+    slug: "digit-entry-views",
+    category: "Selection And Input",
+    description: "Per-character cells for short codes (OTP, PINs) — no evidence found.",
+    evidence: "none",
+    reason: "No per-character input cell pattern was found anywhere in /ig.",
+  },
+  {
+    title: "Image Wells",
+    slug: "image-wells",
+    category: "Selection And Input",
+    description: "A control for choosing/replacing an image value — no dedicated selector; closest real analog is the general Image View frame.",
+    evidence: "none",
+    reason: "No upload-well or image-picker-specific selector was found distinct from the standard ratio-locked Image View frame.",
+    closestAnalog: { label: "Image Views", href: "/components/image-views" },
+  },
+  {
+    title: "Pickers",
+    slug: "pickers",
+    category: "Selection And Input",
+    description: "A bounded value-set selector — no dedicated pattern found beyond the legacy menu/dropdown system.",
+    evidence: "none",
+    reason: "No wheel-picker, segmented-picker, or other bounded-selection-specific CSS was found beyond the general flyout menu already documented under Menus.",
+    closestAnalog: { label: "Menus", href: "/components/menus" },
+  },
+  {
+    title: "Segmented Controls",
+    slug: "segmented-controls",
+    category: "Selection And Input",
+    description: "Peer choices sharing one track — visually close to Stories Progress, but no selector for an actual interactive segmented selector was found.",
+    evidence: "none",
+    reason: "No \".segment\"-named class or interactive multi-option track selector exists in /ig. The segmented pill shape exists for Stories Progress, but that's a passive timer, not a selectable control.",
+    closestAnalog: { label: "Stories Progress", href: "/components/stories-progress" },
+  },
+  {
+    title: "Sliders",
+    slug: "sliders",
+    category: "Selection And Input",
+    description: "A continuous-value control with a track and thumb — no evidence in Instagram's own CSS.",
+    evidence: "none",
+    reason: "No range-input or custom slider-track/thumb selectors were found anywhere in the ten captured files. (This documentation site's own sliders, e.g. on the Motion and Typography pages, are this site's UI, not an extracted Instagram pattern.)",
+  },
+  {
+    title: "Steppers",
+    slug: "steppers",
+    category: "Selection And Input",
+    description: "A minus/value/plus control for small numeric changes — no evidence found.",
+    evidence: "none",
+    reason: "No stepper-specific selectors were found in /ig.",
+  },
+  {
+    title: "Text Fields",
+    slug: "text-fields",
+    category: "Selection And Input",
+    description: "A compact 36px input with a paired light/dark border token and a floating label pattern.",
+    evidence: "documented",
+    findings: ["._aa48{height:36px;display:flex;flex:1 0 0;min-width:0} is the field container.", "--ig-text-input-border-prism (219,223,228 / 43,48,54) and its hover variant --ig-text-input-border-hover-prism are real, paired light/dark tokens.", "--input-border-radius:6px applies here as everywhere else inputs appear."],
+    anatomy: ["36px field container", "Border (paired light/dark token)", "Label", "Value text"],
+    guidance: ["Keep the field at exactly 36px tall — that's the confirmed height across the evidenced selector.", "Source the border colour from the prism token pair, which already handles the hover state distinctly from the resting state."],
+    doDont: { dos: ["Use 6px radius, matching every other input-shaped control in the system."], donts: ["Introduce a taller default field height — 36px is the only evidenced size."] },
+    code: `.text-field {\n  height: 36px;\n  border-radius: var(--input-border-radius); /* 6px */\n  border: 1px solid rgb(var(--ig-text-input-border-prism));\n}\n.text-field:hover { border-color: rgb(var(--ig-text-input-border-hover-prism)); }`,
+    crossRef: { label: "Forms", href: "/components/forms" },
+  },
+  {
+    title: "Toggles",
+    slug: "toggles",
+    category: "Selection And Input",
+    description: "A 51×31 track with a 28px circular thumb that translates exactly 23px on check — one of the most precisely confirmed components in this whole manual.",
+    evidence: "documented",
+    findings: ["._9nq9{height:31px;width:51px} — the track, confirmed at the literal selector.", "._9nqb:before{height:28px;width:28px;border-radius:14px} — the thumb, with a layered shadow (0 3px 8px rgba(0,0,0,.15), two finer 1px shadows).", "Checked state: background-color:#2d88ff (also seen as #1877f2), thumb transform:translate(23px) — and 51 − 28 = 23, so the thumb travels exactly the remaining track width.", "Disabled state drops to opacity:.3, not a colour change."],
+    anatomy: ["Track (51×31, 20px radius)", "Thumb (28×28, 14px radius)", "Checked fill colour", "Disabled opacity"],
+    guidance: ["Use the exact 51×31 / 28×28 / translate(23px) numbers — they're confirmed, not estimated, and they're internally consistent (23 = 51 − 28).", "Disable by dropping opacity to .3, not by recolouring the track."],
+    doDont: { dos: ["Reuse the confirmed dimensions verbatim rather than rounding to 50×30 or similar 'clean' numbers — the source isn't round."], donts: ["Animate the thumb with anything but transform: translate — no scale or colour-interpolation was found on the thumb itself."] },
+    code: `.toggle__track { width: 51px; height: 31px; border-radius: 20px; background: #0000000d; border: .5px solid rgba(0,0,0,.1); transition: .5s ease; }\n.toggle__track[data-checked="true"] { background: #2d88ff; }\n.toggle__thumb { width: 28px; height: 28px; border-radius: 14px; box-shadow: 0 3px 8px rgba(0,0,0,.15); transition: .5s ease; }\n.toggle__track[data-checked="true"] .toggle__thumb { transform: translate(23px); }\n.toggle[disabled] { opacity: .3; }`,
+  },
+  {
+    title: "Virtual Keyboards",
+    slug: "virtual-keyboards",
+    category: "Selection And Input",
+    description: "A custom on-screen keyboard — Instagram's web client uses the platform's native keyboard; nothing in /ig builds one.",
+    evidence: "none",
+    reason: "No custom-keyboard selectors exist. This category applies to native apps replacing the system keyboard; a web client has no mechanism to do that and no evidence of attempting it.",
+  },
+  {
+    title: "Activity Rings",
+    slug: "activity-rings",
+    category: "Status",
+    description: "A watchOS fitness-ring indicator — has no relationship to anything in Instagram's product.",
+    evidence: "none",
+    reason: "Zero occurrences. This is a watchOS-specific HIG category with no plausible web equivalent in this codebase.",
+  },
+  {
+    title: "Gauges",
+    slug: "gauges",
+    category: "Status",
+    description: "A bounded-value dial or arc indicator — no evidence found.",
+    evidence: "none",
+    reason: "No gauge, dial, or arc-progress selectors were found. Where Instagram shows bounded progress, the evidenced pattern is the linear Stories progress bar, not a gauge.",
+    closestAnalog: { label: "Stories Progress", href: "/components/stories-progress" },
+  },
+  {
+    title: "Progress Indicators",
+    slug: "progress-indicators",
+    category: "Status",
+    description: "This is the same component as Stories Progress, viewed under a different HIG category name — see that page for the full, real treatment.",
+    evidence: "documented",
+    findings: ["Story progress uses a transform: scaleX width-fill transition with linear timing, set per-instance to match the story's display duration — fully documented on Stories Progress."],
+    guidance: ["Don't duplicate content here — Stories Progress is the canonical page for this component."],
+    crossRef: { label: "Stories Progress", href: "/components/stories-progress" },
+  },
+  {
+    title: "Rating Indicators",
+    slug: "rating-indicators",
+    category: "Status",
+    description: "Star or sentiment ratings — Instagram has no rating feature; no evidence found.",
+    evidence: "none",
+    reason: "No star-rating, sentiment-score, or bounded-rating selectors exist anywhere in /ig. Instagram's product has no rating mechanic.",
+  },
 ];
 
-function normalizeRef(ref) {
-  return CSS_REFERENCES[ref] ? ref : "appTokens";
-}
-
-function sentenceList(items, fallback) {
-  return items && items.length ? items : fallback;
-}
-
-function componentCode(guide) {
-  const className = guide.slug.replaceAll("-", "-");
-  if (guide.demo.type === "button") {
-    return `<button class="ig-button" data-variant="primary">Continue</button>
-<button class="ig-button" data-variant="secondary">Save draft</button>
-<button class="ig-button" data-variant="tertiary">Cancel</button>`;
-  }
-  if (guide.demo.type === "field" || guide.demo.family === "input") {
-    return `<label class="ig-field">
-  <span class="ig-field__label">${guide.title}</span>
-  <input class="ig-field__control" name="${className}" />
-</label>`;
-  }
-  if (guide.demo.family === "presentation") {
-    return `<section class="ig-${className}" role="dialog" aria-labelledby="${className}-title">
-  <h2 id="${className}-title">${guide.title}</h2>
-  <p>Keep the surface focused, labelled, and dismissible.</p>
-  <button type="button">Done</button>
-</section>`;
-  }
-  if (guide.demo.family === "nav") {
-    return `<nav class="ig-${className}" aria-label="${guide.title}">
-  <a aria-current="page">Home</a>
-  <a>Explore</a>
-  <a>Profile</a>
-</nav>`;
-  }
-  if (guide.demo.family === "status") {
-    return `<div class="ig-${className}" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="64">
-  <span class="ig-${className}__track"><span style="width:64%"></span></span>
-  <span class="ig-${className}__label">64%</span>
-</div>`;
-  }
-  return `<div class="ig-${className}" data-component="${guide.title}">
-  <div class="ig-${className}__surface">
-    <strong>${guide.title}</strong>
-    <span>Tokenized surface, state, and content anatomy.</span>
-  </div>
-</div>`;
-}
-
-function buildGuide([title, slug, category, demoType, refs, purpose, summary]) {
-  const family = DEMO_FAMILY[slug] || "layout";
-  const demoCopy = DEMO_COPY[family] || DEMO_COPY.layout;
-  const categoryDefaults = CATEGORY_DEFAULTS[category];
-  const cssRefs = refs.map(normalizeRef);
-
-  const guide = {
-    title,
-    slug,
-    href: `/components/${slug}`,
-    category,
-    description: summary,
-    keywords: [
-      title.toLowerCase(),
-      slug.replaceAll("-", " "),
-      category.toLowerCase(),
-      "component",
-      "instagram",
-    ],
-    demo: {
-      type: demoType,
-      family,
-    },
-    overview: summary,
-    purpose,
-    principles: [
-      categoryDefaults.principle,
-      `Build ${title.toLowerCase()} from the same semantic tokens documented in /ig instead of local one-off colours.`,
-      "Prefer one clear state transition over combined colour, scale, shadow, and layout changes.",
-    ],
-    anatomy: demoCopy.anatomy,
-    variants: demoCopy.variants,
-    states: demoCopy.states,
-    interactions: [
-      categoryDefaults.interaction,
-      `The ${title.toLowerCase()} demo below updates visible UI state and keeps the control keyboard reachable.`,
-    ],
-    motion: [
-      "Use transform, opacity, clip-path, or scaleX for motion; avoid layout-driven animation.",
-      "Use the Instagram curves found in /ig: cubic-bezier(0,0,.1,1), cubic-bezier(.7,0,.3,1), and short ease-out modal motion.",
-      "Provide a reduced-motion path for every loop, reveal, and progress animation.",
-    ],
-    layout: [categoryDefaults.layout, "Maintain 4px-based spacing in app UI and 7.142vw rhythm in editorial brand layouts."],
-    responsive: [
-      categoryDefaults.responsive,
-      "At narrow widths, preserve readable 12px, 14px, and 16px text rather than compressing the component until labels wrap badly.",
-    ],
-    accessibility: [
-      categoryDefaults.accessibility,
-      "Keep focus visible, expose selected and disabled states, and avoid relying on colour alone for state.",
-    ],
-    bestPractices: [
-      `Use ${title.toLowerCase()} only where the surrounding task needs that component's specific affordance.`,
-      "Map background, border, text, and disabled colours to the semantic tokens surfaced from /ig.",
-      "Test default, hover, focus, selected, disabled, loading, and narrow viewport states before shipping.",
-    ],
-    commonMistakes: [
-      "Replacing the compact Instagram rhythm with generic oversized controls.",
-      "Adding decorative shadows, gradients, or nested cards that are not present in the source CSS.",
-      "Leaving the interactive state visible only to pointer users or only to colour perception.",
-    ],
-    visualExamples: [
-      `Primary ${title.toLowerCase()} surface using Instagram semantic background and separator tokens.`,
-      `Dense ${title.toLowerCase()} state with compact system type and truncation.`,
-      `Responsive ${title.toLowerCase()} adaptation using either stacking, sheet presentation, or horizontal scroll.`,
-    ],
-    implementationNotes: [
-      "This page treats /ig as the evidence source and names unsupported details as guidance rather than invented tokens.",
-      `The ${title.toLowerCase()} implementation should be a reusable primitive with explicit variants instead of copied markup.`,
-      "When the extracted CSS exposes only partial evidence, extend from the nearest documented token family and document the assumption.",
-    ],
-    cssRefs,
+export const COMPONENT_GUIDES = EVIDENCED_GUIDES.map((raw) => {
+  const keywords = [raw.title.toLowerCase(), raw.slug.replaceAll("-", " "), raw.category.toLowerCase(), "component", "instagram"];
+  return {
+    ...raw,
+    href: `/components/${raw.slug}`,
+    keywords,
   };
+});
 
-  guide.code = componentCode(guide);
-  return guide;
+export function getComponentGuide(slug) {
+  return COMPONENT_GUIDES.find((guide) => guide.slug === slug) || null;
 }
 
-export const COMPONENT_GUIDES = RAW_GUIDES.map(buildGuide);
+export function getComponentGuidesByCategory() {
+  const groups = {};
+  for (const guide of COMPONENT_GUIDES) {
+    groups[guide.category] = groups[guide.category] || [];
+    groups[guide.category].push(guide);
+  }
+  return groups;
+}
 
-export const STATIC_COMPONENT_GUIDE_SLUGS = new Set(["buttons", "charts"]);
-
-export const DYNAMIC_COMPONENT_GUIDES = COMPONENT_GUIDES.filter(
-  (guide) => !STATIC_COMPONENT_GUIDE_SLUGS.has(guide.slug)
-);
-
-export const COMPONENT_NAV_ITEMS = DYNAMIC_COMPONENT_GUIDES.map((guide) => ({
+export const COMPONENT_NAV_ITEMS = COMPONENT_GUIDES.map((guide) => ({
   title: guide.title,
   href: guide.href,
   description: guide.description,
   keywords: guide.keywords,
 }));
-
-export function getComponentGuide(slug) {
-  return COMPONENT_GUIDES.find((guide) => guide.slug === slug);
-}
-
-export function getComponentGuidesByCategory() {
-  return COMPONENT_GUIDES.reduce((groups, guide) => {
-    if (!groups[guide.category]) groups[guide.category] = [];
-    groups[guide.category].push(guide);
-    return groups;
-  }, {});
-}

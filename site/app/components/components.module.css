@@ -81,6 +81,33 @@
   color: rgb(var(--ig-primary-text));
 }
 
+.evidenceTag {
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-text));
+}
+
+.evidenceTag[data-tier="documented"] {
+  background: rgba(88, 195, 34, 0.1);
+  color: rgb(88, 155, 34);
+}
+
+.evidenceTag[data-tier="inferred"] {
+  background: rgba(255, 122, 0, 0.1);
+  color: var(--ig-stop-orange);
+}
+
+.evidenceTag[data-tier="none"] {
+  background: rgba(var(--ig-error), 0.1);
+  color: rgb(var(--ig-error));
+}
+
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

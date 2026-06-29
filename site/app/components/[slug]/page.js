@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import ComponentGuidePage from "@/components/docs/ComponentGuidePage";
-import { DYNAMIC_COMPONENT_GUIDES, getComponentGuide } from "@/lib/component-guides";
+import { COMPONENT_GUIDES, getComponentGuide } from "@/lib/component-guides";
 
 export function generateStaticParams() {
-  return DYNAMIC_COMPONENT_GUIDES.map((guide) => ({ slug: guide.slug }));
+  return COMPONENT_GUIDES.map((guide) => ({ slug: guide.slug }));
 }
 
 export async function generateMetadata({ params }) {
