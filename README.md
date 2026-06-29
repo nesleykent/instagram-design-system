@@ -1,5 +1,7 @@
 # Instagram Brand Identity Manual (Reverse-Engineered)
 
+**Live site: [nesleykent.github.io/instagram-design-system](https://nesleykent.github.io/instagram-design-system/)**
+
 A production documentation website — in the spirit of Apple's Human Interface Guidelines — that reverse-engineers Instagram's **own** brand identity system: typography, colour, layout, shape, components, motion, imagery, and accessibility, all derived directly from Instagram's production CSS and the public [about.instagram.com/brand](https://about.instagram.com/brand/) page.
 
 **The website is the manual.** Every guideline, token, and component lives on its own page at [`site/`](site/), with real navigation, search, breakpoints, and interactive examples — not a folder of long-form text documents.
@@ -45,6 +47,10 @@ npm run build    # static export to site/out — see site/README.md for deploy n
 ## Reading order
 
 Start at the site's [Overview](site/app/page.js), then **Foundations** (Typography → Colour → Layout & Grid → Shape → Motion → Imagery → Accessibility) before **Components** — later sections assume the tokens established earlier. The written `manual/*.md` files follow the same order for offline reading.
+
+## Deployment
+
+Every push to `main` touching `site/` builds and publishes the static export to GitHub Pages via [`.github/workflows/deploy-site.yml`](.github/workflows/deploy-site.yml) — no manual deploy step.
 
 ## Source assets
 

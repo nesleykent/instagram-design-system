@@ -1,5 +1,7 @@
 # Instagram Brand Identity Manual — the website
 
+**Live: [nesleykent.github.io/instagram-design-system](https://nesleykent.github.io/instagram-design-system/)**
+
 A Next.js (App Router) documentation site that presents the reverse-engineered Instagram brand identity manual (see the repo root [`manual/`](../manual/) and [`tokens/`](../tokens/)) as a real, navigable, interactive product — in the spirit of Apple's Human Interface Guidelines or Instagram's own brand site.
 
 ## Stack
@@ -17,7 +19,7 @@ npm run build    # static export → out/
 npm run start    # serve a non-static production build (not used for deploy)
 ```
 
-`next.config.js` builds with `output: "export"` — the result is fully static and can be hosted from any static file server, including GitHub Pages (see `.github/workflows/deploy-site.yml` at the repo root).
+`next.config.js` builds with `output: "export"` — the result is fully static and can be hosted from any static file server. `DEPLOY_TARGET=gh-pages npm run build` sets the `/instagram-design-system` basePath/assetPrefix this repo's GitHub Pages deployment needs; a plain `npm run build` (no env var) builds for root-path hosting. Every push to `main` touching `site/` redeploys automatically via `.github/workflows/deploy-site.yml` at the repo root.
 
 ## Project structure
 
