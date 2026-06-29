@@ -37,6 +37,7 @@ app/
   accessibility/page.js
   components/
     page.js                   Components index
+    [slug]/page.js             Static-exported generated component catalogue pages
     buttons/page.js
     links-navigation/page.js
     cards/page.js
@@ -54,6 +55,7 @@ components/docs/               Reusable documentation building blocks (see below
 lib/
   nav.js                       Single source of truth for sidebar groups, breadcrumbs, prev/next, and search
   search.js                     Client-side search scoring over lib/nav.js
+  component-guides.js           Component catalogue data, CSS evidence references, and generated nav entries
 ```
 
 ## The component library (`components/docs/`)
@@ -69,12 +71,13 @@ Every page is composed from a small set of reusable, content-driven components r
 | `RadiusScale`, `ShapeGrammar`, `AspectRatioGallery` | Shape primitives |
 | `EasingPlayground`, `DurationScaleBars`, `RollingChevronDemo`, `ClipPathRevealDemo` | Motion playgrounds |
 | `ComponentShowcase`, `CodeBlock`, `DoDontGrid`, `ImplementationNote` | Component documentation blocks |
+| `ComponentGuidePage`, `ComponentGuideDemo` | Full component-page renderer and live demos for the expanded catalogue |
 | `ContrastChecker`, `MosaicGridDemo`, `ScrimOverlayDemo`, `ChatBubbleDemo`, `StoriesProgressDemo` | Page-specific interactive examples |
 
 ## Adding a new page
 
 The site is intentionally config-driven so it can grow without restructuring:
 
-1. Add a route under `app/` (e.g. `app/components/tooltips/page.js`).
-2. Add one entry to the matching group in `lib/nav.js` (`title`, `href`, `description`, `keywords`). Sidebar, breadcrumbs, prev/next, and search all update automatically — nothing else to wire up.
-3. Compose the page from `components/docs/*` where possible; add a new doc component only when an existing one genuinely doesn't fit.
+1. For a fully bespoke page, add a route under `app/` (e.g. `app/components/tooltips/page.js`) and one entry to `lib/nav.js`.
+2. For the expanded component catalogue, add or update one entry in `lib/component-guides.js`. The dynamic `app/components/[slug]/page.js` route, sidebar, breadcrumbs, prev/next, search, and Components index all derive from that data.
+3. Compose bespoke pages from `components/docs/*` where possible; add a new doc component only when an existing one genuinely doesn't fit.

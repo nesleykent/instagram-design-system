@@ -1,3 +1,5 @@
+import { COMPONENT_NAV_ITEMS } from "./component-guides";
+
 // Single source of truth for site navigation. Sidebar, breadcrumbs,
 // prev/next footer nav, and the search index are all derived from this
 // file — add a page by adding one entry here plus the route itself.
@@ -126,6 +128,7 @@ export const NAV = [
         description: "Input borders, radius, and focus tokens.",
         keywords: ["form", "input", "field"],
       },
+      ...COMPONENT_NAV_ITEMS,
     ],
   },
   {

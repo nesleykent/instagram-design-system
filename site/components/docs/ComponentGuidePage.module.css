@@ -1,0 +1,188 @@
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.meta span,
+.pills span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 10px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-pill);
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+}
+
+.lede {
+  color: rgb(var(--ig-primary-text));
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.guidanceList {
+  display: grid;
+  gap: 12px;
+}
+
+.guidanceList li {
+  border-left: 2px solid rgb(var(--ig-separator));
+  padding-left: 16px;
+  color: rgb(var(--ig-primary-text));
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.anatomyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.anatomyItem {
+  display: flex;
+  gap: 12px;
+  min-height: 74px;
+  padding: 16px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  background: rgb(var(--ig-secondary-bg));
+}
+
+.anatomyItem span {
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+}
+
+.anatomyItem p {
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.exampleGrid,
+.sourceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.exampleCard,
+.sourceCard {
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  background: rgb(var(--ig-secondary-bg));
+  overflow: hidden;
+}
+
+.exampleCard p {
+  padding: 14px;
+  color: rgb(var(--ig-secondary-text));
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.exampleVisual {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  height: 118px;
+  padding: 14px;
+  background: rgb(var(--ig-elevated-bg));
+  border-bottom: 1px solid rgb(var(--ig-separator));
+}
+
+.exampleVisual span {
+  display: block;
+  border-radius: var(--radius-md);
+  background: rgb(var(--ig-highlight-bg));
+  border: 1px solid rgb(var(--ig-separator));
+}
+
+.exampleVisual span:first-child {
+  grid-row: span 2;
+  background-image: var(--ig-gradient-spectrum);
+}
+
+.exampleVisual[data-index="1"] span:first-child {
+  grid-row: auto;
+  background-image: none;
+  background-color: rgb(var(--ig-primary-text));
+}
+
+.exampleVisual[data-index="1"] span:nth-child(2) {
+  grid-column: span 2;
+}
+
+.exampleVisual[data-index="2"] {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.exampleVisual[data-index="2"] span {
+  border-radius: var(--radius-pill);
+}
+
+.sourceCard {
+  padding: 16px;
+}
+
+.sourceTitle {
+  font-size: 14px;
+  font-weight: var(--fw-bold);
+  margin-bottom: 8px;
+}
+
+.sourceCard code {
+  display: block;
+  margin-bottom: 12px;
+  color: rgb(var(--ig-secondary-text));
+  font-size: 11.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.sourceCard ul {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.sourceCard li {
+  padding-left: 10px;
+  border-left: 2px solid rgb(var(--ig-separator));
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.sourceCard p:last-child {
+  color: rgb(var(--ig-secondary-text));
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .exampleGrid,
+  .sourceGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .anatomyGrid {
+    grid-template-columns: 1fr;
+  }
+}
