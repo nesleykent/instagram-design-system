@@ -11,6 +11,11 @@ export const metadata = {
   title: "Overview · Instagram Brand Identity Manual",
 };
 
+// Components now has ~58 entries (9 hand-built pages + the generated
+// catalogue) — cap the homepage preview so the directory stays scannable
+// and point overflow at the full /components index instead of listing all.
+const DIRECTORY_CAP = 10;
+
 const PILLARS = [
   {
     title: "A custom typeface, for global scale",
@@ -110,21 +115,33 @@ export default function HomePage() {
         <p className="eyebrow">Everything in this manual</p>
         <h2 className={styles.previewTitle}>Browse by section.</h2>
         <div className={styles.directoryGroups}>
-          {NAV.filter((g) => g.group !== "Get started").map((group) => (
-            <div key={group.group} className={styles.directoryGroup}>
-              <h3>{group.group}</h3>
-              <ul>
-                {group.items.map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href}>
-                      <span>{item.title}</span>
-                      <IconArrowRight size={14} />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {NAV.filter((g) => g.group !== "Get started").map((group) => {
+            const visible = group.items.slice(0, DIRECTORY_CAP);
+            const hiddenCount = group.items.length - visible.length;
+            return (
+              <div key={group.group} className={styles.directoryGroup}>
+                <h3>{group.group}</h3>
+                <ul>
+                  {visible.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href}>
+                        <span>{item.title}</span>
+                        <IconArrowRight size={14} />
+                      </Link>
+                    </li>
+                  ))}
+                  {hiddenCount > 0 && (
+                    <li>
+                      <Link href="/components" className={styles.directoryMore}>
+                        <span>+{hiddenCount} more in the full catalogue</span>
+                        <IconArrowRight size={14} />
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </section>
 

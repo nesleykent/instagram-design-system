@@ -224,6 +224,11 @@
   border-bottom: 1px solid rgb(var(--ig-separator));
 }
 
+.directoryMore span {
+  color: rgb(var(--ig-stop-magenta));
+  font-weight: var(--fw-semibold);
+}
+
 .directoryGroup li a svg {
   opacity: 0;
   transform: translateX(-4px);
