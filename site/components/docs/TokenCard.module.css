@@ -1,0 +1,101 @@
+.card {
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.previewWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  background: rgb(var(--ig-secondary-bg));
+  border-bottom: 1px solid rgb(var(--ig-separator));
+}
+
+.colorPreview {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.colorChip {
+  flex: 1;
+}
+
+.weightPreview {
+  font-size: 28px;
+}
+
+.scalePreview {
+  color: rgb(var(--ig-primary-text));
+}
+
+.gridPreview {
+  height: 16px;
+  max-width: 90%;
+  background-image: var(--ig-gradient-hero);
+  border-radius: var(--radius-pill);
+}
+
+.radiusPreview {
+  width: 44px;
+  height: 44px;
+  background-image: var(--ig-gradient-hero);
+}
+
+.easeSvg {
+  background: rgb(var(--ig-primary-bg));
+  border-radius: var(--radius-sm);
+}
+
+.durationPreview {
+  width: 80%;
+  height: 8px;
+  background: rgb(var(--ig-primary-bg));
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.durationBar {
+  height: 100%;
+  background-image: var(--ig-gradient-hero);
+}
+
+.meta {
+  padding: 12px 14px 14px;
+}
+
+.name {
+  font-size: 13.5px;
+  font-weight: var(--fw-semibold);
+  margin-bottom: 6px;
+}
+
+.tokenBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: rgb(var(--ig-stop-magenta));
+  max-width: 100%;
+}
+
+.tokenBtn code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value {
+  font-size: 11.5px;
+  font-family: var(--font-mono);
+  color: rgb(var(--ig-tertiary-text));
+  margin-top: 6px;
+}

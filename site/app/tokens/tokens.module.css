@@ -1,0 +1,64 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 420px;
+  padding: 10px 14px;
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-secondary-bg));
+  border-radius: var(--radius-pill);
+  color: rgb(var(--ig-tertiary-text));
+}
+
+.searchBox input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: rgb(var(--ig-primary-text));
+  outline: none;
+}
+
+.pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pills button {
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-text));
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.pills button[data-active="true"] {
+  background: rgb(var(--ig-primary-text));
+  color: rgb(var(--ig-primary-bg));
+  border-color: transparent;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.empty {
+  padding: 48px 0;
+  text-align: center;
+  color: rgb(var(--ig-tertiary-text));
+}
