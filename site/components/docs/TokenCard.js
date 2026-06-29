@@ -46,6 +46,8 @@ function Preview({ token }) {
         </div>
       );
     }
+    case "family":
+      return <span className={styles.familyPreview}>Ag</span>;
     default:
       return null;
   }
