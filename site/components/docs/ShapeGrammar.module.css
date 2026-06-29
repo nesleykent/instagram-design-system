@@ -1,0 +1,63 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 24px 16px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.shape {
+  width: 72px;
+  height: 72px;
+  background-image: var(--ig-gradient-hero);
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.rounded {
+  border-radius: 16px;
+}
+
+.pill {
+  width: 96px;
+  height: 40px;
+  border-radius: 999px;
+}
+
+.squircle {
+  clip-path: polygon(
+    100% 50%, 98.06% 80.94%, 92.05% 92.05%, 80.94% 98.06%,
+    50% 100%, 19.06% 98.06%, 7.95% 92.05%, 1.94% 80.94%,
+    0% 50%, 1.94% 19.06%, 7.95% 7.95%, 19.06% 1.94%,
+    50% 0%, 80.94% 1.94%, 92.05% 7.95%, 98.06% 19.06%
+  );
+}
+
+.name {
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+}
+
+.note {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgb(var(--ig-tertiary-text));
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

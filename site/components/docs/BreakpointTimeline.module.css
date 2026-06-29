@@ -1,0 +1,78 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bar {
+  position: relative;
+  display: flex;
+  height: 36px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgb(var(--ig-separator));
+}
+
+.segment {
+  background: rgb(var(--ig-secondary-bg));
+  border-right: 1px solid rgb(var(--ig-primary-bg));
+  transition: background-color 150ms var(--ease-glide);
+}
+
+.segment[data-active="true"] {
+  background-image: var(--ig-gradient-hero);
+}
+
+.marker {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  background: rgb(var(--ig-primary-text));
+  transition: left 80ms linear;
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(var(--ig-primary-text));
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.labels span {
+  font-size: 11px;
+  color: rgb(var(--ig-tertiary-text));
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.labels span[data-active="true"] {
+  color: rgb(var(--ig-primary-text));
+  font-weight: var(--fw-semibold);
+}
+
+.labels small {
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.current {
+  margin-top: 4px;
+  font-size: 13.5px;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.current strong {
+  color: rgb(var(--ig-primary-text));
+}
