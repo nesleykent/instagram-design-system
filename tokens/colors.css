@@ -1,0 +1,105 @@
+/*
+ * Instagram brand & semantic colour tokens, extracted from ig/.
+ * See ../manual/02-color.md for evidence and confidence levels.
+ *
+ * Semantic tokens store bare "R, G, B" triplets so callers compose
+ * rgb()/rgba() themselves, e.g.: color: rgb(var(--ig-primary-text));
+ */
+
+:root {
+  /* Brand gradient family — see manual/02-color.md for full crop list */
+  --ig-gradient-stop-yellow: #FFD600;
+  --ig-gradient-stop-orange: #FF7A00;
+  --ig-gradient-stop-rose: #FF0169;
+  --ig-gradient-stop-magenta: #D300C5;
+  --ig-gradient-stop-purple: #7638FA;
+
+  --ig-gradient-hero: linear-gradient(72.44deg,
+    var(--ig-gradient-stop-rose) 4.69%,
+    var(--ig-gradient-stop-magenta) 48.96%,
+    var(--ig-gradient-stop-purple) 92.19%);
+
+  --ig-gradient-spectrum: linear-gradient(125deg,
+    var(--ig-gradient-stop-yellow) 15%,
+    var(--ig-gradient-stop-orange) 30%,
+    var(--ig-gradient-stop-rose),
+    var(--ig-gradient-stop-magenta) 70%,
+    var(--ig-gradient-stop-purple) 85%);
+
+  --ig-gradient-text-warm: linear-gradient(to right,
+    var(--ig-gradient-stop-magenta), var(--ig-gradient-stop-orange), var(--ig-gradient-stop-yellow));
+
+  --ig-underline-accent: linear-gradient(#F7D440, #ED1F1F);
+
+  /* Semantic tokens — light mode (default) */
+  --ig-primary-background: 255, 255, 255;
+  --ig-secondary-background: 243, 245, 247;
+  --ig-elevated-background: 255, 255, 255;
+  --ig-secondary-elevated-background: 243, 245, 247;
+  --ig-primary-text: 0, 0, 0;
+  --ig-secondary-text: 115, 115, 115;
+  --ig-tertiary-text: 115, 115, 115;
+  --ig-primary-icon: 38, 38, 38;
+  --ig-secondary-icon: 142, 142, 142;
+  --ig-highlight-background: 239, 239, 239;
+  --ig-separator: 219, 219, 219;
+  --post-separator: 239, 239, 239;
+  --ig-stroke: 219, 219, 219;
+  --ig-focus-stroke: 168, 168, 168;
+  --ig-hover-overlay-rgb: 0, 0, 0;
+  --ig-hover-overlay-alpha: .05;
+
+  /* Buttons */
+  --ig-secondary-button: 250, 250, 250;
+  --ig-secondary-button-hover: 219, 219, 219;
+  --ig-tertiary-button-background: 255, 255, 255;
+  --ig-tertiary-button-border: 219, 219, 219;
+  --ig-tertiary-button-hover: 245, 245, 245;
+  --ig-tertiary-button-text: 38, 38, 38;
+
+  /* Messaging */
+  --ig-incoming-message-bubble: 243, 245, 247;
+
+  /* Fixed / theme-independent semantic colours — do not theme-swap these */
+  --ig-primary-button: 0, 149, 246;       /* #0095F6 — signature Instagram blue */
+  --ig-primary-button-hover: 24, 119, 242;
+  --ig-error-or-destructive: 237, 73, 86;
+  --ig-success: 88, 195, 34;
+  --ig-live-badge: 255, 1, 105;
+  --ig-close-friends-refreshed: 28, 209, 79;
+  --ig-subscribers-only: 118, 56, 250;
+  --ig-outgoing-message-bubble: 74, 93, 249;
+  --web-always-white: 255, 255, 255;
+  --web-always-black: 0, 0, 0;
+  --gradient-yellow: 255, 214, 0;          /* matches --ig-gradient-stop-yellow */
+  --gradient-purple: 118, 56, 250;         /* matches --ig-subscribers-only */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ig-primary-background: 12, 16, 20;      /* deliberate soft-black, not #000 */
+    --ig-secondary-background: 37, 41, 46;
+    --ig-elevated-background: 33, 35, 40;
+    --ig-secondary-elevated-background: 43, 48, 54;
+    --ig-primary-text: 245, 245, 245;          /* deliberate soft-white, not #fff */
+    --ig-secondary-text: 168, 168, 168;
+    --ig-tertiary-text: 199, 199, 199;
+    --ig-primary-icon: 245, 245, 245;
+    --ig-highlight-background: 38, 38, 38;
+    --ig-separator: 38, 38, 38;
+    --post-separator: 38, 38, 38;
+    --ig-stroke: 85, 85, 85;
+    --ig-focus-stroke: 85, 85, 85;
+    --ig-hover-overlay-rgb: 255, 255, 255;
+    --ig-hover-overlay-alpha: .1;
+
+    --ig-secondary-button: 38, 38, 38;
+    --ig-secondary-button-hover: 38, 38, 38;
+    --ig-tertiary-button-background: 33, 35, 40;
+    --ig-tertiary-button-border: 54, 54, 54;
+    --ig-tertiary-button-hover: 38, 38, 38;
+    --ig-tertiary-button-text: 245, 245, 245;
+
+    --ig-incoming-message-bubble: 37, 41, 46;
+  }
+}

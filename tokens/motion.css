@@ -1,0 +1,57 @@
+/*
+ * Motion tokens, extracted from ig/.
+ * See ../manual/06-motion.md for evidence, curve names, and the
+ * about-page reduced-motion gap noted below.
+ */
+
+:root {
+  /* Named easing curves — about-page brand storytelling.
+     Labels are descriptive, assigned for this manual; not confirmed
+     internal names. */
+  --ig-ease-standard: cubic-bezier(.33, 0, .67, 1);    /* opacity fades, item intros */
+  --ig-ease-confident: cubic-bezier(.7, 0, .3, 1);     /* clip-path wipes, lightbox zoom */
+  --ig-ease-glide: cubic-bezier(0, 0, .1, 1);          /* translateY reveals, rolling chevron */
+  --ig-ease-settle: cubic-bezier(0, .61, .28, .92);    /* panel slide-up, nav underline-grow */
+  --ig-ease-anticipate: cubic-bezier(.4, 0, .1, 1);    /* brand-logo zoom, alt split-reveal */
+
+  /* Duration scale */
+  --ig-duration-micro: 150ms;     /* hover feedback */
+  --ig-duration-reveal: 666ms;    /* recurs exactly in source */
+  --ig-duration-narrative: 2s;    /* looping/narrative beats */
+}
+
+/* The signature "rolling" hover affordance — appears near-identically
+   on nav links, the type tester, and deep-dive cards. See manual/06-motion.md. */
+@keyframes ig-rolling {
+  0%   { transform: translate(-100%); }
+  50%  { transform: translate(0); }
+  100% { transform: translate(125%); }
+}
+.ig-rolling-trigger:hover .ig-rolling-element {
+  animation: ig-rolling 2s infinite var(--ig-ease-glide);
+}
+
+/* Stories-style progress segment fill */
+@keyframes ig-fill-progress-bar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/*
+ * RECOMMENDED ADDITION — not present in the source about-page files.
+ * manual/06-motion.md and manual/08-accessibility.md flag that the
+ * about-page's heavy scroll-linked/looping motion has no
+ * prefers-reduced-motion override, unlike the core product app.
+ * This block is this manual's suggested remediation, not an extracted token.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .ig-rolling-trigger:hover .ig-rolling-element,
+  [class*="rolling"],
+  [style*="animation"] {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
