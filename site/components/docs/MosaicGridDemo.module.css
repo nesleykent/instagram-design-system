@@ -1,0 +1,22 @@
+.grid {
+  display: grid;
+  aspect-ratio: 16 / 9;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "a b" "a c";
+  gap: 4px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tilea {
+  grid-area: a;
+}
+
+.tileb {
+  grid-area: b;
+}
+
+.tilec {
+  grid-area: c;
+}

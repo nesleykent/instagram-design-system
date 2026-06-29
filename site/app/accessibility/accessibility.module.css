@@ -1,0 +1,38 @@
+.winCard {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgba(88, 195, 34, 0.05);
+}
+
+.winTitle {
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  margin-bottom: 6px;
+}
+
+.winDetail {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.gaps {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.note {
+  font-size: 13.5px;
+  color: rgb(var(--ig-secondary-text));
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+.note code {
+  font-family: var(--font-mono);
+  background: rgb(var(--ig-secondary-bg));
+  padding: 1px 5px;
+  border-radius: var(--radius-xs);
+}

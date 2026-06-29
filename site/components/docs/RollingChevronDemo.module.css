@@ -1,0 +1,59 @@
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.trigger:hover {
+  border-color: rgb(var(--ig-stroke));
+  background-color: rgba(var(--ig-hover-overlay-rgb), var(--ig-hover-overlay-alpha));
+}
+
+.label {
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+}
+
+.rollWrap {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--ig-tertiary-text));
+}
+
+.icon {
+  transition: opacity 150ms var(--ease-glide);
+}
+
+.roll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.trigger:hover .icon {
+  opacity: 0;
+}
+
+.trigger:hover .roll {
+  opacity: 1;
+  animation: ig-rolling 1.6s infinite var(--ease-glide);
+}
