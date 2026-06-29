@@ -421,7 +421,7 @@ const primitiveCssExample = `.chart-bars {
   height: var(--height);
   min-height: 28px;
   border: 0;
-  border-radius: 8px 8px 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
   background: rgb(var(--ig-highlight-bg));
   transition: transform 150ms cubic-bezier(0, 0, .1, 1);
 }

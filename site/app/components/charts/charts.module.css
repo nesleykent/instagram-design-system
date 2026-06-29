@@ -98,7 +98,7 @@
   position: relative;
   height: var(--height);
   min-height: 12px;
-  border-radius: 7px 7px 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
   background: rgb(var(--ig-highlight-bg));
 }
 
@@ -171,7 +171,7 @@
 }
 
 .heroLegend i[data-series="primary"] {
-  background-image: var(--ig-gradient-spectrum);
+  background: var(--ig-stop-rose);
 }
 
 .heroLegend i[data-series="secondary"] {
@@ -323,7 +323,7 @@
   height: var(--bar);
   min-height: 28px;
   border: 0;
-  border-radius: 8px 8px 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
   background: rgb(var(--ig-highlight-bg));
   color: rgb(var(--ig-primary-text));
   cursor: pointer;
@@ -374,12 +374,11 @@
   height: 9px;
   margin-right: 7px;
   border-radius: 50%;
-  background-image: var(--ig-gradient-spectrum);
+  background: var(--ig-stop-rose);
 }
 
 .legend [data-tone="secondary"] i {
   background: rgba(var(--ig-secondary-text), 0.45);
-  background-image: none;
 }
 
 .calloutLayer {
@@ -468,7 +467,7 @@
 
 .markBars span {
   height: var(--height);
-  border-radius: 8px 8px 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
   background: rgb(var(--ig-highlight-bg));
 }
 
@@ -536,7 +535,7 @@
   height: 14px;
   border: 2px solid rgb(var(--ig-primary-bg));
   border-radius: 50%;
-  background-image: var(--ig-gradient-spectrum);
+  background: var(--ig-stop-rose);
   box-shadow: 0 0 0 8px rgba(255, 1, 105, 0.08);
 }
 
