@@ -1,3 +1,12 @@
+/* Redeclared locally — CSS Modules scopes animation-name identifiers
+   per-file, so the global keyframe in globals.css wouldn't otherwise
+   resolve here. */
+@keyframes ig-spin-gradient {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+  100% { transform: rotate(0deg); }
+}
+
 .page {
   max-width: var(--page-max-width);
   margin: 0 auto;

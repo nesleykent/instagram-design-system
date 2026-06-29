@@ -1,0 +1,68 @@
+/* Redeclared locally — CSS Modules scopes animation-name identifiers
+   per-file; a bare reference to the global keyframe in app/globals.css
+   resolves to nothing, so onAnimationEnd never fires without this. */
+@keyframes ig-fill-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 420px;
+}
+
+.stage {
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  background: #000;
+}
+
+.bar {
+  display: flex;
+  gap: 4px;
+}
+
+.track {
+  flex: 1;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  width: 100%;
+  border-radius: var(--radius-pill);
+  background: #fff;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.fill[data-state="done"] {
+  transform: scaleX(1);
+}
+
+.fill[data-state="playing"] {
+  animation-name: ig-fill-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.replay {
+  align-self: flex-start;
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-text));
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+
+.replay:hover {
+  border-color: rgb(var(--ig-stroke));
+}

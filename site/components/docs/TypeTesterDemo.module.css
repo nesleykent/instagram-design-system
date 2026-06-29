@@ -1,0 +1,41 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+.swatch {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: 1px solid rgb(var(--ig-separator));
+  background: rgb(var(--ig-elevated-bg));
+  color: rgb(var(--ig-primary-text));
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-image 150ms var(--ease-glide), color 150ms var(--ease-glide), transform 150ms var(--ease-glide);
+}
+
+.swatch:hover {
+  background-image: var(--ig-gradient-hero);
+  color: #fff;
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+
+.swatch[data-active="true"] {
+  background-image: var(--ig-gradient-hero);
+  color: #fff;
+  border-color: transparent;
+}
+
+.caption {
+  font-size: 13px;
+  color: rgb(var(--ig-secondary-text));
+}

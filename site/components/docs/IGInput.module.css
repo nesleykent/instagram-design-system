@@ -1,0 +1,36 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 240px;
+}
+
+.label {
+  font-size: 12.5px;
+  font-weight: var(--fw-medium);
+  color: rgb(var(--ig-secondary-text));
+}
+
+.input {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: var(--input-radius);
+  border: 1px solid rgb(var(--ig-text-input-border, var(--ig-separator)));
+  background: rgb(var(--ig-primary-bg));
+  color: rgb(var(--ig-primary-text));
+  font-size: 14px;
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--ig-stop-magenta);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.input:hover {
+  border-color: rgb(var(--ig-stroke));
+}
+
+.input::placeholder {
+  color: rgb(var(--ig-tertiary-text));
+}

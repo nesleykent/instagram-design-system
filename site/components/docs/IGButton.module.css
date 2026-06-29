@@ -1,0 +1,43 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 20px;
+  border-radius: var(--input-radius);
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+  transition: background-color 120ms var(--ease-glide), border-color 120ms var(--ease-glide), opacity 120ms var(--ease-glide);
+}
+
+.button[data-variant="primary"] {
+  background: rgb(var(--ig-primary-button));
+  color: #fff;
+}
+.button[data-variant="primary"]:hover:not(:disabled) {
+  background: rgb(var(--ig-primary-button-hover));
+}
+
+.button[data-variant="secondary"] {
+  background: rgb(var(--ig-secondary-button));
+  color: rgb(var(--ig-primary-text));
+}
+.button[data-variant="secondary"]:hover:not(:disabled) {
+  background: rgb(var(--ig-secondary-button-hover));
+}
+
+.button[data-variant="tertiary"] {
+  background: rgb(var(--ig-tertiary-button-bg));
+  border-color: rgb(var(--ig-tertiary-button-border));
+  color: rgb(var(--ig-tertiary-button-text));
+}
+.button[data-variant="tertiary"]:hover:not(:disabled) {
+  background: rgb(var(--ig-tertiary-button-hover));
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

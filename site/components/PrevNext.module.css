@@ -1,3 +1,14 @@
+/* CSS Modules auto-scopes any identifier used as animation-name, even
+   when no @keyframes by that name exists locally — so a reference to a
+   globally-defined keyframe silently resolves to nothing. Redeclaring
+   it here (matching app/globals.css) keeps the scoped reference valid. */
+@keyframes ig-rolling {
+  0% { transform: translateX(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(125%); opacity: 0; }
+}
+
 .nav {
   display: grid;
   grid-template-columns: 1fr 1fr;

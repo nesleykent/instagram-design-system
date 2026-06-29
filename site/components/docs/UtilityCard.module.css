@@ -1,0 +1,43 @@
+.card {
+  width: 280px;
+  border-radius: 6px;
+  background: rgb(var(--ig-elevated-bg));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+  font-weight: var(--fw-semibold);
+  font-size: 14px;
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-text));
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.close:hover {
+  background: rgb(var(--ig-highlight-bg));
+}
+
+.body {
+  padding: 16px;
+}
+
+.body p {
+  font-size: 13px;
+  color: rgb(var(--ig-secondary-text));
+  line-height: 1.5;
+}
