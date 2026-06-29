@@ -17,8 +17,8 @@ export default function ComponentsIndexPage() {
     <PageContainer wide>
       <PageHeader
         eyebrow="Components"
-        title="Every documented component"
-        description="Organized like Apple's own HIG component catalogue — but graded honestly. Each page is either backed by a real selector or token in /ig, or says plainly that no such evidence exists, rather than inventing guidance either way."
+        title="Every component, graded by evidence"
+        description="Organized like Apple's own HIG component catalogue — but graded honestly. Pages cite direct /ig evidence, derive from confirmed neighbouring tokens, or say plainly that no such evidence exists."
       />
 
       <section className={styles.group}>

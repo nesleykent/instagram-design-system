@@ -77,7 +77,7 @@ export const NAV = [
       {
         title: "Overview",
         href: "/components",
-        description: "Every documented component, browsable by category.",
+        description: "Every component, browsable by category and evidence tier.",
         keywords: ["components"],
       },
       {

@@ -11,9 +11,9 @@ export const metadata = {
   title: "Overview · Instagram Brand Identity Manual",
 };
 
-// Components now has ~58 entries (9 hand-built pages + the generated
-// catalogue) — cap the homepage preview so the directory stays scannable
-// and point overflow at the full /components index instead of listing all.
+// Components currently has 57 entries (overview + 9 hand-built pages +
+// 47 generated guides) — cap the homepage preview so the directory stays
+// scannable and point overflow at the full /components index.
 const DIRECTORY_CAP = 10;
 
 const PILLARS = [
@@ -47,12 +47,13 @@ export default function HomePage() {
             This is how Instagram <span className="gradient-text">actually builds</span> Instagram.
           </h1>
           <p className={styles.heroSubtitle}>
-            Every rule on this site was extracted from Instagram&rsquo;s own production CSS — ten source files,
+            Every documented rule on this site is traced to Instagram&rsquo;s own production CSS — ten source files,
             from a 4&nbsp;KB about-page stylesheet to two 950&nbsp;KB web-app bundles — and cross-checked against{" "}
             <a href="https://about.instagram.com/brand/" target="_blank" rel="noreferrer">
               about.instagram.com/brand
             </a>
-            . Nothing here is invented.
+            . Derived component guidance is marked as partially evidenced, and unsupported platform patterns are
+            marked not found in /ig.
           </p>
           <div className={styles.heroActions}>
             <Link href="/typography" className={styles.primaryButton}>

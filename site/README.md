@@ -72,7 +72,7 @@ Every page is composed from a small set of reusable, content-driven components r
 | `RadiusScale`, `ShapeGrammar`, `AspectRatioGallery` | Shape primitives |
 | `EasingPlayground`, `DurationScaleBars`, `RollingChevronDemo`, `ClipPathRevealDemo` | Motion playgrounds |
 | `ComponentShowcase`, `CodeBlock`, `DoDontGrid`, `ImplementationNote` | Component documentation blocks |
-| `ComponentGuidePage`, `ComponentGuideDemo` | Full component-page renderer and live demos for the expanded catalogue |
+| `ComponentGuidePage` | Evidence-graded component-page renderer for the expanded catalogue |
 | `ContrastChecker`, `MosaicGridDemo`, `ScrimOverlayDemo`, `ChatBubbleDemo`, `StoriesProgressDemo` | Page-specific interactive examples |
 
 ## Adding a new page

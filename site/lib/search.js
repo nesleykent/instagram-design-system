@@ -4,7 +4,7 @@ import { COMPONENT_GUIDES } from "./component-guides";
 const GENERATED_HREFS = new Set(COMPONENT_GUIDES.map((g) => g.href));
 
 // Before the user types anything, suggest the hand-built top-level pages —
-// not all ~69 pages, which would otherwise include the full ~50-entry
+// not all 67 manual pages, which would otherwise include the full 47-entry
 // generated component catalogue dumped in one unfiltered list.
 const DEFAULT_SUGGESTIONS = FLAT_PAGES.filter((page) => !GENERATED_HREFS.has(page.href));
 
