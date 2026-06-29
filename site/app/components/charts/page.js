@@ -109,7 +109,13 @@ function ChartHero() {
         ))}
       </div>
 
-      <svg viewBox="0 0 420 180" className={styles.heroLineSvg} aria-hidden="true" focusable="false">
+      <svg
+        viewBox="0 0 420 180"
+        preserveAspectRatio="none"
+        className={styles.heroLineSvg}
+        aria-hidden="true"
+        focusable="false"
+      >
         <defs>
           <linearGradient id="hero-line-g" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#ffd600" />
@@ -286,7 +292,14 @@ function ChartMark({ type }) {
       : "M8 72 C22 54 34 62 46 44 S64 22 78 36 S88 58 94 30";
 
   return (
-    <svg className={styles.markSvg} viewBox="0 0 100 100" aria-hidden="true" focusable="false" data-type={type}>
+    <svg
+      className={styles.markSvg}
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      focusable="false"
+      data-type={type}
+    >
       {[24, 48, 72].map((y) => (
         <line key={y} x1="6" x2="94" y1={y} y2={y} />
       ))}
@@ -422,7 +435,7 @@ const primitiveCssExample = `.chart-bars {
   min-height: 28px;
   border: 0;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: rgb(var(--ig-highlight-bg));
+  background: rgba(var(--ig-secondary-text), 0.32);
   transition: transform 150ms cubic-bezier(0, 0, .1, 1);
 }
 

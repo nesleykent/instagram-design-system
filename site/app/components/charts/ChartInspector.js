@@ -78,7 +78,7 @@ export default function ChartInspector() {
         role="group"
         aria-label="Interactive story interactions chart. Highest engagement is Saturday with 1.4K engagements."
       >
-        <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
           <defs>
             <linearGradient id="inspect-area" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stopColor="#ffd600" stopOpacity="0.28" />
