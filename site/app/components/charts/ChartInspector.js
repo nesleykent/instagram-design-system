@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import styles from "./charts.module.css";
 
 const points = [
@@ -29,6 +29,7 @@ export function ChartTooltip({ point }) {
 
 export default function ChartInspector() {
   const [activeIndex, setActiveIndex] = useState(3);
+  const plotRef = useRef(null);
   const active = points[activeIndex];
   const linePath = useMemo(
     () => points.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" "),
@@ -39,6 +40,20 @@ export default function ChartInspector() {
   function selectIndex(value) {
     const nextIndex = Math.max(0, Math.min(points.length - 1, Number(value)));
     setActiveIndex(nextIndex);
+  }
+
+  function selectNearestFromPointer(event) {
+    const rect = plotRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const nearest = points.reduce(
+      (closestIndex, point, index) =>
+        Math.abs(point.x - x) < Math.abs(points[closestIndex].x - x) ? index : closestIndex,
+      0
+    );
+
+    selectIndex(nearest);
   }
 
   function handleScrubberKeyDown(event) {
@@ -68,15 +83,21 @@ export default function ChartInspector() {
       <div className={styles.inspectorHeader}>
         <div>
           <p>Story interactions</p>
-          <span>{active.label}: {format(active.reach)} reach, {format(active.engagement)} engagements</span>
+          <span id="story-chart-live-value" aria-live="polite">
+            {active.label}: {format(active.reach)} reach, {format(active.engagement)} engagements
+          </span>
         </div>
-        <output>{format(active.engagement)}</output>
+        <output aria-label={`Selected engagement value ${format(active.engagement)}`}>{format(active.engagement)}</output>
       </div>
 
       <div
+        ref={plotRef}
         className={styles.inspectPlot}
         role="group"
         aria-label="Interactive story interactions chart. Highest engagement is Saturday with 1.4K engagements."
+        aria-describedby="story-chart-live-value"
+        onPointerDown={selectNearestFromPointer}
+        onPointerMove={selectNearestFromPointer}
       >
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
           <defs>
@@ -107,6 +128,7 @@ export default function ChartInspector() {
             data-active={index === activeIndex}
             aria-label={`${point.label}: ${format(point.reach)} reach and ${format(point.engagement)} engagements`}
             aria-pressed={index === activeIndex}
+            onPointerEnter={() => selectIndex(index)}
             onClick={() => selectIndex(index)}
             onFocus={() => selectIndex(index)}
           />

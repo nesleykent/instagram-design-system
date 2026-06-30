@@ -24,7 +24,7 @@ export default function AccessibilityPage() {
       <PageHeader
         eyebrow="Foundations"
         title="Accessibility"
-        description="Accessibility shows up as infrastructure in the product, not an add-on layer — and the marketing site holds a visibly lower bar than the product. Both halves are documented here, faithfully."
+        description="Accessibility shows up as infrastructure in the product, not an add-on layer. This page documents the strongest product patterns and the specific source-backed risks to preserve."
       />
 
       <Section
@@ -46,13 +46,13 @@ export default function AccessibilityPage() {
         </TokenGrid>
       </Section>
 
-      <Section kicker="Gaps" title="Specific, citable, not editorialized">
+      <Section kicker="Risk areas" title="Specific, citable, not editorialized">
         <div className={styles.gaps}>
           <ImplementationNote title="Reduced motion — about-page only" tone="gap">
             <code>@media (prefers-reduced-motion: reduce)</code> is present and respected in the production app, but
             absent from every about-page file analyzed — visitors who&rsquo;ve set their OS to reduce motion still
             receive the scroll-linked hero animation, infinite rolling marquees, and auto-rotating gradient at full
-            intensity. The most actionable gap this analysis surfaced. This site does not repeat it — see Motion.
+            intensity. The most actionable risk this analysis surfaced. This site does not repeat it — see Motion.
           </ImplementationNote>
           <ImplementationNote title="outline: none without a confirmed replacement" tone="gap">
             One rule disables the default focus outline with no paired <code>:focus-visible</code> replacement in

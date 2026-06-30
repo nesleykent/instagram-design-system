@@ -6,9 +6,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <p className={styles.disclaimer}>
-          An independent, unofficial reverse-engineering and documentation project — not published or endorsed by
-          Instagram or Meta Platforms, Inc. &ldquo;Instagram,&rdquo; the Instagram wordmark, &ldquo;Instagram Sans,&rdquo;
-          and &ldquo;Optimistic&rdquo; are trademarks/property of Meta.
+          An independent, unofficial documentation project — not published or endorsed by Instagram or Meta
+          Platforms, Inc. &ldquo;Instagram,&rdquo; the Instagram wordmark, &ldquo;Instagram Sans,&rdquo; and
+          &ldquo;Optimistic&rdquo; are trademarks/property of Meta.
         </p>
         <div className={styles.links}>
           <Link href="/methodology">Methodology</Link>

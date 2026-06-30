@@ -54,7 +54,7 @@ const COMPONENT_EVIDENCE = [
     example: "Sliders borrow Toggle's 28px thumb; Alerts borrow the modal radius, backdrop, and destructive colour.",
   },
   {
-    tier: "Platform scoped",
+    tier: "Not found in /ig",
     count: COMPONENT_EVIDENCE_COUNTS.none,
     color: "rgb(var(--ig-error))",
     desc: "A native OS category sits outside Instagram's web-product surface, so the page stays as a scope note and points to the nearest Instagram pattern when one exists.",
@@ -135,7 +135,7 @@ export default function MethodologyPage() {
         <p className={styles.note}>
           Inferred pages are written confidently because the implementation is derived from established system
           tokens — spacing, radius, colour, type, motion, and neighbouring confirmed components — but the badge
-          still tells readers that the component is token-derived. Platform-scoped pages stay short and describe the
+          still tells readers that the component is token-derived. Not-found pages stay short and describe the
           product boundary rather than expanding a native-platform pattern into Instagram chrome.
         </p>
       </Section>
@@ -175,7 +175,7 @@ export default function MethodologyPage() {
           throughout this manual. Every visual demo — the easing playground, the contrast checker, the Stories
           progress bar — runs real CSS and real WCAG math, not a screenshot. Component pages use the same
           badge system shown above: documented pages cite direct findings, partially evidenced pages derive from
-          confirmed tokens, and platform-scoped pages keep native OS concepts separate from Instagram product
+          confirmed tokens, and not-found pages keep native OS concepts separate from Instagram product
           patterns.
         </p>
       </Section>

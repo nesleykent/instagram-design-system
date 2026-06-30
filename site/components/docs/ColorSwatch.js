@@ -4,9 +4,10 @@ import { useState } from "react";
 import { IconCheck, IconCopy } from "../Icons";
 import styles from "./ColorSwatch.module.css";
 
-function Chip({ rgb, label }) {
+function Chip({ rgb, label, name }) {
   const [copied, setCopied] = useState(false);
   const css = `rgb(${rgb})`;
+  const colorName = label ? `${label.toLowerCase()} ${name}` : name;
 
   function copy() {
     navigator.clipboard?.writeText(css);
@@ -15,7 +16,14 @@ function Chip({ rgb, label }) {
   }
 
   return (
-    <button type="button" className={styles.chip} style={{ background: css }} onClick={copy} title={`Copy ${css}`}>
+    <button
+      type="button"
+      className={styles.chip}
+      style={{ background: css }}
+      onClick={copy}
+      title={`Copy ${css}`}
+      aria-label={`Copy ${colorName} colour value ${css}`}
+    >
       <span className={styles.chipOverlay} data-light={isLight(rgb)}>
         {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
       </span>
@@ -33,8 +41,8 @@ export default function ColorSwatch({ name, token, light, dark, usage }) {
   return (
     <div className={styles.swatch}>
       <div className={styles.chips}>
-        <Chip rgb={light} label={dark ? "Light" : null} />
-        {dark && <Chip rgb={dark} label="Dark" />}
+        <Chip rgb={light} label={dark ? "Light" : null} name={name} />
+        {dark && <Chip rgb={dark} label="Dark" name={name} />}
       </div>
       <div className={styles.meta}>
         <p className={styles.name}>{name}</p>

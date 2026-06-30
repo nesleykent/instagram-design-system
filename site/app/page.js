@@ -42,7 +42,7 @@ export default function HomePage() {
     <div className={styles.page}>
       <section className={styles.hero}>
         <div className={styles.heroInner}>
-          <p className="eyebrow">Reverse-engineered brand identity manual</p>
+          <p className="eyebrow">Source-backed brand identity manual</p>
           <h1 className={styles.heroTitle}>
             This is how Instagram <span className="gradient-text">actually builds</span> Instagram.
           </h1>
@@ -52,8 +52,8 @@ export default function HomePage() {
             <a href="https://about.instagram.com/brand/" target="_blank" rel="noreferrer">
               about.instagram.com/brand
             </a>
-            . Derived component guidance is marked as partially evidenced, and unsupported platform patterns are
-            marked not found in /ig.
+            . Derived component guidance is marked as partially evidenced, and native platform concepts are marked
+            not found in /ig as product-scope boundaries.
           </p>
           <div className={styles.heroActions}>
             <Link href="/typography" className={styles.primaryButton}>

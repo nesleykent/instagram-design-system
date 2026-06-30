@@ -17,8 +17,8 @@ export default function ComponentsIndexPage() {
     <PageContainer wide>
       <PageHeader
         eyebrow="Components"
-        title="Every component, graded by evidence"
-        description="Organized like Apple's own HIG component catalogue — but graded honestly. Pages cite direct /ig evidence, derive from confirmed neighbouring tokens, or say plainly that no such evidence exists."
+        title="Every component, mapped to evidence"
+        description="Organized like Apple's own HIG component catalogue, then translated into Instagram's visual language. Pages cite direct /ig evidence, derive from confirmed neighbouring tokens, or mark native OS concepts as not found in /ig and platform-scoped."
       />
 
       <section className={styles.group}>
@@ -26,8 +26,8 @@ export default function ComponentsIndexPage() {
           <h2>Complete component catalogue</h2>
           <p>
             Every entry is graded: <strong>Documented</strong> (a real /ig selector backs it), <strong>Partially evidenced</strong> (the
-            general token system applies but no dedicated selector exists), or <strong>Not found in /ig</strong> (usually a native
-            macOS/iOS/watchOS concept with no web equivalent — the page says so instead of guessing).
+            general token system and neighbouring components define it), or <strong>Not found in /ig</strong> (usually a native
+            macOS/iOS/watchOS concept outside Instagram&rsquo;s web-product surface).
           </p>
         </div>
         {Object.entries(guideGroups).map(([group, guides]) => (
@@ -61,7 +61,7 @@ export default function ComponentsIndexPage() {
         <div className={styles.grid}>
           {legacyItems.map((item) => (
             <Link key={item.href} href={item.href} className={styles.card}>
-              <h4>{item.title}</h4>
+              <h3>{item.title}</h3>
               <p>{item.description}</p>
               <span className={styles.cta}>
                 View component <IconArrowRight size={14} />

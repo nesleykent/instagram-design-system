@@ -86,6 +86,28 @@ const platformGuidance = [
   ["Embedded cards", "Use glanceable summaries and a compact spark chart. Never hide the only important number in a tooltip."],
 ];
 
+const bestPractices = [
+  ["Data first", "Make the data more prominent than supporting chrome; axes, containers, and legends exist to clarify the marks."],
+  ["Subtle reference lines", "Keep grid lines quiet and use familiar tick sequences such as 0, 25K, 50K, 75K."],
+  ["Compact width", "Maximise plot width in compact layouts before adding extra panels, controls, or decorative frames."],
+  ["Visible change", "Make important changes noticeable with a direct label, annotation, or selected mark treatment."],
+  ["No hidden essentials", "Never require interaction to reveal the critical value, decision, or warning."],
+  ["Clear alignment", "Align chart edges with surrounding text, cards, and controls so the surface feels native to Instagram."],
+  ["Concise labels", "Keep labels short, concrete, and close to the thing they describe."],
+  ["Actual values", "Use actual numbers and units rather than subjective descriptions such as good, low, or impressive."],
+  ["Unambiguous formats", "Avoid ambiguous dates and units; write Jun 29, 4 PM, 29.2K reach, or 8.4% completion."],
+  ["Text summaries", "Use summaries for complex charts so people understand the takeaway before inspecting details."],
+];
+
+const accessibilityLabelExamples = [
+  ["Purpose", "Chart showing how story interactions changed across the last seven days."],
+  ["Axis", "Horizontal axis: day of week. Vertical axis: account reach, from 0 to 30 thousand."],
+  ["Mark", "Saturday: 29.2K reach and 1.4K engagements, highest engagement in the week."],
+  ["Grouped mark", "Reels: 42K follower reach, 30K non-follower reach, 8K paid reach."],
+  ["Legend", "Gradient bars show organic reach. Grey bars show paid reach."],
+  ["Interactive value", "Selected value: Thursday, 24.6K reach, 1.2K engagements."],
+];
+
 function ChartHero() {
   return (
     <div
@@ -154,6 +176,15 @@ function ChartLegend({ items }) {
   );
 }
 
+function ChartAccessibilityNote({ title, body }) {
+  return (
+    <article className={styles.accessNote}>
+      <h3>{title}</h3>
+      <p>{body}</p>
+    </article>
+  );
+}
+
 function OverviewGrid() {
   const examples = [
     ["Creator analytics", "Show the post formats, audience segments, and posting windows that move performance."],
@@ -219,12 +250,17 @@ function ChartAnatomy() {
         />
       </div>
       <div className={styles.calloutLayer} aria-hidden="true">
+        <span data-callout="title">Title</span>
+        <span data-callout="subtitle">Subtitle</span>
         <span data-callout="plot">Plot area</span>
         <span data-callout="marks">Marks</span>
-        <span data-callout="axis">Axes and ticks</span>
-        <span data-callout="labels">Value labels</span>
+        <span data-callout="axis">Axes</span>
+        <span data-callout="ticks">Ticks</span>
+        <span data-callout="grid">Grid lines</span>
+        <span data-callout="labels">Axis value labels</span>
         <span data-callout="annotation">Annotation</span>
         <span data-callout="legend">Legend</span>
+        <span data-callout="a11y">Accessibility labels</span>
       </div>
     </div>
   );
@@ -373,6 +409,58 @@ function AxisExamples() {
   );
 }
 
+function ResponsiveAxisExamples() {
+  return (
+    <div className={styles.responsiveExamples}>
+      <article>
+        <div className={styles.responsiveChart} data-size="desktop">
+          <span className={styles.axisLabel}>Last 28 days · accounts reached</span>
+          <div className={styles.responsiveBars}>
+            {[34, 44, 38, 58, 72, 64, 86, 78].map((value, index) => (
+              <span key={index} style={{ "--height": `${value}%` }} />
+            ))}
+          </div>
+          <div className={styles.tickRow}>
+            <span>0</span>
+            <span>25K</span>
+            <span>50K</span>
+            <span>75K</span>
+          </div>
+        </div>
+        <h3>Responsive web</h3>
+        <p>Keep four familiar ticks, full labels, and enough plot width for comparison.</p>
+      </article>
+      <article>
+        <div className={styles.responsiveChart} data-size="mobile">
+          <span className={styles.axisLabel}>Reach · 28 days</span>
+          <div className={styles.responsiveBars}>
+            {[44, 38, 72, 86].map((value, index) => (
+              <span key={index} style={{ "--height": `${value}%` }} />
+            ))}
+          </div>
+          <div className={styles.tickRow}>
+            <span>0</span>
+            <span>50K</span>
+          </div>
+        </div>
+        <h3>Mobile web</h3>
+        <p>Reduce tick density and show the summary before the chart, not after a tooltip.</p>
+      </article>
+      <article>
+        <div className={styles.responsiveChart} data-size="card">
+          <span className={styles.axisLabel}>Stories</span>
+          <svg viewBox="0 0 120 60" aria-hidden="true" focusable="false">
+            <path d="M4 46 C24 28 36 36 52 22 S82 18 116 12" />
+          </svg>
+          <strong>+12.8%</strong>
+        </div>
+        <h3>Embedded cards</h3>
+        <p>Use a spark chart plus the actual value; omit low-value axis chrome.</p>
+      </article>
+    </div>
+  );
+}
+
 function GuidanceColumns({ items }) {
   return (
     <div className={styles.guidanceColumns}>
@@ -386,38 +474,90 @@ function GuidanceColumns({ items }) {
   );
 }
 
-const primitiveExample = `import ComponentShowcase from "@/components/docs/ComponentShowcase";
-import ImplementationNote from "@/components/docs/ImplementationNote";
+function BestPracticeList() {
+  return (
+    <div className={styles.practiceList}>
+      {bestPractices.map(([title, body]) => (
+        <article key={title}>
+          <h3>{title}</h3>
+          <p>{body}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+const primitiveExample = `import PageContainer from "@/components/docs/PageContainer";
+import Section from "@/components/docs/Section";
+import ChartInspector from "./ChartInspector";
+import styles from "./charts.module.css";
+
+function ChartPage({ children }) {
+  return <PageContainer>{children}</PageContainer>;
+}
+
+function ChartHero({ title, summary, children }) {
+  return (
+    <section className={styles.hero} aria-labelledby="chart-page-title">
+      <div>
+        <h1 id="chart-page-title">{title}</h1>
+        <p>{summary}</p>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function ChartLegend({ items }) {
+  return (
+    <div className={styles.legend} aria-label="Chart legend">
+      {items.map((item) => <span key={item.label}>{item.label}</span>)}
+    </div>
+  );
+}
+
+function ChartAccessibilityNote({ children }) {
+  return <aside className={styles.accessNote}>{children}</aside>;
+}
 
 export default function CreatorReachChart({ data }) {
   const maxReach = Math.max(...data.map((datum) => datum.reach));
 
   return (
-    <ComponentShowcase align="start">
-      <figure aria-labelledby="reach-title" aria-describedby="reach-summary">
-        <h3 id="reach-title">Reels drove the largest reach lift</h3>
-        <p id="reach-summary">
-          Last 28 days, accounts reached. Reels reached 72K accounts,
-          the highest value in the range.
-        </p>
-        <div className="chart-bars" aria-label="Reach by content format">
-          {data.map((datum) => (
-            <button
-              key={datum.id}
-              type="button"
-              className="chart-mark"
-              style={{ "--height": (datum.reach / maxReach) * 100 + "%" }}
-              aria-label={datum.format + ", " + datum.reach.toLocaleString() + " accounts reached"}
-            >
-              <span>{datum.label}</span>
-            </button>
-          ))}
-        </div>
-      </figure>
-      <ImplementationNote title="Chart summary">
-        Keep the takeaway available as text; interaction only adds precision.
-      </ImplementationNote>
-    </ComponentShowcase>
+    <ChartPage>
+      <ChartHero
+        title="Reels drove the largest reach lift"
+        summary="Last 28 days, accounts reached by content format."
+      >
+        <ChartInspector />
+      </ChartHero>
+      <Section title="Reach by format">
+        <figure aria-labelledby="reach-title" aria-describedby="reach-summary">
+          <h3 id="reach-title">Reels drove the largest reach lift</h3>
+          <p id="reach-summary">
+            Last 28 days, accounts reached. Reels reached 72K accounts,
+            the highest value in the range.
+          </p>
+          <div className="chart-bars" aria-label="Reach by content format">
+            {data.map((datum) => (
+              <button
+                key={datum.id}
+                type="button"
+                className="chart-mark"
+                style={{ "--height": (datum.reach / maxReach) * 100 + "%" }}
+                aria-label={datum.format + ", " + datum.reach.toLocaleString() + " accounts reached"}
+              >
+                <span>{datum.label}</span>
+              </button>
+            ))}
+          </div>
+          <ChartLegend items={[{ label: "Organic reach" }, { label: "Paid reach" }]} />
+        </figure>
+        <ChartAccessibilityNote>
+          Keep the takeaway available as text; interaction only adds precision.
+        </ChartAccessibilityNote>
+      </Section>
+    </ChartPage>
   );
 }`;
 
@@ -520,6 +660,7 @@ export default function ChartsPage() {
           </p>
         </div>
         <AxisExamples />
+        <ResponsiveAxisExamples />
       </Section>
 
       <Section
@@ -593,6 +734,11 @@ export default function ChartsPage() {
           <p>Axes and units: dates, categories, percentages, currency, counts, or rates.</p>
           <p>Marks, groups, legends, selected values, and the main summary need programmatic labels.</p>
         </ImplementationNote>
+        <div className={styles.accessGrid}>
+          {accessibilityLabelExamples.map(([title, body]) => (
+            <ChartAccessibilityNote key={title} title={title} body={body} />
+          ))}
+        </div>
         <GuidanceColumns
           items={[
             ["Screen readers", "Use labelled figures, summaries, and interactive mark labels. Do not expose only an unlabeled SVG."],
@@ -607,12 +753,14 @@ export default function ChartsPage() {
       </Section>
 
       <Section kicker="Best practices" title="Best Practices">
+        <BestPracticeList />
         <DoDontGrid
           dos={[
             "Make the data more prominent than supporting chrome.",
             "Keep grid lines subtle and use familiar tick sequences.",
             "Maximise plot width in compact layouts and align charts with surrounding content.",
             "Use actual values, clear units, concise labels, and summaries for complex charts.",
+            "Make important changes noticeable with labels or annotations.",
           ]}
           donts={[
             "Never require interaction to reveal critical information.",

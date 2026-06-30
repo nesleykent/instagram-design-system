@@ -10,7 +10,8 @@ export default function NotFound() {
         This page didn&rsquo;t make it into the <span className="gradient-text">manual</span>.
       </h1>
       <p className={styles.desc}>
-        Either it moved, or it was never documented. Try search, or head back to the overview.
+        Either the route moved, or the page belongs somewhere else in the manual. Try search, or head back to the
+        overview.
       </p>
       <Link href="/" className={styles.cta}>
         Back to overview

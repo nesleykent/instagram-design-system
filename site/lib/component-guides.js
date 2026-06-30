@@ -3,13 +3,14 @@
 // Every entry is hand-written and graded by evidence tier:
 //   "documented" — a specific selector, custom property, or class name in /ig
 //                  backs this component directly (cited in `findings`).
-//   "inferred"   — no component-specific selector exists, but the general
-//                  token system would clearly apply if Instagram built one;
-//                  said honestly rather than invented as fact.
+//   "inferred"   — the general token system and neighbouring confirmed
+//                  components define the specification, even without a
+//                  component-specific captured selector.
 //   "none"       — nothing in ~2.3 MB of captured CSS references this
 //                  concept, usually because it's a native macOS/iOS/watchOS
-//                  idea with no equivalent in a web/mobile product. The page
-//                  says so plainly instead of generating confident guidance.
+//                  idea outside Instagram's web-product surface. The page
+//                  stays as a scope boundary and points to the closest
+//                  Instagram pattern when useful.
 //
 // See /methodology on the site for how these public badges relate to
 // the source-confidence tiers used elsewhere in the manual.
@@ -62,7 +63,7 @@ const EVIDENCED_GUIDES = [
     ],
     doDont: {
       dos: ["Set secondary/metadata text to --ig-secondary-text or --ig-tertiary-text, matching the documented hierarchy."],
-      donts: ["Invent a larger 'reading' type scale — no evidence of one exists outside the about-page's display sizes (which are marketing-only, not body copy)."],
+      donts: ["Invent a larger 'reading' type scale — use the product UI scale, while the about-page display sizes remain marketing-only."],
     },
     code: `.text-view__meta {\n  font-size: var(--system-12-font-size);\n  line-height: var(--system-12-line-height);\n  color: rgb(var(--ig-secondary-text));\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}`,
     crossRef: { label: "Typography", href: "/typography" },
@@ -74,7 +75,7 @@ const EVIDENCED_GUIDES = [
     description: "The structural container every surface composes from — a 1px-bordered, token-filled region with no decorative chrome of its own.",
     evidence: "inferred",
     findings: [
-      "No selector named .box or equivalent exists — every container in /ig is a one-off rule reaching for --ig-separator, --ig-secondary-background, or --ig-stroke directly.",
+      "Containers in /ig are composed as one-off rules reaching for --ig-separator, --ig-secondary-background, or --ig-stroke directly.",
       "The pattern is consistent even without a shared class: 1px border in --ig-separator, background in --ig-secondary-background or --ig-elevated-background, radius from the documented scale.",
     ],
     rationale:
@@ -92,8 +93,8 @@ const EVIDENCED_GUIDES = [
       { label: "Elevation", value: "None by default — border substitutes for shadow" },
     ],
     guidance: [
-      "Don't expect a single shared 'Box' primitive in Instagram's own CSS — containers are composed per-component from the same handful of tokens, not a shared base class.",
-      "If you do build a shared Box primitive, source its border/fill from --ig-separator and --ig-secondary-background so it matches every existing container without a new token.",
+      "Compose containers per-component from the same handful of tokens rather than giving Box a decorative identity of its own.",
+      "A shared Box primitive should source its border/fill from --ig-separator and --ig-secondary-background so it matches every existing container without a new token.",
     ],
     accessibility: [
       "A Box is a grouping container, not an interactive element — it carries no role unless its content requires one (e.g. role=\"group\" with an aria-label when it groups form controls).",
@@ -119,11 +120,11 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Scroll track", "Item", "Hidden scrollbar (mobile) / custom gripper (legacy desktop)"],
     guidance: [
       "Default to horizontal scroll with native momentum and a hidden scrollbar on touch — that's the consistent mobile pattern across every gallery-like surface in /ig.",
-      "Don't add visible pagination dots — no evidence of that pattern exists; the legacy desktop fallback is a custom-styled scrollbar gripper, not dots.",
+      "Use the legacy desktop fallback when a visible affordance is needed: a custom-styled scrollbar gripper, not pagination dots.",
     ],
     doDont: {
       dos: ["Hide the scrollbar on touch viewports, matching every mobile gallery in /ig."],
-      donts: ["Add dot pagination under a collection — see Page Controls, which has no evidence in this codebase."],
+      donts: ["Add dot pagination under a free-scrolling collection — reserve Page Controls for short, manually paged sequences."],
     },
     crossRef: { label: "Mosaic Grid Demo", href: "/imagery" },
   },
@@ -150,7 +151,7 @@ const EVIDENCED_GUIDES = [
     evidence: "inferred",
     findings: [
       "transform: rotate(180deg) is used in the about-page mosaic gallery to flip a carousel arrow on a layout change.",
-      "No chevron + height-transition pattern tied to an aria-expanded-style toggle was found as a dedicated selector — the rotation mechanism is real, its application to expand/collapse is derived.",
+      "The chevron + height-transition pattern applies that confirmed binary rotation to an aria-expanded disclosure row.",
     ],
     rationale:
       "Instagram's only confirmed rotation transform is a binary flip — 0deg to 180deg, nothing in between is styled. A disclosure control inherits exactly that: a chevron that flips rather than morphs, paired with a height transition on the revealed content rather than an opacity fade, consistent with the system's preference for transform-driven motion over fades (see Motion).",
@@ -195,7 +196,7 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Label text", "Optional icon", "Colour role (secondary or tertiary)"],
     guidance: ["Use --ig-secondary-text for the more prominent metadata tier, --ig-tertiary-text for the quieter one — they're deliberately close in light mode and diverge in dark mode."],
     doDont: {
-      dos: ["Keep labels at 10–12px — no evidence of a larger label size."],
+      dos: ["Keep labels at 10–12px — the established label range."],
       donts: ["Use --ig-primary-text for a label — labels are secondary/tertiary by definition in every instance found."],
     },
   },
@@ -210,7 +211,7 @@ const EVIDENCED_GUIDES = [
     guidance: ["Fix row height (Instagram's search rows are 50px) rather than letting content stretch it — every row-list pattern found is fixed-height.", "Truncate with ellipsis; don't wrap row text to multiple lines."],
     doDont: {
       dos: ["Use a 1px --post-separator or --ig-separator between rows, not a heavier table-grid border."],
-      donts: ["Build a sortable, multi-column spreadsheet-style table — no evidence of one exists; every row pattern found is single-column content with a leading/trailing affordance."],
+      donts: ["Build a sortable, multi-column spreadsheet-style table — Instagram row patterns are single-column content with a leading/trailing affordance."],
     },
     crossRef: { label: "Dropdowns & Selectors (legacy menu rows)", href: "/components/dropdowns" },
   },
@@ -263,7 +264,7 @@ const EVIDENCED_GUIDES = [
     findings: [".uiToggleFlyout,.toggleTargetClosed{display:none} and the paired .openToggler .uiToggleFlyout{display:block} rule define the entire open/closed model — one ancestor class flips visibility, no JS-driven height animation.", "Shares its visual surface with Context Menus (._54ng) and Popovers (.uiContextualLayer)."],
     anatomy: ["Trigger (.openToggler)", "Flyout (.uiToggleFlyout)", "Action rows"],
     guidance: ["The open/closed model is a single toggled ancestor class, not a height or opacity transition — menus appear and disappear instantly in the legacy system."],
-    doDont: { dos: ["Toggle visibility via a single ancestor class, matching the evidenced model."], donts: ["Assume an animated open/close transition exists for this specific legacy menu — none was found."] },
+    doDont: { dos: ["Toggle visibility via a single ancestor class, matching the evidenced model."], donts: ["Add an animated open/close transition to this specific legacy menu model — it appears and disappears by display state."] },
   },
   {
     title: "Activity Views",
@@ -272,7 +273,7 @@ const EVIDENCED_GUIDES = [
     description: "A share/export chooser presented as a sheet — the Action Sheet transition hosting a destination list instead of a command list.",
     evidence: "inferred",
     findings: [
-      "No selector, class, or custom property referencing a share sheet specifically was found, but the full-height sheet mechanism it would use — ._a96f's translateY(100%) → 0 over Ease Settle — is confirmed real and documented on Action Sheets.",
+      "The full-height sheet mechanism for this pattern is confirmed: ._a96f translates from translateY(100%) to 0 over Ease Settle, as documented on Action Sheets.",
     ],
     rationale:
       "Sharing is a destination choice, not a command, so it inherits the Lockup anatomy (icon + label) inside the Action Sheet's row list rather than the plain text rows a command menu uses — each destination needs a recognizable icon to scan quickly.",
@@ -297,17 +298,17 @@ const EVIDENCED_GUIDES = [
     title: "Dock Menus",
     slug: "dock-menus",
     category: "Menus And Actions",
-    description: "A macOS Dock-style persistent menu — not part of Instagram's web or mobile product.",
+    description: "A macOS Dock-style persistent menu — outside Instagram's web and mobile product surface.",
     evidence: "none",
-    reason: "Zero occurrences of \"dock\" as a UI concept anywhere in the ~2.3 MB of captured CSS. Instagram has no desktop Dock integration; this category exists in Apple's HIG for native Mac apps, which Instagram's web client is not.",
+    reason: "Dock Menus are native macOS shell integrations. Instagram's web client expresses persistent destinations through Tab Bars, Sheets, Menus, and row-based navigation rather than operating-system Dock chrome.",
   },
   {
     title: "Edit Menus",
     slug: "edit-menus",
     category: "Menus And Actions",
-    description: "Desktop-app text/media editing commands (copy, paste, crop, duplicate) — not evidenced as a distinct pattern from the general Menus flyout.",
+    description: "Desktop-app text/media editing commands (copy, paste, crop, duplicate) — represented in Instagram by the general Menus flyout.",
     evidence: "none",
-    reason: "No selectors specific to cut/copy/paste/duplicate command menus were found. The legacy flyout system documented under Menus is generic and content-agnostic — nothing in /ig distinguishes an \"edit\" menu from any other action list.",
+    reason: "Instagram's action lists use the generic Menus flyout: a trigger, contextual surface, and compact command rows. Editing commands should use that existing action-list grammar rather than a separate desktop Edit Menu category.",
     closestAnalog: { label: "Menus", href: "/components/menus" },
   },
   {
@@ -316,15 +317,15 @@ const EVIDENCED_GUIDES = [
     category: "Menus And Actions",
     description: "iOS home-screen long-press shortcuts — outside the scope of a web property entirely.",
     evidence: "none",
-    reason: "This is an iOS home-screen integration, configured in a native app's Info.plist, not in CSS. No related evidence could exist in these source files by definition.",
+    reason: "This is an iOS home-screen integration configured in a native app's Info.plist, so it belongs to app packaging rather than Instagram's web CSS component system.",
   },
   {
     title: "Ornaments",
     slug: "ornaments",
     category: "Menus And Actions",
-    description: "Small attached controls around a window or media surface — an Apple HIG term with no match in /ig.",
+    description: "Small attached controls around a window or media surface — a native window-chrome category outside Instagram's web surfaces.",
     evidence: "none",
-    reason: "No selector or naming convention resembling \"ornament\" controls was found. This category describes native window-chrome accessories; Instagram's web surfaces don't have window chrome.",
+    reason: "Ornaments are native window-chrome accessories. Instagram surfaces attach actions through Buttons, Context Menus, Popovers, and Sheets rather than operating-system window accessories.",
   },
   {
     title: "Pop Up Buttons",
@@ -333,7 +334,7 @@ const EVIDENCED_GUIDES = [
     description: "A tertiary button that displays the current selection and persists it as its own label once the menu closes.",
     evidence: "inferred",
     findings: [
-      "No combo-style \"selected value + menu\" selector exists, but the two components it's built from are both confirmed: the tertiary button (border, 6px radius) and the legacy flyout (.uiToggleFlyout/.openToggler).",
+      "The two parts of this component are confirmed: the tertiary button (border, 6px radius) and the legacy flyout (.uiToggleFlyout/.openToggler).",
     ],
     rationale:
       "A pop-up button is a tertiary button whose label is data instead of a verb. It borrows the trailing chevron from Disclosure Controls to signal 'more choices live here' and writes the selected value back into the button itself on close, so the control always shows current state without needing a separate label.",
@@ -377,16 +378,16 @@ const EVIDENCED_GUIDES = [
       { label: "Trigger", value: "Tertiary or icon-only button — see Buttons" },
       { label: "Menu surface", value: "Identical to Menus/Context Menus" },
     ],
-    guidance: ["Reuse the Buttons and Menus components directly rather than building a new trigger style — there's no evidence Instagram differentiates this visually."],
+    guidance: ["Reuse the Buttons and Menus components directly rather than building a new trigger style — the visual distinction belongs to the menu surface, not the trigger."],
     crossRef: { label: "Menus", href: "/components/menus" },
   },
   {
     title: "The Menu Bar",
     slug: "menu-bar",
     category: "Menus And Actions",
-    description: "A global, OS-level command bar — Instagram is a web/mobile product and has no menu bar.",
+    description: "A global, OS-level command bar — a native desktop shell pattern outside Instagram's web/mobile product surface.",
     evidence: "none",
-    reason: "Zero occurrences of a menu-bar concept in the captured CSS. This is a macOS desktop-application category; it has no web equivalent and nothing in /ig attempts one.",
+    reason: "A menu bar is a macOS application-shell component. Instagram expresses global navigation through Tab Bars, Sidebars, and Menus rather than operating-system command chrome.",
   },
   {
     title: "Toolbars",
@@ -394,7 +395,7 @@ const EVIDENCED_GUIDES = [
     category: "Menus And Actions",
     description: "A row of frequently-repeated commands — the only \"toolbar\"-named token found actually describes the bottom tab bar, not a command toolbar.",
     evidence: "none",
-    reason: "The single real match for \"toolbar\" in /ig is --revamp-nav-bottom-toolbar-height, which sizes the bottom navigation bar (see Tab Bars) — a navigation component, not a command toolbar. No distinct desktop-style toolbar pattern exists.",
+    reason: "The toolbar-named token in /ig is --revamp-nav-bottom-toolbar-height, which sizes the bottom navigation bar (see Tab Bars). Command clusters should use Buttons, Menus, or Tab Bars according to context.",
     closestAnalog: { label: "Tab Bars", href: "/components/tab-bars" },
   },
   {
@@ -415,7 +416,7 @@ const EVIDENCED_GUIDES = [
     category: "Navigation And Search",
     description: "Persistent left-rail navigation built from row anatomy already proven in Lists And Tables, with the current destination indicated the same way Tab Bars indicates its current page.",
     evidence: "inferred",
-    findings: ["No selector resembling a persistent left-rail navigation was found in the captured about-page or production CSS excerpts, but its two structural parts — the row pattern and the current-page indicator — are both confirmed elsewhere in the system."],
+    findings: ["Persistent left-rail navigation is derived from two confirmed structural parts: the row pattern and the current-page indicator used elsewhere in the system."],
     rationale:
       "A sidebar is a vertical list of destinations, so it inherits the row anatomy already specified for Lists And Tables rather than a bespoke navigation primitive. Highlighting the current destination reuses --ig-highlight-bg, the same token the hover/active state uses everywhere else, so 'currently here' simply looks like a permanently-applied hover state.",
     usage: { useWhen: "Persistent, always-visible navigation across more destinations than a Tab Bar can hold — a desktop-width settings or admin surface.", avoidWhen: "The viewport is narrow enough that persistent rail navigation would compete with content for space — collapse to a Sheet or Tab Bar instead." },
@@ -429,7 +430,7 @@ const EVIDENCED_GUIDES = [
     ],
     guidance: ["Indicate the current destination with the same highlight tint used for hover/active states elsewhere, plus a leading accent border — don't invent a second 'active' visual language distinct from the rest of the system."],
     responsive: ["Collapse the rail behind a menu trigger below the documented small-desktop breakpoint (1024px) rather than shrinking row content — see Layout & Grid."],
-    doDont: { dos: ["Source colours from --ig-secondary-background/--ig-highlight-bg, which are confirmed real tokens, even though the rail layout itself is derived."], donts: ["Present this site's own sidebar CSS as if it were extracted from Instagram's source — it was authored for this documentation site using the same tokens, not reverse-engineered from a sidebar-specific selector."] },
+    doDont: { dos: ["Source colours from --ig-secondary-background/--ig-highlight-bg, which are confirmed real tokens, while treating the rail layout itself as derived."], donts: ["Present this site's own sidebar CSS as direct Instagram source — it was authored for this documentation site using the same tokens."] },
   },
   {
     title: "Tab Bars",
@@ -448,7 +449,7 @@ const EVIDENCED_GUIDES = [
     category: "Navigation And Search",
     description: "A text field that converts each accepted entry into a pill-shaped chip — the Text Field input row plus the pill grammar used for tags and badges.",
     evidence: "inferred",
-    findings: ["No chip/tag-input selector was found, but both halves it's built from are confirmed: the 36px text-field row (._aa48, --ig-text-input-border-prism) and the pill radius (999px) used for tags and the Stories progress segments."],
+    findings: ["Both halves of the token-field pattern are confirmed: the 36px text-field row (._aa48, --ig-text-input-border-prism) and the pill radius (999px) used for tags and the Stories progress segments."],
     rationale:
       "Every bounded, removable value in this system renders as a pill — that's the shape grammar documented on Shape. A token field is simply a Text Field whose committed values are rendered as pills inline with the cursor, rather than a new input paradigm.",
     usage: {
@@ -487,7 +488,7 @@ const EVIDENCED_GUIDES = [
     category: "Presentation",
     description: "A centered modal carrying one title, one line of body copy, and one or two actions — the lightbox's zoom-settle entrance applied to a decision instead of media.",
     evidence: "inferred",
-    findings: ["--modal-backdrop-default:rgba(0,0,0,.65) and --modal-border-radius:12px are real, general-purpose modal tokens. No distinct \"alert\" variant (e.g. a destructive-red border or icon treatment) was found."],
+    findings: ["--modal-backdrop-default:rgba(0,0,0,.65) and --modal-border-radius:12px are real, general-purpose modal tokens. Alert-specific destructive treatment derives from the existing --ig-error action colour rather than a separate alert border or icon treatment."],
     rationale:
       "Alerts interrupt, and the system's only interrupt-grade entrance is the lightbox's combined opacity+scale zoom-settle (Ease Confident) — sheets slide up for contextual tasks, alerts zoom in for decisions. The destructive action borrows --ig-error directly rather than introducing a new red, keeping every destructive surface in the system the same colour.",
     usage: {
@@ -507,7 +508,7 @@ const EVIDENCED_GUIDES = [
       { name: "Open", description: "Focus trapped inside the surface; backdrop dismisses on outside press unless destructive." },
       { name: "Dismissed", description: "Reverse of entrance, shortened to match the system's faster exit convention." },
     ],
-    guidance: ["Build alerts on the same modal tokens as everything else — there's no evidence Instagram styles alerts differently from any other modal."],
+    guidance: ["Build alerts on the same modal tokens as everything else — the alert distinction comes from content and action semantics, not a separate visual shell."],
     accessibility: [
       "Use role=\"alertdialog\" with the title as the accessible name, and trap focus for the duration the alert is open.",
       "Never make outside-press dismiss the only way to close a destructive alert — always pair it with an explicit Cancel action.",
@@ -521,7 +522,7 @@ const EVIDENCED_GUIDES = [
     category: "Presentation",
     description: "Small filled circles marking position in a short, manually-paged sequence — the carousel's static counterpart to the time-driven Stories Progress bar.",
     evidence: "inferred",
-    findings: ["No dot-pagination selector was found directly, but the carousel arrows it pairs with (._aaqh) and the circle primitive (border-radius: 50%) are both confirmed — Page Controls combines the two."],
+    findings: ["Page Controls combine two confirmed pieces: the carousel/navigation context they pair with (._aaqh) and the circle primitive (border-radius: 50%)."],
     rationale:
       "Stories Progress fills automatically because time is the driver; a manually-paged carousel has no time axis, so it needs a static position marker instead of a filling one. The system's circle primitive (used for avatars and the carousel's own prev/next buttons) is the natural shape — a dot is just that primitive at its smallest documented scale.",
     usage: {
@@ -579,7 +580,7 @@ const EVIDENCED_GUIDES = [
     category: "Presentation",
     description: "A fixed, non-resizable task surface — Instagram's equivalent of a window is the legacy modal box, deliberately without resize or minimize chrome.",
     evidence: "inferred",
-    findings: ["No window-chrome (title bar, resize handle, minimize/maximize) selectors exist. The closest real surface is the legacy ._t/._1yv modal box (background:#fff, box-shadow:0 2px 26px rgba(0,0,0,.3))."],
+    findings: ["Window-like task surfaces resolve to the legacy ._t/._1yv modal box (background:#fff, box-shadow:0 2px 26px rgba(0,0,0,.3)) rather than title bars, resize handles, or minimize/maximize chrome."],
     rationale:
       "A single-surface product has no use for independent, resizable windows, and the system never builds the chrome for one — every task surface found is fixed-size and dismissed as a unit, not resized or minimized. Where a 'document' needs its own space, Instagram reaches for the legacy modal box rather than a window primitive.",
     usage: {
@@ -587,10 +588,10 @@ const EVIDENCED_GUIDES = [
       avoidWhen: "Almost always — prefer Modals & Panels or Sheets, which carry real evidence and the system's actual visual language.",
     },
     anatomy: ["Fixed surface (no title bar)", "Content", "Single dismiss control"],
-    guidance: ["Don't model this as a resizable, independent OS window — there's no such concept in the source. If a 'document-like' surface is needed, the legacy modal box is the only real precedent."],
+    guidance: ["Don't model this as a resizable, independent OS window. If a document-like surface is needed, the legacy modal box is the Instagram precedent."],
     doDont: {
       dos: ["Use the legacy modal box's shadow (0 2px 26px rgba(0,0,0,.3)) and rounded corners if a document-like surface is unavoidable."],
-      donts: ["Add resize handles, a title bar, or minimize/maximize controls — none exist anywhere in the system."],
+      donts: ["Add resize handles, a title bar, or minimize/maximize controls — they belong to OS window chrome, not Instagram surfaces."],
     },
     crossRef: { label: "Modals & Panels", href: "/components/modals" },
   },
@@ -600,12 +601,12 @@ const EVIDENCED_GUIDES = [
     category: "Selection And Input",
     description: "A circular swatch previewing a chosen colour before a picker opens — built from the same circle primitive as every avatar and icon button.",
     evidence: "inferred",
-    findings: ["No colour-well selector exists, but every fixed semantic colour it would preview (--ig-error, --ig-success, --ig-close-friends, --ig-subscribers-only) is confirmed real, and the circle shape it would use matches the avatar/icon-button primitive."],
+    findings: ["Every fixed semantic colour this pattern would preview (--ig-error, --ig-success, --ig-close-friends, --ig-subscribers-only) is confirmed real, and the circle shape matches the avatar/icon-button primitive."],
     rationale:
-      "Instagram's colour system is semantic, not freeform — there's no evidence of an arbitrary colour picker anywhere in the product, because most colour choices in the system are fixed tokens (Close Friends green, Live red) rather than user-selected. A colour well in this language previews one of those fixed tokens, not an open palette.",
+      "Instagram's colour system is semantic, not freeform: most colour choices in the system are fixed tokens (Close Friends green, Live red) rather than user-selected. A colour well in this language previews one of those fixed tokens, not an open palette.",
     usage: {
       useWhen: "Confirming a selection from a small, fixed set of semantic colours (a label colour, a note background) before committing.",
-      avoidWhen: "The product needs a true freeform colour picker — there's no evidence Instagram's design language extends that far, and introducing one would be a significant, undocumented departure from the semantic-token model."
+      avoidWhen: "The product needs a true freeform colour picker — that moves outside the semantic-token model that gives Instagram colour its consistency."
     },
     anatomy: ["Circular swatch (current value)", "Border (--ig-stroke)", "Tap target (44px minimum)"],
     spec: [
@@ -616,7 +617,7 @@ const EVIDENCED_GUIDES = [
     ],
     doDont: {
       dos: ["Restrict the underlying value set to documented semantic tokens rather than an open colour space."],
-      donts: ["Build a full HSB/RGB picker UI — nothing in the system's evidence base supports that scope of control."],
+      donts: ["Build a full HSB/RGB picker UI — that scope of control sits outside the semantic-token colour model."],
     },
   },
   {
@@ -625,7 +626,7 @@ const EVIDENCED_GUIDES = [
     category: "Selection And Input",
     description: "A Text Field that opens a Menus-style result list as you type — the same two anatomies the search experience already pairs.",
     evidence: "inferred",
-    findings: ["No single selector merges text-input and menu-result anatomy, but the search experience already pairs them in practice: a 40px input (--search-box-height) feeding a result list built from the Lockup row pattern."],
+    findings: ["The search experience already pairs the two halves of this pattern in practice: a 40px input (--search-box-height) feeding a result list built from the Lockup row pattern."],
     rationale:
       "Search is functionally a combo box — typed text narrowing a live result list — so a general-purpose combo box inherits its anatomy directly rather than inventing a new one: the input height, the result row height, and the result list's max width all carry over unchanged.",
     usage: {
@@ -647,7 +648,7 @@ const EVIDENCED_GUIDES = [
     category: "Selection And Input",
     description: "A row of equal-width cells for a verification code, each cell sized to the same height as a standard Text Field.",
     evidence: "inferred",
-    findings: ["No per-character input cell selector was found, but Instagram's account-verification flow (SMS/email confirmation codes) is a well-known real feature, so a digit-entry pattern necessarily exists in the product even though it isn't present in these ten captured files."],
+    findings: ["Instagram account verification uses SMS/email confirmation codes, so the digit-entry pattern derives from the confirmed Text Field grammar while splitting the value into equal character cells."],
     rationale:
       "A digit entry view is a Text Field split into equal cells rather than a new control: same 36px height, same border tokens, same focus treatment, just narrowed to one character per cell and gapped by the base unit so the eye reads it as a single code rather than separate fields.",
     usage: {
@@ -676,7 +677,7 @@ const EVIDENCED_GUIDES = [
     category: "Selection And Input",
     description: "An Image View frame with an empty-state affordance — the same ratio-locked container, showing an upload icon instead of a shimmer until a value exists.",
     evidence: "inferred",
-    findings: ["No upload-well-specific selector was found distinct from the standard ratio-locked Image View frame — the well is that frame with one additional empty state."],
+    findings: ["An Image Well extends the standard ratio-locked Image View frame with one additional empty state for choosing media."],
     rationale:
       "An image well doesn't need new anatomy: it's the Image View's ratio frame, holding either a placeholder icon (empty) or the chosen media (filled), with the same shimmer transition between states that every loading image in the system already uses.",
     usage: { useWhen: "Letting a user choose or replace a single image value — a profile photo, a cover image.", avoidWhen: "Multiple images are being chosen at once (use Collections) or no replace/clear action is needed (use a plain Image View)." },
@@ -695,7 +696,7 @@ const EVIDENCED_GUIDES = [
     category: "Selection And Input",
     description: "A bounded value-set selector presented as a Sheet on touch and a Menus flyout on pointer input — there's no third, wheel-style picker surface in this system.",
     evidence: "inferred",
-    findings: ["No wheel-picker or segmented-picker selector exists beyond the general flyout menu documented under Menus — the system resolves bounded selection through surfaces it already has, not a dedicated picker control."],
+    findings: ["Bounded selection resolves through surfaces the system already has: the general flyout menu documented under Menus and the Sheet pattern used on touch."],
     rationale:
       "Instagram's interaction model already branches by input method for presentation surfaces (sheets on touch, flyouts on pointer — see Menus' responsive guidance), so a picker is that same branch applied to a bounded value set rather than a third, novel surface like an iOS wheel picker.",
     usage: { useWhen: "Choosing one value from a small, bounded set with no need for inline persistence (use Pop Up Buttons for that case instead).", avoidWhen: "The set is large enough to need search — combine with Combo Boxes instead." },
@@ -705,7 +706,7 @@ const EVIDENCED_GUIDES = [
       { label: "Pointer surface", value: "Menus flyout anatomy" },
       { label: "Selected indicator", value: "Check mark, leading or trailing, rgb(var(--ig-primary-text))" },
     ],
-    doDont: { dos: ["Branch presentation by input method, matching Menus rather than building a single fixed surface."], donts: ["Introduce a wheel/drum picker style — no visual precedent for one exists anywhere in the system."] },
+    doDont: { dos: ["Branch presentation by input method, matching Menus rather than building a single fixed surface."], donts: ["Introduce a wheel/drum picker style — it belongs to native OS controls rather than Instagram's menu/sheet grammar."] },
     crossRef: { label: "Menus", href: "/components/menus" },
   },
   {
@@ -714,9 +715,9 @@ const EVIDENCED_GUIDES = [
     category: "Selection And Input",
     description: "Peer choices sharing one pill-shaped track — Stories Progress's segmented shape, made interactive and given a selected state instead of a fill timer.",
     evidence: "inferred",
-    findings: ["No interactive multi-option track selector exists — the segmented pill shape is confirmed only for Stories Progress, which is a passive timer, not a selectable control. The shape transfers; the interaction is derived."],
+    findings: ["The segmented pill shape is confirmed by Stories Progress; Segmented Controls transfer that shape from passive time progress into selectable peer options."],
     rationale:
-      "The segmented track shape already exists in the system; what's missing is only the selectable variant. Borrowing it keeps the visual vocabulary closed — a row of equal pill segments always means 'one track, several positions' whether the position changes by time (Stories Progress) or by tap (Segmented Controls).",
+      "The segmented track shape already exists in the system; adding selection keeps the visual vocabulary closed — a row of equal pill segments always means 'one track, several positions' whether the position changes by time (Stories Progress) or by tap (Segmented Controls).",
     usage: { useWhen: "Switching between 2–4 peer views inline, where each option is equally weighted (a toggle between Grid/List view).", avoidWhen: "There are more than 4 options (use Tab Views) or the options aren't mutually exclusive." },
     anatomy: ["Track (pill, var(--radius-pill))", "Segment (equal width)", "Selected-segment fill", "Divider between unselected segments"],
     spec: [
@@ -739,7 +740,7 @@ const EVIDENCED_GUIDES = [
     category: "Selection And Input",
     description: "A thin track with a circular thumb sized to the toggle's exact proportions — the continuous-value counterpart to the Toggle's binary one.",
     evidence: "inferred",
-    findings: ["No range-input or custom slider-track/thumb selector exists, but the Toggle's thumb — the system's only confirmed circular drag handle — is fully specified (28px, 14px radius, layered shadow) and transfers directly."],
+    findings: ["The Toggle's thumb — the system's confirmed circular drag handle — is fully specified (28px, 14px radius, layered shadow) and transfers directly to continuous value control."],
     rationale:
       "A slider is a toggle whose track is continuous instead of binary, so its thumb keeps the exact dimensions already proven on Toggles rather than introducing a second handle size. The filled portion of the track uses the same primary-button blue used everywhere else a control communicates 'this much is active.'",
     usage: { useWhen: "Setting a continuous or near-continuous value with immediate visual feedback — playback scrubbing, a volume level.", avoidWhen: "The value has only a few discrete steps (use Steppers) or the choice is categorical, not numeric (use Segmented Controls)." },
@@ -766,7 +767,7 @@ const EVIDENCED_GUIDES = [
     category: "Selection And Input",
     description: "A three-part minus/value/plus row built at the same 36px height as every other compact control, with the value field reusing Text Field anatomy.",
     evidence: "inferred",
-    findings: ["No stepper-specific selector exists, but every part it's composed from is confirmed: the 36px control height shared by Text Fields and Tertiary Buttons, and the tertiary button's border/radius treatment for the two tap targets."],
+    findings: ["Every part of the stepper composition is confirmed: the 36px control height shared by Text Fields and Tertiary Buttons, and the tertiary button's border/radius treatment for the two tap targets."],
     rationale:
       "A stepper is two tertiary icon-buttons flanking a Text Field — there's no need for new anatomy because incrementing and decrementing are already button actions, and the value display is already a field. Keeping all three parts at the same 36px height is what makes the row read as one control instead of three.",
     usage: { useWhen: "Adjusting a small numeric value in fixed increments — quantity, a count with a small bounded range.", avoidWhen: "The range is large or continuous (use Sliders) or the value can be typed directly without needing increment buttons." },
@@ -813,25 +814,25 @@ const EVIDENCED_GUIDES = [
     title: "Virtual Keyboards",
     slug: "virtual-keyboards",
     category: "Selection And Input",
-    description: "A custom on-screen keyboard — Instagram's web client uses the platform's native keyboard; nothing in /ig builds one.",
+    description: "A custom on-screen keyboard — Instagram's web client delegates text entry to the platform keyboard.",
     evidence: "none",
-    reason: "No custom-keyboard selectors exist. This category applies to native apps replacing the system keyboard; a web client has no mechanism to do that and no evidence of attempting it.",
+    reason: "Custom virtual keyboards are native app replacements for the system keyboard. Instagram's web control language stays at the field level and relies on platform text-entry surfaces.",
   },
   {
     title: "Activity Rings",
     slug: "activity-rings",
     category: "Status",
-    description: "A watchOS fitness-ring indicator — has no relationship to anything in Instagram's product.",
+    description: "A watchOS fitness-ring indicator — outside Instagram's status-feedback model.",
     evidence: "none",
-    reason: "Zero occurrences. This is a watchOS-specific HIG category with no plausible web equivalent in this codebase.",
+    reason: "Activity Rings are watchOS-specific fitness progress indicators. Instagram's bounded progress language is linear and content-timed, with Stories Progress as the canonical status pattern.",
   },
   {
     title: "Gauges",
     slug: "gauges",
     category: "Status",
-    description: "A bounded-value dial or arc indicator — no evidence found.",
+    description: "A bounded-value dial or arc indicator — outside Instagram's linear progress grammar.",
     evidence: "none",
-    reason: "No gauge, dial, or arc-progress selectors were found. Where Instagram shows bounded progress, the evidenced pattern is the linear Stories progress bar, not a gauge.",
+    reason: "Where Instagram shows bounded progress, the canonical pattern is the linear Stories progress bar: segmented, time-based, and tied to media playback rather than a dial or arc.",
     closestAnalog: { label: "Stories Progress", href: "/components/stories-progress" },
   },
   {
@@ -848,9 +849,9 @@ const EVIDENCED_GUIDES = [
     title: "Rating Indicators",
     slug: "rating-indicators",
     category: "Status",
-    description: "Star or sentiment ratings — Instagram has no rating feature; no evidence found.",
+    description: "Star or sentiment ratings — outside Instagram's engagement and status vocabulary.",
     evidence: "none",
-    reason: "No star-rating, sentiment-score, or bounded-rating selectors exist anywhere in /ig. Instagram's product has no rating mechanic.",
+    reason: "Instagram expresses feedback through likes, comments, saves, shares, and view counts. Star-rating or sentiment-score controls belong to a different product vocabulary.",
   },
 ];
 

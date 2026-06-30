@@ -66,7 +66,7 @@ export default function MotionPage() {
         />
       </Section>
 
-      <ImplementationNote title="Accessibility gap this site does not repeat" tone="gap">
+      <ImplementationNote title="Accessibility risk this site does not repeat" tone="gap">
         <code>@media (prefers-reduced-motion: reduce)</code> is present in the production app bundles but absent from
         every about-page-specific file analyzed — meaning visitors who&rsquo;ve asked their OS to reduce motion still
         receive the about-page&rsquo;s scroll-linked hero and infinite marquees at full intensity. This site

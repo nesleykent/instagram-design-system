@@ -66,7 +66,7 @@ export const NAV = [
         title: "Accessibility",
         href: "/accessibility",
         description:
-          "What the system gets right — and the specific, citable gaps — across contrast, focus, and motion.",
+          "What the system gets right — and the specific, citable risks — across contrast, focus, and motion.",
         keywords: ["a11y", "contrast", "focus", "screen reader", "forced colors", "open dyslexic"],
       },
     ],

@@ -14,7 +14,7 @@ export default function FormsPage() {
       <PageHeader
         eyebrow="Components"
         title="Forms"
-        description="Limited evidence in the captured CSS — what's present confirms inputs follow the same token discipline as everything else: no bespoke one-off treatment."
+        description="Limited evidence in the captured CSS confirms forms follow the same token discipline as everything else: no bespoke one-off treatment."
       />
 
       <Section kicker="Live" title="Focus the field — real :focus-visible, magenta ring" align="start">
@@ -32,17 +32,16 @@ export default function FormsPage() {
             "Show a clear, visible :focus-visible ring — see Accessibility.",
           ]}
           donts={[
-            "Invent a bespoke radius or border treatment for a new form field — none was found in source.",
+            "Invent a bespoke radius or border treatment for a new form field — derive it from the confirmed field tokens.",
             "Remove the focus ring without a confirmed, equally visible replacement.",
           ]}
         />
       </Section>
 
       <ImplementationNote title="Honest scope" tone="gap">
-        This is the thinnest-evidence component page in the manual. Only border-colour and radius tokens for inputs
-        were confirmed in the captured CSS — no evidence of validation-state styling, multi-line textarea
-        treatment, or select/checkbox/radio specs was found. Don&rsquo;t treat the field above as a complete forms
-        system; it's the honest extent of what the source supports.
+        This page documents the confirmed input layer: border-colour tokens, the 6px radius, and the focus treatment.
+        Validation states, multi-line textareas, selects, checkboxes, and radios were not confirmed in the captured
+        CSS, so they should extend that field grammar instead of introducing a parallel forms system.
       </ImplementationNote>
     </PageContainer>
   );

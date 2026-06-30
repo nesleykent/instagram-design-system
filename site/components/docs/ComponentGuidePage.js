@@ -8,6 +8,12 @@ import ImplementationNote from "./ImplementationNote";
 import { IconArrowRight } from "../Icons";
 import styles from "./ComponentGuidePage.module.css";
 
+const EVIDENCE_LABELS = {
+  documented: "Documented in /ig",
+  inferred: "Partially evidenced",
+  none: "Not found in /ig",
+};
+
 function GuidanceList({ items }) {
   return (
     <ul className={styles.guidanceList}>
@@ -114,23 +120,25 @@ export default function ComponentGuidePage({ guide }) {
     <PageContainer>
       <PageHeader eyebrow={guide.category} title={guide.title} description={guide.description}>
         <div className={styles.meta}>
-          <span className={styles.evidenceBadge} data-tier={guide.evidence}>
-            {guide.evidence === "documented" && "Documented in /ig"}
-            {guide.evidence === "inferred" && "Partially evidenced"}
-            {guide.evidence === "none" && "Not found in /ig"}
+          <span
+            className={styles.evidenceBadge}
+            data-tier={guide.evidence}
+            aria-label={`Evidence tier: ${EVIDENCE_LABELS[guide.evidence]}`}
+          >
+            {EVIDENCE_LABELS[guide.evidence]}
           </span>
           <span>{guide.category}</span>
         </div>
       </PageHeader>
 
       {!isEvidenced && (
-        <Section kicker="Evidence" title="Not part of Instagram's product">
-          <ImplementationNote title="Why this page is short" tone="gap">
+        <Section kicker="Scope" title="Platform scope boundary">
+          <ImplementationNote title="Scope rationale" tone="gap">
             <p>{guide.reason}</p>
           </ImplementationNote>
           {guide.closestAnalog && (
             <div className={styles.analogWrap}>
-              <p className={styles.analogLabel}>If you need something in this space, the closest real pattern is:</p>
+              <p className={styles.analogLabel}>Closest Instagram pattern:</p>
               <CrossRefCard crossRef={guide.closestAnalog} label="See" />
             </div>
           )}
@@ -223,9 +231,9 @@ export default function ComponentGuidePage({ guide }) {
 
           {guide.evidence === "inferred" && (
             <ImplementationNote title="Confidence note" tone="gap">
-              No selector or custom property specific to {guide.title.toLowerCase()} was found — the specification
-              above is derived from the established token system (spacing, radius, colour, type, and motion) rather
-              than read from a confirmed dedicated selector.
+              The specification above is derived from the established token system — spacing, radius, colour, type,
+              and motion — and from neighbouring confirmed components rather than from a dedicated selector captured
+              under this component name.
             </ImplementationNote>
           )}
         </>
