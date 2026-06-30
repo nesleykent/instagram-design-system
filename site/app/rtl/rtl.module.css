@@ -1,0 +1,204 @@
+/* ── Logical property mapping table ── */
+.mappingTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.mappingRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 11px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.mappingRow:first-child {
+  border-top: none;
+}
+
+.mappingHeader {
+  background: rgb(var(--ig-secondary-bg));
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.mappingCode {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: rgb(var(--ig-secondary-text));
+  text-decoration: line-through;
+  text-decoration-color: rgba(var(--ig-error), 0.5);
+}
+
+.mappingCodeLogical {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: rgb(var(--ig-success));
+}
+
+/* ── Icon mirror rules ── */
+.iconRuleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.iconRuleRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-md);
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.mirrorBadge {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.mirrorYes {
+  background: color-mix(in srgb, var(--ig-stop-magenta) 12%, transparent);
+  color: var(--ig-stop-magenta);
+}
+
+.mirrorNo {
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-text));
+}
+
+.iconRuleName {
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  margin-bottom: 2px;
+}
+
+.iconRuleReason {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Layout direction demo ── */
+.layoutDemo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.layoutRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.layoutLabel {
+  width: 36px;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: rgb(var(--ig-secondary-text));
+  text-transform: uppercase;
+}
+
+.layoutBar {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.layoutBarRtl {
+  direction: rtl;
+}
+
+.layoutTab {
+  font-size: 13px;
+  color: rgb(var(--ig-primary-text));
+}
+
+/* ── Never-mirror list ── */
+.neverList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.neverRow {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 16px;
+  padding: 13px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.neverRow:first-child {
+  border-top: none;
+}
+
+.neverItem {
+  font-size: 13.5px;
+  font-weight: var(--fw-semibold);
+  line-height: 1.4;
+}
+
+.neverWhy {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .iconRuleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .neverRow {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .mappingRow {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .mappingHeader {
+    display: none;
+  }
+
+  .layoutBar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .neverRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

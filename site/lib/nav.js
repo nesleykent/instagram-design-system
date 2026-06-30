@@ -118,6 +118,13 @@ export const NAV = [
           "Why dark mode isn't inversion — the confirmed light/dark token pairs, what stays fixed, and the toggle implementation.",
         keywords: ["dark mode", "theme", "light mode", "data-theme", "prefers-color-scheme", "near-black"],
       },
+      {
+        title: "RTL & Internationalization",
+        href: "/rtl",
+        description:
+          "Logical CSS properties, icon mirror/fixed classification, layout direction, and what never mirrors.",
+        keywords: ["rtl", "ltr", "internationalization", "i18n", "arabic", "hebrew", "direction", "logical properties", "mirror"],
+      },
     ],
   },
   {
