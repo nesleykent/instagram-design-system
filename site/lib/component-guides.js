@@ -42,6 +42,28 @@ const EVIDENCED_GUIDES = [
       dos: ["Use the shimmer skeleton as the loading state, not a flat grey box.", "Keep the frame's aspect-ratio fixed so layout doesn't jump when the asset arrives."],
       donts: ["Introduce a sixth aspect ratio outside the documented set without new evidence.", "Crop with object-fit: contain — every instance found uses cover."],
     },
+    usage: {
+      useWhen: "Use for media content requiring aspect-ratio enforcement and lazy-load shimmer, including feed images, profile media, Stories/Reels previews, and editorial creator cards.",
+      avoidWhen: "Avoid for icons, avatars, or decorative artwork that must preserve the whole source image; those should use their own fixed-size or object-fit: contain treatment.",
+    },
+    spec: [
+      { label: "Aspect ratios", value: "1:1, 4:5, 9:16, 16:9, and 3:4 editorial crop; use the documented ratio set before inventing a crop" },
+      { label: "Fit", value: "object-fit: cover with object-position: center" },
+      { label: "Loading fill", value: "Shimmer skeleton over rgb(var(--ig-secondary-bg))" },
+      { label: "Frame stability", value: "aspect-ratio locks the box before the asset loads" },
+      { label: "Overlay", value: "Optional scrim gradient only when text sits on top of media" },
+    ],
+    states: [
+      { name: "Loading", description: "The ratio frame is present and filled by a shimmer skeleton over --ig-secondary-bg while the image request resolves." },
+      { name: "Loaded", description: "The media object fills the locked frame with object-fit: cover and object-position: center." },
+      { name: "Failed", description: "A neutral placeholder keeps the same aspect ratio so surrounding layout does not jump." },
+      { name: "Pressed", description: "Interactive media applies a temporary overlay or scrim while the pointer or touch is held." },
+      { name: "Selected", description: "Multi-select surfaces add a persistent selection overlay or check affordance without changing the crop." },
+    ],
+    notes: [
+      "The shimmer is an implementation of the captured shimmer.gif loading reference; keep it inside the ratio frame.",
+      "The crop rule is cover, never contain, so selected and failed states must preserve the same dimensions.",
+    ],
     code: `.image-view {\n  aspect-ratio: 4 / 5; /* or 1/1, 9/16, 16/9, 3/4 — see Shape */\n  object-fit: cover;\n  object-position: center;\n}`,
     crossRef: { label: "Aspect Ratio Gallery", href: "/shape" },
   },
@@ -65,6 +87,26 @@ const EVIDENCED_GUIDES = [
       dos: ["Set secondary/metadata text to --ig-secondary-text or --ig-tertiary-text, matching the documented hierarchy."],
       donts: ["Invent a larger 'reading' type scale — use the product UI scale, while the about-page display sizes remain marketing-only."],
     },
+    usage: {
+      useWhen: "Use for multiline text blocks: captions, bios, comment bodies, and other product copy that should expand naturally with content.",
+      avoidWhen: "Avoid for single-value form entry or navigational labels; use Text Fields for editable input and Labels for compact metadata.",
+    },
+    spec: [
+      { label: "Height", value: "No fixed height — the block expands to its content" },
+      { label: "Type scale", value: "Inherits the system 12/14/16/24px product scale" },
+      { label: "Width", value: "max-width comes from the surrounding layout grid, not the text component" },
+      { label: "Single-line overflow", value: "overflow hidden, text-overflow: ellipsis, white-space: nowrap" },
+      { label: "Multi-line overflow", value: "Scroll or expand; no captured multi-line line-clamp utility" },
+    ],
+    states: [
+      { name: "Default", description: "Readable copy sits in the product UI type scale and expands vertically with content." },
+      { name: "Editing", description: "Editable text shows a cursor and expands with new lines rather than introducing a fixed document box." },
+      { name: "Overflow", description: "Single-line variants clip with ellipsis; multi-line variants should expose an expand or scroll affordance." },
+    ],
+    notes: [
+      "Text Views do not introduce a separate reading type scale; they reuse the same system sizes as controls and rows.",
+      "Layout owns max-width. The text component only supplies hierarchy, colour, and overflow behavior.",
+    ],
     code: `.text-view__meta {\n  font-size: var(--system-12-font-size);\n  line-height: var(--system-12-line-height);\n  color: rgb(var(--ig-secondary-text));\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}`,
     crossRef: { label: "Typography", href: "/typography" },
   },
@@ -134,6 +176,27 @@ const EVIDENCED_GUIDES = [
       dos: ["Hide the scrollbar on touch viewports, matching every mobile gallery in /ig."],
       donts: ["Add dot pagination under a free-scrolling collection — reserve Page Controls for short, manually paged sequences."],
     },
+    usage: {
+      useWhen: "Use for a uniform grid of media items — profile grid, Explore grid, hashtag feed — where repeated image cells form the primary browsing surface.",
+      avoidWhen: "Avoid when items have mixed anatomy or variable row heights; those belong in Lists And Tables or a bespoke editorial mosaic.",
+    },
+    spec: [
+      { label: "Grid gap", value: "Use spacing scale gaps, typically --space-2 or --space-3" },
+      { label: "Columns", value: "Column count is driven by layout grid units and available viewport width" },
+      { label: "Item frame", value: "Each item uses Image Views ratio and object-fit: cover rules" },
+      { label: "Touch overflow", value: "scrollbar-width: none and hidden ::-webkit-scrollbar for touch galleries" },
+      { label: "Desktop overflow", value: ".uiScrollableAreaWrapHorizontal{overflow-x:auto} when the collection scrolls horizontally" },
+    ],
+    states: [
+      { name: "Loading", description: "Cells render skeleton frames or shimmer while media resolves." },
+      { name: "Populated", description: "The grid or row is filled with repeated media items using stable gaps and crops." },
+      { name: "Empty state", description: "The surface keeps its grid container but shows concise empty copy or an upload/follow prompt." },
+      { name: "Refreshing", description: "Existing cells stay in place while new results load, avoiding a full layout reset." },
+    ],
+    notes: [
+      "A Collection is defined by repetition and stable item geometry; the surface can be a uniform grid or a free-scrolling row depending on context.",
+      "Do not pair free-scrolling collections with Page Controls unless the experience is manually paged rather than scroll-based.",
+    ],
     crossRef: { label: "Mosaic Grid Demo", href: "/imagery" },
   },
   {
@@ -149,6 +212,26 @@ const EVIDENCED_GUIDES = [
       dos: ["Collapse to a single stacked column at the same ~650–768px range used everywhere else in /ig."],
       donts: ["Keep both columns side-by-side below the documented breakpoint — no instance in /ig does this."],
     },
+    usage: {
+      useWhen: "Use for desktop layouts needing persistent source + detail panes, such as a DM thread list beside an open thread or a settings category beside its detail view.",
+      avoidWhen: "Avoid on narrow screens or for unrelated content blocks; collapse to one column when the second pane would compete with the primary task.",
+    },
+    spec: [
+      { label: "Pane widths", value: "Use --ig-grid-unit multiples, including the documented 50/50 and 5:9 split patterns" },
+      { label: "Divider", value: "1px solid rgb(var(--ig-separator)) between persistent panes" },
+      { label: "Breakpoint", value: "Collapse around the documented ~650–768px range" },
+      { label: "Desktop layout", value: "Adjacent panes preserve independent content hierarchy" },
+      { label: "Mobile layout", value: "One pane at a time or stacked single-column flow" },
+    ],
+    states: [
+      { name: "Collapsed", description: "Only one column is visible; the secondary pane stacks below or becomes a navigated detail view." },
+      { name: "Split", description: "Two panes sit side by side using the documented grid split." },
+      { name: "Active pane", description: "The focused pane can raise its separator or z-index so the active edge remains visually clear." },
+    ],
+    notes: [
+      "Use grid-derived pane widths rather than arbitrary percentages.",
+      "The divider is a separator line, not an elevated card edge.",
+    ],
     crossRef: { label: "Split-Screen Demo", href: "/layout-grid" },
   },
   {
@@ -208,6 +291,25 @@ const EVIDENCED_GUIDES = [
       dos: ["Keep labels at 10–12px — the established label range."],
       donts: ["Use --ig-primary-text for a label — labels are secondary/tertiary by definition in every instance found."],
     },
+    usage: {
+      useWhen: "Use for metadata annotations on content, including timestamps, follower counts, view counts, privacy notes, and compact explanatory labels.",
+      avoidWhen: "Avoid for primary titles, action text, or body copy; Labels intentionally sit below the primary reading hierarchy.",
+    },
+    spec: [
+      { label: "Font size", value: "var(--system-12-font-size) or var(--system-14-font-size), with 10px reserved for the quietest metadata" },
+      { label: "Colour", value: "rgb(var(--ig-secondary-text)) or rgb(var(--ig-tertiary-text))" },
+      { label: "Background", value: "None by default; only count badges use a pill background" },
+      { label: "Overflow", value: "Single line with ellipsis when space is constrained" },
+    ],
+    states: [
+      { name: "Default", description: "Secondary or tertiary text labels metadata without background or decoration." },
+      { name: "Truncated", description: "The label stays on one line and clips with text-overflow: ellipsis." },
+      { name: "Count badge", description: "Numerical metadata can move into a pill background while keeping compact label sizing." },
+    ],
+    notes: [
+      "Labels are defined by hierarchy, not shape; only count badges should gain a background.",
+      "Use the secondary/tertiary text split to preserve subtle dark-mode hierarchy.",
+    ],
   },
   {
     title: "Lists And Tables",
@@ -222,6 +324,28 @@ const EVIDENCED_GUIDES = [
       dos: ["Use a 1px --post-separator or --ig-separator between rows, not a heavier table-grid border."],
       donts: ["Build a sortable, multi-column spreadsheet-style table — Instagram row patterns are single-column content with a leading/trailing affordance."],
     },
+    usage: {
+      useWhen: "Use for vertically-scrolling rows of same-height items, including notifications, settings, search results, and comment-thread rows.",
+      avoidWhen: "Avoid for dense analytical data or sortable spreadsheet-style tables; Instagram's evidenced pattern is a row list, not a grid of columns.",
+    },
+    spec: [
+      { label: "Row height", value: "44px minimum; search-result rows are confirmed at 50px" },
+      { label: "Separator", value: "1px solid rgb(var(--ig-separator)) or rgb(var(--post-separator))" },
+      { label: "Inset", value: "Separator inset starts 16px from the left edge when aligned to row content" },
+      { label: "Text overflow", value: "overflow hidden, text-overflow: ellipsis, white-space: nowrap" },
+      { label: "Width", value: "Search-result list width is capped at 375px in the documented pattern" },
+    ],
+    states: [
+      { name: "Default", description: "Row rests at its fixed height with leading content, primary/secondary text, and optional trailing affordance." },
+      { name: "Hover", description: "Pointer rows receive the --ig-hover-overlay treatment without changing row height." },
+      { name: "Pressed", description: "The row applies a slightly stronger overlay while the action is held." },
+      { name: "Disabled", description: "Unavailable rows drop to 55% opacity and remain visible." },
+      { name: "Selected", description: "Selected rows hold the active overlay or check affordance while preserving truncation and separators." },
+    ],
+    notes: [
+      "Keep row height fixed; long content truncates rather than stretching the list.",
+      "Use separator tokens for rows, not a full table grid.",
+    ],
     crossRef: { label: "Dropdowns & Selectors (legacy menu rows)", href: "/components/dropdowns" },
   },
   {
@@ -237,6 +361,27 @@ const EVIDENCED_GUIDES = [
       dos: ["Use --ig-secondary-text for the subtitle line, matching every identity row found."],
       donts: ["Let a long primary line push the secondary line or trailing action out of the fixed row height."],
     },
+    usage: {
+      useWhen: "Use for any identity row: follow list entries, notification actors, search results, story-ring identities, and compact account references.",
+      avoidWhen: "Avoid when the leading visual is decorative rather than identifying; use Labels or Lists And Tables for plain metadata rows.",
+    },
+    spec: [
+      { label: "Avatar", value: "32–40px fixed leading well" },
+      { label: "Primary label", value: "var(--system-14-font-size), semibold weight" },
+      { label: "Subtext", value: "var(--system-12-font-size), rgb(var(--ig-secondary-text))" },
+      { label: "Gap", value: "var(--space-2) between avatar and text stack" },
+      { label: "Overflow", value: "Primary and secondary lines truncate independently" },
+    ],
+    states: [
+      { name: "Default", description: "Avatar or icon, primary label, and secondary text sit in a fixed row." },
+      { name: "Hover", description: "Interactive lockups receive the row hover overlay while text hierarchy stays unchanged." },
+      { name: "Pressed", description: "The row applies a pressed overlay while opening the profile or taking the row action." },
+      { name: "Verified", description: "A blue tick appears inline immediately after the primary label without changing row height." },
+    ],
+    notes: [
+      "The leading well stays fixed so long names cannot resize the row.",
+      "Verification is inline with the primary label, while secondary metadata remains in --ig-secondary-text.",
+    ],
   },
   {
     title: "Tab Views",
@@ -282,6 +427,28 @@ const EVIDENCED_GUIDES = [
       dos: ["Use a 3px radius and the documented 1px rgba border + soft shadow for the flyout surface."],
       donts: ["Remove disabled actions from the list — the evidenced pattern keeps them visible and dimmed."],
     },
+    usage: {
+      useWhen: "Use for object-specific actions triggered by right-click or a '...' affordance, especially actions scoped to one post, row, or media item.",
+      avoidWhen: "Avoid for global navigation or large, task-taking surfaces; use Tab Bars, Sidebars, Modals, or Sheets depending on scope.",
+    },
+    spec: [
+      { label: "Radius", value: "3px" },
+      { label: "Background", value: "#fff" },
+      { label: "Border", value: "1px solid rgba(0,0,0,.15)" },
+      { label: "Shadow", value: "0 3px 8px rgba(0,0,0,.3)" },
+      { label: "Layer", value: "z-index: 202 on the contextual layer" },
+    ],
+    states: [
+      { name: "Hidden", description: "Layer is not rendered or is display:none until the trigger opens it." },
+      { name: "Open", description: "The contextual layer is positioned below or above the trigger using the Positioner/PositionerFixed model." },
+      { name: "Row hover", description: "The hovered action row highlights while the flyout surface stays fixed." },
+      { name: "Row pressed", description: "The row uses a pressed highlight until the command fires or the pointer is released." },
+      { name: "Disabled row", description: "Unavailable actions remain visible at 55% opacity." },
+    ],
+    notes: [
+      "The contextual layer supplies anchoring; the menu surface supplies the 3px radius, rgba border, and shadow.",
+      "Disabled actions should stay visible and dimmed so the command set remains stable.",
+    ],
     code: `.context-menu {\n  position: absolute;\n  background: #fff;\n  border: 1px solid rgba(0,0,0,.15);\n  border-radius: 3px;\n  box-shadow: 0 3px 8px rgba(0,0,0,.3);\n}\n.context-menu__item[disabled] { opacity: .55; }`,
   },
   {
@@ -294,6 +461,29 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Trigger (.openToggler)", "Flyout (.uiToggleFlyout)", "Action rows"],
     guidance: ["The open/closed model is a single toggled ancestor class, not a height or opacity transition — menus appear and disappear instantly in the legacy system."],
     doDont: { dos: ["Toggle visibility via a single ancestor class, matching the evidenced model."], donts: ["Add an animated open/close transition to this specific legacy menu model — it appears and disappears by display state."] },
+    usage: {
+      useWhen: "Use for a list of related actions surfaced by any non-right-click trigger, including a button, chevron, overflow icon, or compact selector trigger.",
+      avoidWhen: "Avoid for object-specific right-click behavior, which is a Context Menu, or for touch-first bottom action lists, which should use Action Sheets.",
+    },
+    spec: [
+      { label: "Surface", value: "Same as Context Menus: #fff, 1px rgba(0,0,0,.15) border, 0 3px 8px rgba(0,0,0,.3) shadow" },
+      { label: "Visibility", value: ".uiToggleFlyout hidden by default; .openToggler displays it" },
+      { label: "Row height", value: "~36px compact action row" },
+      { label: "Leading icon", value: "Optional 16px icon aligned before row label" },
+      { label: "Separator", value: "Thin separator row between action groups" },
+    ],
+    states: [
+      { name: "Hidden", description: "The flyout is display:none through .uiToggleFlyout or .toggleTargetClosed." },
+      { name: "Open", description: "A single .openToggler ancestor flips the flyout to display:block." },
+      { name: "Row hover", description: "Hovered rows highlight without animating the flyout surface." },
+      { name: "Row pressed", description: "Pressed rows hold a stronger row highlight until activation." },
+      { name: "Row with icon", description: "Rows can include a leading 16px icon while keeping the same compact height." },
+      { name: "Separator row", description: "A non-action separator divides groups without receiving hover or pressed states." },
+    ],
+    notes: [
+      "Menus and Context Menus share the same visual chrome; the difference is the trigger model.",
+      "The legacy menu opens by display state, so do not add an animated height transition to this pattern.",
+    ],
   },
   {
     title: "Activity Views",
@@ -494,6 +684,29 @@ const EVIDENCED_GUIDES = [
     anatomy: ["40px input box", "Result list (375px max width)", "50px result row", "Expanded modal state"],
     guidance: ["Keep the input at exactly 40px and result rows at exactly 50px — these are confirmed tokens, not approximations.", "Cap the result list width at 375px even in a wide layout; search doesn't stretch to fill available space in the evidenced pattern."],
     doDont: { dos: ["Use the modal-height-expanded token's existence as license to support a taller, expanded search state on focus."], donts: ["Let the result list grow wider than 375px to fill a wide screen."] },
+    usage: {
+      useWhen: "Use for a query + result list — always use the 40px input / 50px row / 375px max-width combination verbatim.",
+      avoidWhen: "Avoid for a plain single-line form value with no results list; use Text Fields when search behavior and result rows are not part of the interaction.",
+    },
+    spec: [
+      { label: "Input height", value: "40px via --search-box-height" },
+      { label: "Result row height", value: "50px via --search-result-height" },
+      { label: "Result list width", value: "375px via --search-result-list-width" },
+      { label: "Modal height", value: "--search-modal-height with --search-modal-height-expanded for the expanded state" },
+      { label: "Top offset", value: "--search-modal-top-offset positions the modal-style overlay" },
+    ],
+    states: [
+      { name: "Empty", description: "Input shows placeholder text and no result rows." },
+      { name: "Focused", description: "Cursor is visible in the 40px input while no query results are shown yet." },
+      { name: "Typing", description: "Inline suggestions or partial matches can appear as the query changes." },
+      { name: "Results", description: "The 375px result list shows 50px truncating rows." },
+      { name: "No results", description: "The result area remains capped to the search width and shows concise empty copy." },
+      { name: "Modal expanded", description: "The search overlay uses the expanded modal-height token when the focused search state needs more vertical room." },
+    ],
+    notes: [
+      "Search is one of the most token-exact components: keep 40px, 50px, and 375px values intact.",
+      "Result rows inherit Lists And Tables truncation rather than wrapping to multiple lines.",
+    ],
     code: `.search-box { height: var(--search-box-height); /* 40px */ }\n.search-result-row { height: var(--search-result-height); /* 50px */ }\n.search-result-list { width: var(--search-result-list-width); /* 375px */ }`,
   },
   {
@@ -539,6 +752,28 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Tab bar container (height: var(--revamp-nav-bottom-toolbar-height))", "Destination icon", "Current-page indicator", "Badge/count"],
     guidance: ["Reserve layout space for the tab bar using the same token other surfaces calc() against it with — that's the evidenced integration pattern, not a fixed pixel guess."],
     doDont: { dos: ["Use --revamp-nav-bottom-toolbar-height for safe-area math, exactly as the rest of the app does."], donts: ["Hard-code a pixel height for the tab bar when a token already exists for it."] },
+    usage: {
+      useWhen: "Use for top-level destination switching in mobile layout; the bottom nav stays persistent while content scrolls behind reserved safe-area space.",
+      avoidWhen: "Avoid for in-page peer panels or short carousels; use Tab Views for panels and Page Controls for manual media position.",
+    },
+    spec: [
+      { label: "Height", value: "var(--revamp-nav-bottom-toolbar-height)" },
+      { label: "Icons", value: "24px destination icons" },
+      { label: "Active tab", value: "Uses the filled version of the icon, with optional label emphasis" },
+      { label: "Safe area", value: "Other surfaces reserve space with calc() against the toolbar-height token" },
+      { label: "Badge", value: "Notification dot or count attaches to the icon, not the container" },
+    ],
+    states: [
+      { name: "Default", description: "Destination rests in the bottom bar with an outline icon and normal label treatment." },
+      { name: "Pressed", description: "Tap target applies a pressed overlay while navigation resolves." },
+      { name: "Active", description: "The current destination uses the filled icon and active label treatment." },
+      { name: "Notification dot", description: "A dot or count sits on the icon to signal pending activity." },
+      { name: "Disabled", description: "Unavailable destinations reduce opacity and do not navigate." },
+    ],
+    notes: [
+      "The toolbar-height token is part of layout math, so reserve space for the tab bar instead of overlaying it casually.",
+      "Filled icons communicate current destination; do not invent a separate underline for the bottom bar.",
+    ],
   },
   {
     title: "Token Fields",
@@ -587,6 +822,28 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Full-height fixed surface", "Slide-up transform", "Action rows", "Dismiss"],
     guidance: ["Reuse the documented slide-up mechanism verbatim (translateY(100%) → 0, Ease Settle, ~500ms) rather than inventing a new entrance for a sheet-style surface."],
     doDont: { dos: ["Use position: fixed with z-index 400 and the documented Ease Settle transform."], donts: ["Fade a sheet in with opacity alone — every sheet-like surface found uses a translate transform."] },
+    usage: {
+      useWhen: "Use for a contextual action list triggered from the bottom of the screen; reserve it for 3+ destructive, irreversible, or high-attention actions.",
+      avoidWhen: "Avoid for one-off inline commands, persistent navigation, or pointer-first flyouts; use Buttons, Tab Bars, or Menus instead.",
+    },
+    spec: [
+      { label: "Entrance", value: "translateY(100%) → translateY(0)" },
+      { label: "Timing", value: "0.5s cubic-bezier(0,.61,.28,.92)" },
+      { label: "Backdrop", value: "rgba(0,0,0,0.5)" },
+      { label: "Position", value: "position: fixed; height: 100%; width: 100%" },
+      { label: "Layer", value: "z-index: 400" },
+    ],
+    states: [
+      { name: "Hidden", description: "Sheet is translated fully off the bottom of the viewport." },
+      { name: "Opening", description: "Sheet animates upward from translateY(100%) to 0 over the documented Ease Settle curve." },
+      { name: "Visible", description: "Action rows are available over the dimmed backdrop." },
+      { name: "Row pressed", description: "The tapped row applies a pressed overlay while the action is held." },
+      { name: "Closing", description: "Sheet animates down to translateY(100%) before being removed or hidden." },
+    ],
+    notes: [
+      "The sheet motion is transform-based; opacity-only entrance would contradict the captured mechanism.",
+      "Use the backdrop to separate the temporary action list from the page beneath it.",
+    ],
     crossRef: { label: "Modals & Panels", href: "/components/modals" },
   },
   {
@@ -700,6 +957,28 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Scroll container", "Content", "Track (7px)", "Gripper (widens on interaction)"],
     guidance: ["On desktop/legacy surfaces, use a custom 7px track + gripper that widens on hover, not the unstyled native scrollbar.", "On mobile, hide the scrollbar entirely and rely on touch momentum — don't show a custom gripper on touch."],
     doDont: { dos: ["Widen the gripper on hover/drag, matching the documented transition:width .25s."], donts: ["Show a visible custom scrollbar on a mobile/touch gallery — every mobile instance hides it."] },
+    usage: {
+      useWhen: "Use for any surface with content taller than the viewport that needs styled scrolling, including legacy desktop panes, modal bodies, and long result lists.",
+      avoidWhen: "Avoid on touch-first galleries where the evidenced treatment hides scrollbars entirely and relies on native momentum.",
+    },
+    spec: [
+      { label: "Container", value: ".uiScrollableArea height:100%; overflow:hidden; position:relative" },
+      { label: "Wrapper", value: ".uiScrollableAreaWrap overflow-y:scroll" },
+      { label: "Track width", value: "7px" },
+      { label: "Gripper radius", value: "7px border radius" },
+      { label: "Gripper transition", value: "width .25s" },
+      { label: "Mobile", value: "scrollbar-width:none and hidden ::-webkit-scrollbar" },
+    ],
+    states: [
+      { name: "Default", description: "Track is hidden or minimal while content scrolls inside its viewport." },
+      { name: "Hover", description: "Pointer hover reveals the custom track and gripper." },
+      { name: "Dragging", description: "The gripper widens during drag, following the documented width transition." },
+      { name: "Touch", description: "Scrollbar is hidden entirely and native momentum handles scrolling." },
+    ],
+    notes: [
+      "Desktop and touch treatments intentionally differ: custom gripper for pointer, hidden scrollbar for mobile.",
+      "The gripper transition changes width only; do not add a separate opacity or scale animation.",
+    ],
   },
   {
     title: "Sheets",
@@ -1012,6 +1291,29 @@ const EVIDENCED_GUIDES = [
     anatomy: ["36px field container", "Border (paired light/dark token)", "Label", "Value text"],
     guidance: ["Keep the field at exactly 36px tall — that's the confirmed height across the evidenced selector.", "Source the border colour from the prism token pair, which already handles the hover state distinctly from the resting state."],
     doDont: { dos: ["Use 6px radius, matching every other input-shaped control in the system."], donts: ["Introduce a taller default field height — 36px is the only evidenced size."] },
+    usage: {
+      useWhen: "Use for single-line text input: login, search-like inline entry, post caption controls, comment fields, and compact form values.",
+      avoidWhen: "Avoid for multiline captions or long readable copy; use Text Views when content should expand beyond one line.",
+    },
+    spec: [
+      { label: "Height", value: "36px" },
+      { label: "Radius", value: "6px via --input-border-radius" },
+      { label: "Border", value: "1px solid rgb(var(--ig-text-input-border-prism))" },
+      { label: "Hover border", value: "rgb(var(--ig-text-input-border-hover-prism))" },
+      { label: "Layout", value: "display:flex; flex:1 0 0; min-width:0" },
+    ],
+    states: [
+      { name: "Default", description: "Empty field rests at 36px with the prism border token." },
+      { name: "Hover", description: "Border darkens through --ig-text-input-border-hover-prism." },
+      { name: "Focused", description: "Border remains darkened and the text cursor is visible inside the field." },
+      { name: "Filled", description: "Value text occupies the field while the 36px container and label treatment remain stable." },
+      { name: "Error", description: "Border switches to --ig-error while preserving the same radius and height." },
+      { name: "Disabled", description: "Field opacity drops to .5 and input is unavailable." },
+    ],
+    notes: [
+      "The field height and radius are exact captured values; do not round up for comfort.",
+      "Hover and focus use the prism border pair rather than a new outline treatment.",
+    ],
     code: `.text-field {\n  height: 36px;\n  border-radius: var(--input-border-radius); /* 6px */\n  border: 1px solid rgb(var(--ig-text-input-border-prism));\n}\n.text-field:hover { border-color: rgb(var(--ig-text-input-border-hover-prism)); }`,
     crossRef: { label: "Forms", href: "/components/forms" },
   },
@@ -1025,6 +1327,29 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Track (51×31, 20px radius)", "Thumb (28×28, 14px radius)", "Checked fill colour", "Disabled opacity"],
     guidance: ["Use the exact 51×31 / 28×28 / translate(23px) numbers — they're confirmed, not estimated, and they're internally consistent (23 = 51 − 28).", "Disable by dropping opacity to .3, not by recolouring the track."],
     doDont: { dos: ["Reuse the confirmed dimensions verbatim rather than rounding to 50×30 or similar 'clean' numbers — the source isn't round."], donts: ["Animate the thumb with anything but transform: translate — no scale or colour-interpolation was found on the thumb itself."] },
+    usage: {
+      useWhen: "Use for a binary, immediately-applied setting such as notifications on/off, dark mode, or a feature flag.",
+      avoidWhen: "Avoid when a choice needs confirmation, contains more than two values, or triggers navigation; use Buttons, Pickers, or Menus instead.",
+    },
+    spec: [
+      { label: "Track", value: "51×31px with 20px radius" },
+      { label: "Thumb", value: "28×28px with 14px radius" },
+      { label: "Checked fill", value: "#2d88ff" },
+      { label: "Checked transform", value: "translate(23px)" },
+      { label: "Disabled", value: "opacity:.3" },
+      { label: "Thumb shadow", value: "0 3px 8px rgba(0,0,0,.15) plus finer 1px shadows" },
+    ],
+    states: [
+      { name: "Off", description: "Default state with neutral track and thumb at the start position." },
+      { name: "On", description: "Checked state fills the track with #2d88ff and translates the thumb exactly 23px." },
+      { name: "Disabled off", description: "Off toggle drops to .3 opacity and no longer accepts interaction." },
+      { name: "Disabled on", description: "Checked toggle remains visually on but drops to .3 opacity." },
+      { name: "Pressed", description: "A brief opacity or pressed feedback can appear while the thumb transform remains the only movement." },
+    ],
+    notes: [
+      "The 23px checked travel is the track width minus thumb width, so the captured numbers are internally locked.",
+      "Disable by opacity only; do not introduce disabled-specific track colours.",
+    ],
     code: `.toggle__track { width: 51px; height: 31px; border-radius: 20px; background: #0000000d; border: .5px solid rgba(0,0,0,.1); transition: .5s ease; }\n.toggle__track[data-checked="true"] { background: #2d88ff; }\n.toggle__thumb { width: 28px; height: 28px; border-radius: 14px; box-shadow: 0 3px 8px rgba(0,0,0,.15); transition: .5s ease; }\n.toggle__track[data-checked="true"] .toggle__thumb { transform: translate(23px); }\n.toggle[disabled] { opacity: .3; }`,
   },
   {
