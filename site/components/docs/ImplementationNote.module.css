@@ -9,7 +9,6 @@
 
 .note[data-tone="gap"] {
   background: color-mix(in srgb, var(--ig-stop-orange) 8%, transparent);
-  border-color: color-mix(in srgb, var(--ig-stop-orange) 25%, transparent);
 }
 
 .icon {
