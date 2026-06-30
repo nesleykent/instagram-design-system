@@ -94,12 +94,12 @@
 }
 
 .evidenceTag[data-tier="documented"] {
-  background: rgba(88, 195, 34, 0.1);
-  color: rgb(88, 155, 34);
+  background: rgba(var(--ig-success), 0.1);
+  color: rgb(var(--ig-success));
 }
 
 .evidenceTag[data-tier="inferred"] {
-  background: rgba(255, 122, 0, 0.1);
+  background: color-mix(in srgb, var(--ig-stop-orange) 10%, transparent);
   color: var(--ig-stop-orange);
 }
 

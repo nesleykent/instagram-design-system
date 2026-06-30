@@ -2,7 +2,7 @@
   padding: 16px;
   border-radius: var(--radius-md);
   border: 1px solid rgb(var(--ig-separator));
-  background: rgba(88, 195, 34, 0.05);
+  background: rgba(var(--ig-success), 0.05);
 }
 
 .winTitle {

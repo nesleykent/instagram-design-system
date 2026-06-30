@@ -23,7 +23,7 @@
   font-size: 16px;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
-  border-image: linear-gradient(#f7d440, #ed1f1f) 1;
+  border-image: var(--ig-gradient-underline) 1;
 }
 
 .layers {
@@ -41,7 +41,7 @@
 
 .layer[data-emphasis="true"] {
   border-color: var(--ig-stop-magenta);
-  background: rgba(211, 0, 197, 0.05);
+  background: color-mix(in srgb, var(--ig-stop-magenta) 5%, transparent);
 }
 
 .layerName {
