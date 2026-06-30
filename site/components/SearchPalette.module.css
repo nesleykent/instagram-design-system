@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-palette);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(var(--shadow-rgb), 0.5);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   display: flex;
@@ -26,7 +26,7 @@
   background: rgb(var(--ig-elevated-bg));
   border-radius: var(--modal-radius);
   border: 1px solid rgb(var(--ig-separator));
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 48px rgba(var(--shadow-rgb), 0.35);
   overflow: hidden;
   animation: settleIn var(--duration-reveal) var(--ease-settle);
 }

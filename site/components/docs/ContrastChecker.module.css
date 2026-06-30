@@ -16,7 +16,7 @@
   width: 88px;
   height: 88px;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgb(var(--ig-separator));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,13 +98,13 @@
   font-weight: var(--fw-semibold);
   padding: 6px 12px;
   border-radius: var(--radius-pill);
-  background: rgba(237, 73, 86, 0.1);
+  background: rgba(var(--ig-error), 0.1);
   color: rgb(var(--ig-error));
 }
 
 .badge[data-pass="true"] {
-  background: rgba(88, 195, 34, 0.1);
-  color: rgb(88, 155, 34);
+  background: rgba(var(--ig-success), 0.1);
+  color: rgb(var(--ig-success));
 }
 
 .presets {

@@ -28,7 +28,7 @@
   flex: 1;
   height: 3px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(var(--ig-always-white), 0.35);
   overflow: hidden;
 }
 

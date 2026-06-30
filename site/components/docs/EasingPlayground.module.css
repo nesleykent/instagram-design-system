@@ -135,7 +135,7 @@
 
 .preset[data-active="true"] {
   border-color: var(--ig-stop-magenta);
-  background: rgba(211, 0, 197, 0.06);
+  background: color-mix(in srgb, var(--ig-stop-magenta) 6%, transparent);
 }
 
 .presetName {

@@ -65,8 +65,8 @@
   right: 10px;
   font-size: 11.5px;
   font-weight: var(--fw-medium);
-  border: 1px solid rgba(127, 127, 127, 0.3);
-  background: rgba(127, 127, 127, 0.08);
+  border: 1px solid rgba(var(--ig-secondary-text), 0.3);
+  background: rgba(var(--ig-secondary-text), 0.08);
   color: inherit;
   padding: 5px 10px;
   border-radius: var(--radius-pill);

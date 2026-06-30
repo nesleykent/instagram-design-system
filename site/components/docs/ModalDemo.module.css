@@ -21,7 +21,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(var(--shadow-rgb), 0.5);
   z-index: var(--z-overlay);
   display: flex;
   align-items: center;

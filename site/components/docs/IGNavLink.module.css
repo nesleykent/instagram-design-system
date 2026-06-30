@@ -15,7 +15,7 @@
   top: 100%;
   width: 100%;
   height: 2px;
-  background-image: linear-gradient(#f7d440, #ed1f1f);
+  background-image: var(--ig-gradient-underline);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s var(--ease-settle);
