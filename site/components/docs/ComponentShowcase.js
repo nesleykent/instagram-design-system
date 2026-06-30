@@ -12,7 +12,13 @@ export default function ComponentShowcase({ children, code, codeLabel, surface =
     <div className={styles.wrap}>
       <div className={styles.stage} data-dark={dark} data-align={align} data-surface={surface}>
         {!cleanSurface && (
-          <button type="button" className={styles.surfaceToggle} onClick={() => setDark((d) => !d)}>
+          <button
+            type="button"
+            className={styles.surfaceToggle}
+            onClick={() => setDark((d) => !d)}
+            aria-pressed={dark}
+            aria-label="Toggle preview surface"
+          >
             {dark ? "Light surface" : "Dark surface"}
           </button>
         )}
