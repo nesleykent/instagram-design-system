@@ -145,6 +145,51 @@
   text-decoration: underline;
 }
 
+.inferenceSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+  counter-reset: inference-step;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.inferenceSteps li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+  font-size: 14.5px;
+  line-height: 1.65;
+  counter-increment: inference-step;
+}
+
+.inferenceSteps li::before {
+  content: counter(inference-step);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  color: rgb(var(--ig-stop-magenta));
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid rgb(var(--ig-stop-magenta));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.inferenceSteps code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: rgb(var(--ig-secondary-bg));
+  padding: 1px 5px;
+  border-radius: var(--radius-xs);
+  color: rgb(var(--ig-primary-text));
+}
+
 @media (max-width: 700px) {
   .layers {
     grid-template-columns: 1fr;

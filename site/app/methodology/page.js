@@ -141,6 +141,40 @@ export default function MethodologyPage() {
         </p>
       </Section>
 
+      <Section kicker="Inference method" title="How inferred specifications are derived">
+        <p className={styles.note}>
+          When a component has no captured selector, its specification is built by triangulating three sources —
+          never by assumption:
+        </p>
+        <ol className={styles.inferenceSteps}>
+          <li>
+            <strong>Confirmed token values from the same system.</strong> Every colour, radius, spacing step,
+            and easing curve used on an inferred page is a token already confirmed in the /ig evidence — the
+            same <code>--radius-xl: 16px</code> that backs the modal is the value cited for alerts, popovers,
+            and sheets because they share the same elevated-surface radius tier.
+          </li>
+          <li>
+            <strong>Genus matching to neighbouring confirmed components.</strong> Controls in the same functional
+            genus share implementation details. Toggle is fully documented — selector, thumb diameter, track
+            dimensions, state colours. Slider is the same genus of binary-or-graduated control, so its 28 px
+            thumb, 4 px track, and thumb shadow carry over directly. The same logic applies to pairing
+            Action Sheets with Alerts (both are modal-layer interruptions) and Sliders with Page Controls.
+          </li>
+          <li>
+            <strong>Observable product behaviour.</strong> Where the live product renders a component and the
+            value is unambiguous — a pill badge always wraps tightly, a separator always sits on{" "}
+            <code>--ig-separator</code>, a primary button is always <code>#0095F6</code> — the observed value
+            is cited as inferred even without a captured selector, because the token system makes a different
+            value implausible.
+          </li>
+        </ol>
+        <p className={styles.note}>
+          The badge doesn&rsquo;t warn that the values are wrong — it tells you <em>where the evidence sits</em>.
+          An inferred specification that triangulates from three confirmed sources is more reliable than a single
+          captured selector that might be component-specific override noise.
+        </p>
+      </Section>
+
       <Section kicker="Scope" title="What was scoped out, and why">
         <ul className={styles.scopeList}>
           <li>
