@@ -34,8 +34,6 @@
 
 .familyPreview {
   font-size: 28px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-style: italic;
   color: rgb(var(--ig-primary-text));
 }
 

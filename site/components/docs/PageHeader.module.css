@@ -3,7 +3,9 @@
 }
 
 .title {
+  font-family: var(--font-family-brand-headline);
   font-size: clamp(32px, 5vw, 44px);
+  font-weight: var(--fw-regular);
   line-height: 1.08;
   margin-top: 10px;
   letter-spacing: -0.025em;

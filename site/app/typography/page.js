@@ -36,6 +36,12 @@ const SCRIPT_CUTS = [
   { name: "M Ying Hei HK W05", note: "Hong Kong Chinese fallback" },
 ];
 
+const PRODUCT_FONT = "var(--font-family-product)";
+const BRAND_FONT = "var(--font-family-brand)";
+const BRAND_HEADLINE_FONT = "var(--font-family-brand-headline)";
+const BRAND_CONDENSED_FONT = "var(--font-family-brand-condensed)";
+const BRAND_SCRIPT_FONT = "var(--font-family-brand-script)";
+
 export default function TypographyPage() {
   return (
     <PageContainer>
@@ -46,10 +52,11 @@ export default function TypographyPage() {
       />
 
       <ImplementationNote title="How this page renders type">
-        This site cannot legally bundle Instagram Sans or Optimistic — both are Meta-proprietary. Every specimen
-        below renders in your system&rsquo;s UI font stack, exactly the fallback tier Instagram&rsquo;s own CSS
-        specifies after its custom fonts. Weights, sizes, tracking, and the fluid formula are all real; the glyph
-        shapes are your OS&rsquo;s, not Instagram&rsquo;s.
+        This site now loads the local font files available in the repository: <code>Optimistic</code> for product/UI
+        surfaces and <code>Instagram Sans</code> for brand/editorial surfaces. The bundled Optimistic file is the
+        variable family used by the product CSS; the local Instagram Sans files cover Regular, Light, Medium, Bold,
+        and Headline. Condensed, Script, and Squeeze remain documented family names with the manual&rsquo;s fallback
+        behaviour because those binaries are not present in this repository.
       </ImplementationNote>
 
       <Section
@@ -64,6 +71,7 @@ export default function TypographyPage() {
             text="Following"
             fontSize={42}
             fontWeight={700}
+            fontFamily={PRODUCT_FONT}
           />
           <TypeSpecimen
             label="Instagram Sans"
@@ -71,6 +79,7 @@ export default function TypographyPage() {
             text="Creators"
             fontSize={42}
             fontWeight={400}
+            fontFamily={BRAND_FONT}
           />
         </div>
         <p className={styles.caption}>
@@ -85,15 +94,15 @@ export default function TypographyPage() {
         description="Regular is the about-page workhorse. Headline is reserved for the largest display moments. Condensed and Script appear in the interactive type-tester (see Dropdowns & Selectors) with both weight variants. Instagram Squeeze ships as a separate family, not a sub-cut — it falls back to the system font stack rather than to Instagram Sans."
       >
         <TokenGrid min="260px">
-          <TypeSpecimen label="Regular · 400" text="Instagram" fontSize={28} fontWeight={400} />
-          <TypeSpecimen label="Light · 300" text="Instagram" fontSize={28} fontWeight={300} />
-          <TypeSpecimen label="Medium · 500" text="Instagram" fontSize={28} fontWeight={500} />
-          <TypeSpecimen label="Bold · 700" text="Instagram" fontSize={28} fontWeight={700} />
-          <TypeSpecimen label="Headline" meta="Display-only optical cut · shipped as .otf" text="Instagram" fontSize={28} fontWeight={700} letterSpacing={-1} />
-          <TypeSpecimen label="Condensed · 400" meta="Tight-width display" text="Instagram" fontSize={28} fontWeight={400} letterSpacing={-1.5} />
-          <TypeSpecimen label="Condensed · 700" meta="Tight-width display, bold" text="Instagram" fontSize={28} fontWeight={700} letterSpacing={-2} />
-          <TypeSpecimen label="Script · 400" meta="Editorial flourish" text="Instagram" fontSize={28} fontWeight={400} fontStyle="italic" />
-          <TypeSpecimen label="Script · 700" meta="Editorial flourish, bold" text="Instagram" fontSize={28} fontWeight={700} fontStyle="italic" />
+          <TypeSpecimen label="Regular · 400" text="Instagram" fontSize={28} fontWeight={400} fontFamily={BRAND_FONT} />
+          <TypeSpecimen label="Light · 300" text="Instagram" fontSize={28} fontWeight={300} fontFamily={BRAND_FONT} />
+          <TypeSpecimen label="Medium · 500" text="Instagram" fontSize={28} fontWeight={500} fontFamily={BRAND_FONT} />
+          <TypeSpecimen label="Bold · 700" text="Instagram" fontSize={28} fontWeight={700} fontFamily={BRAND_FONT} />
+          <TypeSpecimen label="Headline" meta="Display-only optical cut · shipped as .otf" text="Instagram" fontSize={28} fontWeight={400} letterSpacing={-1} fontFamily={BRAND_HEADLINE_FONT} />
+          <TypeSpecimen label="Condensed · 400" meta="Tight-width display · documented fallback" text="Instagram" fontSize={28} fontWeight={400} letterSpacing={-1.5} fontFamily={BRAND_CONDENSED_FONT} />
+          <TypeSpecimen label="Condensed · 700" meta="Tight-width display, bold · documented fallback" text="Instagram" fontSize={28} fontWeight={700} letterSpacing={-2} fontFamily={BRAND_CONDENSED_FONT} />
+          <TypeSpecimen label="Script · 400" meta="Editorial flourish · documented fallback" text="Instagram" fontSize={28} fontWeight={400} fontFamily={BRAND_SCRIPT_FONT} />
+          <TypeSpecimen label="Script · 700" meta="Editorial flourish, bold · documented fallback" text="Instagram" fontSize={28} fontWeight={700} fontFamily={BRAND_SCRIPT_FONT} />
         </TokenGrid>
       </Section>
 
@@ -130,7 +139,7 @@ export default function TypographyPage() {
             ["bold", 700],
             ["extrabold", 800],
           ].map(([name, weight]) => (
-            <TypeSpecimen key={name} label={`--font-weight-system-${name}`} meta={String(weight)} text="Ag" fontSize={36} fontWeight={weight} />
+            <TypeSpecimen key={name} label={`--font-weight-system-${name}`} meta={String(weight)} text="Ag" fontSize={36} fontWeight={weight} fontFamily={PRODUCT_FONT} />
           ))}
         </TokenGrid>
       </Section>
@@ -209,12 +218,11 @@ font-size: 110px;           /* 64px <=768px / 56px <=475px / 112px >=1920px */`}
         with Instagram Sans Condensed, which is a confirmed sub-cut that falls back to Instagram Sans.
       </ImplementationNote>
 
-      <ImplementationNote title="@font-face not captured" tone="gap">
-        No <code>@font-face</code> block for Instagram Sans itself was found in the captured CSS — only Optimistic&rsquo;s
-        was. Instagram Sans is evidenced by the five shipped binaries
-        (<code>Instagram Sans.ttf</code>, <code>Light.ttf</code>, <code>Medium.ttf</code>, <code>Bold.ttf</code>,{" "}
-        <code>Headline.otf</code>) and extensive <code>font-family</code> usage across /ig files. The weight↔cut
-        mapping is derived, not literally read from a <code>src:</code> declaration.
+      <ImplementationNote title="@font-face source boundary" tone="gap">
+        The captured CSS includes Optimistic <code>@font-face</code> declarations directly. Instagram Sans is evidenced
+        by the local binaries (<code>Instagram Sans.ttf</code>, <code>Light.ttf</code>, <code>Medium.ttf</code>,{" "}
+        <code>Bold.ttf</code>, <code>Headline.otf</code>) and extensive <code>font-family</code> usage across /ig files,
+        so the site maps those local cuts to the same family names the manual documents.
       </ImplementationNote>
     </PageContainer>
   );

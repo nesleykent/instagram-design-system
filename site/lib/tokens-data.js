@@ -41,11 +41,11 @@ export const TOKENS = [
   { category: "Colour", type: "color", name: "Always black", token: "--ig-always-black", light: "0, 0, 0" },
 
   // ---- Typography: font families ----
-  { category: "Typography", type: "family", name: "Product UI", token: "--font-family-product", value: "Optimistic Display / Optimistic Text / Optimistic VF" },
-  { category: "Typography", type: "family", name: "Brand — main", token: "--font-family-brand", value: "Instagram Sans" },
+  { category: "Typography", type: "family", name: "Product UI", token: "--font-family-product", value: "Optimistic VF / Montserrat fallback" },
+  { category: "Typography", type: "family", name: "Brand — main", token: "--font-family-brand", value: "Instagram Sans local cuts" },
   { category: "Typography", type: "family", name: "Brand — headline optical cut", token: "--font-family-brand-headline", value: "Instagram Sans Headline" },
-  { category: "Typography", type: "family", name: "Brand — condensed cut", token: "--font-family-brand-condensed", value: "Instagram Sans Condensed" },
-  { category: "Typography", type: "family", name: "Brand — script cut", token: "--font-family-brand-script", value: "Instagram Sans Script" },
+  { category: "Typography", type: "family", name: "Brand — condensed cut", token: "--font-family-brand-condensed", value: "Instagram Sans Condensed → Instagram Sans" },
+  { category: "Typography", type: "family", name: "Brand — script cut", token: "--font-family-brand-script", value: "Instagram Sans Script → Instagram Sans" },
   { category: "Typography", type: "family", name: "Brand — squeeze (standalone)", token: "--font-family-squeeze", value: "Instagram Squeeze → var(--font-family-system)" },
 
   // ---- Typography: weights ----

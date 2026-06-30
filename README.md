@@ -8,7 +8,7 @@ A production documentation website — in the spirit of Apple's Human Interface 
 
 This is **not** a new brand inspired by Instagram. Documented claims trace back to a real selector, custom property, gradient, easing curve, or breakpoint found in [`ig/`](ig/), or to stated copy on the official brand page. Token-derived component specs are marked as partially evidenced, and native platform concepts are marked not found in `/ig` and held as product-scope boundaries rather than filled in with invented guidance.
 
-> **Disclaimer:** This is an independent, unofficial reverse-engineering and documentation project, not published or endorsed by Instagram or Meta Platforms, Inc. "Instagram," the Instagram wordmark, "Instagram Sans," and "Optimistic" are trademarks/property of Meta. No proprietary font binaries are redistributed in this repository — typefaces are documented by name, metrics, and usage only, and the site itself renders in each visitor's system font stack.
+> **Disclaimer:** This is an independent, unofficial reverse-engineering and documentation project, not published or endorsed by Instagram or Meta Platforms, Inc. "Instagram," the Instagram wordmark, "Instagram Sans," and "Optimistic" are trademarks/property of Meta. The documentation site uses local font files supplied in this repository so specimens render against the source-of-truth families; those names and binaries remain trademarks/property of Meta and their respective rightsholders.
 
 ## Run the site locally
 

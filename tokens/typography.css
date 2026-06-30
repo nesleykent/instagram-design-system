@@ -31,28 +31,38 @@
   --ig-display-hero-size: 32.5vw;          /* 42vw at <=768px */
   --ig-display-square-size: 43.2vh;        /* locks to 253px at <=750px */
   --ig-display-stat-size: 110px;           /* 64px <=768px / 56px <=475px / 112px >=1920px */
+
+  /* Family stacks */
+  --font-family-product: Optimistic, Montserrat, Helvetica, Arial, Noto Sans, sans-serif;
+  --font-family-product-display: Optimistic Display, Optimistic, Montserrat, Helvetica, Arial, Noto Sans, sans-serif;
+  --font-family-product-text: Optimistic Text, Optimistic, Montserrat, Helvetica, Arial, Noto Sans, sans-serif;
+  --font-family-brand: Instagram Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-brand-headline: Instagram Sans Headline, Instagram Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-brand-condensed: Instagram Sans Condensed, Instagram Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-brand-script: Instagram Sans Script, Instagram Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-family-squeeze: Instagram Squeeze, var(--font-family-system);
 }
 
 /* Product UI typeface (Optimistic) */
 .ig-font-display {
-  font-family: Optimistic Display, Montserrat, Helvetica, Arial, Noto Sans, sans-serif;
+  font-family: var(--font-family-product-display);
 }
 .ig-font-text {
-  font-family: Optimistic Text, Montserrat, Helvetica, Arial, Noto Sans, sans-serif;
+  font-family: var(--font-family-product-text);
 }
 
 /* Brand/marketing typeface (Instagram Sans) */
 .ig-font-brand {
-  font-family: Instagram Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-brand);
 }
 .ig-font-brand-headline {
-  font-family: Instagram Sans Headline, Instagram Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-brand-headline);
 }
 .ig-font-brand-condensed {
-  font-family: Instagram Sans Condensed, Instagram Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-brand-condensed);
 }
 .ig-font-brand-script {
-  font-family: Instagram Sans Script, Instagram Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family-brand-script);
 }
 
 /* Fluid display type via linear interpolation (no breakpoint jump) — see manual/01-typography.md */

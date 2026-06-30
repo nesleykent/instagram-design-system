@@ -6,6 +6,7 @@
 }
 
 .sample {
+  font-family: var(--font-family-brand);
   font-size: 34px;
   font-weight: var(--fw-bold);
   text-align: center;

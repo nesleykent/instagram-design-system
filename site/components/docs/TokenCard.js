@@ -47,7 +47,7 @@ function Preview({ token }) {
       );
     }
     case "family":
-      return <span className={styles.familyPreview}>Ag</span>;
+      return <span className={styles.familyPreview} style={{ fontFamily: `var(${token.token})` }}>Ag</span>;
     default:
       return null;
   }

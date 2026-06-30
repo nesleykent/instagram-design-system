@@ -12,9 +12,11 @@ export default function TypeSpecimen({
   letterSpacing,
   lineHeight,
   fontStyle = "normal",
+  fontFamily,
   editable = false,
 }) {
   const [value, setValue] = useState(text);
+  const sampleStyle = { fontFamily, fontSize, fontWeight, letterSpacing, lineHeight: lineHeight ?? 1.1, fontStyle };
 
   return (
     <div className={styles.specimen}>
@@ -23,11 +25,11 @@ export default function TypeSpecimen({
           className={styles.input}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          style={{ fontSize, fontWeight, letterSpacing, lineHeight: lineHeight ?? 1.1, fontStyle }}
+          style={sampleStyle}
           aria-label={label || "Sample text"}
         />
       ) : (
-        <p className={styles.sample} style={{ fontSize, fontWeight, letterSpacing, lineHeight: lineHeight ?? 1.1, fontStyle }}>
+        <p className={styles.sample} style={sampleStyle}>
           {value}
         </p>
       )}

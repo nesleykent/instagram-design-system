@@ -16,6 +16,7 @@
 }
 
 .sample {
+  font-family: var(--font-family-brand-headline);
   font-weight: var(--fw-bold);
   letter-spacing: -0.02em;
   white-space: nowrap;

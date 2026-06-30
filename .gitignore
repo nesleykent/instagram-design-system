@@ -1,9 +1,9 @@
 .DS_Store
 
-# Proprietary Instagram Sans font binaries are not redistributed here —
-# they are licensed for use on Meta platforms, not public redistribution.
-# See README for how typography is documented instead.
+# Ignore the raw local font-drop folders. The deployment-safe copies
+# used by the documentation site live in site/public/fonts/.
 /Instagram Sans/
+/Optimistic/
 
 # Official Instagram brand asset pack (source-of-truth original files,
 # multiple sizes/formats, .ai originals). Only the two files actually

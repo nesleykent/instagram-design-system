@@ -14,7 +14,9 @@
 }
 
 .title {
+  font-family: var(--font-family-brand);
   font-size: 24px;
+  font-weight: var(--fw-medium);
   margin-top: 8px;
   letter-spacing: -0.02em;
 }
