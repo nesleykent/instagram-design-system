@@ -91,19 +91,22 @@ Current tier counts (verify these haven't drifted): **19 documented / 18 inferre
 - **TypeTesterDemo** expanded from 4 to 8 cuts (Light/Regular/Medium/Bold × Condensed/Script, confirming about-page CSS).
 - **Font-family tokens** added to `tokens-data.js`; `TokenCard` supports a "family" preview case.
 - `methodology/page.js` Squeeze open question updated to reflect what's now confirmed.
+- **Instagram Sans UI** — confirmed as a distinct production family `font-family:Instagram Sans UI,var(--font-family-system)` (atomic class `x17y0mf4`) in the main bundle. Added to typography page, tokens-data.js (`--font-family-brand-ui`), and globals.css. The binary isn't in this repo; the site falls back to Instagram Sans.
+- **Instagram Squeeze atomic class** — confirmed as `x1ro8mou` in the production bundle. Added to the Squeeze implementation note on the typography page.
+- **Accessibility pass** — `DoDontGrid` "Do"/"Don't" labels promoted from `<p>` to `<h3>` (correct subsection heading under Section's h2). `UsageSplit` restructured from `<dl>/<dt>/<dd>` to `<section aria-labelledby>/<h3>/<p>` pattern. `StatesTable`, `SpecSheet`, `CrossRefCard` were already correct; `<main>` landmark already present in `SiteShell`.
 
 ---
 
 ## Good next angles (not yet done — pick from here)
 
-1. **Accessibility pass** on the newer `ComponentGuidePage` sections (`UsageSplit`, `SpecSheet`, `StatesTable`, `CrossRefCard`) — heading order, landmark roles, keyboard reachability.
-2. **Methodology page accuracy** — check `site/app/methodology/page.js` still accurately describes the current 3-tier evidence system, tier counts, and the updated open-questions list.
-3. **Link-integrity run** after any content edits — cheap insurance.
-4. **Stale counts** — check whether any page still mentions an old total page count (the kind of staleness that's bitten this project every time the catalogue size changed).
-5. **Performance** — bundle size and image weight now that there are 70+ static pages.
-6. **Methodology section** — explicitly document the "derive from neighbouring tokens" approach used for the 18 deepened inferred pages, so readers understand why e.g. Sliders cites Toggle's exact 28px thumb.
-7. **Typography — Squeeze surface** — the open question remaining is which product UI surface uses `Instagram Squeeze`. Grep `/ig/*.css` for surrounding selector context near the `"Instagram Squeeze"` family declaration to narrow it down.
-8. **Typography — Instagram Sans 3D** — about.instagram.com/brand/type mentions a 3D version for exploration. Check if it surfaces anywhere in the `/ig` CSS evidence. If not, note it as a brand-page-only feature.
+1. **Methodology page accuracy** — check `site/app/methodology/page.js` still accurately describes the current 3-tier evidence system, tier counts, and the updated open-questions list (Squeeze surface, Instagram Sans UI surface, Sans 3D).
+2. **Link-integrity run** after any content edits — cheap insurance.
+3. **Stale counts** — check whether any page still mentions an old total page count (the kind of staleness that's bitten this project every time the catalogue size changed).
+4. **Performance** — bundle size and image weight now that there are 70+ static pages.
+5. **Methodology section** — explicitly document the "derive from neighbouring tokens" approach used for the 18 deepened inferred pages, so readers understand why e.g. Sliders cites Toggle's exact 28px thumb.
+6. **Typography — Squeeze surface** — `x1ro8mou` is confirmed in the main production bundle but selector context wasn't captured. The class is used somewhere in the product UI, not the about-page. Further investigation requires HTML capture or JS source maps.
+7. **Typography — Instagram Sans 3D** — about.instagram.com/brand/type mentions a 3D version for exploration. Not found in `/ig` CSS evidence. Note it as brand-page-only if confirmed absent.
+8. **Typography — Instagram Sans UI surface** — `x17y0mf4` is confirmed in the bundle. What component/surface applies it? Same limitation as Squeeze — needs HTML capture to trace.
 
 Every page must include realistic Instagram quality examples. Examples are mandatory, even when the behaviour is inferred.
 
