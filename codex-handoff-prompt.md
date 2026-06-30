@@ -99,13 +99,28 @@ Current tier counts (verify these haven't drifted): **19 documented / 18 inferre
 
 ---
 
+## Verified correctness (this session)
+
+- **Spacing foundation page** (`/spacing`) — 10-step --space-1 through --space-10 (4–96px, 8px base unit). Visual scale bars, context table, DoDontGrid. Evidence note: derived from about-page CSS pattern, not verbatim token export (tone="gap").
+- **Elevation foundation page** (`/elevation`) — 7 shadow levels (Flat → Sheet). Token names confirmed from production bundle: --shadow-inset, --shadow-card, --shadow-list, --shadow-elevated, --shadow-8. Two-layer shadow composition with --shadow-rgb. Z-index table (--layer-1/2/8/10).
+- **Platform Guidance page** (`/platform`) — 5 deployment targets (Web 90%, Native 65%, Dashboard 45%, Developer 35%, Game 20%). Per-target: use-as-is / skip-or-replace / extend-with. CSS→Swift and CSS→Kotlin token mapping examples. Compact density override pattern.
+- **globals.css** — --space-*, --shadow-*, --layer-* all added.
+- **tokens-data.js** — 10 spacing + 9 elevation tokens; "Elevation" category added.
+- **nav.js** — Spacing, Elevation, Platform Guidance wired into Foundations and Resources groups.
+- **All 18 inferred components now have states** — Codex added states to Boxes, Color Wells, Image Wells, Page Controls, Pickers, Sidebars, Token Fields (commit 5451fd1). Windows states added in this session (commit 0a3c559).
+- **Link integrity**: 0 broken. Evidence tier counts: documented 19 / inferred 18 / none 10.
+- **Page count**: 76 (was 73). Build clean.
+
+---
+
 ## Good next angles (not yet done — pick from here)
 
-1. **Deepen weak inferred pages** — run a completeness audit on the 18 inferred component guides; the ones missing both `usage` and `doDont` are the priority. See Codex audit task output for ranking.
-2. **Typography — Squeeze surface** — `x1ro8mou` confirmed in production bundle; which UI surface applies it is still open. Requires HTML DOM capture from live instagram.com or JS source maps.
-3. **Typography — Instagram Sans UI surface** — `x17y0mf4` confirmed in production bundle; same limitation — needs HTML capture to trace to a component.
-4. **Link-integrity run** — after any content edits, run the script at the bottom of this file.
-5. **Dark mode spot-check** — verify the new inference method section on methodology and the typography type specimens look correct in dark mode.
+1. **Typography — Squeeze surface** — `x1ro8mou` confirmed in production bundle; which UI surface applies it is still open. Requires HTML DOM capture from live instagram.com or JS source maps.
+2. **Typography — Instagram Sans UI surface** — `x17y0mf4` confirmed in production bundle; same limitation — needs HTML capture to trace to a component.
+3. **Icon foundation page** — icon size scale (16/20/24/32px), filled vs outline, weight parity with typography. No /icons page exists yet.
+4. **Component page deepening — "none" tier** — the 10 `evidence: "none"` components have minimal content. Adding their closest-analog rationale and any observable-product clues would improve coverage.
+5. **Dark mode spot-check** — the three new foundation pages haven't been checked in dark mode; the platform page's readiness bar colour for "Extend" (--ig-stop-yellow) may be hard to read against dark backgrounds.
+6. **Link-integrity run** — after any content edits, run the script at the bottom of this file.
 
 Every page must include realistic Instagram quality examples. Examples are mandatory, even when the behaviour is inferred.
 
