@@ -18,8 +18,16 @@ function format(value) {
 }
 
 export function ChartTooltip({ point }) {
+  const xPlacement = point.x > 72 ? "left" : "right";
+  const yPlacement = point.y < 34 ? "below" : "above";
+
   return (
-    <aside className={styles.tooltip} style={{ left: `${point.x}%`, top: `${point.y}%` }} aria-live="polite">
+    <aside
+      className={styles.tooltip}
+      data-placement={`${yPlacement}-${xPlacement}`}
+      style={{ left: `${point.x}%`, top: `${point.y}%` }}
+      aria-live="polite"
+    >
       <strong>{point.label}</strong>
       <span>{format(point.reach)} reach</span>
       <span>{format(point.engagement)} engagements</span>
@@ -30,6 +38,7 @@ export function ChartTooltip({ point }) {
 export default function ChartInspector() {
   const [activeIndex, setActiveIndex] = useState(3);
   const plotRef = useRef(null);
+  const scrubbingRef = useRef(false);
   const active = points[activeIndex];
   const linePath = useMemo(
     () => points.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" "),
@@ -54,6 +63,24 @@ export default function ChartInspector() {
     );
 
     selectIndex(nearest);
+  }
+
+  function handlePlotPointerDown(event) {
+    scrubbingRef.current = true;
+    plotRef.current?.setPointerCapture?.(event.pointerId);
+    selectNearestFromPointer(event);
+  }
+
+  function handlePlotPointerMove(event) {
+    if (!scrubbingRef.current || event.buttons === 0) return;
+    selectNearestFromPointer(event);
+  }
+
+  function stopScrubbing(event) {
+    scrubbingRef.current = false;
+    if (plotRef.current?.hasPointerCapture?.(event.pointerId)) {
+      plotRef.current.releasePointerCapture(event.pointerId);
+    }
   }
 
   function handleScrubberKeyDown(event) {
@@ -96,8 +123,10 @@ export default function ChartInspector() {
         role="group"
         aria-label="Interactive story interactions chart. Highest engagement is Saturday with 1.4K engagements."
         aria-describedby="story-chart-live-value"
-        onPointerDown={selectNearestFromPointer}
-        onPointerMove={selectNearestFromPointer}
+        onPointerDown={handlePlotPointerDown}
+        onPointerMove={handlePlotPointerMove}
+        onPointerUp={stopScrubbing}
+        onPointerCancel={stopScrubbing}
       >
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
           <defs>

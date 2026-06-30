@@ -624,7 +624,7 @@ export default function ChartsPage() {
         title="Every chart has a job, a structure, and a reading path"
         description="A chart is more than marks inside a box. It needs a plot, scale, labels, legends, annotations, and accessibility labels that all support the same message."
       >
-        <ComponentShowcase align="start">
+        <ComponentShowcase align="start" surface="clean">
           <ChartAnatomy />
         </ComponentShowcase>
         <AnatomyList />
@@ -685,7 +685,7 @@ export default function ChartsPage() {
         title="Inspection should clarify, not hide the truth"
         description="Hover, tap, focus, and scrubbing can reveal exact values, but critical information must remain visible without interaction."
       >
-        <ComponentShowcase align="start">
+        <ComponentShowcase align="start" surface="clean">
           <ChartInspector />
         </ComponentShowcase>
         <GuidanceColumns

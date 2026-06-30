@@ -5,27 +5,30 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 360px;
+  height: 340px;
   margin-top: 28px;
   overflow: hidden;
-  border: 1px solid rgb(var(--ig-separator));
-  border-radius: var(--radius-xl);
-  background: rgb(var(--ig-elevated-bg));
+  border: 1px solid rgba(var(--ig-secondary-text), 0.18);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 78% 22%, rgba(255, 1, 105, 0.18), transparent 30%),
+    radial-gradient(circle at 18% 82%, rgba(255, 214, 0, 0.12), transparent 34%),
+    linear-gradient(180deg, rgba(var(--ig-elevated-bg), 0.98), rgba(var(--ig-secondary-bg), 0.72));
   color: rgb(var(--ig-primary-text));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-/* Luminous gradient glow — sits behind the chart marks */
 .hero::before {
   content: "";
   position: absolute;
-  right: 0;
-  left: 15%;
+  right: 8%;
+  left: 24%;
   bottom: 0;
-  height: 54%;
-  border-radius: var(--radius-xl);
+  height: 48%;
+  border-radius: var(--radius-lg);
   background-image: var(--ig-gradient-spectrum);
-  opacity: 0.13;
-  filter: blur(52px);
+  opacity: 0.08;
+  filter: blur(44px);
   pointer-events: none;
   z-index: 0;
 }
@@ -61,7 +64,7 @@
   display: block;
   font-size: 32px;
   font-weight: var(--fw-bold);
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   line-height: 1;
 }
 
@@ -89,7 +92,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(var(--ig-secondary-text), 0.13) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(var(--ig-secondary-text), 0.12) 1px, transparent 1px);
   background-size: 100% 25%;
   pointer-events: none;
 }
@@ -99,7 +102,7 @@
   height: var(--height);
   min-height: 12px;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: rgba(var(--ig-secondary-text), 0.32);
+  background: rgba(var(--ig-secondary-text), 0.22);
 }
 
 /* Saturday peak bar uses the full Instagram gradient */
@@ -121,7 +124,8 @@
   fill: none;
   stroke: url("#hero-line-g");
   stroke-linecap: round;
-  stroke-width: 2.5;
+  stroke-width: 2.75;
+  vector-effect: non-scaling-stroke;
 }
 
 /* Footer row: date axis on left, legend on right */
@@ -269,19 +273,22 @@
 .anatomyWrap {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
   width: 100%;
   margin-bottom: 24px;
 }
 
 .anatomyChart {
   position: relative;
-  min-height: 520px;
+  min-height: 500px;
   padding: 28px;
-  border: 1px solid rgb(var(--ig-separator));
+  border: 1px solid rgba(var(--ig-secondary-text), 0.16);
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-elevated-bg));
+  background:
+    radial-gradient(circle at 20% 90%, rgba(255, 214, 0, 0.08), transparent 32%),
+    radial-gradient(circle at 80% 18%, rgba(118, 56, 250, 0.12), transparent 30%),
+    rgb(var(--ig-elevated-bg));
   overflow: hidden;
 }
 
@@ -303,14 +310,14 @@
   margin-top: 26px;
   margin-left: 54px;
   padding: 20px 20px 42px;
-  border-left: 1px solid rgb(var(--ig-separator));
-  border-bottom: 1px solid rgb(var(--ig-separator));
+  border-left: 1px solid rgba(var(--ig-secondary-text), 0.18);
+  border-bottom: 1px solid rgba(var(--ig-secondary-text), 0.18);
 }
 
 .gridLine {
   display: block;
   height: 25%;
-  border-top: 1px solid rgba(var(--ig-secondary-text), 0.16);
+  border-top: 1px solid rgba(var(--ig-secondary-text), 0.11);
 }
 
 .yAxis {
@@ -349,14 +356,14 @@
   min-height: 28px;
   border: 0;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: rgba(var(--ig-secondary-text), 0.32);
+  background: rgba(var(--ig-secondary-text), 0.22);
   color: rgb(var(--ig-primary-text));
   cursor: pointer;
   transition: transform var(--duration-micro) var(--ease-glide), background-color var(--duration-micro) var(--ease-glide);
 }
 
 .anatomyBar:nth-of-type(1) { background-image: var(--ig-gradient-spectrum); }
-.anatomyBar:nth-of-type(4) { background: rgba(var(--ig-primary-button), 0.58); }
+.anatomyBar:nth-of-type(4) { background: rgba(var(--ig-primary-button), 0.48); }
 
 .anatomyBar:hover,
 .anatomyBar:focus-visible {
@@ -375,9 +382,10 @@
   top: 30px;
   max-width: 230px;
   padding: 10px 12px;
-  border: 1px solid rgba(255, 122, 0, 0.34);
+  border: 1px solid rgba(255, 122, 0, 0.26);
   border-radius: var(--radius-md);
-  background: rgba(255, 122, 0, 0.08);
+  background: rgba(var(--ig-elevated-bg), 0.9);
+  box-shadow: 0 12px 30px rgba(var(--ig-shadow-rgb), 0.12);
   color: rgb(var(--ig-primary-text));
   font-size: 12px;
   line-height: 1.45;
@@ -408,15 +416,16 @@
 
 .calloutLayer {
   display: grid;
-  align-content: center;
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  align-content: start;
+  gap: 8px;
 }
 
 .calloutLayer span {
   display: block;
-  padding: 10px 12px;
+  padding: 8px 10px;
   border: 1px solid rgb(var(--ig-separator));
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   background: rgb(var(--ig-secondary-bg));
   color: rgb(var(--ig-secondary-text));
   font-size: 12px;
@@ -434,7 +443,7 @@
 
 .markCard {
   display: grid;
-  grid-template-columns: 330px minmax(0, 1fr);
+  grid-template-columns: 280px minmax(0, 1fr);
   overflow: hidden;
 }
 
@@ -445,10 +454,10 @@
   padding: 24px;
   border-right: 1px solid rgb(var(--ig-separator));
   background:
-    linear-gradient(rgba(127, 127, 127, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(127, 127, 127, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 50% 42%, rgba(255, 1, 105, 0.08), transparent 34%),
+    linear-gradient(rgba(var(--ig-secondary-text), 0.1) 1px, transparent 1px),
     rgb(var(--ig-elevated-bg));
-  background-size: 18px 18px;
+  background-size: auto, 100% 25%, auto;
 }
 
 .markContent {
@@ -493,7 +502,7 @@
 .markBars span {
   height: var(--height);
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: rgba(var(--ig-secondary-text), 0.32);
+  background: rgba(var(--ig-secondary-text), 0.22);
 }
 
 .markBars span:nth-child(4) {
@@ -507,8 +516,9 @@
 }
 
 .markSvg line {
-  stroke: rgba(var(--ig-secondary-text), 0.18);
+  stroke: rgba(var(--ig-secondary-text), 0.12);
   stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
 }
 
 .markSvg path {
@@ -516,7 +526,8 @@
   stroke: var(--ig-stop-rose);
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 3;
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
 }
 
 .markSvg[data-type="area"] path {
@@ -529,7 +540,7 @@
 }
 
 .markSvg rect {
-  fill: rgba(var(--ig-primary-button), 0.5);
+  fill: rgba(var(--ig-primary-button), 0.42);
 }
 
 .markSvg circle {
@@ -542,15 +553,15 @@
   position: relative;
   width: 230px;
   height: 170px;
-  border-left: 1px solid rgb(var(--ig-separator));
-  border-bottom: 1px solid rgb(var(--ig-separator));
+  border-left: 1px solid rgba(var(--ig-secondary-text), 0.18);
+  border-bottom: 1px solid rgba(var(--ig-secondary-text), 0.18);
 }
 
 .markPoints::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(var(--ig-secondary-text), 0.16) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(var(--ig-secondary-text), 0.1) 1px, transparent 1px);
   background-size: 100% 25%;
 }
 
@@ -638,10 +649,10 @@
   margin-bottom: 16px;
   padding: 16px;
   overflow: hidden;
-  border: 1px solid rgb(var(--ig-separator));
+  border: 1px solid rgba(var(--ig-secondary-text), 0.16);
   border-radius: var(--radius-md);
   background:
-    linear-gradient(rgba(var(--ig-secondary-text), 0.12) 1px, transparent 1px),
+    linear-gradient(rgba(var(--ig-secondary-text), 0.1) 1px, transparent 1px),
     rgb(var(--ig-elevated-bg));
   background-size: 100% 25%;
 }
@@ -677,7 +688,7 @@
   height: var(--height);
   min-height: 12px;
   border-radius: var(--radius-md) var(--radius-md) 0 0;
-  background: rgb(var(--ig-highlight-bg));
+  background: rgba(var(--ig-secondary-text), 0.2);
 }
 
 .responsiveBars span:last-child,
@@ -703,7 +714,8 @@
   fill: none;
   stroke: var(--ig-stop-rose);
   stroke-linecap: round;
-  stroke-width: 5;
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
 }
 
 .responsiveChart strong {
@@ -723,9 +735,11 @@
   gap: 16px;
   width: 100%;
   padding: 20px;
-  border: 1px solid rgb(var(--ig-separator));
+  border: 1px solid rgba(var(--ig-secondary-text), 0.16);
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-secondary-bg));
+  background:
+    radial-gradient(circle at 86% 18%, rgba(255, 1, 105, 0.12), transparent 32%),
+    rgb(var(--ig-elevated-bg));
 }
 
 .inspectorHeader {
@@ -750,7 +764,7 @@
   align-self: start;
   padding: 7px 10px;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-secondary-bg));
   color: rgb(var(--ig-primary-text));
   font-size: 13px;
   font-weight: var(--fw-bold);
@@ -758,11 +772,17 @@
 
 .inspectPlot {
   position: relative;
-  min-height: 360px;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
   overflow: hidden;
-  border: 1px solid rgb(var(--ig-separator));
+  border: 1px solid rgba(var(--ig-secondary-text), 0.16);
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-elevated-bg));
+  background:
+    linear-gradient(rgba(var(--ig-secondary-text), 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 78% 18%, rgba(255, 214, 0, 0.1), transparent 24%),
+    rgb(var(--ig-primary-bg));
+  background-size: 100% 25%, auto, auto;
+  touch-action: pan-y;
 }
 
 .inspectPlot svg {
@@ -773,8 +793,9 @@
 }
 
 .inspectGridLine {
-  stroke: rgba(var(--ig-secondary-text), 0.16);
+  stroke: rgba(var(--ig-secondary-text), 0.1);
   stroke-width: 0.6;
+  vector-effect: non-scaling-stroke;
 }
 
 .inspectLine {
@@ -782,7 +803,8 @@
   stroke: url("#inspect-line");
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 3;
+  stroke-width: 2.75;
+  vector-effect: non-scaling-stroke;
 }
 
 .inspectPoint {
@@ -799,7 +821,7 @@
 .inspectPoint::before {
   content: "";
   position: absolute;
-  inset: 13px;
+  inset: 14px;
   border: 2px solid rgb(var(--ig-elevated-bg));
   border-radius: 50%;
   background: var(--ig-stop-rose);
@@ -810,8 +832,8 @@
 .inspectPoint[data-active="true"]::before,
 .inspectPoint:hover::before,
 .inspectPoint:focus-visible::before {
-  transform: scale(1.25);
-  box-shadow: 0 0 0 10px rgba(255, 1, 105, 0.14);
+  transform: scale(1.18);
+  box-shadow: 0 0 0 9px rgba(255, 1, 105, 0.13);
 }
 
 .tooltip {
@@ -820,13 +842,29 @@
   display: grid;
   gap: 3px;
   min-width: 150px;
+  max-width: min(170px, calc(100% - 24px));
   padding: 10px 12px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-md);
   background: rgba(var(--ig-primary-bg), 0.96);
   box-shadow: 0 12px 30px rgba(var(--ig-shadow-rgb), 0.22);
   pointer-events: none;
-  transform: translate(14px, -105%);
+}
+
+.tooltip[data-placement="above-right"] {
+  transform: translate(14px, calc(-100% - 14px));
+}
+
+.tooltip[data-placement="above-left"] {
+  transform: translate(calc(-100% - 14px), calc(-100% - 14px));
+}
+
+.tooltip[data-placement="below-right"] {
+  transform: translate(14px, 14px);
+}
+
+.tooltip[data-placement="below-left"] {
+  transform: translate(calc(-100% - 14px), 14px);
 }
 
 .tooltip strong {
@@ -1053,12 +1091,25 @@
     max-width: 240px;
   }
 
+  .inspector {
+    padding: 16px;
+  }
+
   .inspectPlot {
-    min-height: 300px;
+    aspect-ratio: 4 / 3;
+  }
+
+  .inspectPoint {
+    width: 34px;
+    height: 34px;
+  }
+
+  .inspectPoint::before {
+    inset: 10px;
   }
 
   .tooltip {
     min-width: 132px;
-    transform: translate(-50%, -120%);
+    padding: 8px 10px;
   }
 }

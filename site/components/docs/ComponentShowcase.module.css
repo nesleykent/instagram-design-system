@@ -26,6 +26,11 @@
   justify-content: flex-start;
 }
 
+.stage[data-align="start"] .content {
+  align-items: stretch;
+  width: 100%;
+}
+
 .stage[data-dark="true"] {
   background-color: rgb(var(--ig-always-black));
   background-image:
@@ -33,6 +38,18 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 16px 16px;
   color: rgb(var(--ig-always-white));
+}
+
+.stage[data-surface="clean"] {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  background-image: none;
+}
+
+.stage[data-surface="clean"] .content {
+  width: 100%;
 }
 
 .content {
