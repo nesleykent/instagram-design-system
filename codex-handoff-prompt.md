@@ -94,19 +94,18 @@ Current tier counts (verify these haven't drifted): **19 documented / 18 inferre
 - **Instagram Sans UI** — confirmed as a distinct production family `font-family:Instagram Sans UI,var(--font-family-system)` (atomic class `x17y0mf4`) in the main bundle. Added to typography page, tokens-data.js (`--font-family-brand-ui`), and globals.css. The binary isn't in this repo; the site falls back to Instagram Sans.
 - **Instagram Squeeze atomic class** — confirmed as `x1ro8mou` in the production bundle. Added to the Squeeze implementation note on the typography page.
 - **Accessibility pass** — `DoDontGrid` "Do"/"Don't" labels promoted from `<p>` to `<h3>` (correct subsection heading under Section's h2). `UsageSplit` restructured from `<dl>/<dt>/<dd>` to `<section aria-labelledby>/<h3>/<p>` pattern. `StatesTable`, `SpecSheet`, `CrossRefCard` were already correct; `<main>` landmark already present in `SiteShell`.
+- **Methodology page** — added "Inference method" section explaining the 3-source triangulation for inferred specs; updated open questions with Squeeze (x1ro8mou) and Sans UI (x17y0mf4) atomic class IDs; implementation note updated to mention production bundle analysis. Link integrity: 0 broken. No stale hardcoded counts found (all methodology counts are dynamically computed). Performance: 73 pages, 103 kB shared JS (clean).
+- **Instagram Sans 3D** — confirmed absent from all /ig CSS files (about-page and production bundles). Brand-page-only concept; not shipped as a CSS font family.
 
 ---
 
 ## Good next angles (not yet done — pick from here)
 
-1. **Methodology page accuracy** — check `site/app/methodology/page.js` still accurately describes the current 3-tier evidence system, tier counts, and the updated open-questions list (Squeeze surface, Instagram Sans UI surface, Sans 3D).
-2. **Link-integrity run** after any content edits — cheap insurance.
-3. **Stale counts** — check whether any page still mentions an old total page count (the kind of staleness that's bitten this project every time the catalogue size changed).
-4. **Performance** — bundle size and image weight now that there are 70+ static pages.
-5. **Methodology section** — explicitly document the "derive from neighbouring tokens" approach used for the 18 deepened inferred pages, so readers understand why e.g. Sliders cites Toggle's exact 28px thumb.
-6. **Typography — Squeeze surface** — `x1ro8mou` is confirmed in the main production bundle but selector context wasn't captured. The class is used somewhere in the product UI, not the about-page. Further investigation requires HTML capture or JS source maps.
-7. **Typography — Instagram Sans 3D** — about.instagram.com/brand/type mentions a 3D version for exploration. Not found in `/ig` CSS evidence. Note it as brand-page-only if confirmed absent.
-8. **Typography — Instagram Sans UI surface** — `x17y0mf4` is confirmed in the bundle. What component/surface applies it? Same limitation as Squeeze — needs HTML capture to trace.
+1. **Deepen weak inferred pages** — run a completeness audit on the 18 inferred component guides; the ones missing both `usage` and `doDont` are the priority. See Codex audit task output for ranking.
+2. **Typography — Squeeze surface** — `x1ro8mou` confirmed in production bundle; which UI surface applies it is still open. Requires HTML DOM capture from live instagram.com or JS source maps.
+3. **Typography — Instagram Sans UI surface** — `x17y0mf4` confirmed in production bundle; same limitation — needs HTML capture to trace to a component.
+4. **Link-integrity run** — after any content edits, run the script at the bottom of this file.
+5. **Dark mode spot-check** — verify the new inference method section on methodology and the typography type specimens look correct in dark mode.
 
 Every page must include realistic Instagram quality examples. Examples are mandatory, even when the behaviour is inferred.
 

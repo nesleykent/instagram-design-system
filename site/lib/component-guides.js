@@ -292,6 +292,17 @@ const EVIDENCED_GUIDES = [
       "Order destinations by recency, not alphabetically — that's consistent with how Instagram treats the search/result list as recency-led elsewhere in the system.",
       "Reuse the Action Sheet surface verbatim; the only difference is row content, not the container.",
     ],
+    states: [
+      { name: "Hidden", description: "Sheet not yet triggered. Trigger is typically an icon-only Share button or a contextual action row." },
+      { name: "Appearing", description: "Sheet translates from translateY(100%) to 0 over ~500ms Ease Settle — identical motion to Action Sheets." },
+      { name: "Visible", description: "Full surface showing destination rows in Lockup layout (icon + label), ordered by recency." },
+      { name: "Row pressed", description: "Destination row highlights with the hover-overlay token on tap or click." },
+      { name: "Dismissing", description: "Sheet translates back to translateY(100%) on dismiss or destination selection." },
+    ],
+    doDont: {
+      dos: ["Order destinations by recency — the evidenced system ranks recent contacts and apps first.", "Collapse rarely-used destinations behind a 'More' row when the count exceeds six."],
+      donts: ["Use text-only rows — destinations need icons (Lockup anatomy) to scan quickly at share-sheet speed.", "Build a custom surface — reuse the Action Sheet container unchanged; only the row content differs."],
+    },
     crossRef: { label: "Action Sheets", href: "/components/action-sheets" },
   },
   {
@@ -379,6 +390,17 @@ const EVIDENCED_GUIDES = [
       { label: "Menu surface", value: "Identical to Menus/Context Menus" },
     ],
     guidance: ["Reuse the Buttons and Menus components directly rather than building a new trigger style — the visual distinction belongs to the menu surface, not the trigger."],
+    states: [
+      { name: "Default", description: "Button at rest — label or icon is fixed and never changes after selection (distinguishes it from Pop Up Buttons)." },
+      { name: "Hover", description: "Button surface transitions to hover state per the Buttons token set." },
+      { name: "Pressed", description: "Button in pressed state; flyout opens on release." },
+      { name: "Menu open", description: "Flyout visible, positioned below or above the trigger. Uses Menus anatomy verbatim." },
+      { name: "Disabled", description: "Button opacity reduced, pointer-events none; all flyout actions unavailable." },
+    ],
+    doDont: {
+      dos: ["Keep the trigger label or icon fixed regardless of what was chosen — the button's identity is the verb that opens the menu, not the last-selected value.", "Reuse the existing Tertiary or icon-only Button as the trigger with no modification."],
+      donts: ["Change the button label after selection — that's Pop Up Button behaviour.", "Style the trigger differently from the Buttons system; the visual distinction belongs to the flyout, not the button."],
+    },
     crossRef: { label: "Menus", href: "/components/menus" },
   },
   {
@@ -640,6 +662,17 @@ const EVIDENCED_GUIDES = [
       { label: "Result list width", value: "Matches input width, capped per Search Fields' 375px precedent on wide layouts" },
       { label: "Highlighted match", value: "rgba(var(--ig-hover-overlay-rgb), var(--ig-hover-overlay-alpha)) background" },
     ],
+    states: [
+      { name: "Empty", description: "Placeholder text in the input, result list hidden." },
+      { name: "Focused", description: "Input bordered at hover variant; cursor active. Recent or suggested entries may surface before any text is typed." },
+      { name: "Typing", description: "Result list opens as input value changes. Matching substrings in each row are highlighted with the hover-overlay token." },
+      { name: "Result selected", description: "Input fills with the selected label; list collapses instantly — matching the legacy menu's display-state close." },
+      { name: "No results", description: "Empty-state label below the input; free text entry remains available." },
+    ],
+    doDont: {
+      dos: ["Surface recent or suggested values before any text is typed — the search pattern primes a recency-first expectation.", "Highlight the matching substring in each result row."],
+      donts: ["Build a custom result surface — inherit the Search Fields/Lockup row heights and max-width exactly.", "Show more than ~6 visible rows without a scrollable list; a scroll indicator signals more results exist."],
+    },
     crossRef: { label: "Search Fields", href: "/components/search-fields" },
   },
   {
