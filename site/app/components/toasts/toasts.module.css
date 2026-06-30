@@ -1,0 +1,142 @@
+/* ── Demo stage ── */
+.demoStage {
+  position: relative;
+  width: 100%;
+  min-height: 120px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+/* ── Toast capsule ── */
+.toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: rgba(var(--ig-always-black), 0.85);
+  color: rgb(var(--ig-always-white));
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  box-shadow: var(--shadow-elevated);
+  white-space: nowrap;
+}
+
+.toast[data-tone="error"] {
+  background: rgba(var(--ig-error), 0.95);
+}
+
+.toastIcon {
+  flex-shrink: 0;
+  color: rgb(var(--ig-always-white));
+}
+
+.toastSpinner {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: rgb(var(--ig-always-white));
+  animation: toast-spin 0.8s linear infinite;
+}
+
+@keyframes toast-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toastSpinner {
+    animation-duration: 2s;
+  }
+}
+
+/* ── Variant list ── */
+.variantList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.variantRow {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.variantPreview {
+  display: flex;
+  justify-content: center;
+}
+
+.variantName {
+  font-size: 14px;
+  font-weight: var(--fw-bold);
+  margin-bottom: 4px;
+}
+
+.variantNote {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Spec table ── */
+.specTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 16px;
+  padding: 12px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.specRow:first-child {
+  border-top: none;
+}
+
+.specLabel {
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+}
+
+.specValue {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .variantRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .specRow {
+    grid-template-columns: 130px 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .specRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

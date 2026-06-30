@@ -180,8 +180,14 @@ export const NAV = [
       {
         title: "Forms",
         href: "/components/forms",
-        description: "Input borders, radius, and focus tokens.",
-        keywords: ["form", "input", "field"],
+        description: "Input borders, radius, and focus tokens — plus the extended checkbox, radio, select, and validation grammar.",
+        keywords: ["form", "input", "field", "checkbox", "radio", "select", "textarea", "validation"],
+      },
+      {
+        title: "Toasts & Notifications",
+        href: "/components/toasts",
+        description: "The transient, self-dismissing confirmation pattern — shape, motion, and timing, extended from confirmed elevation and easing tokens.",
+        keywords: ["toast", "snackbar", "notification", "confirmation", "undo", "alert"],
       },
       ...COMPONENT_NAV_ITEMS,
     ],
