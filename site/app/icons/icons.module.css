@@ -253,10 +253,183 @@
   font-size: 13px;
 }
 
+/* ── Icon vocabulary grid ── */
+.vocabGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.vocabCard {
+  padding: 16px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-xl);
+  background: rgb(var(--ig-elevated-bg));
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vocabIconPair {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+  margin-bottom: 4px;
+}
+
+.vocabIconSlot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.vocabIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vocabIconLabel {
+  font-size: 10.5px;
+  color: rgb(var(--ig-secondary-text));
+  letter-spacing: 0.03em;
+}
+
+.vocabCardName {
+  font-size: 12.5px;
+  font-weight: var(--fw-semibold);
+  color: rgb(var(--ig-primary-text));
+  margin-top: 2px;
+}
+
+.vocabCardSymbols {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vocabSymbolLabel {
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.05em;
+  color: rgb(var(--ig-secondary-text));
+  width: 18px;
+  flex-shrink: 0;
+}
+
+.vocabSymbolCode {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: rgb(var(--ig-stop-magenta));
+  background: transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vocabWhere {
+  font-size: 11px;
+  color: rgb(var(--ig-tertiary-text));
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+/* ── Platform mapping table ── */
+.mappingTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.mappingRow {
+  display: grid;
+  grid-template-columns: 180px 1fr 1fr;
+  gap: 16px;
+  padding: 10px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+  font-size: 13px;
+}
+
+.mappingRow:first-child {
+  border-top: none;
+}
+
+.mappingHeader {
+  background: rgb(var(--ig-secondary-bg));
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.mappingSemantic {
+  font-size: 13px;
+  color: rgb(var(--ig-primary-text));
+}
+
+.mappingCodes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.mappingCodes code {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  background: rgb(var(--ig-secondary-bg));
+  padding: 1px 5px;
+  border-radius: var(--radius-xs);
+}
+
+.mappingSep {
+  color: rgb(var(--ig-secondary-text));
+  font-size: 11px;
+}
+
+/* ── Platform implementation ── */
+.implGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.implCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.implPlatform {
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.03em;
+  color: rgb(var(--ig-secondary-text));
+  text-transform: uppercase;
+}
+
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .vocabGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media (max-width: 800px) {
   .sizeGrid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .vocabGrid {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .colorHeader,
@@ -271,6 +444,14 @@
   .pairingRow {
     grid-template-columns: 120px 80px 80px 1fr;
   }
+
+  .mappingRow {
+    grid-template-columns: 150px 1fr 1fr;
+  }
+
+  .implGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {
@@ -280,6 +461,10 @@
 
   .styleGrid {
     grid-template-columns: 1fr;
+  }
+
+  .vocabGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .colorHeader,
@@ -293,6 +478,14 @@
 
   .pairingRow .pairingCell:nth-child(3),
   .pairingRow .pairingCell:nth-child(4) {
+    display: none;
+  }
+
+  .mappingRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mappingRow span:last-child {
     display: none;
   }
 }

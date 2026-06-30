@@ -81,6 +81,12 @@ export const TOKENS = [
   { category: "Spacing & shape", type: "spacing", name: "Space 9 — 3XL",    token: "--space-9",  value: "64px" },
   { category: "Spacing & shape", type: "spacing", name: "Space 10 — 4XL",   token: "--space-10", value: "96px" },
 
+  // ---- Icon size scale ----
+  { category: "Spacing & shape", type: "icon", name: "Icon SM — Inline/badge",     token: "--icon-size-sm", value: "16px" },
+  { category: "Spacing & shape", type: "icon", name: "Icon MD — Nav/action",       token: "--icon-size-md", value: "20px" },
+  { category: "Spacing & shape", type: "icon", name: "Icon LG — Primary action",   token: "--icon-size-lg", value: "24px" },
+  { category: "Spacing & shape", type: "icon", name: "Icon XL — Hero/empty state", token: "--icon-size-xl", value: "32px" },
+
   // ---- Elevation: shadow tokens ----
   { category: "Elevation", type: "shadow", name: "Shadow inset",    token: "--shadow-inset",    value: "0 0 0 1px rgba(0,0,0,.08) inset" },
   { category: "Elevation", type: "shadow", name: "Shadow card",     token: "--shadow-card",     value: "0 1px 4px rgba(0,0,0,.10), 0 0 0 .5px rgba(0,0,0,.06)" },
