@@ -129,22 +129,10 @@ export default function ChartInspector() {
         onPointerCancel={stopScrubbing}
       >
         <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <defs>
-            <linearGradient id="inspect-area" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#ffd600" stopOpacity="0.28" />
-              <stop offset="48%" stopColor="#ff0169" stopOpacity="0.22" />
-              <stop offset="100%" stopColor="#7638fa" stopOpacity="0.14" />
-            </linearGradient>
-            <linearGradient id="inspect-line" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#ffd600" />
-              <stop offset="42%" stopColor="#ff0169" />
-              <stop offset="100%" stopColor="#7638fa" />
-            </linearGradient>
-          </defs>
           {[22, 44, 66, 88].map((y) => (
             <line key={y} x1="6" x2="94" y1={y} y2={y} className={styles.inspectGridLine} />
           ))}
-          <path d={areaPath} fill="url(#inspect-area)" />
+          <path d={areaPath} className={styles.inspectArea} />
           <path d={linePath} className={styles.inspectLine} />
         </svg>
 

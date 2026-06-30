@@ -138,13 +138,6 @@ function ChartHero() {
         aria-hidden="true"
         focusable="false"
       >
-        <defs>
-          <linearGradient id="hero-line-g" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#ffd600" />
-            <stop offset="42%" stopColor="#ff0169" />
-            <stop offset="100%" stopColor="#7638fa" />
-          </linearGradient>
-        </defs>
         <path d="M12 126 C72 86, 92 118, 140 80 S230 42, 270 72 S340 110, 408 38" />
       </svg>
 
@@ -582,7 +575,7 @@ const primitiveCssExample = `.chart-bars {
 .chart-mark[aria-current="true"],
 .chart-mark:hover,
 .chart-mark:focus-visible {
-  background-image: var(--ig-gradient-spectrum);
+  background: rgb(var(--ig-primary-button));
   transform: translateY(-3px);
 }`;
 
@@ -702,24 +695,24 @@ export default function ChartsPage() {
 
       <Section
         kicker="Colour"
-        title="Colour adds hierarchy and brand energy"
-        description="Use Instagram's gradient language to focus attention, not to decorate every series. Colour must always have a secondary cue."
+        title="Use the documented palette without inventing chart hues"
+        description="Data marks should use semantic Instagram tokens. Reserve the brand gradient for whole-surface treatments and gradient examples, matching the Colour manual instead of creating partial chart-only ramps."
       >
         <div className={styles.colourExamples}>
           <article>
             <span className={styles.gradientSwatch} />
             <h3>Primary emphasis</h3>
-            <p>Use the yellow, orange, pink, lavender, and purple family for the active series or key change.</p>
+            <p>Use the exact five-stop spectrum for whole-surface brand moments, not a new chart-specific gradient.</p>
           </article>
           <article>
             <span className={styles.neutralSwatch} />
             <h3>Neutral comparison</h3>
-            <p>Use secondary backgrounds, separators, and muted text for reference values and inactive series.</p>
+            <p>Use secondary text, separators, highlights, and elevated backgrounds for inactive series and reference values.</p>
           </article>
           <article>
             <span className={styles.patternSwatch} />
             <h3>Secondary cues</h3>
-            <p>Pair colour with labels, shape, separators, texture, direct annotations, or selected outlines.</p>
+            <p>Pair semantic colour with labels, shape, separators, texture, direct annotations, or selected outlines.</p>
           </article>
         </div>
       </Section>
