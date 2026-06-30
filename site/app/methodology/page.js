@@ -67,7 +67,8 @@ const OPEN_QUESTIONS = [
   { q: "What does --ig-link's pale-blue value actually back?", href: "/color" },
   { q: "What are the literal coordinates behind --squircle-polygon?", href: "/shape" },
   { q: "Is outline: none on one rule safely superseded elsewhere, or a real focus risk?", href: "/accessibility" },
-  { q: "Instagram Squeeze is confirmed as a standalone family falling back to the system stack, not Instagram Sans — but which product surface uses it?", href: "/typography" },
+  { q: "Instagram Squeeze is confirmed as a standalone family (atomic class x1ro8mou) — but which product surface uses it?", href: "/typography" },
+  { q: "Instagram Sans UI is confirmed as a distinct named family (atomic class x17y0mf4) — but which product surface applies it?", href: "/typography" },
 ];
 
 export default function MethodologyPage() {
@@ -188,7 +189,12 @@ export default function MethodologyPage() {
         <a href="https://about.instagram.com/brand/" target="_blank" rel="noreferrer">
           about.instagram.com/brand
         </a>{" "}
-        to corroborate the CSS-derived structure against Instagram&rsquo;s own stated framing.
+        to corroborate the CSS-derived structure against Instagram&rsquo;s own stated framing. The two large
+        production CSS bundles (Stylex/atomic CSS from instagram.com) were also pattern-searched for
+        <code>font-family</code> declarations not present in the about-page files — this surfaced{" "}
+        <code>Instagram Sans UI</code> (<code>x17y0mf4</code>) and confirmed the <code>Instagram Squeeze</code>{" "}
+        atomic class (<code>x1ro8mou</code>). Atomic class names encode only the style value, not the component
+        that uses them, so surface attribution for those two families remains an open question.
       </ImplementationNote>
     </PageContainer>
   );
