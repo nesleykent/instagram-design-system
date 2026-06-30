@@ -1,0 +1,220 @@
+/* ── Shared field wrapper ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 240px;
+}
+
+.fieldLabel {
+  font-size: 12.5px;
+  font-weight: var(--fw-medium);
+  color: rgb(var(--ig-secondary-text));
+}
+
+.helperText {
+  font-size: 12px;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.helperText[data-tone="error"] {
+  color: rgb(var(--ig-error));
+}
+
+/* ── Checkbox ── */
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkboxInput {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgb(var(--ig-stroke));
+  background: rgb(var(--ig-primary-bg));
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s var(--ease-glide), border-color 0.15s var(--ease-glide);
+}
+
+.checkboxInput::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: rgb(var(--ig-always-white));
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transform: scale(0);
+  transition: transform 0.15s var(--ease-glide);
+}
+
+.checkboxInput:checked {
+  background: rgb(var(--ig-primary-button));
+  border-color: rgb(var(--ig-primary-button));
+}
+
+.checkboxInput:checked::before {
+  transform: scale(1);
+}
+
+.checkboxInput:hover:not(:disabled) {
+  border-color: rgb(var(--ig-primary-text));
+}
+
+.checkboxInput:focus-visible {
+  outline: 2px solid var(--ig-stop-magenta);
+  outline-offset: 2px;
+}
+
+.checkboxInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkboxLabel {
+  font-size: 14px;
+  color: rgb(var(--ig-primary-text));
+  cursor: pointer;
+}
+
+/* ── Radio ── */
+.radioInput {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgb(var(--ig-stroke));
+  background: rgb(var(--ig-primary-bg));
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.15s var(--ease-glide);
+}
+
+.radioInput::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: var(--radius-pill);
+  background: rgb(var(--ig-primary-button));
+  transform: scale(0);
+  transition: transform 0.15s var(--ease-glide);
+}
+
+.radioInput:checked {
+  border-color: rgb(var(--ig-primary-button));
+}
+
+.radioInput:checked::before {
+  transform: scale(1);
+}
+
+.radioInput:hover:not(:disabled) {
+  border-color: rgb(var(--ig-primary-text));
+}
+
+.radioInput:focus-visible {
+  outline: 2px solid var(--ig-stop-magenta);
+  outline-offset: 2px;
+}
+
+.radioInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Select ── */
+.selectWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  appearance: none;
+  width: 100%;
+  height: 40px;
+  padding: 0 36px 0 12px;
+  border-radius: var(--input-radius);
+  border: 1px solid rgb(var(--ig-text-input-border, var(--ig-separator)));
+  background: rgb(var(--ig-primary-bg));
+  color: rgb(var(--ig-primary-text));
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.select:hover {
+  border-color: rgb(var(--ig-stroke));
+}
+
+.select:focus-visible {
+  outline: 2px solid var(--ig-stop-magenta);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.selectChevron {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  color: rgb(var(--ig-secondary-icon));
+}
+
+/* ── Textarea ── */
+.textarea {
+  width: 100%;
+  min-height: 88px;
+  padding: 10px 12px;
+  border-radius: var(--input-radius);
+  border: 1px solid rgb(var(--ig-text-input-border, var(--ig-separator)));
+  background: rgb(var(--ig-primary-bg));
+  color: rgb(var(--ig-primary-text));
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.textarea:hover {
+  border-color: rgb(var(--ig-stroke));
+}
+
+.textarea:focus-visible {
+  outline: 2px solid var(--ig-stop-magenta);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.textarea::placeholder {
+  color: rgb(var(--ig-tertiary-text));
+}
+
+/* ── Error state (applies to input/select/textarea) ── */
+.fieldError {
+  border-color: rgb(var(--ig-error)) !important;
+}
+
+.fieldError:focus-visible {
+  outline-color: rgb(var(--ig-error));
+}
+
+/* ── Layout for demo groups ── */
+.optionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.demoColumns {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
