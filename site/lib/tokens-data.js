@@ -46,6 +46,7 @@ export const TOKENS = [
   { category: "Typography", type: "family", name: "Brand — headline optical cut", token: "--font-family-brand-headline", value: "Instagram Sans Headline" },
   { category: "Typography", type: "family", name: "Brand — condensed cut", token: "--font-family-brand-condensed", value: "Instagram Sans Condensed → Instagram Sans" },
   { category: "Typography", type: "family", name: "Brand — script cut", token: "--font-family-brand-script", value: "Instagram Sans Script → Instagram Sans" },
+  { category: "Typography", type: "family", name: "Brand — UI variant", token: "--font-family-brand-ui", value: "Instagram Sans UI → var(--font-family-system)" },
   { category: "Typography", type: "family", name: "Brand — squeeze (standalone)", token: "--font-family-squeeze", value: "Instagram Squeeze → var(--font-family-system)" },
 
   // ---- Typography: weights ----

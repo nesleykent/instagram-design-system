@@ -41,6 +41,7 @@ const BRAND_FONT = "var(--font-family-brand)";
 const BRAND_HEADLINE_FONT = "var(--font-family-brand-headline)";
 const BRAND_CONDENSED_FONT = "var(--font-family-brand-condensed)";
 const BRAND_SCRIPT_FONT = "var(--font-family-brand-script)";
+const BRAND_UI_FONT = "var(--font-family-brand-ui)";
 
 export default function TypographyPage() {
   return (
@@ -90,8 +91,8 @@ export default function TypographyPage() {
 
       <Section
         kicker="Instagram Sans"
-        title="Seven cuts, one family — plus a standalone squeeze"
-        description="Regular is the about-page workhorse. Headline is reserved for the largest display moments. Condensed and Script appear in the interactive type-tester (see Dropdowns & Selectors) with both weight variants. Instagram Squeeze ships as a separate family, not a sub-cut — it falls back to the system font stack rather than to Instagram Sans."
+        title="Seven brand cuts, a UI variant, and a standalone squeeze"
+        description="Regular is the about-page workhorse. Headline is reserved for the largest display moments. The production bundle also ships Instagram Sans UI as a distinct named family for product surfaces — separate from the editorial brand stack. Instagram Squeeze is a standalone family (not a sub-cut) that falls back to the system font stack."
       >
         <TokenGrid min="260px">
           <TypeSpecimen label="Regular · 400" text="Instagram" fontSize={28} fontWeight={400} fontFamily={BRAND_FONT} />
@@ -103,6 +104,7 @@ export default function TypographyPage() {
           <TypeSpecimen label="Condensed · 700" meta="Tight-width display, bold · documented fallback" text="Instagram" fontSize={28} fontWeight={700} letterSpacing={-2} fontFamily={BRAND_CONDENSED_FONT} />
           <TypeSpecimen label="Script · 400" meta="Editorial flourish · documented fallback" text="Instagram" fontSize={28} fontWeight={400} fontFamily={BRAND_SCRIPT_FONT} />
           <TypeSpecimen label="Script · 700" meta="Editorial flourish, bold · documented fallback" text="Instagram" fontSize={28} fontWeight={700} fontFamily={BRAND_SCRIPT_FONT} />
+          <TypeSpecimen label="Sans UI" meta="Product surfaces · confirmed in production bundle" text="Instagram" fontSize={28} fontWeight={400} fontFamily={BRAND_UI_FONT} />
         </TokenGrid>
       </Section>
 
@@ -210,11 +212,20 @@ font-size: 110px;           /* 64px <=768px / 56px <=475px / 112px >=1920px */`}
         />
       </Section>
 
+      <ImplementationNote title="Instagram Sans UI — confirmed new family">
+        The production bundle contains <code>font-family: Instagram Sans UI, var(--font-family-system)</code> as a distinct
+        named family (atomic class <code>x17y0mf4</code>). It is separate from the editorial &ldquo;Instagram Sans&rdquo;
+        stack used on brand/about surfaces. The binary is not present in this repository, so it renders here via the
+        Instagram Sans fallback. The distinction suggests Instagram Sans UI carries different metrics or hinting optimised
+        for small product UI sizes — the same reason Apple ships San Francisco Display and San Francisco Text as separate
+        families.
+      </ImplementationNote>
+
       <ImplementationNote title="Instagram Squeeze — partially resolved">
         The production bundle confirms <code>font-family: &quot;Instagram Squeeze&quot;, var(--font-family-system)</code> — note
         the fallback: <strong>the system font stack, not Instagram Sans</strong>. This makes Squeeze a standalone family,
-        not a sub-cut. The name implies ultra-compressed letterforms for tight headline slots, but the selector context
-        wasn&rsquo;t captured, so the surface that uses it inside the product remains unconfirmed. Do not conflate it
+        not a sub-cut. The atomic class that carries it is <code>x1ro8mou</code>, present in the main product bundle,
+        but selector context was not captured so the specific surface remains unconfirmed. Do not conflate it
         with Instagram Sans Condensed, which is a confirmed sub-cut that falls back to Instagram Sans.
       </ImplementationNote>
 
