@@ -205,7 +205,7 @@ const SF_MAPPING = [
 
 function OutlineIcon({ paths, size = 24 }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={size} height={size}>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={size} height={size} aria-hidden="true" focusable="false">
       {paths.map((d, i) => (
         <path
           key={i}
@@ -223,7 +223,7 @@ function OutlineIcon({ paths, size = 24 }) {
 
 function FilledIcon({ paths, size = 24 }) {
   return (
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width={size} height={size}>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width={size} height={size} aria-hidden="true" focusable="false">
       {paths.map((d, i) => (
         <path key={i} d={d} fill="currentColor" />
       ))}
@@ -250,7 +250,7 @@ export default function IconsPage() {
             <div key={s.px} className={styles.sizeCard}>
               <div className={styles.sizeDemo}>
                 <div className={styles.sizeIcon} style={{ width: s.px, height: s.px }}>
-                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width={s.px} height={s.px}>
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width={s.px} height={s.px} aria-hidden="true" focusable="false">
                     <path
                       d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
                       fill="rgb(var(--ig-stop-magenta))"
@@ -280,7 +280,7 @@ export default function IconsPage() {
             <div key={v.name} className={styles.styleCard}>
               <div className={styles.styleIconRow}>
                 <div className={styles.styleIconPair}>
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={28} height={28}>
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={28} height={28} aria-hidden="true" focusable="false">
                     <path
                       d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
                       fill={v.name === "Filled" ? "rgb(var(--ig-stop-rose))" : "none"}
@@ -459,7 +459,7 @@ Icon(
         <div className={styles.touchDemos}>
           <div className={styles.touchDemo}>
             <div className={styles.touchTarget}>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={20} height={20}>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={20} height={20} aria-hidden="true" focusable="false">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="rgb(var(--ig-stop-rose))" />
               </svg>
               <div className={styles.touchBorder} />
@@ -468,7 +468,7 @@ Icon(
           </div>
           <div className={styles.touchDemo}>
             <div className={styles.touchTarget} style={{ width: 44, height: 44 }}>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={24} height={24}>
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width={24} height={24} aria-hidden="true" focusable="false">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="rgb(var(--ig-stop-rose))" />
               </svg>
               <div className={styles.touchBorder} />

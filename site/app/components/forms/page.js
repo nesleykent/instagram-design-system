@@ -104,14 +104,14 @@ export default function FormsPage() {
       >
         <ComponentShowcase align="start">
           <div className={styles.field}>
-            <span className={styles.fieldLabel}>Audience</span>
+            <label className={styles.fieldLabel} htmlFor="audience-select">Audience</label>
             <div className={styles.selectWrap}>
-              <select className={styles.select} defaultValue="followers">
+              <select id="audience-select" className={styles.select} defaultValue="followers">
                 <option value="public">Public</option>
                 <option value="followers">Followers</option>
                 <option value="close-friends">Close Friends</option>
               </select>
-              <svg className={styles.selectChevron} width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <svg className={styles.selectChevron} width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
                 <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
@@ -126,8 +126,8 @@ export default function FormsPage() {
       >
         <ComponentShowcase align="start">
           <div className={styles.field} style={{ width: 320 }}>
-            <span className={styles.fieldLabel}>Bio</span>
-            <textarea className={styles.textarea} placeholder="Tell people about yourself" defaultValue="Building things, one pixel at a time." />
+            <label className={styles.fieldLabel} htmlFor="bio-textarea">Bio</label>
+            <textarea id="bio-textarea" className={styles.textarea} placeholder="Tell people about yourself" defaultValue="Building things, one pixel at a time." />
           </div>
         </ComponentShowcase>
       </Section>
@@ -139,9 +139,16 @@ export default function FormsPage() {
       >
         <ComponentShowcase align="start">
           <div className={styles.field}>
-            <span className={styles.fieldLabel}>Username</span>
-            <input className={[styles.select, styles.fieldError].join(" ")} style={{ paddingRight: 12 }} defaultValue="taken_username" />
-            <span className={styles.helperText} data-tone="error">This username is already taken.</span>
+            <label className={styles.fieldLabel} htmlFor="username-error">Username</label>
+            <input
+              id="username-error"
+              className={[styles.select, styles.fieldError].join(" ")}
+              style={{ paddingRight: 12 }}
+              defaultValue="taken_username"
+              aria-invalid="true"
+              aria-describedby="username-error-message"
+            />
+            <span id="username-error-message" className={styles.helperText} data-tone="error">This username is already taken.</span>
           </div>
         </ComponentShowcase>
         <CodeBlock
