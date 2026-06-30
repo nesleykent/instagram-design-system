@@ -63,6 +63,20 @@ export const NAV = [
         keywords: ["photography", "image", "crop", "aspect ratio", "collage", "overlay"],
       },
       {
+        title: "Spacing",
+        href: "/spacing",
+        description:
+          "The 8px base unit, the 10-step named scale, and which step to use in which context.",
+        keywords: ["spacing", "padding", "margin", "gap", "8px", "grid", "density"],
+      },
+      {
+        title: "Elevation",
+        href: "/elevation",
+        description:
+          "Seven shadow levels from flat to sheet, the --shadow-* token system, and z-index layer pairing.",
+        keywords: ["shadow", "elevation", "z-index", "layer", "depth", "box-shadow", "modal"],
+      },
+      {
         title: "Accessibility",
         href: "/accessibility",
         description:
@@ -151,6 +165,13 @@ export const NAV = [
         href: "/methodology",
         description: "Evidence tiers, the token architecture, scoping decisions, and open questions.",
         keywords: ["methodology", "sources", "evidence", "confidence"],
+      },
+      {
+        title: "Platform Guidance",
+        href: "/platform",
+        description:
+          "Applying this system to native mobile, dashboards, developer products, and games.",
+        keywords: ["native", "ios", "android", "dashboard", "game", "density", "platform", "extension"],
       },
     ],
   },

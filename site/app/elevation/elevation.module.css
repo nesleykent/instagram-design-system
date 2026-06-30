@@ -1,0 +1,136 @@
+.levelsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.levelCard {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+}
+
+.levelSurface {
+  height: 80px;
+  background: rgb(var(--ig-elevated-bg));
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.levelName {
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  color: rgb(var(--ig-secondary-text));
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.levelMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+.levelHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.levelToken {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: rgb(var(--ig-secondary-bg));
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  color: rgb(var(--ig-primary-text));
+}
+
+.levelDesc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgb(var(--ig-primary-text));
+}
+
+.levelComponents {
+  font-size: 12px;
+  color: rgb(var(--ig-secondary-text));
+  line-height: 1.5;
+}
+
+/* Layer table */
+.layerTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.layerRow {
+  display: grid;
+  grid-template-columns: 160px 160px 1fr;
+  gap: 16px;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  border-bottom: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.layerRow:last-child {
+  border-bottom: none;
+}
+
+.layerHeader {
+  background: rgb(var(--ig-secondary-bg));
+  font-size: 12px;
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.layerToken {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: rgb(var(--ig-secondary-bg));
+  padding: 1px 5px;
+  border-radius: var(--radius-xs);
+}
+
+.layerShadow {
+  color: rgb(var(--ig-secondary-text));
+  font-size: 13px;
+}
+
+.layerSurfaces {
+  color: rgb(var(--ig-primary-text));
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .levelCard {
+    grid-template-columns: 1fr;
+  }
+
+  .levelSurface {
+    height: 60px;
+  }
+
+  .layerRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .layerSurfaces {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    color: rgb(var(--ig-secondary-text));
+  }
+}

@@ -2,7 +2,7 @@
 // searchable/filterable explorer at /tokens. Add a token here and it
 // appears in search + its category filter automatically.
 
-export const CATEGORIES = ["Colour", "Typography", "Spacing & shape", "Motion"];
+export const CATEGORIES = ["Colour", "Typography", "Spacing & shape", "Elevation", "Motion"];
 
 export const TOKENS = [
   // ---- Colour: brand gradient stops ----
@@ -69,7 +69,30 @@ export const TOKENS = [
   { category: "Typography", type: "scale", name: "System 28", token: "--system-28-font-size", size: 28, lineHeight: 32 },
   { category: "Typography", type: "scale", name: "System 32", token: "--system-32-font-size", size: 32, lineHeight: 40 },
 
-  // ---- Spacing & shape ----
+  // ---- Spacing: named scale ----
+  { category: "Spacing & shape", type: "spacing", name: "Space 1 — Micro",  token: "--space-1",  value: "4px"  },
+  { category: "Spacing & shape", type: "spacing", name: "Space 2 — XS",     token: "--space-2",  value: "8px"  },
+  { category: "Spacing & shape", type: "spacing", name: "Space 3 — SM",     token: "--space-3",  value: "12px" },
+  { category: "Spacing & shape", type: "spacing", name: "Space 4 — Base",   token: "--space-4",  value: "16px" },
+  { category: "Spacing & shape", type: "spacing", name: "Space 5 — MD",     token: "--space-5",  value: "24px" },
+  { category: "Spacing & shape", type: "spacing", name: "Space 6 — LG",     token: "--space-6",  value: "32px" },
+  { category: "Spacing & shape", type: "spacing", name: "Space 7 — XL",     token: "--space-7",  value: "40px" },
+  { category: "Spacing & shape", type: "spacing", name: "Space 8 — 2XL",    token: "--space-8",  value: "48px" },
+  { category: "Spacing & shape", type: "spacing", name: "Space 9 — 3XL",    token: "--space-9",  value: "64px" },
+  { category: "Spacing & shape", type: "spacing", name: "Space 10 — 4XL",   token: "--space-10", value: "96px" },
+
+  // ---- Elevation: shadow tokens ----
+  { category: "Elevation", type: "shadow", name: "Shadow inset",    token: "--shadow-inset",    value: "0 0 0 1px rgba(0,0,0,.08) inset" },
+  { category: "Elevation", type: "shadow", name: "Shadow card",     token: "--shadow-card",     value: "0 1px 4px rgba(0,0,0,.10), 0 0 0 .5px rgba(0,0,0,.06)" },
+  { category: "Elevation", type: "shadow", name: "Shadow list",     token: "--shadow-list",     value: "0 2px 8px rgba(0,0,0,.15), 0 1px 1px rgba(0,0,0,.10)" },
+  { category: "Elevation", type: "shadow", name: "Shadow elevated", token: "--shadow-elevated",  value: "0 2px 26px rgba(0,0,0,.30), 0 0 0 1px rgba(0,0,0,.10)" },
+  { category: "Elevation", type: "shadow", name: "Shadow sheet",    token: "--shadow-8",        value: "0 -6px 16px rgba(0,0,0,.18)" },
+  { category: "Elevation", type: "layer",  name: "Layer 1 — Card",  token: "--layer-1",         value: "10"   },
+  { category: "Elevation", type: "layer",  name: "Layer 2 — List",  token: "--layer-2",         value: "20"   },
+  { category: "Elevation", type: "layer",  name: "Layer 8 — Modal", token: "--layer-8",         value: "80"   },
+  { category: "Elevation", type: "layer",  name: "Layer 10 — Focus",token: "--layer-10",        value: "100"  },
+
+  // ---- Spacing & shape: grid ----
   { category: "Spacing & shape", type: "grid", name: "Grid unit ×1", token: "--ig-grid-unit", value: "7.142vw" },
   { category: "Spacing & shape", type: "grid", name: "Grid unit ×2", token: "--ig-grid-unit-2", value: "14.285vw" },
   { category: "Spacing & shape", type: "grid", name: "Grid unit ×3", token: "--ig-grid-unit-3", value: "21.428vw" },

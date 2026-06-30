@@ -80,6 +80,33 @@
   --ig-grid-unit-3: 21.428vw;
 
   /* Radius scale */
+  /* Spacing scale — 8px base unit, 4px micro-step */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  40px;
+  --space-8:  48px;
+  --space-9:  64px;
+  --space-10: 96px;
+
+  /* Shadow/elevation — confirmed token names from production bundle */
+  --shadow-rgb: 0, 0, 0;
+  --shadow-inset:    0 0 0 1px rgba(var(--shadow-rgb), .08) inset;
+  --shadow-card:     0 1px 4px rgba(var(--shadow-rgb), .10), 0 0 0 .5px rgba(var(--shadow-rgb), .06);
+  --shadow-list:     0 2px 8px rgba(var(--shadow-rgb), .15), 0 1px 1px rgba(var(--shadow-rgb), .10);
+  --shadow-elevated: 0 2px 26px rgba(var(--shadow-rgb), .30), 0 0 0 1px rgba(var(--shadow-rgb), .10);
+  --shadow-8:        0 -6px 16px rgba(var(--shadow-rgb), .18);
+  --shadow-focus:    0 0 0 2px var(--ig-stop-magenta);
+
+  /* Z-index layer scale — confirmed from production bundle */
+  --layer-1:  10;
+  --layer-2:  20;
+  --layer-8:  80;
+  --layer-10: 100;
+
   --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 8px;
