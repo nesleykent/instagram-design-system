@@ -34,3 +34,16 @@
 .input::placeholder {
   color: rgb(var(--ig-tertiary-text));
 }
+
+.inputError {
+  border-color: rgb(var(--ig-error));
+}
+
+.inputError:focus-visible {
+  outline-color: rgb(var(--ig-error));
+}
+
+.errorText {
+  font-size: 12px;
+  color: rgb(var(--ig-error));
+}

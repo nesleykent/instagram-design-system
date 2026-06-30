@@ -26,6 +26,7 @@ export default function FormsPage() {
         <ComponentShowcase align="start">
           <IGInput label="Username" placeholder="your.username" />
           <IGInput label="Email" placeholder="you@example.com" />
+          <IGInput label="Username" defaultValue="taken_username" error="This username is already taken." />
         </ComponentShowcase>
       </Section>
 
