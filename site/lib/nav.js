@@ -196,6 +196,18 @@ export const NAV = [
         description: "The transient, self-dismissing confirmation pattern — shape, motion, and timing, extended from confirmed elevation and easing tokens.",
         keywords: ["toast", "snackbar", "notification", "confirmation", "undo", "alert"],
       },
+      {
+        title: "Data Tables",
+        href: "/components/data-tables",
+        description: "Sortable, multi-column tables for dashboards — built from Lists & Tables' confirmed row tokens, extended past that page's single-column pattern.",
+        keywords: ["table", "data table", "sort", "pagination", "dashboard", "spreadsheet", "columns"],
+      },
+      {
+        title: "Stat Cards",
+        href: "/components/stat-cards",
+        description: "Dashboard KPI summary tiles — label, value, and trend indicator, built from confirmed shadow and semantic colour tokens.",
+        keywords: ["stat card", "kpi", "dashboard", "metric", "trend", "summary tile", "analytics"],
+      },
       ...COMPONENT_NAV_ITEMS,
     ],
   },

@@ -322,11 +322,11 @@ const EVIDENCED_GUIDES = [
     guidance: ["Fix row height (Instagram's search rows are 50px) rather than letting content stretch it — every row-list pattern found is fixed-height.", "Truncate with ellipsis; don't wrap row text to multiple lines."],
     doDont: {
       dos: ["Use a 1px --post-separator or --ig-separator between rows, not a heavier table-grid border."],
-      donts: ["Build a sortable, multi-column spreadsheet-style table — Instagram row patterns are single-column content with a leading/trailing affordance."],
+      donts: ["Build a sortable, multi-column spreadsheet-style table — Instagram row patterns are single-column content with a leading/trailing affordance. See Data Tables if your product genuinely needs that."],
     },
     usage: {
       useWhen: "Use for vertically-scrolling rows of same-height items, including notifications, settings, search results, and comment-thread rows.",
-      avoidWhen: "Avoid for dense analytical data or sortable spreadsheet-style tables; Instagram's evidenced pattern is a row list, not a grid of columns.",
+      avoidWhen: "Avoid for dense analytical data or sortable spreadsheet-style tables; Instagram's evidenced pattern is a row list, not a grid of columns. Dashboard/analytics products that need real sortable columns should use the extended Data Tables pattern instead, which reuses this page's row/separator/hover tokens.",
     },
     spec: [
       { label: "Row height", value: "44px minimum; search-result rows are confirmed at 50px" },
