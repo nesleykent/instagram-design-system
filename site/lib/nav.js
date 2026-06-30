@@ -90,6 +90,20 @@ export const NAV = [
           "What the system gets right — and the specific, citable risks — across contrast, focus, and motion.",
         keywords: ["a11y", "contrast", "focus", "screen reader", "forced colors", "open dyslexic"],
       },
+      {
+        title: "Voice & Writing",
+        href: "/writing",
+        description:
+          "Direct, warm, playful-but-purposeful — button labels, empty states, error messages, and formatting rules.",
+        keywords: ["copy", "writing", "voice", "tone", "empty state", "error", "button label", "sentence case", "microcopy"],
+      },
+      {
+        title: "Loading & Skeletons",
+        href: "/loading",
+        description:
+          "The shimmer sweep anatomy, skeleton shapes per surface, spinner usage, and timing rules.",
+        keywords: ["loading", "skeleton", "shimmer", "spinner", "progress", "placeholder", "stale content"],
+      },
     ],
   },
   {

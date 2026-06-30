@@ -1,0 +1,275 @@
+/* ── Voice principles ── */
+.principleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.principleCard {
+  padding: 24px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-xl);
+  background: rgb(var(--ig-elevated-bg));
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.principleName {
+  font-size: 18px;
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+}
+
+.principleDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.principleExamples {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  margin-top: 4px;
+}
+
+.principleExample {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.exampleCorrect {
+  font-weight: var(--fw-semibold);
+  color: rgb(var(--ig-primary-text));
+}
+
+.exampleNot {
+  font-size: 11px;
+  color: rgb(var(--ig-secondary-text));
+  font-style: italic;
+}
+
+.exampleWrong {
+  color: rgb(var(--ig-secondary-text));
+  text-decoration: line-through;
+  text-decoration-color: rgb(var(--ig-error), 0.6);
+}
+
+/* ── Tone scale table ── */
+.toneTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.toneRow {
+  display: grid;
+  grid-template-columns: 180px 160px 1fr 1fr;
+  gap: 16px;
+  padding: 12px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: start;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.toneRow:first-child {
+  border-top: none;
+}
+
+.toneHeader {
+  background: rgb(var(--ig-secondary-bg));
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgb(var(--ig-secondary-text));
+  align-items: center;
+}
+
+.toneContext {
+  font-weight: var(--fw-semibold);
+}
+
+.tonePersonality {
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12.5px;
+}
+
+.toneExample {
+  color: rgb(var(--ig-primary-text));
+}
+
+.toneAvoid {
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12px;
+}
+
+/* ── Copy patterns ── */
+.patternList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.patternCard {
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.patternHeader {
+  padding: 14px 20px;
+  background: rgb(var(--ig-secondary-bg));
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.patternSurface {
+  font-size: 14px;
+  font-weight: var(--fw-bold);
+}
+
+.patternRule {
+  font-size: 13px;
+  color: rgb(var(--ig-secondary-text));
+  font-style: italic;
+}
+
+.patternColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.patternCol {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.patternCol:first-child {
+  border-right: 1px solid rgb(var(--ig-separator));
+}
+
+.patternColLabel {
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgb(var(--ig-secondary-text));
+  margin-bottom: 4px;
+}
+
+.patternDo {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgb(var(--ig-primary-text));
+  padding: 8px 12px;
+  border-left: 3px solid rgb(var(--ig-success), 0.7);
+  background: rgb(var(--ig-success), 0.05);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  white-space: pre-line;
+}
+
+.patternDont {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+  padding: 8px 12px;
+  border-left: 3px solid rgb(var(--ig-error), 0.5);
+  background: rgb(var(--ig-error), 0.04);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  white-space: pre-line;
+}
+
+/* ── Formatting rules ── */
+.formattingList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.formattingRow {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  padding: 14px 20px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: start;
+}
+
+.formattingRow:first-child {
+  border-top: none;
+}
+
+.formattingRule {
+  font-size: 13.5px;
+  font-weight: var(--fw-semibold);
+  line-height: 1.4;
+}
+
+.formattingDetail {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .toneRow {
+    grid-template-columns: 140px 1fr 1fr;
+  }
+
+  .tonePersonality {
+    display: none;
+  }
+
+  .formattingRow {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .principleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .toneRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .toneContext {
+    grid-column: 1 / -1;
+  }
+
+  .toneAvoid {
+    display: none;
+  }
+
+  .patternColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .patternCol:first-child {
+    border-right: none;
+    border-bottom: 1px solid rgb(var(--ig-separator));
+  }
+
+  .formattingRow {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}

@@ -1,0 +1,291 @@
+/* ── Loading state table ── */
+.stateTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.stateRow {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 14px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: start;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.stateRow:first-child {
+  border-top: none;
+}
+
+.stateHeader {
+  background: rgb(var(--ig-secondary-bg));
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgb(var(--ig-secondary-text));
+  align-items: center;
+}
+
+.stateName {
+  font-weight: var(--fw-semibold);
+  margin-bottom: 3px;
+}
+
+.stateAnimation {
+  font-size: 11.5px;
+  color: rgb(var(--ig-secondary-text));
+  font-style: italic;
+}
+
+.stateWhen {
+  color: rgb(var(--ig-primary-text));
+}
+
+.stateUseFor {
+  color: rgb(var(--ig-secondary-text));
+}
+
+.stateAvoid {
+  color: rgb(var(--ig-secondary-text));
+  font-size: 12px;
+}
+
+/* ── Shimmer demo ── */
+.shimmerDemo {
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-xl);
+  background: rgb(var(--ig-elevated-bg));
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.shimmerDemoInner {
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.shimmerRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shimmerLines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* The shimmer keyframe is in globals.css — reuse it site-wide */
+@keyframes shimmer {
+  to { transform: translateX(100%); }
+}
+
+.shimmer {
+  background: rgb(var(--ig-highlight-bg));
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--ig-primary-bg), 0.65) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.6s infinite linear;
+}
+
+.shimmerCircle {
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+
+.shimmerLine {
+  height: 10px;
+  border-radius: var(--radius-sm);
+}
+
+.shimmerBlock {
+  width: 100%;
+  height: 200px;
+  border-radius: var(--radius-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shimmer::after {
+    animation: none;
+  }
+}
+
+/* ── Skeleton pattern cards ── */
+.patternList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.patternCard {
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.patternHeader {
+  padding: 12px 20px;
+  background: rgb(var(--ig-secondary-bg));
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.patternName {
+  font-size: 14px;
+  font-weight: var(--fw-bold);
+}
+
+.patternContext {
+  font-size: 12.5px;
+  color: rgb(var(--ig-secondary-text));
+  font-style: italic;
+}
+
+.patternBody {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.patternSlots {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.patternSlot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slotVisual {
+  background: rgb(var(--ig-highlight-bg));
+  flex-shrink: 0;
+  min-width: 20px;
+}
+
+.slotRect {
+  height: 10px;
+  border-radius: var(--radius-sm);
+  max-width: 200px;
+}
+
+.slotCircle {
+  border-radius: var(--radius-pill);
+}
+
+.slotLabel {
+  font-size: 12px;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.patternNotes {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgb(var(--ig-secondary-text));
+  padding-top: 12px;
+  border-top: 1px solid rgb(var(--ig-separator));
+}
+
+/* ── Timing table ── */
+.timingTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.timingRow {
+  display: grid;
+  grid-template-columns: 200px 100px 1fr;
+  gap: 16px;
+  padding: 13px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.timingRow:first-child {
+  border-top: none;
+}
+
+.timingToken {
+  font-size: 13.5px;
+  font-weight: var(--fw-semibold);
+}
+
+.timingValue {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: rgb(var(--ig-stop-magenta));
+  background: transparent;
+}
+
+.timingNote {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .stateRow {
+    grid-template-columns: 160px 1fr 1fr;
+  }
+
+  .stateAvoid {
+    display: none;
+  }
+
+  .timingRow {
+    grid-template-columns: 160px 80px 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .stateRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stateName {
+    grid-column: 1 / -1;
+  }
+
+  .stateUseFor {
+    display: none;
+  }
+
+  .timingRow {
+    grid-template-columns: 1fr 80px;
+  }
+
+  .timingNote {
+    display: none;
+  }
+}
