@@ -208,6 +208,12 @@ export const NAV = [
         description: "Dashboard KPI summary tiles — label, value, and trend indicator, built from confirmed shadow and semantic colour tokens.",
         keywords: ["stat card", "kpi", "dashboard", "metric", "trend", "summary tile", "analytics"],
       },
+      {
+        title: "HUD Elements",
+        href: "/components/hud-elements",
+        description: "Health/XP bars, score badges, and reward feedback timing — the real-time overlay tokens Platform Guidance only recommended in prose, now implemented and live.",
+        keywords: ["hud", "health bar", "xp bar", "progress bar", "game", "score", "real-time", "feedback"],
+      },
       ...COMPONENT_NAV_ITEMS,
     ],
   },

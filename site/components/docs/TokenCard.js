@@ -48,6 +48,18 @@ function Preview({ token }) {
     }
     case "family":
       return <span className={styles.familyPreview} style={{ fontFamily: `var(${token.token})` }}>Ag</span>;
+    case "spacing":
+      return <div className={styles.spacingPreview} style={{ width: token.value }} />;
+    case "shadow":
+      return <div className={styles.shadowPreview} style={{ boxShadow: `var(${token.token})` }} />;
+    case "layer":
+      return <span className={styles.layerPreview}>{token.value}</span>;
+    case "icon":
+      return (
+        <div className={styles.iconPreview} style={{ width: token.value, height: token.value }}>
+          <div className={styles.iconPreviewDot} />
+        </div>
+      );
     default:
       return null;
   }

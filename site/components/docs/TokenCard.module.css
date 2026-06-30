@@ -68,6 +68,43 @@
   background-image: var(--ig-gradient-hero);
 }
 
+.spacingPreview {
+  height: 16px;
+  max-width: 90%;
+  background-image: var(--ig-gradient-hero);
+  border-radius: var(--radius-xs);
+}
+
+.shadowPreview {
+  width: 44px;
+  height: 44px;
+  background: rgb(var(--ig-elevated-bg));
+  border-radius: var(--radius-md);
+}
+
+.layerPreview {
+  font-family: var(--font-mono);
+  font-size: 28px;
+  font-weight: var(--fw-bold);
+  color: rgb(var(--ig-primary-text));
+}
+
+.iconPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px dashed rgb(var(--ig-stroke));
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+}
+
+.iconPreviewDot {
+  width: 60%;
+  height: 60%;
+  border-radius: var(--radius-pill);
+  background-image: var(--ig-gradient-hero);
+}
+
 .meta {
   padding: 12px 14px 14px;
 }

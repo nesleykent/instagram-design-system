@@ -1,0 +1,204 @@
+/* ── Live HUD demo stage ── */
+.hudStage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+}
+
+.hudOverlay {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, #1a1d29, #0c0e14);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: filter var(--feedback-duration-fast) linear;
+}
+
+.flashDamage {
+  filter: brightness(1.6) saturate(1.8);
+}
+
+.hudTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.barGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.barLabel {
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: var(--hud-text);
+  letter-spacing: 0.04em;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.barTrack {
+  flex: 1;
+  height: var(--bar-height);
+  border-radius: var(--radius-pill);
+  background: var(--bar-bg);
+  overflow: hidden;
+}
+
+.barFillHealth {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--bar-fill-health);
+  transition: width var(--feedback-duration-fast) linear;
+}
+
+.barFillXp {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--bar-fill-xp);
+  transition: width var(--feedback-duration-reward) var(--ease-settle);
+}
+
+.scoreBadge {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: var(--fw-bold);
+  color: var(--hud-text);
+  background: var(--hud-bg);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  transition: transform var(--feedback-duration-reward) var(--ease-settle);
+}
+
+.flashReward {
+  transform: scale(1.15);
+  color: var(--ig-stop-yellow);
+}
+
+.levelUpToast {
+  position: absolute;
+  top: -14px;
+  right: 16px;
+  background: var(--ig-gradient-hero);
+  color: rgb(var(--ig-always-white));
+  font-size: 12px;
+  font-weight: var(--fw-bold);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-elevated);
+  animation: hud-toast-in var(--feedback-duration-reward) var(--ease-settle);
+}
+
+@keyframes hud-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hudOverlay,
+  .barFillHealth,
+  .barFillXp,
+  .scoreBadge {
+    transition: none;
+  }
+  .levelUpToast {
+    animation: none;
+  }
+}
+
+.hudControls {
+  display: flex;
+  gap: 10px;
+}
+
+.hudButton {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: rgb(var(--ig-primary-button));
+  color: rgb(var(--ig-always-white));
+  font-size: 13.5px;
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+}
+
+.hudButton:hover {
+  background: rgb(var(--ig-primary-button-hover));
+}
+
+.hudButtonGhost {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgb(var(--ig-separator));
+  background: transparent;
+  color: rgb(var(--ig-secondary-text));
+  font-size: 13.5px;
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+}
+
+.hudButtonGhost:hover {
+  border-color: rgb(var(--ig-stroke));
+  color: rgb(var(--ig-primary-text));
+}
+
+/* ── Spec table ── */
+.specTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 16px;
+  padding: 12px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.specRow:first-child {
+  border-top: none;
+}
+
+.specLabel {
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+}
+
+.specValue {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+@media (max-width: 600px) {
+  .specRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .hudControls {
+    flex-wrap: wrap;
+  }
+}

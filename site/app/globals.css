@@ -129,6 +129,18 @@
   --code-number: var(--ig-stop-orange);
   --code-type: rgb(var(--ig-primary-button));
 
+  /* Game / real-time UI — extended, derived from the existing token set
+     per Platform Guidance's HUD recommendation */
+  --hud-z-index: 110;
+  --hud-bg: rgba(var(--ig-always-black), 0.55);
+  --hud-text: rgb(var(--ig-always-white));
+  --feedback-duration-fast: 80ms;
+  --feedback-duration-reward: 600ms;
+  --bar-height: 10px;
+  --bar-bg: rgba(var(--ig-always-white), 0.18);
+  --bar-fill-health: linear-gradient(90deg, var(--ig-stop-rose), var(--ig-stop-purple));
+  --bar-fill-xp: var(--ig-gradient-hero);
+
   /* Named easing curves */
   --ease-standard: cubic-bezier(0.33, 0, 0.67, 1);
   --ease-confident: cubic-bezier(0.7, 0, 0.3, 1);

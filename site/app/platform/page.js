@@ -48,12 +48,12 @@ const PLATFORMS = [
   },
   {
     name: "Game / Real-time UI",
-    readiness: 20,
-    tag: "Build",
-    summary: "The Instagram system provides the aesthetic vocabulary — gradient, radius, type weight, motion curves — but real-time interactive surfaces need new composition patterns.",
-    use: ["Brand gradient: --ig-gradient-hero works for score overlays, achievement banners, and progress fills.", "Motion: --ease-confident (0.7,0,0.3,1) maps to game UI snap/settle; --ease-settle (spring-like) maps to reward animations.", "Colour: --ig-stop-rose / --ig-stop-purple are valid for health/energy bar gradients. --ig-success for positive feedback, --ig-error for damage.", "Shape: --radius-pill is canonical for HUD progress bars and level badges."],
+    readiness: 45,
+    tag: "Extend",
+    summary: "The Instagram system provides the aesthetic vocabulary — gradient, radius, type weight, motion curves. HUD tokens (--hud-*, --bar-*, --feedback-duration-*) are now real and implemented — see HUD Elements for a live health/XP bar — though broader real-time composition patterns beyond that are still prose recommendations.",
+    use: ["--hud-z-index/--hud-bg/--hud-text and --bar-*/--feedback-duration-* are real, implemented tokens — see HUD Elements for a working health bar, XP bar, and score badge, or /tokens to inspect the values.", "Brand gradient: --ig-gradient-hero works for score overlays, achievement banners, and progress fills.", "Motion: --ease-confident (0.7,0,0.3,1) maps to game UI snap/settle; --ease-settle (spring-like) maps to reward animations.", "Colour: --ig-success for positive feedback, --ig-error for damage."],
     skip: ["Do not use Instagram's navigation components (Sidebars, Tab Bars) — HUDs use overlay layers, not navigational grids."],
-    extend: ["Add HUD-specific tokens: --hud-z-index (above --layer-10), --hud-bg (semi-transparent dark), --hud-text (--ig-always-white).", "Add real-time feedback tokens: --feedback-duration (faster than --duration-micro, ~80ms), --feedback-ease (linear for damage, --ease-settle for rewards).", "Add progress-fill tokens: --bar-bg, --bar-fill-gradient, --bar-height, derived from the existing gradient system.", "Add overlay pattern: a radial vignette behind HUD elements using --ig-shadow-rgb at high alpha."],
+    extend: ["Add a radial vignette pattern behind HUD elements using --ig-shadow-rgb at high alpha, for legibility over bright game content.", "Add inventory/loadout grid patterns — beyond bars and badges, most games need item-slot grids, which this system has no precedent for at all."],
   },
 ];
 
