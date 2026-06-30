@@ -1,0 +1,171 @@
+/* ── Principles grid ── */
+.principleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.principleCard {
+  padding: 20px;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-xl);
+  background: rgb(var(--ig-elevated-bg));
+}
+
+.principleTitle {
+  font-size: 14.5px;
+  font-weight: var(--fw-bold);
+  margin-bottom: 8px;
+}
+
+.principleBody {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.inlineCode {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: rgb(var(--ig-secondary-bg));
+  padding: 1px 5px;
+  border-radius: var(--radius-xs);
+  color: rgb(var(--ig-stop-magenta));
+}
+
+/* ── Token table ── */
+.tokenTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.tokenRow {
+  display: grid;
+  grid-template-columns: 200px 150px 150px 1fr;
+  gap: 14px;
+  padding: 12px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.tokenRow:first-child {
+  border-top: none;
+}
+
+.tokenHeader {
+  background: rgb(var(--ig-secondary-bg));
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgb(var(--ig-secondary-text));
+}
+
+.tokenName {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgb(var(--ig-primary-text));
+}
+
+.tokenSwatchCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgb(var(--ig-separator));
+  flex-shrink: 0;
+}
+
+.swatchDark {
+  border-color: rgb(var(--ig-stroke));
+}
+
+.tokenValue {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgb(var(--ig-secondary-text));
+  background: transparent;
+}
+
+.tokenNote {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Unchanged tokens ── */
+.unchangedList {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.unchangedRow {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 16px;
+  padding: 13px 16px;
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.unchangedRow:first-child {
+  border-top: none;
+}
+
+.unchangedToken {
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+  line-height: 1.4;
+}
+
+.unchangedNote {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .principleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .tokenRow {
+    grid-template-columns: 150px 110px 110px 1fr;
+    font-size: 12.5px;
+  }
+
+  .unchangedRow {
+    grid-template-columns: 200px 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .tokenRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tokenName {
+    grid-column: 1 / -1;
+  }
+
+  .tokenNote {
+    display: none;
+  }
+
+  .unchangedRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

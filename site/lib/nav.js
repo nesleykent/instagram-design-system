@@ -104,6 +104,20 @@ export const NAV = [
           "The shimmer sweep anatomy, skeleton shapes per surface, spinner usage, and timing rules.",
         keywords: ["loading", "skeleton", "shimmer", "spinner", "progress", "placeholder", "stale content"],
       },
+      {
+        title: "Empty States",
+        href: "/empty-states",
+        description:
+          "The icon + headline + body + optional CTA pattern, with a 10-state catalog drawn from real product surfaces.",
+        keywords: ["empty state", "zero state", "no results", "blank", "first-run", "no posts"],
+      },
+      {
+        title: "Dark Mode",
+        href: "/dark-mode",
+        description:
+          "Why dark mode isn't inversion — the confirmed light/dark token pairs, what stays fixed, and the toggle implementation.",
+        keywords: ["dark mode", "theme", "light mode", "data-theme", "prefers-color-scheme", "near-black"],
+      },
     ],
   },
   {
