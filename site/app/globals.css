@@ -79,6 +79,12 @@
   --ig-grid-unit-2: 14.285vw;
   --ig-grid-unit-3: 21.428vw;
 
+  /* Icon size scale — 4px grid, matches spacing base unit */
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --icon-size-xl: 32px;
+
   /* Spacing scale — 8px base unit, 4px micro-step */
   --space-1:  4px;
   --space-2:  8px;

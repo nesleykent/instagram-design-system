@@ -63,6 +63,13 @@ export const NAV = [
         keywords: ["photography", "image", "crop", "aspect ratio", "collage", "overlay"],
       },
       {
+        title: "Icons",
+        href: "/icons",
+        description:
+          "Size scale (16/20/24/32px), filled vs outline grammar, semantic colour tokens, and touch target requirements.",
+        keywords: ["icon", "svg", "filled", "outline", "24px", "touch target", "glyph"],
+      },
+      {
         title: "Spacing",
         href: "/spacing",
         description:
