@@ -49,3 +49,23 @@
   font-family: var(--font-mono);
   white-space: pre;
 }
+
+.tokComment {
+  color: var(--code-comment);
+}
+
+.tokString {
+  color: var(--code-string);
+}
+
+.tokType {
+  color: var(--code-type);
+}
+
+.tokKeyword {
+  color: var(--code-keyword);
+}
+
+.tokNumber {
+  color: var(--code-number);
+}

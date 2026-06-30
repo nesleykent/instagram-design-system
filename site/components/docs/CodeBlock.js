@@ -2,7 +2,16 @@
 
 import { useState } from "react";
 import { IconCheck, IconCopy } from "../Icons";
+import { tokenizeCode } from "./highlightCode";
 import styles from "./CodeBlock.module.css";
+
+const TOKEN_CLASS = {
+  comment: styles.tokComment,
+  string: styles.tokString,
+  type: styles.tokType,
+  keyword: styles.tokKeyword,
+  number: styles.tokNumber,
+};
 
 export default function CodeBlock({ code, label }) {
   const [copied, setCopied] = useState(false);
@@ -13,6 +22,8 @@ export default function CodeBlock({ code, label }) {
     setTimeout(() => setCopied(false), 1600);
   }
 
+  const tokens = tokenizeCode(code);
+
   return (
     <div className={styles.block}>
       {label && <span className={styles.label}>{label}</span>}
@@ -21,7 +32,17 @@ export default function CodeBlock({ code, label }) {
         {copied ? "Copied" : "Copy"}
       </button>
       <pre className={styles.pre}>
-        <code>{code}</code>
+        <code>
+          {tokens.map((t, i) =>
+            t.type ? (
+              <span key={i} className={TOKEN_CLASS[t.type]}>
+                {t.text}
+              </span>
+            ) : (
+              t.text
+            )
+          )}
+        </code>
       </pre>
     </div>
   );

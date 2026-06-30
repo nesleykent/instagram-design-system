@@ -1,7 +1,13 @@
 import { IconCheck, IconClose } from "../Icons";
 import styles from "./DoDontGrid.module.css";
 
-export default function DoDontGrid({ dos = [], donts = [] }) {
+// Supports two call shapes:
+//   <DoDontGrid dos={["..."]} donts={["..."]} />              (flat strings)
+//   <DoDontGrid items={[{ type: "do"|"dont", title, body }]} /> (titled entries)
+export default function DoDontGrid({ dos = [], donts = [], items }) {
+  const doItems = items ? items.filter((i) => i.type === "do") : dos.map((text) => ({ text }));
+  const dontItems = items ? items.filter((i) => i.type === "dont") : donts.map((text) => ({ text }));
+
   return (
     <div className={styles.grid}>
       <div className={styles.column} data-kind="do">
@@ -9,8 +15,12 @@ export default function DoDontGrid({ dos = [], donts = [] }) {
           <IconCheck size={16} /> Do
         </h3>
         <ul>
-          {dos.map((item, i) => (
-            <li key={i}>{item}</li>
+          {doItems.map((item, i) => (
+            <li key={i}>
+              {item.title ? <strong className={styles.itemTitle}>{item.title}</strong> : null}
+              {item.title ? " — " : null}
+              {item.body || item.text}
+            </li>
           ))}
         </ul>
       </div>
@@ -19,8 +29,12 @@ export default function DoDontGrid({ dos = [], donts = [] }) {
           <IconClose size={16} /> Don&rsquo;t
         </h3>
         <ul>
-          {donts.map((item, i) => (
-            <li key={i}>{item}</li>
+          {dontItems.map((item, i) => (
+            <li key={i}>
+              {item.title ? <strong className={styles.itemTitle}>{item.title}</strong> : null}
+              {item.title ? " — " : null}
+              {item.body || item.text}
+            </li>
           ))}
         </ul>
       </div>

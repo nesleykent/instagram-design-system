@@ -121,6 +121,14 @@
   --input-radius: 6px;
   --modal-radius: 12px;
 
+  /* Syntax highlighting — extended, derived from the existing semantic
+     palette per Platform Guidance's developer-product recommendation */
+  --code-keyword: var(--ig-stop-purple);
+  --code-string: rgb(var(--ig-success));
+  --code-comment: rgb(var(--ig-secondary-text));
+  --code-number: var(--ig-stop-orange);
+  --code-type: rgb(var(--ig-primary-button));
+
   /* Named easing curves */
   --ease-standard: cubic-bezier(0.33, 0, 0.67, 1);
   --ease-confident: cubic-bezier(0.7, 0, 0.3, 1);

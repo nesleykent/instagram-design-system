@@ -40,6 +40,13 @@ export const TOKENS = [
   { category: "Colour", type: "color", name: "Always white", token: "--ig-always-white", light: "255, 255, 255" },
   { category: "Colour", type: "color", name: "Always black", token: "--ig-always-black", light: "0, 0, 0" },
 
+  // ---- Colour: syntax highlighting (extended — see Platform Guidance) ----
+  { category: "Colour", type: "code", name: "Code keyword", token: "--code-keyword", light: "118, 56, 250" },
+  { category: "Colour", type: "code", name: "Code string", token: "--code-string", light: "88, 195, 34" },
+  { category: "Colour", type: "code", name: "Code comment", token: "--code-comment", light: "115, 115, 115", dark: "168, 168, 168" },
+  { category: "Colour", type: "code", name: "Code number", token: "--code-number", light: "255, 122, 0" },
+  { category: "Colour", type: "code", name: "Code type (CSS custom property)", token: "--code-type", light: "0, 149, 246" },
+
   // ---- Typography: font families ----
   { category: "Typography", type: "family", name: "Product UI", token: "--font-family-product", value: "Optimistic VF / Montserrat fallback" },
   { category: "Typography", type: "family", name: "Brand — main", token: "--font-family-brand", value: "Instagram Sans local cuts" },
