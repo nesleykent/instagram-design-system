@@ -9,6 +9,7 @@ import styles from "./page.module.css";
 
 export const metadata = {
   title: "Overview · Instagram Brand Identity Manual",
+  description: "Why this manual exists, how it was built, and the three pillars Instagram's own brand page names.",
 };
 
 // Components currently has 57 entries (overview + 9 hand-built pages +

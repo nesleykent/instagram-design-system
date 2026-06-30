@@ -8,7 +8,10 @@ import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 
-export const metadata = { title: "Shape" };
+export const metadata = {
+  title: "Shape",
+  description: "Every rounded form in the system resolves to one of three primitives — circle, rounded square (including a true tokenized squircle), or pill.",
+};
 
 export default function ShapePage() {
   return (

@@ -11,7 +11,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 import styles from "./typography.module.css";
 
-export const metadata = { title: "Typography" };
+export const metadata = {
+  title: "Typography",
+  description: "Two separate type systems, one fallback philosophy: Optimistic runs the product, Instagram Sans runs the brand.",
+};
 
 const SYSTEM_SCALE = [
   { size: 10, lineHeight: 12 },

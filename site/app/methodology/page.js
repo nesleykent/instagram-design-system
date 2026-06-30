@@ -7,7 +7,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import { COMPONENT_GUIDES } from "@/lib/component-guides";
 import styles from "./methodology.module.css";
 
-export const metadata = { title: "Methodology" };
+export const metadata = {
+  title: "Methodology",
+  description: "How this manual — and this website — were built, what was scoped out and why, and exactly how confident each claim is.",
+};
 
 const SOURCE_CONFIDENCE = [
   {

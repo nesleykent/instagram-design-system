@@ -6,7 +6,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 import styles from "./spacing.module.css";
 
-export const metadata = { title: "Spacing" };
+export const metadata = {
+  title: "Spacing",
+  description: "An 8px base unit, with a 4px micro-step for tight UI work. Every gap, padding, and margin in the system resolves to one of ten named steps — never an…",
+};
 
 const SCALE = [
   { token: "--space-1",  px: 4,  label: "Micro",  use: "Icon breathing room, inline chip padding, sub-pixel separators" },

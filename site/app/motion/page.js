@@ -8,7 +8,10 @@ import ClipPathRevealDemo from "@/components/docs/ClipPathRevealDemo";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 
-export const metadata = { title: "Motion" };
+export const metadata = {
+  title: "Motion",
+  description: "Motion is infrequent and purposeful, not ambient. A small set of named easing curves, each reused consistently for the same kind of motion across unrelated…",
+};
 
 export default function MotionPage() {
   return (

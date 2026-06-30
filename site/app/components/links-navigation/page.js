@@ -6,7 +6,10 @@ import IGNavLink from "@/components/docs/IGNavLink";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 
-export const metadata = { title: "Links & Navigation" };
+export const metadata = {
+  title: "Links & Navigation",
+  description: "The nav link is a ghost button with an underline that grows in from the left on hover — not a static underline that's merely revealed.",
+};
 
 export default function LinksNavigationPage() {
   return (

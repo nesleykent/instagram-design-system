@@ -6,7 +6,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 import styles from "./elevation.module.css";
 
-export const metadata = { title: "Elevation" };
+export const metadata = {
+  title: "Elevation",
+  description: "Seven levels from flat to sheet. Every shadow in the system is directional and dual-layered — a spread shadow for depth, a tight shadow for edge definition.",
+};
 
 const SHADOW_LEVELS = [
   {

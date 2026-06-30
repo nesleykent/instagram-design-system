@@ -6,7 +6,10 @@ import { getComponentGuidesByCategory } from "@/lib/component-guides";
 import { IconArrowRight } from "@/components/Icons";
 import styles from "./components.module.css";
 
-export const metadata = { title: "Components" };
+export const metadata = {
+  title: "Components",
+  description: "Organized like Apple's own HIG component catalogue, then translated into Instagram's visual language.",
+};
 
 export default function ComponentsIndexPage() {
   const items = NAV.find((g) => g.group === "Components").items.filter((i) => i.title !== "Overview");

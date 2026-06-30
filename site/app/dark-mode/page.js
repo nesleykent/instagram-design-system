@@ -6,7 +6,10 @@ import CodeBlock from "@/components/docs/CodeBlock";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import styles from "./dark-mode.module.css";
 
-export const metadata = { title: "Dark Mode" };
+export const metadata = {
+  title: "Dark Mode",
+  description: "Dark mode is not an inverted palette — every background, text, and border token was independently tuned for legibility and comfort at low luminance.",
+};
 
 const TOKEN_PAIRS = [
   { token: "--ig-primary-bg",     light: "255, 255, 255", dark: "12, 16, 20",  note: "Near-black, not pure #000 — pure black against bright media creates excessive contrast and halation" },

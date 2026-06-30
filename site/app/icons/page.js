@@ -6,7 +6,10 @@ import CodeBlock from "@/components/docs/CodeBlock";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import styles from "./icons.module.css";
 
-export const metadata = { title: "Icons" };
+export const metadata = {
+  title: "Icons",
+  description: "Instagram uses a custom icon set — no public icon library matches the production vocabulary.",
+};
 
 const SIZES = [
   {

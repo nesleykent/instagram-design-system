@@ -7,7 +7,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 import styles from "./toasts.module.css";
 
-export const metadata = { title: "Toasts & Notifications" };
+export const metadata = {
+  title: "Toasts & Notifications",
+  description: "A transient, non-blocking confirmation that appears, holds, and dismisses itself — for low-stakes feedback that doesn't need to interrupt the user.",
+};
 
 const VARIANTS = [
   { name: "Confirmation", example: "Saved", icon: "check", note: "Past tense, no punctuation, auto-dismisses. The most common toast type." },

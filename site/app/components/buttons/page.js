@@ -8,7 +8,10 @@ import ColorSwatch from "@/components/docs/ColorSwatch";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 
-export const metadata = { title: "Buttons" };
+export const metadata = {
+  title: "Buttons",
+  description: "A three-tier hierarchy, not a binary primary/secondary split — production tokens confirm primary, secondary, and tertiary backgrounds, borders, hover, and…",
+};
 
 export default function ButtonsPage() {
   return (

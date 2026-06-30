@@ -7,7 +7,10 @@ import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 
-export const metadata = { title: "Stories Progress" };
+export const metadata = {
+  title: "Stories Progress",
+  description: "A flex row of pill segments that fill left-to-right via transform: scaleX, driven by an animation-duration set per-instance to match that story's display…",
+};
 
 export default function StoriesProgressPage() {
   return (

@@ -7,7 +7,10 @@ import UtilityCard from "@/components/docs/UtilityCard";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 
-export const metadata = { title: "Cards" };
+export const metadata = {
+  title: "Cards",
+  description: "Two distinct families: the deep-dive editorial card for brand storytelling, and the legacy utility card for confirmation and share dialogs.",
+};
 
 export default function CardsPage() {
   return (

@@ -8,7 +8,10 @@ import ShimmerDemo from "@/components/docs/ShimmerDemo";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 
-export const metadata = { title: "Imagery" };
+export const metadata = {
+  title: "Imagery",
+  description: "Imagery is the content; gradient and type are the frame. Creator photography is asymmetric and collaged, and crop ratios map directly to the same ratios the…",
+};
 
 export default function ImageryPage() {
   return (

@@ -8,7 +8,10 @@ import TokenGrid from "@/components/docs/TokenGrid";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 
-export const metadata = { title: "Messaging" };
+export const metadata = {
+  title: "Messaging",
+  description: "A dedicated colour pair, a functional tail notch (not a decorative flourish), and a dedicated Optimistic DM type cut suggest this surface gets its own…",
+};
 
 export default function MessagingPage() {
   return (

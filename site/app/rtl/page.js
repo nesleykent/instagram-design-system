@@ -6,7 +6,10 @@ import CodeBlock from "@/components/docs/CodeBlock";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import styles from "./rtl.module.css";
 
-export const metadata = { title: "RTL & Internationalization" };
+export const metadata = {
+  title: "RTL & Internationalization",
+  description: "Direction-aware layout using logical CSS properties, a confirmed mirror/no-mirror classification for the icon vocabulary, and what never changes regardless…",
+};
 
 const PHYSICAL_TO_LOGICAL = [
   { physical: "margin-left / margin-right", logical: "margin-inline-start / margin-inline-end" },

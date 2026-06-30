@@ -5,7 +5,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import styles from "./writing.module.css";
 
-export const metadata = { title: "Voice & Writing" };
+export const metadata = {
+  title: "Voice & Writing",
+  description: "Instagram's voice is direct, warm, and playful without being silly.",
+};
 
 const PRINCIPLES = [
   {

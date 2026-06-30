@@ -10,7 +10,10 @@ import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 import styles from "./color.module.css";
 
-export const metadata = { title: "Colour" };
+export const metadata = {
+  title: "Colour",
+  description: "One fully-saturated gradient, sliced into every brand moment, sitting on top of a near-monochrome semantic system built for both light and dark.",
+};
 
 export default function ColorPage() {
   return (

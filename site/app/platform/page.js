@@ -6,7 +6,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 import styles from "./platform.module.css";
 
-export const metadata = { title: "Platform Guidance" };
+export const metadata = {
+  title: "Platform Guidance",
+  description: "How to apply this system beyond instagram.com — to native mobile, dashboards, developer products, and games.",
+};
 
 const PLATFORMS = [
   {
@@ -36,12 +39,12 @@ const PLATFORMS = [
   },
   {
     name: "Developer Product",
-    readiness: 35,
+    readiness: 50,
     tag: "Extend",
-    summary: "API docs, SDKs, and developer tools share the visual aesthetic but need a code-presentation layer the base system doesn't include.",
-    use: ["--font-mono is already defined — use it for all code samples, terminal output, and variable names.", "--ig-secondary-bg works as code block background in light mode.", "--ig-error / --ig-success / --ig-primary-button map directly to terminal stderr / stdout / interactive prompt colours."],
+    summary: "API docs, SDKs, and developer tools share the visual aesthetic. Syntax-highlighting tokens now exist — this manual's own CodeBlock component uses them — but terminal and API-status colours are still prose recommendations to extend.",
+    use: ["--font-mono is already defined — use it for all code samples, terminal output, and variable names.", "--code-keyword/--code-string/--code-comment/--code-number/--code-type are real, implemented tokens — see this manual's own code samples for a working reference, or /tokens to inspect the values.", "--ig-error / --ig-success / --ig-primary-button map directly to terminal stderr / stdout / interactive prompt colours."],
     skip: ["Do not use Instagram Sans for code samples — monospace only.", "Do not use the brand gradient in syntax highlighting — reserve it for UI chrome only."],
-    extend: ["Add syntax-highlighting tokens: --code-keyword, --code-string, --code-comment, --code-number, --code-type derived from the existing colour palette.", "Add terminal-prompt colours: --terminal-bg (near-black from dark mode --ig-primary-bg), --terminal-prompt (--ig-stop-magenta), --terminal-output (--ig-primary-text).", "Add API status colour tokens: --status-2xx (--ig-success), --status-4xx (--ig-error), --status-5xx (deep red), --status-3xx (--ig-stop-orange)."],
+    extend: ["Add terminal-prompt colours: --terminal-bg (near-black from dark mode --ig-primary-bg), --terminal-prompt (--ig-stop-magenta), --terminal-output (--ig-primary-text).", "Add API status colour tokens: --status-2xx (--ig-success), --status-4xx (--ig-error), --status-5xx (deep red), --status-3xx (--ig-stop-orange)."],
   },
   {
     name: "Game / Real-time UI",

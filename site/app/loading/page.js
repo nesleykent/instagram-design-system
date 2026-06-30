@@ -6,7 +6,10 @@ import CodeBlock from "@/components/docs/CodeBlock";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import styles from "./loading.module.css";
 
-export const metadata = { title: "Loading & Skeletons" };
+export const metadata = {
+  title: "Loading & Skeletons",
+  description: "Instagram uses a shimmer skeleton pattern for first-load states and spinners only for user-triggered actions.",
+};
 
 const SKELETON_PATTERNS = [
   {

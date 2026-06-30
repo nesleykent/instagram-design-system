@@ -7,7 +7,10 @@ import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 
-export const metadata = { title: "Modals & Panels" };
+export const metadata = {
+  title: "Modals & Panels",
+  description: "Two distinct elevation behaviours depending on context — a full-height slide-up panel, and a lightbox zoom-settle — plus a legacy utility modal for simple…",
+};
 
 export default function ModalsPage() {
   return (

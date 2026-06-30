@@ -8,7 +8,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 import styles from "./forms.module.css";
 
-export const metadata = { title: "Forms" };
+export const metadata = {
+  title: "Forms",
+  description: "The confirmed text-input layer — border, radius, and focus tokens — extended with the field types every real product needs: checkboxes, radios, selects…",
+};
 
 export default function FormsPage() {
   return (

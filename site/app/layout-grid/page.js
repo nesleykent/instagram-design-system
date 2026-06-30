@@ -11,7 +11,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 import styles from "./layout-grid.module.css";
 
-export const metadata = { title: "Layout & Grid" };
+export const metadata = {
+  title: "Layout & Grid",
+  description: "One base unit drives the whole canvas: 7.142vw, exactly 100 ÷ 14.",
+};
 
 export default function LayoutGridPage() {
   return (

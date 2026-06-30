@@ -7,7 +7,10 @@ import ImplementationNote from "@/components/docs/ImplementationNote";
 import CodeBlock from "@/components/docs/CodeBlock";
 import styles from "./accessibility.module.css";
 
-export const metadata = { title: "Accessibility" };
+export const metadata = {
+  title: "Accessibility",
+  description: "Accessibility shows up as infrastructure in the product, not an add-on layer.",
+};
 
 const WINS = [
   { title: "Open Dyslexic font option", detail: "A literal Open Dyslexic family reference exists in the production bundle — a genuine display-setting toggle, not a curiosity." },

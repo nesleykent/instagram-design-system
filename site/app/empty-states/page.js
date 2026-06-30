@@ -6,7 +6,10 @@ import CodeBlock from "@/components/docs/CodeBlock";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import styles from "./empty-states.module.css";
 
-export const metadata = { title: "Empty States" };
+export const metadata = {
+  title: "Empty States",
+  description: "Every list, grid, and feed surface needs a defined empty state — a centered icon, a short headline naming what's missing, one supporting sentence, and…",
+};
 
 const CATALOG = [
   {

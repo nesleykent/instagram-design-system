@@ -7,7 +7,10 @@ import LegacyMenuDemo from "@/components/docs/LegacyMenuDemo";
 import DoDontGrid from "@/components/docs/DoDontGrid";
 import ImplementationNote from "@/components/docs/ImplementationNote";
 
-export const metadata = { title: "Dropdowns & Selectors" };
+export const metadata = {
+  title: "Dropdowns & Selectors",
+  description: "The about-page's type tester is the system's primary 'selector' pattern: equal-sized swatches that fill with the brand gradient on hover/active — functioning…",
+};
 
 export default function DropdownsPage() {
   return (
