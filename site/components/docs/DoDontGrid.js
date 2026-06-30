@@ -5,9 +5,9 @@ export default function DoDontGrid({ dos = [], donts = [] }) {
   return (
     <div className={styles.grid}>
       <div className={styles.column} data-kind="do">
-        <p className={styles.heading}>
+        <h3 className={styles.heading}>
           <IconCheck size={16} /> Do
-        </p>
+        </h3>
         <ul>
           {dos.map((item, i) => (
             <li key={i}>{item}</li>
@@ -15,9 +15,9 @@ export default function DoDontGrid({ dos = [], donts = [] }) {
         </ul>
       </div>
       <div className={styles.column} data-kind="dont">
-        <p className={styles.heading}>
+        <h3 className={styles.heading}>
           <IconClose size={16} /> Don&rsquo;t
-        </p>
+        </h3>
         <ul>
           {donts.map((item, i) => (
             <li key={i}>{item}</li>

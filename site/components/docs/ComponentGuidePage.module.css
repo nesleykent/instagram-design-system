@@ -145,7 +145,7 @@
   color: rgb(var(--ig-secondary-text));
 }
 
-.usageCol dd {
+.usageCol p {
   margin: 0;
 }
 

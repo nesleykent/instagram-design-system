@@ -74,16 +74,16 @@ function StatesTable({ items, title }) {
 
 function UsageSplit({ usage }) {
   return (
-    <dl className={styles.usageSplit}>
-      <div className={styles.usageCol} data-kind="use">
-        <dt className={styles.usageLabel}>Use when</dt>
-        <dd>{usage.useWhen}</dd>
-      </div>
-      <div className={styles.usageCol} data-kind="avoid">
-        <dt className={styles.usageLabel}>Avoid when</dt>
-        <dd>{usage.avoidWhen}</dd>
-      </div>
-    </dl>
+    <div className={styles.usageSplit}>
+      <section className={styles.usageCol} data-kind="use" aria-labelledby="usage-use-heading">
+        <h3 id="usage-use-heading" className={styles.usageLabel}>Use when</h3>
+        <p>{usage.useWhen}</p>
+      </section>
+      <section className={styles.usageCol} data-kind="avoid" aria-labelledby="usage-avoid-heading">
+        <h3 id="usage-avoid-heading" className={styles.usageLabel}>Avoid when</h3>
+        <p>{usage.avoidWhen}</p>
+      </section>
+    </div>
   );
 }
 
