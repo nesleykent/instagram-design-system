@@ -649,6 +649,11 @@ const EVIDENCED_GUIDES = [
       dos: ["Use the legacy modal box's shadow (0 2px 26px rgba(0,0,0,.3)) and rounded corners if a document-like surface is unavoidable."],
       donts: ["Add resize handles, a title bar, or minimize/maximize controls — they belong to OS window chrome, not Instagram surfaces."],
     },
+    states: [
+      { name: "Default", description: "Fixed surface at rest — no visible chrome beyond the content box, border-radius, and the documented legacy shadow." },
+      { name: "Loading", description: "Content renders its own loading state within the fixed surface; the surface itself does not animate." },
+      { name: "Dismissing", description: "Surface fades or scales out via the same motion as Modals (Ease Settle, ~300ms); no minimize or hide-to-taskbar affordance." },
+    ],
     crossRef: { label: "Modals & Panels", href: "/components/modals" },
   },
   {
