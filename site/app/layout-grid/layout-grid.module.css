@@ -1,7 +1,7 @@
 .principleCard {
-  padding: 16px;
+  padding: var(--space-4);
   border: 1px solid rgb(var(--ig-separator));
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: rgb(var(--ig-elevated-bg));
 }
 
