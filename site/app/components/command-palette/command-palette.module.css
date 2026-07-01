@@ -1,0 +1,81 @@
+/* ── Try-it prompt ── */
+.tryItBox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  background: rgb(var(--ig-secondary-bg));
+}
+
+.kbdLarge {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: var(--fw-semibold);
+  background: rgb(var(--ig-elevated-bg));
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  color: rgb(var(--ig-primary-text));
+  box-shadow: 0 2px 0 rgb(var(--ig-separator));
+}
+
+.tryItText {
+  font-size: 14px;
+  color: rgb(var(--ig-secondary-text));
+}
+
+/* ── Spec table ── */
+.specTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.specRow:first-child {
+  border-top: none;
+}
+
+.specLabel {
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+}
+
+.kbdSmall {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  background: rgb(var(--ig-secondary-bg));
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  white-space: nowrap;
+}
+
+.specValue {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+@media (max-width: 600px) {
+  .specRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+
+  .tryItBox {
+    flex-wrap: wrap;
+  }
+}

@@ -226,6 +226,12 @@ export const NAV = [
         description: "Sequential page navigation with the rolling-chevron hover affordance — the exact footer component this manual uses on every page.",
         keywords: ["prev next", "pagination", "sequential", "rolling chevron", "footer navigation"],
       },
+      {
+        title: "Command Palette",
+        href: "/components/command-palette",
+        description: "The ⌘K/Ctrl+K search overlay pattern — press it right now. Extracted from this manual's own SearchPalette component and keyboard wiring.",
+        keywords: ["command palette", "cmd k", "search", "keyboard shortcut", "quick switcher", "developer tool"],
+      },
       ...COMPONENT_NAV_ITEMS,
     ],
   },
