@@ -214,6 +214,12 @@ export const NAV = [
         description: "Health/XP bars, score badges, and reward feedback timing — the real-time overlay tokens Platform Guidance only recommended in prose, now implemented and live.",
         keywords: ["hud", "health bar", "xp bar", "progress bar", "game", "score", "real-time", "feedback"],
       },
+      {
+        title: "Breadcrumbs",
+        href: "/components/breadcrumbs",
+        description: "Hierarchy wayfinding — the exact component this manual's own header uses on every page, documented as a reusable pattern.",
+        keywords: ["breadcrumb", "hierarchy", "wayfinding", "trail", "navigation"],
+      },
       ...COMPONENT_NAV_ITEMS,
     ],
   },
