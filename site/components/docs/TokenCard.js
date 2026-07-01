@@ -81,7 +81,13 @@ export default function TokenCard({ token }) {
       </div>
       <div className={styles.meta}>
         <p className={styles.name}>{token.name}</p>
-        <button type="button" className={styles.tokenBtn} onClick={copy} title="Copy token name">
+        <button
+          type="button"
+          className={styles.tokenBtn}
+          onClick={copy}
+          title="Copy token name"
+          aria-label={`Copy token name ${token.token}`}
+        >
           <code>{token.token}</code>
           {copied ? <IconCheck size={12} /> : <IconCopy size={12} />}
         </button>

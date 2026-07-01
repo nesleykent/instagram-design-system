@@ -19,7 +19,7 @@ export default function CodeBlock({ code, label }) {
   function copy() {
     navigator.clipboard?.writeText(code);
     setCopied(true);
-    setTimeout(() => setCopied(false), 1600);
+    setTimeout(() => setCopied(false), 1400);
   }
 
   const tokens = tokenizeCode(code);
