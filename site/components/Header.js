@@ -14,7 +14,7 @@ export default function Header({ onMenuClick, onSearchClick }) {
         onClick={onMenuClick}
         aria-label="Open navigation menu"
       >
-        <IconMenu size={22} />
+        <IconMenu size={20} />
       </button>
 
       <Link href="/" className={styles.wordmark}>
@@ -31,16 +31,16 @@ export default function Header({ onMenuClick, onSearchClick }) {
       </Link>
 
       <button type="button" className={styles.searchTrigger} onClick={onSearchClick} aria-label="Open search">
-        <IconSearch size={17} />
+        <IconSearch size={20} />
         <span className={styles.searchLabel}>Search the manual</span>
         <span className={styles.kbd}>
-          <IconCommand size={12} />K
+          <IconCommand size={16} />K
         </span>
       </button>
 
       <div className={styles.actions}>
         <button type="button" className={styles.iconButton} onClick={onSearchClick} aria-label="Search">
-          <IconSearch size={19} />
+          <IconSearch size={20} />
         </button>
         <a
           href="https://github.com/nesleykent/instagram-design-system"
@@ -50,7 +50,7 @@ export default function Header({ onMenuClick, onSearchClick }) {
           aria-label="View source on GitHub"
           title="View source on GitHub"
         >
-          <IconGithub size={19} />
+          <IconGithub size={20} />
         </a>
         <ThemeToggle />
       </div>

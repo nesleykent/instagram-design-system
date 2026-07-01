@@ -106,7 +106,7 @@ export default function HomePage() {
               <p>{pillar.body}</p>
               <span className={styles.pillarCta}>
                 {pillar.cta}
-                <IconArrowRight size={15} />
+                <IconArrowRight size={16} />
               </span>
             </Link>
           ))}
@@ -128,7 +128,7 @@ export default function HomePage() {
                     <li key={item.href}>
                       <Link href={item.href}>
                         <span>{item.title}</span>
-                        <IconArrowRight size={14} />
+                        <IconArrowRight size={16} />
                       </Link>
                     </li>
                   ))}
@@ -136,7 +136,7 @@ export default function HomePage() {
                     <li>
                       <Link href="/components" className={styles.directoryMore}>
                         <span>+{hiddenCount} more in the full catalogue</span>
-                        <IconArrowRight size={14} />
+                        <IconArrowRight size={16} />
                       </Link>
                     </li>
                   )}

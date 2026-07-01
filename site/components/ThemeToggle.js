@@ -26,7 +26,7 @@ export default function ThemeToggle() {
       aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
       title={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
     >
-      {theme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
+      {theme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
     </button>
   );
 }

@@ -23,7 +23,7 @@ export default function Sidebar({ pathname, mobileOpen, onClose }) {
         <div className={styles.mobileHead}>
           <span className={styles.mobileTitle}>Menu</span>
           <button type="button" className={styles.closeButton} onClick={onClose} aria-label="Close navigation menu">
-            <IconClose size={18} />
+            <IconClose size={20} />
           </button>
         </div>
 

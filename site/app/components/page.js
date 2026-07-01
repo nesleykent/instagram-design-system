@@ -47,7 +47,7 @@ export default function ComponentsIndexPage() {
                   <h4>{guide.title}</h4>
                   <p>{guide.description}</p>
                   <span className={styles.cta}>
-                    View component <IconArrowRight size={14} />
+                    View component <IconArrowRight size={16} />
                   </span>
                 </Link>
               ))}
@@ -67,7 +67,7 @@ export default function ComponentsIndexPage() {
               <h3>{item.title}</h3>
               <p>{item.description}</p>
               <span className={styles.cta}>
-                View component <IconArrowRight size={14} />
+                View component <IconArrowRight size={16} />
               </span>
             </Link>
           ))}

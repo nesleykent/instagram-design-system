@@ -23,7 +23,7 @@ export default function Breadcrumbs() {
               ) : (
                 <span aria-current={isLast ? "page" : undefined}>{crumb.title}</span>
               )}
-              {!isLast && <IconChevronRight size={13} className={styles.sep} />}
+              {!isLast && <IconChevronRight size={16} className={styles.sep} />}
             </li>
           );
         })}

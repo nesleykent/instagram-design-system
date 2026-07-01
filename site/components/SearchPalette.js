@@ -57,7 +57,7 @@ export default function SearchPalette({ open, onClose }) {
         aria-label="Search the manual"
       >
         <div className={styles.inputRow}>
-          <IconSearch size={18} />
+          <IconSearch size={20} />
           <input
             ref={inputRef}
             value={query}
