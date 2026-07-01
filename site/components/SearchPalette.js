@@ -73,7 +73,15 @@ export default function SearchPalette({ open, onClose }) {
         </div>
 
         <ul className={styles.results} role="listbox">
-          {results.length === 0 && <li className={styles.empty}>No matches for &ldquo;{query}&rdquo;</li>}
+          {results.length === 0 && query && (
+            <li className={styles.empty}>
+              <span className={styles.emptyBadge}>
+                <IconSearch size={20} />
+              </span>
+              <p className={styles.emptyHeadline}>No results found</p>
+              <p className={styles.emptyBody}>Try searching for something else.</p>
+            </li>
+          )}
           {results.map((page, i) => (
             <li key={page.href}>
               <button

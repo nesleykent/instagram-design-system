@@ -80,10 +80,35 @@
 }
 
 .empty {
-  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-6) var(--space-4);
   text-align: center;
+}
+
+.emptyBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  background: rgb(var(--ig-secondary-bg));
+  color: rgb(var(--ig-secondary-icon));
+  margin-bottom: var(--space-3);
+}
+
+.emptyHeadline {
+  font-size: 14.5px;
+  font-weight: var(--fw-semibold);
+  color: rgb(var(--ig-primary-text));
+  margin-bottom: var(--space-1);
+}
+
+.emptyBody {
+  font-size: 13px;
   color: rgb(var(--ig-tertiary-text));
-  font-size: 14px;
 }
 
 .result {
