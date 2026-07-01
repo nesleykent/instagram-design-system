@@ -157,6 +157,19 @@ export default function TypographyPage() {
         <TypeScaleTable rows={SYSTEM_SCALE} />
       </Section>
 
+      <ImplementationNote title="This site's own half-step convention" tone="gap">
+        Auditing this manual&apos;s own CSS surfaced a pattern the 11-step scale above doesn&apos;t
+        capture: half-point sizes — <code>11.5px</code>, <code>12.5px</code>, <code>13.5px</code>,{" "}
+        <code>14.5px</code> — appear with real frequency (12.5px alone spans 38 declarations across
+        26 files), consistently for secondary and tertiary UI text: metadata rows, table cell copy,
+        helper text, timestamps. This isn&apos;t drift — it reads as a genuine second tier sitting
+        between the documented whole-number steps, used deliberately wherever body-copy weight felt
+        too heavy but the next step down (say, 12px under 14px) felt too light. Treat these
+        half-steps as a legitimate secondary convention for this kind of in-between UI text, not an
+        error to round away — but don&apos;t introduce a <em>third</em> arbitrary in-between value on
+        top of them.
+      </ImplementationNote>
+
       <Section
         kicker="Brand display scale"
         title="Fluid by formula, not by breakpoint"
