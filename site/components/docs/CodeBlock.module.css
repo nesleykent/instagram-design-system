@@ -3,7 +3,7 @@
   background: rgb(var(--ig-secondary-bg));
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
-  padding: 16px 18px;
+  padding: var(--space-4) var(--space-5);
 }
 
 .label {
@@ -13,22 +13,22 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: rgb(var(--ig-tertiary-text));
-  margin-bottom: 10px;
+  margin-bottom: var(--space-3);
 }
 
 .copyBtn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: var(--space-3);
+  right: var(--space-3);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-2);
   border: 1px solid rgb(var(--ig-separator));
   background: rgb(var(--ig-elevated-bg));
   color: rgb(var(--ig-secondary-text));
   font-size: 12px;
   font-weight: var(--fw-medium);
-  padding: 5px 9px;
+  padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-pill);
   cursor: pointer;
 }
