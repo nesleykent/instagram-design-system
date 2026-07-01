@@ -140,7 +140,7 @@ export default function SpacingPage() {
         />
       </Section>
 
-      <ImplementationNote title="Spacing in CSS">
+      <Section kicker="Implementation" title="Spacing in CSS">
         <CodeBlock
           label="globals.css — spacing scale"
           code={`/* 8px base unit, 4px micro-step */
@@ -155,7 +155,7 @@ export default function SpacingPage() {
 --space-9:  64px;  /* 3xl   */
 --space-10: 96px;  /* 4xl   */`}
         />
-      </ImplementationNote>
+      </Section>
 
       <ImplementationNote title="Evidence basis" tone="gap">
         Spacing values were extracted from the about-page CSS files in /ig using pattern grep for padding,
