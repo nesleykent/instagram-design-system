@@ -683,6 +683,9 @@ const EVIDENCED_GUIDES = [
     evidence: "none",
     reason: "The toolbar-named token in /ig is --revamp-nav-bottom-toolbar-height, which sizes the bottom navigation bar (see Tab Bars). Command clusters should use Buttons, Menus, or Tab Bars according to context.",
     anatomy: ["Container row", "Icon-only or labeled command Buttons", "Optional dividers"],
+    spec: [
+      { label: "Reference only", value: "Apple's macOS UI Kit (not Instagram evidence) confirms toolbar buttons at 28px height, 28-32px width depending on icon vs. segmented-control style — for products built on this system that DO need a real command toolbar, not for Instagram itself" },
+    ],
     usage: { useWhen: "Never as a named component. The --revamp-nav-bottom-toolbar-height token sizes the bottom navigation bar, not a command toolbar.", avoidWhen: "Always. Command clusters belong in Menus; persistent top-level tabs belong in Tab Bars." },
     states: [{ name: "N/A", description: "No standalone Toolbar component exists in Instagram's confirmed UI — the token names the bottom nav bar height only." }],
     doDont: { dos: ["Use Tab Bars for bottom navigation and Menus for grouped command lists."], donts: ["Build a horizontal command row labelled 'Toolbar' separate from Tab Bars or Menus."] },
