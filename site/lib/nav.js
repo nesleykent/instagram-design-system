@@ -220,6 +220,12 @@ export const NAV = [
         description: "Hierarchy wayfinding — the exact component this manual's own header uses on every page, documented as a reusable pattern.",
         keywords: ["breadcrumb", "hierarchy", "wayfinding", "trail", "navigation"],
       },
+      {
+        title: "Prev/Next Navigation",
+        href: "/components/prev-next",
+        description: "Sequential page navigation with the rolling-chevron hover affordance — the exact footer component this manual uses on every page.",
+        keywords: ["prev next", "pagination", "sequential", "rolling chevron", "footer navigation"],
+      },
       ...COMPONENT_NAV_ITEMS,
     ],
   },

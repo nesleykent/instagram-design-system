@@ -1,24 +1,19 @@
-/* CSS Modules auto-scopes any identifier used as animation-name, even
-   when no @keyframes by that name exists locally — so a reference to a
-   globally-defined keyframe silently resolves to nothing. Redeclaring
-   it here (matching app/globals.css) keeps the scoped reference valid. */
-@keyframes ig-rolling {
+@keyframes demo-rolling {
   0% { transform: translateX(-100%); opacity: 0; }
   10% { opacity: 1; }
   90% { opacity: 1; }
   100% { transform: translateX(125%); opacity: 0; }
 }
 
-.nav {
+/* ── Live demo (mirrors components/PrevNext.module.css exactly) ── */
+.demoNav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
-  margin-top: var(--space-9);
-  padding-top: var(--space-6);
-  border-top: 1px solid rgb(var(--ig-separator));
+  width: 100%;
 }
 
-.card {
+.demoCard {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -28,18 +23,17 @@
   transition: border-color var(--duration-micro) var(--ease-glide), background-color var(--duration-micro) var(--ease-glide);
 }
 
-.card:hover {
+.demoCard:hover {
   border-color: rgb(var(--ig-stroke));
   background-color: rgba(var(--ig-hover-overlay-rgb), var(--ig-hover-overlay-alpha));
 }
 
-.card[data-side="next"] {
+.demoCard[data-side="next"] {
   justify-content: space-between;
   text-align: right;
-  grid-column: 2;
 }
 
-.rollWrap {
+.demoRollWrap {
   position: relative;
   width: 18px;
   height: 18px;
@@ -51,36 +45,22 @@
   color: rgb(var(--ig-tertiary-text));
 }
 
-.icon {
+.demoIcon {
   transition: opacity var(--duration-micro) var(--ease-glide);
 }
 
-.roll {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
+.demoCard:hover .demoIcon {
+  animation: demo-rolling 1.6s infinite var(--ease-glide);
 }
 
-.card:hover .icon {
-  opacity: 0;
-}
-
-.card:hover .roll {
-  opacity: 1;
-  animation: ig-rolling 1.6s infinite var(--ease-glide);
-}
-
-.text {
+.demoText {
   display: flex;
   flex-direction: column;
   gap: 2px;
   min-width: 0;
 }
 
-.label {
+.demoLabel {
   font-size: 12px;
   font-weight: var(--fw-bold);
   letter-spacing: 0.06em;
@@ -88,7 +68,7 @@
   color: rgb(var(--ig-tertiary-text));
 }
 
-.title {
+.demoTitle {
   font-size: 15px;
   font-weight: var(--fw-semibold);
   color: rgb(var(--ig-primary-text));
@@ -97,11 +77,49 @@
   white-space: nowrap;
 }
 
-@media (max-width: 640px) {
-  .nav {
+@media (max-width: 500px) {
+  .demoNav {
     grid-template-columns: 1fr;
   }
-  .card[data-side="next"] {
-    grid-column: 1;
+}
+
+/* ── Spec table ── */
+.specTable {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(var(--ig-separator));
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid rgb(var(--ig-separator));
+  align-items: center;
+}
+
+.specRow:first-child {
+  border-top: none;
+}
+
+.specLabel {
+  font-size: 13px;
+  font-weight: var(--fw-semibold);
+}
+
+.specValue {
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgb(var(--ig-secondary-text));
+}
+
+@media (max-width: 600px) {
+  .specRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
   }
 }
