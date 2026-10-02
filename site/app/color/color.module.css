@@ -36,7 +36,7 @@
   padding: 18px;
   border-radius: var(--radius-lg);
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .layer[data-emphasis="true"] {
@@ -55,7 +55,7 @@
 .layer code {
   font-family: var(--font-mono);
   font-size: 12.5px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   padding: 2px 6px;
   border-radius: var(--radius-xs);
   margin-right: 4px;

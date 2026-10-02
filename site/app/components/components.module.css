@@ -89,7 +89,7 @@
   letter-spacing: 0.04em;
   padding: 3px 8px;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
 }
 

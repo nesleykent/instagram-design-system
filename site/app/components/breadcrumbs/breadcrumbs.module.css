@@ -91,7 +91,7 @@
   width: 24px;
   height: 24px;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   display: flex;
   align-items: center;
   justify-content: center;

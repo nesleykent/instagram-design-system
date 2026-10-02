@@ -22,7 +22,7 @@
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-pill);
   cursor: pointer;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .trigger:hover {

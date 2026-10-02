@@ -4,7 +4,7 @@
 
 1. **One loud gradient, everything else quiet.** The brand gradient is fully saturated across five hues; nearly every other surface, text, and border colour in the system is a near-neutral grey so the gradient is never visually competing with anything.
 2. **Colour is semantic, not literal.** Production code never reaches for a raw hex value for UI chrome — it reaches for a role (`--ig-primary-text`, `--ig-secondary-background`) that resolves differently in light and dark mode. Brand marketing surfaces are the exception: the hero gradient is hard-coded, deliberately, because it must look identical regardless of theme.
-3. **Dark mode is not an inverted light mode.** Pure black/white are explicitly avoided in dark mode (`rgb(12,16,20)` background, `rgb(245,245,245)` text) — a deliberate "soft black" choice that's easier on the eyes than `#000`/`#fff`.
+3. **Light and dark values come from two theme scopes.** The captured bundle declares each themed `--ig-*` token in a light scope (`._aa4c`) and a dark scope (`._aa4d`). Light mode uses pure white (`255,255,255`) for `--ig-primary-background` and pure black (`0,0,0`) for `--ig-primary-text`; the dark scope declares `12,16,20` and `245,245,245` for the same tokens. The bundle records values only, not the reasoning behind them.
 
 ## Tokens
 
@@ -56,9 +56,9 @@ background: #000;
 background: #fff;
 ```
 
-### Semantic token system (light / dark pairs)
+### Themed `--ig-*` tokens (as declared in /ig)
 
-The production app's entire UI is built on `rgb(var(--ig-token-name))` — a custom property holding an `R, G, B` triplet (not a full colour), so opacity can be layered on with `rgba(var(--ig-token), 0.5)` without a second token. Light/dark pairs, as found in the bundles:
+The production app's entire UI is built on `rgb(var(--ig-token-name))` — a custom property holding an `R, G, B` triplet (not a full colour), so opacity can be layered on with `rgba(var(--ig-token), 0.5)` without a second token. Values as declared in the light (`._aa4c`) and dark (`._aa4d`) theme scopes:
 
 | Token | Light | Dark |
 |---|---|---|

@@ -8,7 +8,7 @@
 .shimmer {
   aspect-ratio: 1;
   border-radius: var(--radius-md);
-  background: rgb(var(--ig-highlight-bg));
+  background: rgb(var(--ig-highlight-background));
   background-image: linear-gradient(
     100deg,
     rgba(var(--ig-secondary-text), 0.08) 30%,

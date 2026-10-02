@@ -23,7 +23,7 @@
   max-height: 70vh;
   display: flex;
   flex-direction: column;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   border-radius: var(--modal-radius);
   border: 1px solid rgb(var(--ig-separator));
   box-shadow: 0 12px 48px rgba(var(--shadow-rgb), 0.35);
@@ -67,7 +67,7 @@
   height: 28px;
   border: none;
   border-radius: 50%;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-primary-icon));
   cursor: pointer;
 }
@@ -94,7 +94,7 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-icon));
   margin-bottom: var(--space-3);
 }
@@ -179,7 +179,7 @@
 
 .hints kbd {
   font-family: var(--font-mono);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border-radius: var(--radius-xs);
   padding: 1px 5px;
   margin-right: 3px;

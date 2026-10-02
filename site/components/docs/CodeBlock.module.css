@@ -1,6 +1,6 @@
 .block {
   position: relative;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
   padding: var(--space-4) var(--space-5);
@@ -24,7 +24,7 @@
   align-items: center;
   gap: var(--space-2);
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 12px;
   font-weight: var(--fw-medium);

@@ -10,7 +10,7 @@
   height: 200px;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border: 1px solid rgb(var(--ig-separator));
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@
 .replay {
   align-self: flex-start;
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 13px;
   font-weight: var(--fw-medium);

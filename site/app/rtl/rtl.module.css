@@ -22,7 +22,7 @@
 }
 
 .mappingHeader {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   font-size: 11px;
   font-weight: var(--fw-bold);
   text-transform: uppercase;
@@ -59,7 +59,7 @@
   padding: 12px 14px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-md);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .mirrorBadge {
@@ -79,7 +79,7 @@
 }
 
 .mirrorNo {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
 }
 
@@ -125,7 +125,7 @@
   padding: 12px 16px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .layoutBarRtl {

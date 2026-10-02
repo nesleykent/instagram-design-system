@@ -14,8 +14,8 @@
 }
 
 .segment {
-  background: rgb(var(--ig-secondary-bg));
-  border-right: 1px solid rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-secondary-background));
+  border-right: 1px solid rgb(var(--ig-primary-background));
   transition: background-color 150ms var(--ease-glide);
 }
 

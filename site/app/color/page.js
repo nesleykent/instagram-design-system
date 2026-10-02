@@ -70,18 +70,19 @@ export default function ColorPage() {
       </Section>
 
       <Section
-        kicker="Semantic tokens"
-        title="Light and dark, paired by design"
-        description="Dark mode isn't an inverted light mode — pure black/white are explicitly avoided in favor of a deliberate soft-black background and soft-white text."
+        kicker="Captured theme tokens"
+        title="As declared in /ig"
+        description="Names and values exactly as declared in the light (._aa4c) and dark (._aa4d) theme scopes of the captured product bundle."
       >
         <TokenGrid min="220px">
-          <ColorSwatch name="Primary background" token="--ig-primary-bg" light="255, 255, 255" dark="12, 16, 20" />
-          <ColorSwatch name="Secondary background" token="--ig-secondary-bg" light="243, 245, 247" dark="37, 41, 46" />
-          <ColorSwatch name="Elevated background" token="--ig-elevated-bg" light="255, 255, 255" dark="33, 35, 40" />
+          <ColorSwatch name="Primary background" token="--ig-primary-background" light="255, 255, 255" dark="12, 16, 20" />
+          <ColorSwatch name="Secondary background" token="--ig-secondary-background" light="243, 245, 247" dark="37, 41, 46" />
+          <ColorSwatch name="Elevated background" token="--ig-elevated-background" light="255, 255, 255" dark="33, 35, 40" />
+          <ColorSwatch name="Secondary elevated background" token="--ig-secondary-elevated-background" light="243, 245, 247" dark="43, 48, 54" />
+          <ColorSwatch name="Highlight background" token="--ig-highlight-background" light="239, 239, 239" dark="38, 38, 38" />
           <ColorSwatch name="Primary text" token="--ig-primary-text" light="0, 0, 0" dark="245, 245, 245" />
           <ColorSwatch name="Secondary text" token="--ig-secondary-text" light="115, 115, 115" dark="168, 168, 168" />
           <ColorSwatch name="Tertiary text" token="--ig-tertiary-text" light="115, 115, 115" dark="199, 199, 199" />
-          <ColorSwatch name="Highlight / hover fill" token="--ig-highlight-bg" light="239, 239, 239" dark="38, 38, 38" />
           <ColorSwatch name="Separator" token="--ig-separator" light="219, 219, 219" dark="38, 38, 38" />
           <ColorSwatch name="Stroke" token="--ig-stroke" light="219, 219, 219" dark="85, 85, 85" />
         </TokenGrid>

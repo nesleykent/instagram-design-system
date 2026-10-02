@@ -8,16 +8,16 @@ import styles from "./dark-mode.module.css";
 
 export const metadata = {
   title: "Dark Mode",
-  description: "Dark mode is not an inverted palette — every background, text, and border token was independently tuned for legibility and comfort at low luminance.",
+  description: "Every themed --ig-* token is declared twice in the captured bundle, once in a light theme scope and once in a dark one. This page lists those values as captured.",
 };
 
 const TOKEN_PAIRS = [
-  { token: "--ig-primary-bg",     light: "255, 255, 255", dark: "12, 16, 20",  note: "Near-black, not pure #000 — pure black against bright media creates excessive contrast and halation" },
-  { token: "--ig-secondary-bg",   light: "243, 245, 247", dark: "37, 41, 46",  note: "One step up from primary-bg — used for input fills, chips, secondary surfaces" },
-  { token: "--ig-elevated-bg",    light: "255, 255, 255", dark: "33, 35, 40",  note: "Cards, modals, sheets — barely lighter than primary-bg since shadows do less work in dark mode" },
-  { token: "--ig-primary-text",   light: "0, 0, 0",       dark: "245, 245, 245", note: "Off-white, not pure #fff — pure white text at high contrast can shimmer/vibrate against dark backgrounds" },
-  { token: "--ig-secondary-text", light: "115, 115, 115", dark: "168, 168, 168", note: "Lighter grey than light mode's secondary — needs more luminance to stay legible on dark backgrounds" },
-  { token: "--ig-separator",      light: "219, 219, 219", dark: "38, 38, 38",  note: "Inverts from light-grey-on-white to dark-grey-on-black — same relative contrast role" },
+  { token: "--ig-primary-background",     light: "255, 255, 255", dark: "12, 16, 20",  note: "Light scope declares pure white; dark scope declares 12, 16, 20" },
+  { token: "--ig-secondary-background",   light: "243, 245, 247", dark: "37, 41, 46",  note: "Secondary surfaces such as input fills and chips" },
+  { token: "--ig-elevated-background",    light: "255, 255, 255", dark: "33, 35, 40",  note: "Cards, modals, sheets" },
+  { token: "--ig-primary-text",   light: "0, 0, 0",       dark: "245, 245, 245", note: "Light scope declares pure black; dark scope declares 245, 245, 245" },
+  { token: "--ig-secondary-text", light: "115, 115, 115", dark: "168, 168, 168", note: "Lighter grey in the dark scope" },
+  { token: "--ig-separator",      light: "219, 219, 219", dark: "38, 38, 38",  note: "Same role in both scopes" },
   { token: "--ig-stroke",         light: "219, 219, 219", dark: "85, 85, 85",  note: "Brighter than separator — used where a border needs to be more visible (input outlines)" },
   { token: "--ig-hover-overlay-alpha", light: "0.05",     dark: "0.1",         note: "Doubled in dark mode — a 5% white overlay is nearly invisible on dark surfaces, so dark mode compensates with higher alpha" },
 ];
@@ -35,40 +35,38 @@ export default function DarkModePage() {
       <PageHeader
         eyebrow="Foundations"
         title="Dark Mode"
-        description="Dark mode is not an inverted palette — every background, text, and border token was independently tuned for legibility and comfort at low luminance. The brand gradient, semantic status colours, and all photography stay fixed across both themes."
+        description="Every themed --ig-* token is declared twice in the captured bundle, once in a light theme scope and once in a dark one. The brand gradient, fixed semantic colours, and photography do not change between themes."
       />
 
       <Section
-        kicker="Principles"
-        title="Why dark mode isn't just inversion"
-        description="A naive implementation swaps white for black and black for white. Instagram's actual token values show several deliberate departures from a pure inversion."
+        kicker="Theme scopes"
+        title="What the two theme scopes declare"
+        description="The captured bundle declares each themed token in a light scope (._aa4c) and a dark scope (._aa4d). It records values, not the reasoning behind them."
       >
         <div className={styles.principleGrid}>
           <div className={styles.principleCard}>
-            <p className={styles.principleTitle}>Near-black, not pure black</p>
+            <p className={styles.principleTitle}>Pure white and black in light mode</p>
             <p className={styles.principleBody}>
-              <code className={styles.inlineCode}>--ig-primary-bg</code> is{" "}
-              <code className={styles.inlineCode}>rgb(12,16,20)</code> in dark mode — not{" "}
-              <code className={styles.inlineCode}>#000</code>. Pure black against bright photo and
-              video content creates harsh contrast edges; a near-black background eases that transition.
+              The light scope declares <code className={styles.inlineCode}>--ig-primary-background</code> as{" "}
+              <code className={styles.inlineCode}>255, 255, 255</code> and{" "}
+              <code className={styles.inlineCode}>--ig-primary-text</code> as{" "}
+              <code className={styles.inlineCode}>0, 0, 0</code>.
             </p>
           </div>
           <div className={styles.principleCard}>
-            <p className={styles.principleTitle}>Off-white, not pure white text</p>
+            <p className={styles.principleTitle}>Dark scope values</p>
             <p className={styles.principleBody}>
-              Primary text is <code className={styles.inlineCode}>rgb(245,245,245)</code>, not{" "}
-              <code className={styles.inlineCode}>#fff</code>. Pure white text at high contrast
-              against a dark background can visually shimmer or feel harsher than necessary for
-              comfortable reading.
+              The dark scope declares <code className={styles.inlineCode}>--ig-primary-background</code> as{" "}
+              <code className={styles.inlineCode}>12, 16, 20</code> and{" "}
+              <code className={styles.inlineCode}>--ig-primary-text</code> as{" "}
+              <code className={styles.inlineCode}>245, 245, 245</code>.
             </p>
           </div>
           <div className={styles.principleCard}>
-            <p className={styles.principleTitle}>Compressed surface hierarchy</p>
+            <p className={styles.principleTitle}>Surface steps</p>
             <p className={styles.principleBody}>
-              In light mode, primary-bg → elevated-bg moves from white to near-white
-              (255 → 243). In dark mode it barely moves (12 → 33) because shadows carry less of
-              the elevation signal at low luminance — see Elevation for how shadow opacity is
-              tuned per theme.
+              Light mode: primary and elevated backgrounds are both 255, 255, 255; secondary is
+              243, 245, 247. Dark mode: primary 12, 16, 20, elevated 33, 35, 40, secondary 37, 41, 46.
             </p>
           </div>
           <div className={styles.principleCard}>
@@ -134,20 +132,20 @@ export default function DarkModePage() {
         <CodeBlock
           label="globals.css — token definition pattern"
           code={`:root {
-  --ig-primary-bg: 255, 255, 255;
+  --ig-primary-background: 255, 255, 255;
   --ig-primary-text: 0, 0, 0;
   /* ...every themed token defined once, light values */
 }
 
 [data-theme="dark"] {
-  --ig-primary-bg: 12, 16, 20;
+  --ig-primary-background: 12, 16, 20;
   --ig-primary-text: 245, 245, 245;
   /* ...same token names, dark values only */
 }
 
 /* Usage anywhere in the system: */
 .surface {
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   color: rgb(var(--ig-primary-text));
 }`}
         />
@@ -190,12 +188,12 @@ export default function ThemeToggle() {
 
       <DoDontGrid
         items={[
-          { type: "do", title: "Use semantic tokens exclusively", body: "Never reference rgb(255,255,255) directly — always rgb(var(--ig-primary-bg)). This is the only mechanism that makes dark mode automatic." },
+          { type: "do", title: "Use semantic tokens exclusively", body: "Never reference rgb(255,255,255) directly — always rgb(var(--ig-primary-background)). This is the only mechanism that makes dark mode automatic." },
           { type: "do", title: "Test elevation in dark mode specifically", body: "Shadows are far less visible on dark backgrounds. Verify that cards and modals still read as elevated using the Elevation page's --shadow-* tokens, which compensate with adjusted opacity." },
           { type: "do", title: "Read the system preference on first load", body: "Default to prefers-color-scheme when no saved preference exists — don't force light mode on users whose OS is set to dark." },
           { type: "do", title: "Inline the theme-detection script in <head>", body: "Without this, the page flashes light mode before JS hydrates and corrects it — a jarring 'flash of wrong theme'." },
           { type: "dont", title: "Don't invert photography or video", body: "User media is never recoloured, filtered, or inverted for dark mode — only UI chrome is themed." },
-          { type: "dont", title: "Don't use pure black or pure white", body: "rgb(12,16,20) and rgb(245,245,245) are the confirmed values — pure #000/#fff create harsher contrast than the production system uses." },
+          { type: "dont", title: "Don't hardcode surface or text values", body: "Use the captured tokens. Light mode resolves to pure white surfaces and pure black text; the dark scope resolves to rgb(12,16,20) and rgb(245,245,245)." },
           { type: "dont", title: "Don't theme the brand gradient", body: "The five-stop hero gradient is identical in both modes — it's a fixed brand asset, not a themed surface." },
           { type: "dont", title: "Don't hardcode a single hover-overlay alpha", body: "Dark mode doubles the hover overlay alpha (0.05 → 0.1) because the same overlay is far less visible against dark surfaces." },
         ]}

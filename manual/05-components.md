@@ -11,8 +11,10 @@
 | Tier | Background (light) | Border | Text | Hover |
 |---|---|---|---|---|
 | Primary | `--ig-primary-button` `0,149,246` | none | white | `--ig-primary-button-hover` `24,119,242` |
-| Secondary | `--ig-secondary-button` `250,250,250` | none | dark | `--ig-secondary-button-hover` `219,219,219` |
+| Secondary | `--ig-secondary-button-background` `239,239,239` (dark `54,54,54`) | none | `--ig-secondary-button` `38,38,38` (dark `250,250,250`) | `--ig-secondary-button-hover` `219,219,219` (dark `38,38,38`) |
 | Tertiary | `--ig-tertiary-button-background` `255,255,255` | `--ig-tertiary-button-border` `219,219,219` | `--ig-tertiary-button-text` `38,38,38` | `--ig-tertiary-button-hover` `245,245,245` |
+
+The tertiary tokens are declared with identical values in both the light (`._aa4c`) and dark (`._aa4d`) theme scopes, so the tertiary button does not change with theme.
 
 Radius: `var(--input-border-radius)` (`6px`) for standard buttons; pill (`20px`+) for tag-like or compact CTAs.
 

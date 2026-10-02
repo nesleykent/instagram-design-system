@@ -4,7 +4,7 @@
   padding: var(--space-4) var(--space-5);
   border-radius: var(--radius-lg);
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
 }
 
 .note[data-tone="gap"] {

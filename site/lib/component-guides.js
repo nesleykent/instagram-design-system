@@ -49,12 +49,12 @@ const EVIDENCED_GUIDES = [
     spec: [
       { label: "Aspect ratios", value: "1:1, 4:5, 9:16, 16:9, and 3:4 editorial crop; use the documented ratio set before inventing a crop" },
       { label: "Fit", value: "object-fit: cover with object-position: center" },
-      { label: "Loading fill", value: "Shimmer skeleton over rgb(var(--ig-secondary-bg))" },
+      { label: "Loading fill", value: "Shimmer skeleton over rgb(var(--ig-secondary-background))" },
       { label: "Frame stability", value: "aspect-ratio locks the box before the asset loads" },
       { label: "Overlay", value: "Optional scrim gradient only when text sits on top of media" },
     ],
     states: [
-      { name: "Loading", description: "The ratio frame is present and filled by a shimmer skeleton over --ig-secondary-bg while the image request resolves." },
+      { name: "Loading", description: "The ratio frame is present and filled by a shimmer skeleton over --ig-secondary-background while the image request resolves." },
       { name: "Loaded", description: "The media object fills the locked frame with object-fit: cover and object-position: center." },
       { name: "Failed", description: "A neutral placeholder keeps the same aspect ratio so surrounding layout does not jump." },
       { name: "Pressed", description: "Interactive media applies a temporary overlay or scrim while the pointer or touch is held." },
@@ -126,11 +126,11 @@ const EVIDENCED_GUIDES = [
       useWhen: "Grouping related content within a surface — a settings group, a card body, a stat block — where the goal is visual separation, not elevation.",
       avoidWhen: "The content is a temporary overlay above the page (use Modals & Panels or Popovers) or a single row in a list (use the row anatomy on Lists And Tables instead of nesting a Box per row).",
     },
-    anatomy: ["Container", "Border (--ig-separator)", "Fill (--ig-secondary-bg or --ig-elevated-bg)"],
+    anatomy: ["Container", "Border (--ig-separator)", "Fill (--ig-secondary-background or --ig-elevated-background)"],
     spec: [
       { label: "Padding", value: "16px (4× base unit) — 24px for editorial/wide contexts" },
       { label: "Border", value: "1px solid rgb(var(--ig-separator))" },
-      { label: "Fill", value: "rgb(var(--ig-secondary-bg)) or rgb(var(--ig-elevated-bg))" },
+      { label: "Fill", value: "rgb(var(--ig-secondary-background)) or rgb(var(--ig-elevated-background))" },
       { label: "Radius", value: "8px or 12px from the shared radius scale — see Shape" },
       { label: "Elevation", value: "None by default — border substitutes for shadow" },
     ],
@@ -147,14 +147,14 @@ const EVIDENCED_GUIDES = [
     ],
     accessibility: [
       "A Box is a grouping container, not an interactive element — it carries no role unless its content requires one (e.g. role=\"group\" with an aria-label when it groups form controls).",
-      "Border contrast against the page background must clear the same threshold documented on Accessibility — verify --ig-separator against --ig-primary-bg in both themes before shipping a new tonal pairing.",
+      "Border contrast against the page background must clear the same threshold documented on Accessibility — verify --ig-separator against --ig-primary-background in both themes before shipping a new tonal pairing.",
     ],
     doDont: {
       dos: ["Compose new containers from --ig-separator + --ig-secondary-background/--ig-elevated-background + the documented radius scale."],
       donts: ["Add a drop shadow by default — most /ig containers use a 1px border, not elevation, for separation."],
     },
     notes: ["Structural Boxes stop at separator, fill, and radius tokens; interactive Boxes add the hover/pressed overlay tokens without gaining default elevation."],
-    code: `.box {\n  padding: 16px;\n  border: 1px solid rgb(var(--ig-separator));\n  background: rgb(var(--ig-secondary-bg));\n  border-radius: 12px;\n}`,
+    code: `.box {\n  padding: 16px;\n  border: 1px solid rgb(var(--ig-separator));\n  background: rgb(var(--ig-secondary-background));\n  border-radius: 12px;\n}`,
   },
   {
     title: "Collections",
@@ -735,7 +735,7 @@ const EVIDENCED_GUIDES = [
     evidence: "inferred",
     findings: ["Persistent left-rail navigation is derived from two confirmed structural parts: the row pattern and the current-page indicator used elsewhere in the system."],
     rationale:
-      "A sidebar is a vertical list of destinations, so it inherits the row anatomy already specified for Lists And Tables rather than a bespoke navigation primitive. Highlighting the current destination reuses --ig-highlight-bg, the same token the hover/active state uses everywhere else, so 'currently here' simply looks like a permanently-applied hover state.",
+      "A sidebar is a vertical list of destinations, so it inherits the row anatomy already specified for Lists And Tables rather than a bespoke navigation primitive. Highlighting the current destination reuses --ig-highlight-background, the same token the hover/active state uses everywhere else, so 'currently here' simply looks like a permanently-applied hover state.",
     usage: { useWhen: "Persistent, always-visible navigation across more destinations than a Tab Bar can hold — a desktop-width settings or admin surface.", avoidWhen: "The viewport is narrow enough that persistent rail navigation would compete with content for space — collapse to a Sheet or Tab Bar instead." },
     anatomy: ["Rail container", "Destination row (icon + label, Lockup anatomy)", "Current-page highlight", "Section group label"],
     spec: [
@@ -743,10 +743,10 @@ const EVIDENCED_GUIDES = [
       { label: "Current-page fill", value: "rgba(var(--ig-hover-overlay-rgb), var(--ig-hover-overlay-alpha))" },
       { label: "Current-page accent", value: "2px leading border in a brand accent colour" },
       { label: "Group label", value: "system-12, uppercase, rgb(var(--ig-tertiary-text))" },
-      { label: "Background", value: "rgb(var(--ig-primary-bg)), separated from content by --ig-separator, not elevation" },
+      { label: "Background", value: "rgb(var(--ig-primary-background)), separated from content by --ig-separator, not elevation" },
     ],
     states: [
-      { name: "Default", description: "Rail is visible, rows rest on rgb(var(--ig-primary-bg)), and destination labels use the normal Lockup hierarchy." },
+      { name: "Default", description: "Rail is visible, rows rest on rgb(var(--ig-primary-background)), and destination labels use the normal Lockup hierarchy." },
       { name: "Hover", description: "Destination rows receive rgba(var(--ig-hover-overlay-rgb), var(--ig-hover-overlay-alpha)) behind the row content." },
       { name: "Pressed/Active", description: "Pressed destination rows use an overlay slightly deeper than hover overlay while the navigation action resolves." },
       { name: "Focused", description: "The focused destination row uses a 2px var(--ig-stop-magenta) outline with a --radius-xs offset." },
@@ -757,7 +757,7 @@ const EVIDENCED_GUIDES = [
     ],
     guidance: ["Indicate the current destination with the same highlight tint used for hover/active states elsewhere, plus a leading accent border — don't invent a second 'active' visual language distinct from the rest of the system."],
     responsive: ["Collapse the rail behind a menu trigger below the documented small-desktop breakpoint (1024px) rather than shrinking row content — see Layout & Grid."],
-    doDont: { dos: ["Source colours from --ig-secondary-background/--ig-highlight-bg, which are confirmed real tokens, while treating the rail layout itself as derived."], donts: ["Present this site's own sidebar CSS as direct Instagram source — it was authored for this documentation site using the same tokens."] },
+    doDont: { dos: ["Source colours from --ig-secondary-background/--ig-highlight-background, which are confirmed real tokens, while treating the rail layout itself as derived."], donts: ["Present this site's own sidebar CSS as direct Instagram source — it was authored for this documentation site using the same tokens."] },
     notes: ["The current destination is the hover-overlay treatment made persistent, using rgba(var(--ig-hover-overlay-rgb), var(--ig-hover-overlay-alpha)) plus a 2px leading accent."],
   },
   {
@@ -810,7 +810,7 @@ const EVIDENCED_GUIDES = [
     spec: [
       { label: "Field height", value: "36px minimum, grows with wrapped chips" },
       { label: "Chip radius", value: "999px (pill) — see Shape" },
-      { label: "Chip fill", value: "rgb(var(--ig-secondary-bg))" },
+      { label: "Chip fill", value: "rgb(var(--ig-secondary-background))" },
       { label: "Chip text", value: "system-12, rgb(var(--ig-primary-text))" },
       { label: "Border", value: "rgb(var(--ig-text-input-border-prism)), matching Text Fields" },
     ],
@@ -827,7 +827,7 @@ const EVIDENCED_GUIDES = [
       dos: ["Render each committed value as a 999px pill, matching the system's one pill shape rather than inventing a chip-specific radius."],
       donts: ["Give chips their own colour identity — they should read as neutral tokens, not status indicators."],
     },
-    notes: ["Committed chips keep neutral identity colour from --ig-secondary-bg and inherit the field border from Text Fields rather than introducing chip-specific colour semantics."],
+    notes: ["Committed chips keep neutral identity colour from --ig-secondary-background and inherit the field border from Text Fields rather than introducing chip-specific colour semantics."],
     crossRef: { label: "Text Fields", href: "/components/text-fields" },
   },
   {
@@ -1010,7 +1010,7 @@ const EVIDENCED_GUIDES = [
       { label: "Entry animation", value: "translateY(100%) → translateY(0) over 0.5s cubic-bezier(0,.61,.28,.92) — identical to Action Sheets" },
       { label: "Exit animation", value: "translateY(0) → translateY(100%) over 0.5s, same curve" },
       { label: "Backdrop", value: "rgba(0,0,0,0.5) — same as Modals & Panels" },
-      { label: "Surface", value: "background:rgb(var(--ig-elevated-bg)), border-radius top-left/top-right var(--radius-lg) 12px" },
+      { label: "Surface", value: "background:rgb(var(--ig-elevated-background)), border-radius top-left/top-right var(--radius-lg) 12px" },
       { label: "Shadow", value: "--shadow-8: 0 -6px 16px rgba(0,0,0,.18) — the confirmed upward-facing sheet shadow" },
     ],
     usage: {
@@ -1175,7 +1175,7 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Ratio frame (Image View anatomy)", "Empty-state icon", "Filled state (chosen media)", "Replace/clear affordance"],
     spec: [
       { label: "Frame", value: "Same aspect-ratio + object-fit: cover as Image Views" },
-      { label: "Empty fill", value: "rgb(var(--ig-secondary-bg)) with a centered icon at rgb(var(--ig-tertiary-text))" },
+      { label: "Empty fill", value: "rgb(var(--ig-secondary-background)) with a centered icon at rgb(var(--ig-tertiary-text))" },
       { label: "Border", value: "1px dashed rgb(var(--ig-separator)) in the empty state only" },
     ],
     states: [
@@ -1234,16 +1234,16 @@ const EVIDENCED_GUIDES = [
     spec: [
       { label: "Track height", value: "36px, matching the button height tier" },
       { label: "Track radius", value: "var(--radius-pill) — 999px" },
-      { label: "Selected fill", value: "rgb(var(--ig-elevated-bg)) inset within rgb(var(--ig-secondary-bg)) track" },
+      { label: "Selected fill", value: "rgb(var(--ig-elevated-background)) inset within rgb(var(--ig-secondary-background)) track" },
       { label: "Motion", value: "Selected-fill position transitions with Ease Glide, 200ms" },
     ],
     states: [
-      { name: "Default", description: "All segments equal weight, track at --ig-secondary-bg." },
-      { name: "Selected", description: "One segment's fill at --ig-elevated-bg, text at --ig-primary-text; others at --ig-secondary-text." },
+      { name: "Default", description: "All segments equal weight, track at --ig-secondary-background." },
+      { name: "Selected", description: "One segment's fill at --ig-elevated-background, text at --ig-primary-text; others at --ig-secondary-text." },
       { name: "Disabled", description: "Opacity .5 on the whole control, matching Buttons." },
     ],
     doDont: { dos: ["Animate the selected-segment fill sliding between positions rather than crossfading."], donts: ["Use this for passive, time-driven progress — that's Stories Progress, a different component despite the shared shape."] },
-    notes: ["The active segment is an --ig-elevated-bg highlight inset inside the --ig-secondary-bg track, keeping selected state as a background relationship rather than a new colour."],
+    notes: ["The active segment is an --ig-elevated-background highlight inset inside the --ig-secondary-background track, keeping selected state as a background relationship rather than a new colour."],
     crossRef: { label: "Stories Progress", href: "/components/stories-progress" },
   },
   {
@@ -1259,7 +1259,7 @@ const EVIDENCED_GUIDES = [
     anatomy: ["Track (full width)", "Filled portion (value indicator)", "Thumb (drag handle)", "Value label (optional, shown while dragging)"],
     spec: [
       { label: "Track height", value: "4px, centered vertically in a 28px tap target" },
-      { label: "Track fill (inactive)", value: "rgb(var(--ig-secondary-bg))" },
+      { label: "Track fill (inactive)", value: "rgb(var(--ig-secondary-background))" },
       { label: "Track fill (active/value)", value: "rgb(var(--ig-primary-button))" },
       { label: "Thumb", value: "28px diameter, 14px radius — identical to the Toggle thumb" },
       { label: "Thumb shadow", value: "0 3px 8px rgba(0,0,0,.15), matching the Toggle thumb exactly" },
@@ -1473,7 +1473,7 @@ const COMPONENT_EXAMPLES = {
       context: "Profile media",
       composition:
         "A 4:5 creator portrait fills the frame with object-fit: cover; the username, view count, and Reels mark sit on a soft bottom scrim while the shimmer sweep holds the exact crop before the image resolves.",
-      tokens: "4:5 ratio, object-fit: cover, --ig-gradient-to-transparent, --ig-secondary-bg shimmer",
+      tokens: "4:5 ratio, object-fit: cover, --ig-gradient-to-transparent, --ig-secondary-background shimmer",
     },
   ],
   "text-views": [
@@ -1491,7 +1491,7 @@ const COMPONENT_EXAMPLES = {
       context: "Settings",
       composition:
         "Private account, Activity status, and Close Friends rows sit inside one bordered tonal container so the group reads as a related set without floating above the page like a modal.",
-      tokens: "16px padding, 1px --ig-separator, --ig-secondary-bg, 8/12px radius",
+      tokens: "16px padding, 1px --ig-separator, --ig-secondary-background, 8/12px radius",
     },
   ],
   collections: [
@@ -1635,7 +1635,7 @@ const COMPONENT_EXAMPLES = {
       context: "Post composer",
       composition:
         "Accepted usernames become removable pills inline with the cursor, while suggestions below reuse lockup rows for avatar, display name, and username.",
-      tokens: "36px minimum field, 999px chips, --ig-secondary-bg chip fill, Text Field border",
+      tokens: "36px minimum field, 999px chips, --ig-secondary-background chip fill, Text Field border",
     },
   ],
   "action-sheets": [
@@ -1734,7 +1734,7 @@ const COMPONENT_EXAMPLES = {
       context: "Edit profile",
       composition:
         "An empty circular frame shows a neutral camera affordance; once a photo is chosen, the same Image View crop rules take over with replace and clear actions nearby.",
-      tokens: "Image View ratio rules, --ig-secondary-bg empty fill, dashed --ig-separator border",
+      tokens: "Image View ratio rules, --ig-secondary-background empty fill, dashed --ig-separator border",
     },
   ],
   pickers: [

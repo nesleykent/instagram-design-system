@@ -2,7 +2,7 @@
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
   padding: 20px;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .top {
@@ -60,7 +60,7 @@
   flex: 1;
   min-width: 0;
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-primary-text));
   border-radius: var(--radius-sm);
   padding: 7px 10px;
@@ -118,7 +118,7 @@
 
 .preset {
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 12px;
   font-weight: var(--fw-medium);

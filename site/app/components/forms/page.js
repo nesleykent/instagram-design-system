@@ -75,7 +75,7 @@ export default function FormsPage() {
   height: 20px;
   border-radius: var(--radius-sm);
   border: 1.5px solid rgb(var(--ig-stroke));
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
 }
 .checkbox:checked {
   background: rgb(var(--ig-primary-button));

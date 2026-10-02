@@ -7,7 +7,7 @@
 }
 
 .statCard {
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);

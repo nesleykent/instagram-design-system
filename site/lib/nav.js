@@ -116,7 +116,7 @@ export const NAV = [
         href: "/dark-mode",
         description:
           "Why dark mode isn't inversion — the confirmed light/dark token pairs, what stays fixed, and the toggle implementation.",
-        keywords: ["dark mode", "theme", "light mode", "data-theme", "prefers-color-scheme", "near-black"],
+        keywords: ["dark mode", "theme", "light mode", "data-theme", "prefers-color-scheme"],
       },
       {
         title: "RTL & Internationalization",

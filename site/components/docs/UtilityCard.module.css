@@ -1,7 +1,7 @@
 .card {
   width: 280px;
   border-radius: 6px;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   box-shadow: 0 2px 4px rgba(var(--shadow-rgb), 0.1), 0 8px 16px rgba(var(--shadow-rgb), 0.1);
   overflow: hidden;
 }
@@ -21,7 +21,7 @@
   height: 24px;
   border-radius: 50%;
   border: none;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   cursor: pointer;
   font-size: 16px;
@@ -29,7 +29,7 @@
 }
 
 .close:hover {
-  background: rgb(var(--ig-highlight-bg));
+  background: rgb(var(--ig-highlight-background));
 }
 
 .body {

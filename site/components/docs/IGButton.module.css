@@ -21,15 +21,15 @@
 }
 
 .button[data-variant="secondary"] {
-  background: rgb(var(--ig-secondary-button));
-  color: rgb(var(--ig-primary-text));
+  background: rgb(var(--ig-secondary-button-background));
+  color: rgb(var(--ig-secondary-button));
 }
 .button[data-variant="secondary"]:hover:not(:disabled) {
   background: rgb(var(--ig-secondary-button-hover));
 }
 
 .button[data-variant="tertiary"] {
-  background: rgb(var(--ig-tertiary-button-bg));
+  background: rgb(var(--ig-tertiary-button-background));
   border-color: rgb(var(--ig-tertiary-button-border));
   color: rgb(var(--ig-tertiary-button-text));
 }

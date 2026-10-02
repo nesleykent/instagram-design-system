@@ -5,7 +5,7 @@
 
 .trigger {
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-primary-text));
   font-size: 14px;
   font-weight: var(--fw-medium);
@@ -41,7 +41,7 @@
   bottom: 0;
   max-width: 480px;
   margin: 0 auto;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   border-radius: var(--modal-radius) var(--modal-radius) 0 0;
   padding: 28px 24px 36px;
   animation: panelUp 666ms var(--ease-settle);
@@ -55,7 +55,7 @@
 .lightbox {
   width: 90%;
   max-width: 420px;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   border-radius: var(--modal-radius);
   padding: 28px 24px;
   animation: zoomSettle 400ms var(--ease-confident);
@@ -74,7 +74,7 @@
   height: 32px;
   border-radius: 50%;
   border: none;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-primary-icon));
   cursor: pointer;
   display: flex;
@@ -83,7 +83,7 @@
 }
 
 .closeBtn:hover {
-  background: rgb(var(--ig-highlight-bg));
+  background: rgb(var(--ig-highlight-background));
 }
 
 .modalLabel {

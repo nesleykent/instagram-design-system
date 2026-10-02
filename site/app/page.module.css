@@ -93,7 +93,7 @@
 }
 
 .secondaryButton {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border: 1px solid rgb(var(--ig-separator));
   color: rgb(var(--ig-primary-text));
 }

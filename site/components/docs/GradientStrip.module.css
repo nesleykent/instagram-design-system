@@ -55,7 +55,7 @@
   gap: 6px;
   flex-shrink: 0;
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 12.5px;
   font-weight: var(--fw-medium);

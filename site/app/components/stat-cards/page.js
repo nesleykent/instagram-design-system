@@ -75,7 +75,7 @@ export default function StatCardsPage() {
       <Section kicker="Spec" title="Token reuse">
         <div className={styles.specTable}>
           {[
-            { label: "Card surface", value: "rgb(--ig-elevated-bg), border 1px solid rgb(--ig-separator), --radius-lg" },
+            { label: "Card surface", value: "rgb(--ig-elevated-background), border 1px solid rgb(--ig-separator), --radius-lg" },
             { label: "Elevation", value: "--shadow-card — the same confirmed token used for editorial cards, applied here at rest (no hover-lift; stat cards are not interactive)" },
             { label: "Padding", value: "var(--space-5) — 24px, matching other card-shaped surfaces in this system" },
             { label: "Label", value: "system-12.5, --fw-medium, --ig-secondary-text, sentence case (see Voice & Writing)" },
@@ -94,7 +94,7 @@ export default function StatCardsPage() {
         <CodeBlock
           label="Stat Card — CSS"
           code={`.stat-card {
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);

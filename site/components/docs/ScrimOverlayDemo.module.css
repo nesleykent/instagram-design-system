@@ -42,7 +42,7 @@
 
 .preset {
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 12.5px;
   font-weight: var(--fw-medium);
@@ -53,6 +53,6 @@
 
 .preset[data-active="true"] {
   background: rgb(var(--ig-primary-text));
-  color: rgb(var(--ig-primary-bg));
+  color: rgb(var(--ig-primary-background));
   border-color: transparent;
 }

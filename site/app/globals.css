@@ -17,25 +17,27 @@
   --ig-gradient-underline: linear-gradient(#f7d440, #ed1f1f);
 
   /* Semantic colour — light mode (default) */
-  --ig-primary-bg: 255, 255, 255;
-  --ig-secondary-bg: 243, 245, 247;
-  --ig-elevated-bg: 255, 255, 255;
-  --ig-secondary-elevated-bg: 243, 245, 247;
+  --ig-primary-background: 255, 255, 255;
+  --ig-secondary-background: 243, 245, 247;
+  --ig-elevated-background: 255, 255, 255;
+  --ig-secondary-elevated-background: 243, 245, 247;
   --ig-primary-text: 0, 0, 0;
   --ig-secondary-text: 115, 115, 115;
   --ig-tertiary-text: 115, 115, 115;
   --ig-primary-icon: 38, 38, 38;
   --ig-secondary-icon: 142, 142, 142;
-  --ig-highlight-bg: 239, 239, 239;
+  --ig-highlight-background: 239, 239, 239;
   --ig-separator: 219, 219, 219;
   --ig-stroke: 219, 219, 219;
   --ig-hover-overlay-rgb: 0, 0, 0;
   --ig-hover-overlay-alpha: 0.05;
   --ig-shadow-rgb: 0, 0, 0;
 
-  --ig-secondary-button: 250, 250, 250;
+  --ig-secondary-button: 38, 38, 38;
+  --ig-secondary-button-background: 239, 239, 239;
   --ig-secondary-button-hover: 219, 219, 219;
-  --ig-tertiary-button-bg: 255, 255, 255;
+  /* Tertiary button: /ig declares identical values in both theme scopes */
+  --ig-tertiary-button-background: 255, 255, 255;
   --ig-tertiary-button-border: 219, 219, 219;
   --ig-tertiary-button-hover: 245, 245, 245;
   --ig-tertiary-button-text: 38, 38, 38;
@@ -164,27 +166,24 @@
 }
 
 [data-theme="dark"] {
-  --ig-primary-bg: 12, 16, 20;
-  --ig-secondary-bg: 37, 41, 46;
-  --ig-elevated-bg: 33, 35, 40;
-  --ig-secondary-elevated-bg: 43, 48, 54;
+  --ig-primary-background: 12, 16, 20;
+  --ig-secondary-background: 37, 41, 46;
+  --ig-elevated-background: 33, 35, 40;
+  --ig-secondary-elevated-background: 43, 48, 54;
   --ig-primary-text: 245, 245, 245;
   --ig-secondary-text: 168, 168, 168;
   --ig-tertiary-text: 199, 199, 199;
   --ig-primary-icon: 245, 245, 245;
-  --ig-highlight-bg: 38, 38, 38;
+  --ig-highlight-background: 38, 38, 38;
   --ig-separator: 38, 38, 38;
   --ig-stroke: 85, 85, 85;
   --ig-hover-overlay-rgb: 255, 255, 255;
   --ig-hover-overlay-alpha: 0.1;
   --ig-shadow-rgb: 0, 0, 0;
 
-  --ig-secondary-button: 38, 38, 38;
-  --ig-secondary-button-hover: 54, 54, 54;
-  --ig-tertiary-button-bg: 33, 35, 40;
-  --ig-tertiary-button-border: 54, 54, 54;
-  --ig-tertiary-button-hover: 38, 38, 38;
-  --ig-tertiary-button-text: 245, 245, 245;
+  --ig-secondary-button: 250, 250, 250;
+  --ig-secondary-button-background: 54, 54, 54;
+  --ig-secondary-button-hover: 38, 38, 38;
   --ig-incoming-bubble: 37, 41, 46;
 }
 
@@ -208,7 +207,7 @@ html {
 }
 
 body {
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   color: rgb(var(--ig-primary-text));
   font-family: var(--font-ui);
   -webkit-font-smoothing: antialiased;
@@ -280,7 +279,7 @@ code, pre {
   left: 16px;
   z-index: var(--z-palette);
   background: rgb(var(--ig-primary-text));
-  color: rgb(var(--ig-primary-bg));
+  color: rgb(var(--ig-primary-background));
   padding: 12px 20px;
   border-radius: var(--radius-md);
   font-weight: var(--fw-semibold);
@@ -374,7 +373,7 @@ code, pre {
 ::-webkit-scrollbar-thumb {
   background-color: rgba(var(--ig-secondary-text), 0.3);
   border-radius: var(--radius-pill);
-  border: 3px solid rgb(var(--ig-primary-bg));
+  border: 3px solid rgb(var(--ig-primary-background));
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(var(--ig-secondary-text), 0.5);

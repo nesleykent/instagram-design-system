@@ -15,7 +15,7 @@
 
 .levelSurface {
   height: 80px;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@
 .levelToken {
   font-family: var(--font-mono);
   font-size: 12.5px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   padding: 2px 6px;
   border-radius: var(--radius-xs);
   color: rgb(var(--ig-primary-text));
@@ -89,7 +89,7 @@
 }
 
 .layerHeader {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   font-size: 12px;
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
@@ -100,7 +100,7 @@
 .layerToken {
   font-family: var(--font-mono);
   font-size: 12px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   padding: 1px 5px;
   border-radius: var(--radius-xs);
 }

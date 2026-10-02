@@ -170,7 +170,7 @@ export default function LoadingPage() {
           label="Shimmer CSS — the core sweep animation"
           code={`/* Base skeleton shape */
 .skeleton {
-  background: rgb(var(--ig-highlight-bg));
+  background: rgb(var(--ig-highlight-background));
   border-radius: var(--radius-sm);
   position: relative;
   overflow: hidden;
@@ -184,7 +184,7 @@ export default function LoadingPage() {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(var(--ig-primary-bg), 0.6) 50%,
+    rgba(var(--ig-primary-background), 0.6) 50%,
     transparent 100%
   );
   transform: translateX(-100%);
@@ -200,15 +200,15 @@ export default function LoadingPage() {
         />
         <CodeBlock
           label="Dark mode shimmer — adapts via CSS variables"
-          code={`/* Light: --ig-highlight-bg = rgb(239,239,239), overlay = white-tinted
-   Dark:  --ig-highlight-bg = rgb(38,38,38),  overlay = white-tinted
+          code={`/* Light: --ig-highlight-background = rgb(239,239,239), overlay = white-tinted
+   Dark:  --ig-highlight-background = rgb(38,38,38),  overlay = white-tinted
    Both cases: the same ::after gradient works because it uses the
-   primary-bg variable which flips between white and near-black */
+   --ig-primary-background token, which is 255, 255, 255 (light) and 12, 16, 20 (dark) */
 [data-theme="dark"] .skeleton::after {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(var(--ig-elevated-bg), 0.5) 50%,
+    rgba(var(--ig-elevated-background), 0.5) 50%,
     transparent 100%
   );
 }`}
@@ -280,7 +280,7 @@ export default function LoadingPage() {
         items={[
           { type: "do", title: "Match skeleton shapes to resolved content", body: "A 4:5 image skeleton prevents layout shift. A generic grey rectangle that resizes when the image loads creates a jarring jump." },
           { type: "do", title: "Show stale content when available", body: "If the user has seen this content before, show the cached version and refresh in the background. Skeletons are for first load." },
-          { type: "do", title: "Use --ig-highlight-bg for skeleton fills", body: "This token is defined for both light (239,239,239) and dark (38,38,38) mode — the skeleton automatically adapts." },
+          { type: "do", title: "Use --ig-highlight-background for skeleton fills", body: "This token is defined for both light (239,239,239) and dark (38,38,38) mode — the skeleton automatically adapts." },
           { type: "do", title: "Stagger row animation-delay", body: "20–40ms offset between rows prevents the synchronised wave that makes skeletons look low-effort." },
           { type: "dont", title: "Don't use skeleton for actions", body: "When a user taps Follow or Post, show a spinner inline in the button — not a skeleton. Skeletons are for initial content load, not interactions." },
           { type: "dont", title: "Don't fake progress", body: "A progress bar that isn't based on real progress (upload %, download %) must be replaced with a spinner. Fake progress confuses users when it stalls." },
