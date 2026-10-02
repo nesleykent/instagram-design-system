@@ -85,7 +85,7 @@ export default function HomePage() {
           />
           <TokenGrid min="150px">
             <ColorSwatch name="Primary button" token="--ig-primary-button" light="0, 149, 246" usage="#0095F6 — the signature link/button blue" />
-            <ColorSwatch name="Primary bg / text" token="--ig-primary-bg" light="255, 255, 255" dark="12, 16, 20" />
+            <ColorSwatch name="Primary bg / text" token="--ig-primary-background" light="255, 255, 255" dark="12, 16, 20" />
             <ColorSwatch name="Error / destructive" token="--ig-error" light="237, 73, 86" />
             <ColorSwatch name="Success" token="--ig-success" light="88, 195, 34" />
           </TokenGrid>

@@ -32,7 +32,7 @@
 
 .note code {
   font-family: var(--font-mono);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   padding: 1px 5px;
   border-radius: var(--radius-xs);
 }

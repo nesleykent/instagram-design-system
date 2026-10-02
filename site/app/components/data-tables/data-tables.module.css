@@ -14,7 +14,7 @@
 
 /* ── Header ── */
 .th {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   padding: 10px var(--space-4);
   text-align: start;
   white-space: nowrap;
@@ -25,7 +25,7 @@
 }
 
 .thCheckbox {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   width: 40px;
   padding: 10px 0 10px var(--space-4);
 }
@@ -105,7 +105,7 @@
   height: 18px;
   border-radius: var(--radius-sm);
   border: 1.5px solid rgb(var(--ig-stroke));
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   cursor: pointer;
 }
 
@@ -135,7 +135,7 @@
 }
 
 .statusPaused {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
 }
 
@@ -145,7 +145,7 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-3) var(--space-4);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border-top: 1px solid rgb(var(--ig-separator));
 }
 

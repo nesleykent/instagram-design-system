@@ -114,13 +114,13 @@ export default function DataTablesPage() {
         <div className={styles.specTable}>
           {[
             { label: "Row height", value: "44px minimum — same confirmed value as Lists & Tables" },
-            { label: "Header row", value: "background: rgb(--ig-secondary-bg), system-12 bold uppercase labels, sticky position optional" },
+            { label: "Header row", value: "background: rgb(--ig-secondary-background), system-12 bold uppercase labels, sticky position optional" },
             { label: "Separator", value: "1px solid rgb(--ig-separator) between rows — same token as Lists & Tables" },
             { label: "Hover", value: "--ig-hover-overlay on row, same as every other row-based pattern in this system" },
             { label: "Cell padding", value: "var(--space-3) vertical, var(--space-4) horizontal" },
             { label: "Text alignment", value: "text-align: start for text/identity columns, text-align: end for numeric columns — both logical, RTL-safe" },
             { label: "Sort icon", value: "16px chevron, rotates 180deg between ascending/descending, --ig-stop-magenta when active" },
-            { label: "Status badge", value: "var(--radius-pill), --ig-success/10% bg for positive states, --ig-secondary-bg for neutral" },
+            { label: "Status badge", value: "var(--radius-pill), --ig-success/10% bg for positive states, --ig-secondary-background for neutral" },
           ].map((s) => (
             <div key={s.label} className={styles.specRow}>
               <p className={styles.specLabel}>{s.label}</p>
@@ -133,7 +133,7 @@ export default function DataTablesPage() {
           code={`.table { width: 100%; border-collapse: collapse; }
 
 .table thead th {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   padding: var(--space-3) var(--space-4);
   font-size: 12px;
   font-weight: var(--fw-bold);

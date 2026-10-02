@@ -14,7 +14,7 @@
   max-width: 420px;
   padding: 10px 14px;
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border-radius: var(--radius-pill);
   color: rgb(var(--ig-tertiary-text));
 }
@@ -36,7 +36,7 @@
 
 .pills button {
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 13px;
   font-weight: var(--fw-medium);
@@ -47,7 +47,7 @@
 
 .pills button[data-active="true"] {
   background: rgb(var(--ig-primary-text));
-  color: rgb(var(--ig-primary-bg));
+  color: rgb(var(--ig-primary-background));
   border-color: transparent;
 }
 

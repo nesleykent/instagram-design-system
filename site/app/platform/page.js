@@ -25,7 +25,7 @@ const PLATFORMS = [
     readiness: 65,
     tag: "Adapt",
     summary: "Tokens map directly; interaction model and navigation grammar need platform-specific translation.",
-    use: ["--space-* maps directly to native dp/pt units (8dp = --space-2, 16dp = --space-4).", "Colour tokens (--ig-primary-bg, --ig-primary-text etc.) map to native semantic colour roles.", "Motion: Ease Settle (~spring) maps to iOS UISpringTimingParameters; Ease Confident maps to Android Emphasized Decelerate.", "Border radii: --radius-lg (12pt) is native card radius; --radius-pill is native pill."],
+    use: ["--space-* maps directly to native dp/pt units (8dp = --space-2, 16dp = --space-4).", "Colour tokens (--ig-primary-background, --ig-primary-text etc.) map to native semantic colour roles.", "Motion: Ease Settle (~spring) maps to iOS UISpringTimingParameters; Ease Confident maps to Android Emphasized Decelerate.", "Border radii: --radius-lg (12pt) is native card radius; --radius-pill is native pill."],
     skip: ["Do not port the CSS flex/grid layout — use UIStackView (iOS) or ConstraintLayout (Android).", "Replace web focus rings with native accessibility focus indicators.", "Navigation: replace Sidebars and Tab Bars with UITabBarController / BottomNavigationView."],
   },
   {
@@ -44,7 +44,7 @@ const PLATFORMS = [
     summary: "API docs, SDKs, and developer tools share the visual aesthetic. Syntax-highlighting tokens now exist — this manual's own CodeBlock component uses them — but terminal and API-status colours are still prose recommendations to extend.",
     use: ["--font-mono is already defined — use it for all code samples, terminal output, and variable names.", "--code-keyword/--code-string/--code-comment/--code-number/--code-type are real, implemented tokens — see this manual's own code samples for a working reference, or /tokens to inspect the values.", "--ig-error / --ig-success / --ig-primary-button map directly to terminal stderr / stdout / interactive prompt colours."],
     skip: ["Do not use Instagram Sans for code samples — monospace only.", "Do not use the brand gradient in syntax highlighting — reserve it for UI chrome only."],
-    extend: ["Add terminal-prompt colours: --terminal-bg (near-black from dark mode --ig-primary-bg), --terminal-prompt (--ig-stop-magenta), --terminal-output (--ig-primary-text).", "Add API status colour tokens: --status-2xx (--ig-success), --status-4xx (--ig-error), --status-5xx (deep red), --status-3xx (--ig-stop-orange)."],
+    extend: ["Add terminal-prompt colours: --terminal-bg (dark-scope --ig-primary-background, 12, 16, 20), --terminal-prompt (--ig-stop-magenta), --terminal-output (--ig-primary-text).", "Add API status colour tokens: --status-2xx (--ig-success), --status-4xx (--ig-error), --status-5xx (deep red), --status-3xx (--ig-stop-orange)."],
   },
   {
     name: "Game / Real-time UI",
@@ -134,7 +134,7 @@ export default function PlatformPage() {
           code={`// CSS token            iOS equivalent
 // --space-4: 16px  →  spacing: 16 (CGFloat)
 // --radius-lg       →  cornerRadius: 12
-// --ig-primary-bg   →  UIColor(dynamicProvider: ...)
+// --ig-primary-background   →  UIColor(dynamicProvider: ...)
 // --ease-settle     →  UISpringTimingParameters(mass:1,stiffness:300,damping:28)
 // --duration-micro  →  UIViewPropertyAnimator(duration: 0.15, ...)`}
         />
@@ -143,7 +143,7 @@ export default function PlatformPage() {
           code={`// CSS token              Android equivalent
 // --space-4: 16px    →  16.dp
 // --radius-lg         →  ShapeDefaults.Medium (12.dp corners)
-// --ig-primary-bg     →  MaterialTheme.colorScheme.background
+// --ig-primary-background     →  MaterialTheme.colorScheme.background
 // --ease-confident    →  EmphasizedDecelerateEasing
 // --duration-reveal   →  666  // milliseconds`}
         />

@@ -11,7 +11,7 @@
   border: 1px solid rgba(var(--ig-secondary-text), 0.18);
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(180deg, rgba(var(--ig-elevated-bg), 0.98), rgba(var(--ig-secondary-bg), 0.72));
+    linear-gradient(180deg, rgba(var(--ig-elevated-background), 0.98), rgba(var(--ig-secondary-background), 0.72));
   color: rgb(var(--ig-primary-text));
   box-shadow: inset 0 1px 0 rgba(var(--ig-always-white), 0.05);
 }
@@ -214,7 +214,7 @@
 .markCard {
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
 }
 
 .overviewGrid article,
@@ -261,7 +261,7 @@
 .accessNote {
   background:
     linear-gradient(90deg, rgba(var(--ig-primary-button), 0.08), transparent 46%),
-    rgb(var(--ig-secondary-bg));
+    rgb(var(--ig-secondary-background));
 }
 
 /* ─────────────────────────────────────────────────────
@@ -283,7 +283,7 @@
   padding: 28px;
   border: 1px solid rgba(var(--ig-secondary-text), 0.16);
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   overflow: hidden;
 }
 
@@ -379,7 +379,7 @@
   padding: 10px 12px;
   border: 1px solid rgba(var(--ig-primary-button), 0.28);
   border-radius: var(--radius-md);
-  background: rgba(var(--ig-elevated-bg), 0.9);
+  background: rgba(var(--ig-elevated-background), 0.9);
   box-shadow: 0 12px 30px rgba(var(--ig-shadow-rgb), 0.12);
   color: rgb(var(--ig-primary-text));
   font-size: 12px;
@@ -421,7 +421,7 @@
   padding: 8px 10px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-md);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 12px;
   font-weight: var(--fw-semibold);
@@ -450,7 +450,7 @@
   border-right: 1px solid rgb(var(--ig-separator));
   background:
     linear-gradient(rgba(var(--ig-secondary-text), 0.1) 1px, transparent 1px),
-    rgb(var(--ig-elevated-bg));
+    rgb(var(--ig-elevated-background));
   background-size: 100% 25%, auto;
 }
 
@@ -538,7 +538,7 @@
 }
 
 .markSvg circle {
-  fill: rgb(var(--ig-primary-bg));
+  fill: rgb(var(--ig-primary-background));
   stroke: rgb(var(--ig-primary-button));
   stroke-width: 2;
 }
@@ -563,7 +563,7 @@
   position: absolute;
   width: 14px;
   height: 14px;
-  border: 2px solid rgb(var(--ig-primary-bg));
+  border: 2px solid rgb(var(--ig-primary-background));
   border-radius: 50%;
   background: rgb(var(--ig-primary-button));
   box-shadow: 0 0 0 8px rgba(var(--ig-primary-button), 0.08);
@@ -580,7 +580,7 @@
   height: 34px;
   overflow: hidden;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-highlight-bg));
+  background: rgb(var(--ig-highlight-background));
 }
 
 .markStacked i {
@@ -624,7 +624,7 @@
   min-height: 52px;
   display: grid;
   place-items: center;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 12px;
   font-weight: var(--fw-semibold);
@@ -647,7 +647,7 @@
   border-radius: var(--radius-md);
   background:
     linear-gradient(rgba(var(--ig-secondary-text), 0.1) 1px, transparent 1px),
-    rgb(var(--ig-elevated-bg));
+    rgb(var(--ig-elevated-background));
   background-size: 100% 25%;
 }
 
@@ -733,7 +733,7 @@
   border-radius: var(--radius-lg);
   background:
     linear-gradient(125deg, rgba(var(--ig-primary-button), 0.08), transparent 38%),
-    rgb(var(--ig-elevated-bg));
+    rgb(var(--ig-elevated-background));
 }
 
 .inspectorHeader {
@@ -758,7 +758,7 @@
   align-self: start;
   padding: 7px 10px;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-primary-text));
   font-size: 13px;
   font-weight: var(--fw-bold);
@@ -773,7 +773,7 @@
   border-radius: var(--radius-lg);
   background:
     linear-gradient(rgba(var(--ig-secondary-text), 0.1) 1px, transparent 1px),
-    rgb(var(--ig-primary-bg));
+    rgb(var(--ig-primary-background));
   background-size: 100% 25%, auto;
   touch-action: pan-y;
 }
@@ -819,7 +819,7 @@
   content: "";
   position: absolute;
   inset: 14px;
-  border: 2px solid rgb(var(--ig-elevated-bg));
+  border: 2px solid rgb(var(--ig-elevated-background));
   border-radius: 50%;
   background: rgb(var(--ig-primary-button));
   box-shadow: 0 0 0 0 rgba(var(--ig-primary-button), 0);
@@ -843,7 +843,7 @@
   padding: 10px 12px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-md);
-  background: rgba(var(--ig-primary-bg), 0.96);
+  background: rgba(var(--ig-primary-background), 0.96);
   box-shadow: 0 12px 30px rgba(var(--ig-shadow-rgb), 0.22);
   pointer-events: none;
 }
@@ -894,7 +894,7 @@
 }
 
 .practiceList article {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
 }
 
 /* ─────────────────────────────────────────────────────
@@ -921,7 +921,7 @@
 
 .neutralSwatch {
   background:
-    linear-gradient(90deg, rgb(var(--ig-highlight-bg)) 0 34%, rgba(var(--ig-secondary-text), 0.24) 34% 68%, rgb(var(--ig-elevated-bg)) 68%);
+    linear-gradient(90deg, rgb(var(--ig-highlight-background)) 0 34%, rgba(var(--ig-secondary-text), 0.24) 34% 68%, rgb(var(--ig-elevated-background)) 68%);
 }
 
 .patternSwatch {
@@ -931,7 +931,7 @@
       color-mix(in srgb, var(--ig-stop-rose) 20%, transparent) 0 8px,
       color-mix(in srgb, var(--ig-stop-purple) 20%, transparent) 8px 16px
     ),
-    rgb(var(--ig-elevated-bg));
+    rgb(var(--ig-elevated-background));
 }
 
 /* ─────────────────────────────────────────────────────

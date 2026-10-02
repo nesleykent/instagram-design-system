@@ -95,7 +95,7 @@ const CATALOG = [
 ];
 
 const ANATOMY_PARTS = [
-  { part: "Icon or illustration", detail: "A single outline-style glyph, 48–64px, often inside a soft circular badge using --ig-secondary-bg. Never a full illustration — Instagram's empty states are minimal, not decorative." },
+  { part: "Icon or illustration", detail: "A single outline-style glyph, 48–64px, often inside a soft circular badge using --ig-secondary-background. Never a full illustration — Instagram's empty states are minimal, not decorative." },
   { part: "Headline", detail: "1 short line, sentence case, --fw-semibold. States what's missing, not an apology ('No posts yet' not 'Oops, nothing here')." },
   { part: "Supporting text", detail: "1 sentence, --ig-secondary-text, system-14. Explains what will appear here and why, written in second person." },
   { part: "Optional CTA", detail: "A single button or text link — only when there's a clear, single next action. Many empty states are CTA-less by design (no comments yet, no notifications)." },
@@ -188,7 +188,7 @@ export default function EmptyStatesPage() {
   width: 64px;
   height: 64px;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   display: flex;
   align-items: center;
   justify-content: center;

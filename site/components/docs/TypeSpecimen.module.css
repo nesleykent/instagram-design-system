@@ -2,7 +2,7 @@
   padding: 24px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .sample {

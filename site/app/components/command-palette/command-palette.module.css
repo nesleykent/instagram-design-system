@@ -6,14 +6,14 @@
   padding: var(--space-5);
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
 }
 
 .kbdLarge {
   font-family: var(--font-mono);
   font-size: 15px;
   font-weight: var(--fw-semibold);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-sm);
   padding: 6px 10px;
@@ -57,7 +57,7 @@
 .kbdSmall {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   padding: 2px 6px;
   border-radius: var(--radius-xs);
   white-space: nowrap;

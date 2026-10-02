@@ -16,7 +16,7 @@
   padding: 0 12px;
   border-radius: var(--input-radius);
   border: 1px solid rgb(var(--ig-text-input-border, var(--ig-separator)));
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   color: rgb(var(--ig-primary-text));
   font-size: 14px;
 }

@@ -18,7 +18,7 @@
 
 .track {
   height: 10px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border-radius: var(--radius-pill);
   overflow: hidden;
 }

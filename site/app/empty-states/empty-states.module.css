@@ -17,7 +17,7 @@
   width: 24px;
   height: 24px;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,14 +48,14 @@
   padding: 56px 24px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-xl);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .demoBadge {
   width: 64px;
   height: 64px;
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +101,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .catalogMeta {
@@ -122,7 +122,7 @@
 
 .catalogCopy {
   padding: 10px 12px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;

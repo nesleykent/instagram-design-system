@@ -35,7 +35,7 @@
   flex-shrink: 0;
   border-radius: var(--radius-sm);
   border: 1.5px solid rgb(var(--ig-stroke));
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   cursor: pointer;
   display: inline-flex;
   align-items: center;
@@ -93,7 +93,7 @@
   flex-shrink: 0;
   border-radius: var(--radius-pill);
   border: 1.5px solid rgb(var(--ig-stroke));
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   cursor: pointer;
   position: relative;
   transition: border-color 0.15s var(--ease-glide);
@@ -145,7 +145,7 @@
   padding: 0 36px 0 12px;
   border-radius: var(--input-radius);
   border: 1px solid rgb(var(--ig-text-input-border, var(--ig-separator)));
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   color: rgb(var(--ig-primary-text));
   font-size: 14px;
   cursor: pointer;
@@ -175,7 +175,7 @@
   padding: 10px 12px;
   border-radius: var(--input-radius);
   border: 1px solid rgb(var(--ig-text-input-border, var(--ig-separator)));
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   color: rgb(var(--ig-primary-text));
   font-size: 14px;
   font-family: inherit;

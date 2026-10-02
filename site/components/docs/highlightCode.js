@@ -9,7 +9,7 @@ const TOKEN_PATTERN = new RegExp(
     /\/\*[\s\S]*?\*\//.source, // block comment
     /\/\/[^\n]*/.source, // line comment
     /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'|`(?:[^`\\]|\\.)*`/.source, // strings
-    /--[a-zA-Z][\w-]*/.source, // CSS custom properties, e.g. --ig-primary-bg
+    /--[a-zA-Z][\w-]*/.source, // CSS custom properties, e.g. --ig-primary-background
     /@(?:media|keyframes|supports|import|font-face)\b/.source, // at-rules
     /\b(?:const|let|var|function|return|import|export|from|default|if|else|new|class|extends|async|await|typeof|true|false|null|undefined)\b/.source, // JS keywords
     /(?<![\w-])-?\d+\.?\d*(?:px|em|rem|vw|vh|vmin|vmax|deg|ms|s|fr|%)?(?![\w-])/.source, // numbers + units

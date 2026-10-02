@@ -2,7 +2,7 @@
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .previewWrap {
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   height: 80px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   border-bottom: 1px solid rgb(var(--ig-separator));
 }
 
@@ -51,14 +51,14 @@
 }
 
 .easeSvg {
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   border-radius: var(--radius-sm);
 }
 
 .durationPreview {
   width: 80%;
   height: 8px;
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   border-radius: var(--radius-pill);
   overflow: hidden;
 }
@@ -78,7 +78,7 @@
 .shadowPreview {
   width: 44px;
   height: 44px;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   border-radius: var(--radius-md);
 }
 

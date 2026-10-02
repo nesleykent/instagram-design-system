@@ -23,7 +23,7 @@
 }
 
 .stateHeader {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   font-size: 11px;
   font-weight: var(--fw-bold);
   text-transform: uppercase;
@@ -60,7 +60,7 @@
 .shimmerDemo {
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-xl);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   padding: 24px;
   margin-bottom: 24px;
 }
@@ -91,7 +91,7 @@
 }
 
 .shimmer {
-  background: rgb(var(--ig-highlight-bg));
+  background: rgb(var(--ig-highlight-background));
   position: relative;
   overflow: hidden;
 }
@@ -103,7 +103,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(var(--ig-primary-bg), 0.65) 50%,
+    rgba(var(--ig-primary-background), 0.65) 50%,
     transparent 100%
   );
   transform: translateX(-100%);
@@ -147,7 +147,7 @@
 
 .patternHeader {
   padding: 12px 20px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   display: flex;
   align-items: center;
   gap: 12px;
@@ -185,7 +185,7 @@
 }
 
 .slotVisual {
-  background: rgb(var(--ig-highlight-bg));
+  background: rgb(var(--ig-highlight-background));
   flex-shrink: 0;
   min-width: 20px;
 }

@@ -14,7 +14,7 @@
 }
 
 .cell {
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   transition: background-color 120ms var(--ease-glide);
 }
 
@@ -34,7 +34,7 @@
   align-items: flex-start;
   gap: 2px;
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
   padding: 10px 12px;
   border-radius: var(--radius-md);
   cursor: pointer;

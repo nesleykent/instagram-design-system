@@ -38,12 +38,13 @@ export default function ButtonsPage() {
         </ComponentShowcase>
       </Section>
 
-      <Section kicker="Tokens" title="Each tier is fully themed">
+      <Section kicker="Tokens" title="Token values from /ig">
         <TokenGrid min="200px">
           <ColorSwatch name="Primary" token="--ig-primary-button" light="0, 149, 246" usage="Hover: --ig-primary-button-hover (24, 119, 242)" />
-          <ColorSwatch name="Secondary" token="--ig-secondary-button" light="250, 250, 250" dark="38, 38, 38" />
-          <ColorSwatch name="Tertiary background" token="--ig-tertiary-button-bg" light="255, 255, 255" dark="33, 35, 40" />
-          <ColorSwatch name="Tertiary border" token="--ig-tertiary-button-border" light="219, 219, 219" dark="54, 54, 54" />
+          <ColorSwatch name="Secondary background" token="--ig-secondary-button-background" light="239, 239, 239" dark="54, 54, 54" usage="Hover: --ig-secondary-button-hover (219, 219, 219 / 38, 38, 38)" />
+          <ColorSwatch name="Secondary label" token="--ig-secondary-button" light="38, 38, 38" dark="250, 250, 250" usage="Used by /ig as the secondary button's text colour" />
+          <ColorSwatch name="Tertiary background" token="--ig-tertiary-button-background" light="255, 255, 255" usage="Same value in both /ig theme scopes. Hover: --ig-tertiary-button-hover (245, 245, 245)" />
+          <ColorSwatch name="Tertiary border" token="--ig-tertiary-button-border" light="219, 219, 219" usage="Same value in both /ig theme scopes. Text: --ig-tertiary-button-text (38, 38, 38)" />
         </TokenGrid>
       </Section>
 

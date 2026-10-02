@@ -12,7 +12,7 @@
   padding: 5px 10px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-pill);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   font-size: 12px;
   font-weight: var(--fw-semibold);
@@ -62,7 +62,7 @@
   padding: 16px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
 }
 
 .anatomyItem span {
@@ -84,7 +84,7 @@
   padding: 16px 20px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   transition: border-color 150ms var(--ease-glide);
 }
 
@@ -163,7 +163,7 @@
   grid-template-columns: 140px 1fr;
   gap: 16px;
   padding: 12px 16px;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .specRow dt {
@@ -188,7 +188,7 @@
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .statesTable th,
@@ -200,7 +200,7 @@
 
 .statesTable thead th {
   padding: 10px 16px;
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-tertiary-text));
   font-size: 12px;
   font-weight: var(--fw-bold);
@@ -209,7 +209,7 @@
 }
 
 .stateRow {
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .stateName {
@@ -245,7 +245,7 @@
   padding: 18px;
   border: 1px solid rgb(var(--ig-separator));
   border-radius: var(--radius-lg);
-  background: rgb(var(--ig-elevated-bg));
+  background: rgb(var(--ig-elevated-background));
 }
 
 .exampleCard h3 {

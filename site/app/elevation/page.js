@@ -105,8 +105,8 @@ export default function ElevationPage() {
       >
         <CodeBlock
           label="Token definitions — light mode"
-          code={`/* Shadow base — shifts in dark mode */
---shadow-rgb: 0, 0, 0;  /* light: pure black; dark: muted navy */
+          code={`/* Shadow base */
+--shadow-rgb: 0, 0, 0;
 
 /* Named elevation levels */
 --shadow-inset:    0 0 0 1px rgba(var(--shadow-rgb), .08) inset;
@@ -121,7 +121,7 @@ export default function ElevationPage() {
         <CodeBlock
           label="Dark mode override"
           code={`[data-theme="dark"] {
-  --shadow-rgb: 0, 0, 0;      /* keep black — dark surfaces absorb more */
+  --shadow-rgb: 0, 0, 0;
   /* Optional: increase alpha slightly to compensate for dark bg */
 }`}
         />

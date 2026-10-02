@@ -8,7 +8,7 @@
   align-items: center;
   gap: 12px;
   padding: 0 20px;
-  background: rgba(var(--ig-primary-bg), 0.82);
+  background: rgba(var(--ig-primary-background), 0.82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgb(var(--ig-separator));
@@ -59,7 +59,7 @@
   width: 100%;
   max-width: 360px;
   border: 1px solid rgb(var(--ig-separator));
-  background: rgb(var(--ig-secondary-bg));
+  background: rgb(var(--ig-secondary-background));
   color: rgb(var(--ig-secondary-text));
   border-radius: var(--radius-pill);
   cursor: pointer;
@@ -84,7 +84,7 @@
   font-weight: var(--fw-semibold);
   padding: 2px 6px;
   border-radius: var(--radius-sm);
-  background: rgb(var(--ig-primary-bg));
+  background: rgb(var(--ig-primary-background));
   border: 1px solid rgb(var(--ig-separator));
   color: rgb(var(--ig-tertiary-text));
 }
